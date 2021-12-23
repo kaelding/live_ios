@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E98277452A80038AFCF /* AppDelegate.swift */; };
+		8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9A277452A80038AFCF /* SceneDelegate.swift */; };
+		8EE13E9D277452A80038AFCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9C277452A80038AFCF /* ViewController.swift */; };
+		8EE13EA0277452A80038AFCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13E9E277452A80038AFCF /* Main.storyboard */; };
+		8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13EA1277452AA0038AFCF /* Assets.xcassets */; };
+		8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */; };
+		8EE13ED1277455FC0038AFCF /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
+		8EE13ED2277455FC0038AFCF /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13ED627745B1C0038AFCF /* AppCenter.json */; };
+		8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13ED727745B1C0038AFCF /* AppCenter.swift */; };
+		8EE13EEF27745B810038AFCF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EDC27745B810038AFCF /* UserService.swift */; };
+		8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EDE27745B810038AFCF /* Result+Zego.swift */; };
+		8EE13EF127745B810038AFCF /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EDF27745B810038AFCF /* RoomService.swift */; };
+		8EE13EF227745B810038AFCF /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE027745B810038AFCF /* Define.swift */; };
+		8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE227745B810038AFCF /* UserInfo.swift */; };
+		8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE327745B810038AFCF /* TextMessage.swift */; };
+		8EE13EF527745B810038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE427745B810038AFCF /* CustomCommand.swift */; };
+		8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE627745B810038AFCF /* RoomInfo.swift */; };
+		8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE727745B810038AFCF /* RoomManager.swift */; };
+		8EE13EF927745B810038AFCF /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE827745B810038AFCF /* MessageService.swift */; };
+		8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EEC27745B810038AFCF /* DictionaryArray.swift */; };
+		8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EED27745B810038AFCF /* ZegoJsonTool.swift */; };
+		8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EEE27745B810038AFCF /* ZIMManager.swift */; };
+		8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EFF277461DB0038AFCF /* RoomListService.swift */; };
+		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EE13ED3277455FC0038AFCF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8EE13ED2277455FC0038AFCF /* ZegoEffects.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZEGOLiveDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.release.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.release.xcconfig"; sourceTree = "<group>"; };
+		6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.debug.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZEGOLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EE13E98277452A80038AFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8EE13E9A277452A80038AFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8EE13E9C277452A80038AFCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8EE13E9F277452A80038AFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8EE13EA1277452AA0038AFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8EE13EA4277452AA0038AFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8EE13EA6277452AA0038AFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ZegoEffects.xcframework; path = Lib/ZegoEffects.xcframework; sourceTree = "<group>"; };
+		8EE13ED627745B1C0038AFCF /* AppCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppCenter.json; sourceTree = "<group>"; };
+		8EE13ED727745B1C0038AFCF /* AppCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCenter.swift; sourceTree = "<group>"; };
+		8EE13EDC27745B810038AFCF /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		8EE13EDE27745B810038AFCF /* Result+Zego.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+Zego.swift"; sourceTree = "<group>"; };
+		8EE13EDF27745B810038AFCF /* RoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
+		8EE13EE027745B810038AFCF /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		8EE13EE227745B810038AFCF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		8EE13EE327745B810038AFCF /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
+		8EE13EE427745B810038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
+		8EE13EE627745B810038AFCF /* RoomInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfo.swift; sourceTree = "<group>"; };
+		8EE13EE727745B810038AFCF /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
+		8EE13EE827745B810038AFCF /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		8EE13EEC27745B810038AFCF /* DictionaryArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryArray.swift; sourceTree = "<group>"; };
+		8EE13EED27745B810038AFCF /* ZegoJsonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZegoJsonTool.swift; sourceTree = "<group>"; };
+		8EE13EEE27745B810038AFCF /* ZIMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZIMManager.swift; sourceTree = "<group>"; };
+		8EE13EFF277461DB0038AFCF /* RoomListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8EE13E92277452A80038AFCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */,
+				8EE13ED1277455FC0038AFCF /* ZegoEffects.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		650B81790BD1C69823CB6CC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */,
+				3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8EE13E8C277452A80038AFCF = {
+			isa = PBXGroup;
+			children = (
+				8EE13EDB27745B810038AFCF /* ZEGOLive */,
+				8EE13E97277452A80038AFCF /* ZEGOLiveDemo */,
+				8EE13E96277452A80038AFCF /* Products */,
+				650B81790BD1C69823CB6CC1 /* Pods */,
+				C90C708D9318794277CA16FE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8EE13E96277452A80038AFCF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EE13E97277452A80038AFCF /* ZEGOLiveDemo */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13ED427745B1C0038AFCF /* AppCenter */,
+				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
+				8EE13E9A277452A80038AFCF /* SceneDelegate.swift */,
+				8EE13E9C277452A80038AFCF /* ViewController.swift */,
+				8EE13E9E277452A80038AFCF /* Main.storyboard */,
+				8EE13EA1277452AA0038AFCF /* Assets.xcassets */,
+				8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */,
+				8EE13EA6277452AA0038AFCF /* Info.plist */,
+			);
+			path = ZEGOLiveDemo;
+			sourceTree = "<group>";
+		};
+		8EE13ED427745B1C0038AFCF /* AppCenter */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13ED727745B1C0038AFCF /* AppCenter.swift */,
+				8EE13ED627745B1C0038AFCF /* AppCenter.json */,
+			);
+			path = AppCenter;
+			sourceTree = "<group>";
+		};
+		8EE13EDB27745B810038AFCF /* ZEGOLive */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EEB27745B810038AFCF /* Tool */,
+				8EE13EDD27745B810038AFCF /* Extensions */,
+				8EE13EE127745B810038AFCF /* Model */,
+				8EE13EE027745B810038AFCF /* Define.swift */,
+				8EE13EE727745B810038AFCF /* RoomManager.swift */,
+				8EE13EE827745B810038AFCF /* MessageService.swift */,
+				8EE13EDF27745B810038AFCF /* RoomService.swift */,
+				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
+				8EE13EDC27745B810038AFCF /* UserService.swift */,
+				8EE13EEE27745B810038AFCF /* ZIMManager.swift */,
+			);
+			path = ZEGOLive;
+			sourceTree = "<group>";
+		};
+		8EE13EDD27745B810038AFCF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EDE27745B810038AFCF /* Result+Zego.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8EE13EE127745B810038AFCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EE227745B810038AFCF /* UserInfo.swift */,
+				8EE13EE327745B810038AFCF /* TextMessage.swift */,
+				8EE13EE427745B810038AFCF /* CustomCommand.swift */,
+				8EE13EE627745B810038AFCF /* RoomInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8EE13EEB27745B810038AFCF /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EEC27745B810038AFCF /* DictionaryArray.swift */,
+				8EE13EED27745B810038AFCF /* ZegoJsonTool.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		C90C708D9318794277CA16FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */,
+				1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8EE13E94277452A80038AFCF /* ZEGOLiveDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EE13EA9277452AA0038AFCF /* Build configuration list for PBXNativeTarget "ZEGOLiveDemo" */;
+			buildPhases = (
+				0DBD839C2D1D11DF1CD693ED /* [CP] Check Pods Manifest.lock */,
+				8EE13E91277452A80038AFCF /* Sources */,
+				8EE13E92277452A80038AFCF /* Frameworks */,
+				8EE13E93277452A80038AFCF /* Resources */,
+				EFFD8881E7368F9E2F202ED0 /* [CP] Embed Pods Frameworks */,
+				8EE13ED3277455FC0038AFCF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZEGOLiveDemo;
+			productName = ZEGOLiveDemo;
+			productReference = 8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8EE13E8D277452A80038AFCF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					8EE13E94277452A80038AFCF = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 8EE13E90277452A80038AFCF /* Build configuration list for PBXProject "ZEGOLiveDemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8EE13E8C277452A80038AFCF;
+			productRefGroup = 8EE13E96277452A80038AFCF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8EE13E94277452A80038AFCF /* ZEGOLiveDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8EE13E93277452A80038AFCF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
+				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
+				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
+				8EE13EA0277452A80038AFCF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DBD839C2D1D11DF1CD693ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZEGOLiveDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFFD8881E7368F9E2F202ED0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8EE13E91277452A80038AFCF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */,
+				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
+				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
+				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
+				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
+				8EE13E9D277452A80038AFCF /* ViewController.swift in Sources */,
+				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
+				8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */,
+				8EE13EF527745B810038AFCF /* CustomCommand.swift in Sources */,
+				8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */,
+				8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */,
+				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
+				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
+				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
+				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
+				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
+				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
+				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8EE13E9E277452A80038AFCF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE13E9F277452A80038AFCF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE13EA4277452AA0038AFCF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8EE13EA7277452AA0038AFCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8EE13EA8277452AA0038AFCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8EE13EAA277452AA0038AFCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B82BHJ5H89;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zego.ZEGOLiveDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8EE13EAB277452AA0038AFCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B82BHJ5H89;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zego.ZEGOLiveDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8EE13E90277452A80038AFCF /* Build configuration list for PBXProject "ZEGOLiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EE13EA7277452AA0038AFCF /* Debug */,
+				8EE13EA8277452AA0038AFCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EE13EA9277452AA0038AFCF /* Build configuration list for PBXNativeTarget "ZEGOLiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EE13EAA277452AA0038AFCF /* Debug */,
+				8EE13EAB277452AA0038AFCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8EE13E8D277452A80038AFCF /* Project object */;
+}

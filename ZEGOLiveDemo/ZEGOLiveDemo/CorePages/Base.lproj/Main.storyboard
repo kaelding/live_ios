@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,7 +78,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdU-UN-xQv">
                                 <rect key="frame" x="22" y="765" width="180" height="49"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.086687706953642391" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="background02"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="ORa-9A-2ty"/>
                                 </constraints>
@@ -91,7 +92,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-vi-UXi">
                                 <rect key="frame" x="22" y="706" width="370" height="49"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.086687706953642391" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="background02"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="VNa-4z-WC7"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="WPY-JB-Ygl"/>
@@ -105,7 +106,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm8-sO-fxi">
                                 <rect key="frame" x="212" y="765" width="180" height="49"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.086687706949999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="background02"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="sgB-n2-Cs9"/>
                                 </constraints>
@@ -119,7 +120,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.10196078431372549" green="0.090196078431372548" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="background01"/>
                         <constraints>
                             <constraint firstItem="Wm8-sO-fxi" firstAttribute="leading" secondItem="TdU-UN-xQv" secondAttribute="trailing" constant="10" id="23Z-BC-Xqd"/>
                             <constraint firstItem="Shd-xJ-1tW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="5Ad-ZD-QEF"/>
@@ -175,7 +176,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User ID" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-ij-Z1T">
                                 <rect key="frame" x="30" y="214" width="354" height="49"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.089999999999999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="background02"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="VQo-ab-v5P"/>
                                 </constraints>
@@ -188,7 +189,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Db7-wc-im5">
                                 <rect key="frame" x="30" y="289" width="354" height="49"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.089999999999999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="background02"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="9eY-bj-PuY"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="Trx-8t-5hK"/>
@@ -202,7 +203,7 @@
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIy-lb-Vhd">
                                 <rect key="frame" x="30" y="373" width="354" height="49"/>
-                                <color key="backgroundColor" red="0.65490196078431373" green="0.32941176470588235" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="endColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="OFt-WH-Gm7"/>
                                 </constraints>
@@ -262,6 +263,15 @@
         <image name="home_login_icon" width="12.5" height="12"/>
         <image name="home_qrcode_icon" width="12" height="12"/>
         <image name="nav_back" width="20" height="20"/>
+        <namedColor name="background01">
+            <color red="0.10196078431372549" green="0.090196078431372548" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="background02">
+            <color red="1" green="1" blue="1" alpha="0.089999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="endColor">
+            <color red="0.31764705882352939" green="0.050980392156862744" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

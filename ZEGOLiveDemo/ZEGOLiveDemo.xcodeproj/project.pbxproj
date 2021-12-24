@@ -32,6 +32,7 @@
 		8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EEE27745B810038AFCF /* ZIMManager.swift */; };
 		8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EFF277461DB0038AFCF /* RoomListService.swift */; };
 		8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F07277496C30038AFCF /* LoginVC.swift */; };
+		8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		8EE13F04277484D20038AFCF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EE13F05277484FD0038AFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EE13F07277496C30038AFCF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZegoColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,8 @@
 		8EE13E97277452A80038AFCF /* ZEGOLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8EE13F0C27756D4D0038AFCF /* Helper */,
+				8EE13F0927756BB30038AFCF /* Extensions */,
 				8EE13ED427745B1C0038AFCF /* AppCenter */,
 				8EE13F012774735E0038AFCF /* CorePages */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
@@ -214,6 +218,21 @@
 				8EE13F07277496C30038AFCF /* LoginVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		8EE13F0927756BB30038AFCF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8EE13F0C27756D4D0038AFCF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		C90C708D9318794277CA16FE /* Frameworks */ = {
@@ -360,6 +379,7 @@
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
+				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,5 +14,10 @@ class RoomListService: NSObject {
         
         
     }
+    
+    // MARK: - Public
+    func getRoomList(_ page: Int, callback: RoomListCallback?) {
+        
+    }
 }
 

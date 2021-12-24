@@ -25,6 +25,26 @@ struct ZegoJsonTool {
         return model
     }
     
+    /// dictionary to model
+    static func dictionaryToModel<T>(type: T.Type, dict: [String: Any]?) -> T? where T: Codable {
+        guard let dict = dict else {
+            return nil
+        }
+
+        let data = try? JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed)
+        guard let data = data else {
+            return nil
+        }
+        
+        var model: T
+        do {
+            try model = JSONDecoder.init().decode(type, from: data)
+        } catch  {
+            return nil
+        }
+        return model
+    }
+    
     /// model to json string
     static func modelToJson<T>(toString model: T) -> String? where T: Encodable {
         let encoder = JSONEncoder()
@@ -39,7 +59,7 @@ struct ZegoJsonTool {
     }
     
     /// model to json dictionary
-    static func modelToJson<T>(toDictionary model: T) -> [String: Any]? where T: Encodable {
+    static func modelToDict<T>(toDict model: T) -> [String: Any]? where T: Encodable {
         let encoder = JSONEncoder()
 //        encoder.outputFormatting = .prettyPrinted
         

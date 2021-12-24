@@ -8,8 +8,8 @@
 import Foundation
 
 enum UserRole: Codable {
-    case listener
-    case speaker
+    case participant
+    case coHost
     case host
 }
 
@@ -21,7 +21,17 @@ class UserInfo: NSObject, Codable {
     var userName: String?
     
     /// user role
-    var role: UserRole = .listener
+    var role: UserRole = .participant
+    
+    // MARK: - local property
+    /// user avatar
+    var avatar: String?
+    /// user blurred avatar
+    var blurredAvatar: String?
+    /// has request to co-host
+    var hasRequestedCoHost: Bool = false
+    /// has add co-hosts
+    var hasInvited: Bool = false
     
     init(_ userID: String, _ userName: String, _ role: UserRole) {
         self.userID = userID

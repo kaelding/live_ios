@@ -19,8 +19,9 @@ class LoginVC: UIViewController {
             userIDTextField.rightView = userIDRightView
             userIDTextField.rightViewMode = .always
             userIDTextField.layer.cornerRadius = 24.5
+            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("white_40%")]
             userIDTextField.attributedPlaceholder = NSAttributedString(string: "User ID",
-                                                                       attributes: [.foregroundColor: UIColor(named: "white_40%")!])
+                                                                       attributes: attributed)
         }
     }
     @IBOutlet weak var userNameTextField: UITextField! {
@@ -32,8 +33,9 @@ class LoginVC: UIViewController {
             userNameTextField.rightView = userNameRightView
             userNameTextField.rightViewMode = .always
             userNameTextField.layer.cornerRadius = 24.5
+            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("white_40%")]
             userNameTextField.attributedPlaceholder = NSAttributedString(string: "User Name",
-                                                                         attributes: [.foregroundColor: UIColor(named: "white_40%")!])
+                                                                         attributes: attributed)
         }
     }
     @IBOutlet weak var loginButton: UIButton! {
@@ -43,8 +45,8 @@ class LoginVC: UIViewController {
             layer.startPoint = CGPoint(x: 0, y: 0)
             layer.endPoint = CGPoint(x: 1, y: 0)
             layer.locations = [NSNumber(value: 0.5), NSNumber(value: 1.0)]
-            let startColor = UIColor(named: "startColor") ?? UIColor.white
-            let endColor = UIColor(named: "endColor") ?? UIColor.white
+            let startColor = ZegoColor("startColor")
+            let endColor = ZegoColor("endColor")
             layer.colors = [startColor.cgColor, endColor.cgColor]
             layer.frame = loginButton.bounds
             loginButton.layer.addSublayer(layer)

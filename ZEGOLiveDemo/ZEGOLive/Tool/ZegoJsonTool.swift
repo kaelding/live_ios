@@ -106,5 +106,20 @@ struct ZegoJsonTool {
         }
         return nil
     }
+    
+    static func jsonToArrary(_ jsonStr: String?) -> [Any]? {
+        guard let jsonStr = jsonStr else {
+            return nil
+        }
+        
+        if let data = jsonStr.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [Any]
+            } catch {
+                
+            }
+        }
+        return nil
+    }
 }
     

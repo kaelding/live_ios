@@ -20,7 +20,7 @@ class RoomManager: NSObject {
         roomService = RoomService()
         userService = UserService()
         messageService = MessageService()
-        
+        roomListService = RoomListService()
         super.init()
     }
     
@@ -28,6 +28,7 @@ class RoomManager: NSObject {
     var roomService: RoomService
     var userService: UserService
     var messageService: MessageService
+    var roomListService: RoomListService
     
     func initWithAppID(appID: UInt32, appSign: String, callback: RoomCallback?) {
         if appSign.count == 0 {
@@ -96,6 +97,7 @@ extension RoomManager {
         
         if containsUserService {
             userService = UserService()
+            roomListService = RoomListService()
         }
         roomService = RoomService()
         messageService = MessageService()

@@ -23,7 +23,6 @@
 		8EE13EF227745B810038AFCF /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE027745B810038AFCF /* Define.swift */; };
 		8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE227745B810038AFCF /* UserInfo.swift */; };
 		8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE327745B810038AFCF /* TextMessage.swift */; };
-		8EE13EF527745B810038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE427745B810038AFCF /* CustomCommand.swift */; };
 		8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE627745B810038AFCF /* RoomInfo.swift */; };
 		8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE727745B810038AFCF /* RoomManager.swift */; };
 		8EE13EF927745B810038AFCF /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EE827745B810038AFCF /* MessageService.swift */; };
@@ -33,6 +32,9 @@
 		8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EFF277461DB0038AFCF /* RoomListService.swift */; };
 		8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F07277496C30038AFCF /* LoginVC.swift */; };
 		8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */; };
+		8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */; };
+		8EE13F122775A5030038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F112775A5030038AFCF /* CustomCommand.swift */; };
+		8EE13F142775AE170038AFCF /* InvitationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F132775AE170038AFCF /* InvitationCommand.swift */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +71,6 @@
 		8EE13EE027745B810038AFCF /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		8EE13EE227745B810038AFCF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8EE13EE327745B810038AFCF /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
-		8EE13EE427745B810038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
 		8EE13EE627745B810038AFCF /* RoomInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfo.swift; sourceTree = "<group>"; };
 		8EE13EE727745B810038AFCF /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		8EE13EE827745B810038AFCF /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -81,6 +82,9 @@
 		8EE13F05277484FD0038AFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EE13F07277496C30038AFCF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZegoColor.swift; sourceTree = "<group>"; };
+		8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostSeatModel.swift; sourceTree = "<group>"; };
+		8EE13F112775A5030038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
+		8EE13F132775AE170038AFCF /* InvitationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +161,8 @@
 				8EE13EE127745B810038AFCF /* Model */,
 				8EE13EE027745B810038AFCF /* Define.swift */,
 				8EE13EE727745B810038AFCF /* RoomManager.swift */,
-				8EE13EE827745B810038AFCF /* MessageService.swift */,
 				8EE13EDF27745B810038AFCF /* RoomService.swift */,
+				8EE13EE827745B810038AFCF /* MessageService.swift */,
 				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
 				8EE13EDC27745B810038AFCF /* UserService.swift */,
 				8EE13EEE27745B810038AFCF /* ZIMManager.swift */,
@@ -179,8 +183,10 @@
 			children = (
 				8EE13EE227745B810038AFCF /* UserInfo.swift */,
 				8EE13EE327745B810038AFCF /* TextMessage.swift */,
-				8EE13EE427745B810038AFCF /* CustomCommand.swift */,
+				8EE13F112775A5030038AFCF /* CustomCommand.swift */,
+				8EE13F132775AE170038AFCF /* InvitationCommand.swift */,
 				8EE13EE627745B810038AFCF /* RoomInfo.swift */,
+				8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,18 +371,20 @@
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
 				8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */,
+				8EE13F142775AE170038AFCF /* InvitationCommand.swift in Sources */,
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
 				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */,
-				8EE13EF527745B810038AFCF /* CustomCommand.swift in Sources */,
+				8EE13F122775A5030038AFCF /* CustomCommand.swift in Sources */,
 				8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */,
 				8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */,
 				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
 				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
 				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
+				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
 				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,

@@ -35,6 +35,7 @@
 		8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */; };
 		8EE13F122775A5030038AFCF /* OperationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F112775A5030038AFCF /* OperationCommand.swift */; };
 		8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F132775AE170038AFCF /* CustomCommand.swift */; };
+		8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F19277770B00038AFCF /* UserService+Paramater.swift */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostSeatModel.swift; sourceTree = "<group>"; };
 		8EE13F112775A5030038AFCF /* OperationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCommand.swift; sourceTree = "<group>"; };
 		8EE13F132775AE170038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
+		8EE13F19277770B00038AFCF /* UserService+Paramater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Paramater.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,16 +158,9 @@
 		8EE13EDB27745B810038AFCF /* ZEGOLive */ = {
 			isa = PBXGroup;
 			children = (
+				8EE13F1527776FFF0038AFCF /* Core */,
 				8EE13EEB27745B810038AFCF /* Tool */,
 				8EE13EDD27745B810038AFCF /* Extensions */,
-				8EE13EE127745B810038AFCF /* Model */,
-				8EE13EE027745B810038AFCF /* Define.swift */,
-				8EE13EE727745B810038AFCF /* RoomManager.swift */,
-				8EE13EDF27745B810038AFCF /* RoomService.swift */,
-				8EE13EDC27745B810038AFCF /* UserService.swift */,
-				8EE13EE827745B810038AFCF /* MessageService.swift */,
-				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
-				8EE13EEE27745B810038AFCF /* ZIMManager.swift */,
 			);
 			path = ZEGOLive;
 			sourceTree = "<group>";
@@ -239,6 +234,38 @@
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8EE13F1527776FFF0038AFCF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EE027745B810038AFCF /* Define.swift */,
+				8EE13EE127745B810038AFCF /* Model */,
+				8EE13F172777703B0038AFCF /* Manager */,
+				8EE13F162777702E0038AFCF /* Service */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8EE13F162777702E0038AFCF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EDF27745B810038AFCF /* RoomService.swift */,
+				8EE13EDC27745B810038AFCF /* UserService.swift */,
+				8EE13F19277770B00038AFCF /* UserService+Paramater.swift */,
+				8EE13EE827745B810038AFCF /* MessageService.swift */,
+				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8EE13F172777703B0038AFCF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13EE727745B810038AFCF /* RoomManager.swift */,
+				8EE13EEE27745B810038AFCF /* ZIMManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		C90C708D9318794277CA16FE /* Frameworks */ = {
@@ -386,6 +413,7 @@
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
+				8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
 				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,

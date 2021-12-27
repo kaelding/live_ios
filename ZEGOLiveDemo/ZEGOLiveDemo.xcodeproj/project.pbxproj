@@ -38,6 +38,7 @@
 		8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F132775AE170038AFCF /* CustomCommand.swift */; };
 		8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F19277770B00038AFCF /* UserService+Paramater.swift */; };
 		8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */; };
+		8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F202779E34C0038AFCF /* String+Stream.swift */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		8EE13F132775AE170038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
 		8EE13F19277770B00038AFCF /* UserService+Paramater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Paramater.swift"; sourceTree = "<group>"; };
 		8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomService+Private.swift"; sourceTree = "<group>"; };
+		8EE13F202779E34C0038AFCF /* String+Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Stream.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13EDE27745B810038AFCF /* Result+Zego.swift */,
+				8EE13F202779E34C0038AFCF /* String+Stream.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */,
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
 				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
+				8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */,

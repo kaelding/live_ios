@@ -7,6 +7,7 @@
 
 import Foundation
 import ZIM
+import ZegoExpressEngine
 
 extension RoomService {
     
@@ -53,6 +54,22 @@ extension RoomService {
             } else if action.type == .declineToCoHost {
                 delegate.receiveToCoHostRespond(false)
             }
+        }
+        
+        
+        guard let seat = self.operation.seatList.filter({ $0.userID == myUserID }).first else {
+            return
+        }
+        if action.type == .mic {
+            ZegoExpressEngine.shared().muteMicrophone(!seat.mic)
+        }
+        if action.type == .camera {
+            ZegoExpressEngine.shared().enableCamera(!seat.camera)
+        }
+        
+        if action.type == .mute && seat.isMuted {
+            ZegoExpressEngine.shared().muteMicrophone(true)
+            RoomManager.shared.userService.micOperation(false)
         }
     }
     

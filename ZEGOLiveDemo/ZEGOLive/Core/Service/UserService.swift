@@ -253,6 +253,11 @@ class UserService: NSObject {
             callback(.failure(.failed))
             return
         }
+        // publish stream
+        guard let myUserID = localInfo?.userID else { return }
+        let streamID = String.getStreamID(myUserID, roomID: parameters.1)
+        ZegoExpressEngine.shared().startPublishingStream(streamID)
+        
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     

@@ -101,6 +101,12 @@ extension UserService {
             assert(false, "myself did not on the seat")
             return nil
         }
+        
+        if (flag == 0 || flag == 1) && seatModel.isMuted {
+            assert(false, "the seat is muted, can not change the mic or camera.")
+            return nil
+        }
+        
         if flag == 0 {
             seatModel.mic = enable
             operation.action.type = .mic

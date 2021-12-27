@@ -233,8 +233,14 @@ class UserService: NSObject {
     }
     
     /// the host respond to the participant
-    func respondCoHostRequest(_ agree: Bool, callback: RoomCallback?) {
-        
+    func respondCoHostRequest(_ agree: Bool, _ userID: String, callback: RoomCallback?) {
+        // remove user ID from coHost
+        guard let parameters = getRespondCoHostParameters(agree, userID: userID) else {
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+            return
+        }
+        setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
     /// prohibit turning on the mic

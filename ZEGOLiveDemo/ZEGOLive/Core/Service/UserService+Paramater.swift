@@ -9,10 +9,12 @@ import Foundation
 import ZIM
 
 // MARK: - Private
-extension UserService {    
+extension UserService {
+    
+    typealias ParametersResult = ([String: String], String, ZIMRoomAttributesSetConfig)
+    
     // get request or cancel request to host parameters
-    func getRequestOrCancelToHostParameters(_ isRequest: Bool) ->
-    ([String: String], String, ZIMRoomAttributesSetConfig)? {
+    func getRequestOrCancelToHostParameters(_ isRequest: Bool) -> ParametersResult? {
         guard let hostID = RoomManager.shared.roomService.info.hostID,
               let roomID = RoomManager.shared.roomService.info.roomID,
               let myUserID = localInfo?.userID
@@ -45,8 +47,7 @@ extension UserService {
     }
     
     // get take or leave seat parameters
-    func getTakeOrLeaveSeatParameters(_ isTake: Bool) ->
-    ([String: String], String, ZIMRoomAttributesSetConfig)? {
+    func getTakeOrLeaveSeatParameters(_ isTake: Bool) -> ParametersResult? {
         
         guard let roomID = RoomManager.shared.roomService.info.roomID,
               let myUserID = localInfo?.userID
@@ -82,8 +83,7 @@ extension UserService {
     
     // get the seat releated parameters
     // flag: 0 - mic, 1 - camera, 2 - mute
-    func getSeatChangeParameters(_ targetUserID: String = "", enable: Bool, flag: Int) ->
-    ([String: String], String, ZIMRoomAttributesSetConfig)? {
+    func getSeatChangeParameters(_ targetUserID: String = "", enable: Bool, flag: Int) -> ParametersResult? {
         
         guard let roomID = RoomManager.shared.roomService.info.roomID,
               let myUserID = localInfo?.userID
@@ -113,6 +113,42 @@ extension UserService {
         }
         
         let attributes = operation.attributes(.seat)
+        
+        let config = ZIMRoomAttributesSetConfig()
+        config.isDeleteAfterOwnerLeft = true
+        config.isForce = true
+        config.isUpdateOwner = true
+        
+        return (attributes, roomID, config)
+    }
+    
+    func getRespondCoHostParameters(_ agree: Bool, userID: String) -> ParametersResult? {
+        
+        guard let roomID = RoomManager.shared.roomService.info.roomID,
+              let myUserID = localInfo?.userID
+        else {
+            assert(false, "the hostID or roomID cannot be nil")
+            return nil
+        }
+        
+        let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
+        operation.action.seq += 1
+        operation.action.operatorID = myUserID
+        operation.action.targetID = userID
+        
+        if !operation.coHostList.contains(userID) {
+            assert(false, "the user ID did not in coHost list.")
+            return nil
+        }
+        
+        if agree {
+            operation.action.type = .agreeToCoHost
+        } else {
+            operation.action.type = .declineToCoHost
+        }
+        operation.coHostList = operation.coHostList.filter { $0 != userID }
+        
+        let attributes = operation.attributes(.coHost)
         
         let config = ZIMRoomAttributesSetConfig()
         config.isDeleteAfterOwnerLeft = true

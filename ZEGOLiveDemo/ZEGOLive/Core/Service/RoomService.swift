@@ -28,7 +28,7 @@ class RoomService: NSObject {
     
     var info: RoomInfo = RoomInfo()
     weak var delegate: RoomServiceDelegate?
-    
+    var operation: OperationCommand = OperationCommand()
     /// Create a chat room
     /// You need to enter a generated `rtc token`
     func createRoom(_ roomID: String, _ roomName: String, _ token: String, callback: RoomCallback?) {
@@ -86,6 +86,9 @@ class RoomService: NSObject {
     
     /// Leave the chat room
     func leaveRoom(callback: RoomCallback?) {
+        // if call the leave room api, just logout rtc room
+        RoomManager.shared.logoutRtcRoom()
+        
         guard let roomID = RoomManager.shared.roomService.info.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
@@ -95,9 +98,7 @@ class RoomService: NSObject {
         
         ZIMManager.shared.zim?.leaveRoom(roomID, callback: { error in
             var result: ZegoResult = .success(())
-            if error.code == .ZIMErrorCodeSuccess {
-                RoomManager.shared.logoutRtcRoom()
-            } else {
+            if error.code != .ZIMErrorCodeSuccess {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
             guard let callback = callback else { return }
@@ -146,6 +147,8 @@ extension RoomService: ZIMEventHandler {
     }
     
     func zim(_ zim: ZIM, roomAttributesUpdated updateInfo: ZIMRoomAttributesUpdateInfo, roomID: String) {
+        
+        // update room info
         if updateInfo.roomAttributes.keys.contains("roomInfo") {
             let roomJson = updateInfo.roomAttributes["roomInfo"] ?? ""
             let roomInfo = ZegoJsonTool.jsonToModel(type: RoomInfo.self, json: roomJson)
@@ -156,6 +159,27 @@ extension RoomService: ZIMEventHandler {
                 self.info = roomInfo
             }
             delegate?.receiveRoomInfoUpdate(roomInfo)
+        }
+        
+        // update action
+        guard let actionJson = updateInfo.roomAttributes["action"],
+              let action: OperationAction = ZegoJsonTool.jsonToModel(type: OperationAction.self, json: actionJson) else
+        {
+            return
+        }
+        
+        // if the seq is invalid
+        if !operation.isSeqValid(action.seq) { return }
+        operation.action = action
+        
+        // update seat list
+        if let seatJson = updateInfo.roomAttributes["seat"] {
+            operation.updateSeatList(seatJson)
+        }
+        
+        // update coHost list
+        if let coHostJson = updateInfo.roomAttributes["coHost"] {
+            operation.updateCoHostList(coHostJson)
         }
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 struct OperationAttributeType : OptionSet {
     let rawValue: Int
-    static let seat = OperationAttributeType(rawValue: 4)
-    static let coHost = OperationAttributeType(rawValue: 8)
+    static let seat = OperationAttributeType(rawValue: 1)
+    static let coHost = OperationAttributeType(rawValue: 2)
     // the -1 every bit is 1
     static let all = OperationAttributeType(rawValue: -1)
 }
@@ -94,7 +94,6 @@ class OperationCommand : NSObject, Codable {
             list.append(seat)
         }
         self.seatList = list
-        RoomManager.shared.userService.coHostList = list
     }
     
     func updateCoHostList(_ json: String) {

@@ -31,4 +31,11 @@ extension CoHostSeatModel: NSCopying {
         copy.camera = camera
         return copy
     }
+    
+    func updateModel(_ oldModel: CoHostSeatModel) {
+        self.userID = oldModel.userID
+        self.isMuted = oldModel.isMuted
+        self.mic = oldModel.mic
+        self.camera = oldModel.camera
+    }
 }

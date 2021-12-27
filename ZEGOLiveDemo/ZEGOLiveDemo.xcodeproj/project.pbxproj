@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
+		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
 		8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E98277452A80038AFCF /* AppDelegate.swift */; };
 		8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9A277452A80038AFCF /* SceneDelegate.swift */; };
 		8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9C277452A80038AFCF /* HomeVC.swift */; };
 		8EE13EA0277452A80038AFCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13E9E277452A80038AFCF /* Main.storyboard */; };
 		8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13EA1277452AA0038AFCF /* Assets.xcassets */; };
 		8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */; };
-		8EE13ED1277455FC0038AFCF /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
-		8EE13ED2277455FC0038AFCF /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EE13ED627745B1C0038AFCF /* AppCenter.json */; };
 		8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13ED727745B1C0038AFCF /* AppCenter.swift */; };
 		8EE13EEF27745B810038AFCF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EDC27745B810038AFCF /* UserService.swift */; };
@@ -40,13 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8EE13ED3277455FC0038AFCF /* Embed Frameworks */ = {
+		86A8A1F927796E09002A7658 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8EE13ED2277455FC0038AFCF /* ZegoEffects.xcframework in Embed Frameworks */,
+				86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +58,7 @@
 		1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZEGOLiveDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.release.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.debug.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZEGOLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE13E98277452A80038AFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EE13E9A277452A80038AFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */,
-				8EE13ED1277455FC0038AFCF /* ZegoEffects.xcframework in Frameworks */,
+				86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +111,14 @@
 				3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		86A8A1FA27796F23002A7658 /* RoomList */ = {
+			isa = PBXGroup;
+			children = (
+				86A8A1FB27796F56002A7658 /* RoomListVC.swift */,
+			);
+			path = RoomList;
 			sourceTree = "<group>";
 		};
 		8EE13E8C277452A80038AFCF = {
@@ -199,8 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				8EE13E9E277452A80038AFCF /* Main.storyboard */,
-				8EE13F06277496AC0038AFCF /* Login */,
 				8EE13F022774736E0038AFCF /* Home */,
+				8EE13F06277496AC0038AFCF /* Login */,
+				86A8A1FA27796F23002A7658 /* RoomList */,
 			);
 			path = CorePages;
 			sourceTree = "<group>";
@@ -289,7 +300,7 @@
 				8EE13E92277452A80038AFCF /* Frameworks */,
 				8EE13E93277452A80038AFCF /* Resources */,
 				EFFD8881E7368F9E2F202ED0 /* [CP] Embed Pods Frameworks */,
-				8EE13ED3277455FC0038AFCF /* Embed Frameworks */,
+				86A8A1F927796E09002A7658 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,6 +423,7 @@
 				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
+				86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
 				8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,

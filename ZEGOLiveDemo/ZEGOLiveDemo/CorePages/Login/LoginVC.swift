@@ -45,8 +45,8 @@ class LoginVC: UIViewController {
             layer.startPoint = CGPoint(x: 0, y: 0)
             layer.endPoint = CGPoint(x: 1, y: 0)
             layer.locations = [NSNumber(value: 0.5), NSNumber(value: 1.0)]
-            let startColor = ZegoColor("startColor")
-            let endColor = ZegoColor("endColor")
+            let startColor = ZegoColor("A754FF")
+            let endColor = ZegoColor("510DF1")
             layer.colors = [startColor.cgColor, endColor.cgColor]
             layer.frame = loginButton.bounds
             loginButton.layer.addSublayer(layer)

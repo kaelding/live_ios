@@ -17,12 +17,12 @@ class CustomCommand : NSObject, Codable {
         case respondInvitation = 2
     }
     
-    var targetUserID: String?
+    var targetUserIDs: [String] = []
     var type: CustomCommandType?
     var content: CustomCommandContent?
     
     enum CodingKeys: String, CodingKey {
-        case targetUserID = "target"
+        case targetUserIDs = "target"
         case type = "actionType"
         case content = "content"
     }

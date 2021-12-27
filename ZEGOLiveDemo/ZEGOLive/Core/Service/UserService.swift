@@ -16,21 +16,42 @@ protocol UserServiceDelegate : AnyObject  {
     /// reveive user leave room
     func roomUserLeave(_ users: [UserInfo])
     /// receive custom command: invitation
-    func receiveTakeSeatInvitation()
+    func receiveAddCoHostInvitation()
+    /// receive add co-host invitation respond
+    func receiveAddCoHostRespond(_ accept: Bool)
+    /// receive request to co-host request
+    func receiveToCoHostRequest()
+    /// receive cancel request to co-host
+    func receiveCancelToCoHostRequest()
+    /// receive response to request to co-host
+    func receiveToCoHostRespond(_ agree: Bool)
 }
 
+// default realized
 extension UserServiceDelegate {
     func roomUserJoin(_ users: [UserInfo]) { }
     func roomUserLeave(_ users: [UserInfo]) { }
-    func receiveTakeSeatInvitation() { }
+    func receiveAddCoHostInvitation() { }
+    func receiveAddCoHostRespond(_ accept: Bool) { }
+    func receiveToCoHostRequest() { }
+    func receiveCancelToCoHostRequest() { }
+    func receiveToCoHostRespond() { }
 }
 
 class UserService: NSObject {
     // MARK: - Public
-    private let delegates = NSHashTable<AnyObject>.weakObjects()
+    let delegates = NSHashTable<AnyObject>.weakObjects()
     var localInfo: UserInfo?
     var userList = DictionaryArrary<String, UserInfo>()
-    var coHostList: [CoHostSeatModel] = []
+    var coHostList: [CoHostSeatModel] {
+        return RoomManager.shared.roomService.operation.seatList
+    }
+    
+    var isMyselfHost: Bool {
+        let hostID = RoomManager.shared.roomService.info.hostID ?? ""
+        let userID = localInfo?.userID ?? ""
+        return hostID == userID
+    }
     
     override init() {
         super.init()
@@ -137,7 +158,7 @@ class UserService: NSObject {
     /// send an invitation message to add co-host
     func addCoHost(_ userID: String, callback: RoomCallback?) {
         let invitation = CustomCommand(.invitation)
-        invitation.targetUserID = userID
+        invitation.targetUserIDs.append(userID)
         guard let json = invitation.json(),
               let data = json.data(using: .utf8) else {
             guard let callback = callback else { return }
@@ -150,6 +171,9 @@ class UserService: NSObject {
             var result: ZegoResult
             if error.code == .ZIMErrorCodeSuccess {
                 result = .success(())
+                if let user = self.userList.getObj(userID) {
+                    user.hasInvited = true
+                }
             } else {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
@@ -169,7 +193,7 @@ class UserService: NSObject {
         }
         
         let respond = CustomCommand(.respondInvitation)
-        respond.targetUserID = hostID
+        respond.targetUserIDs.append(hostID)
         respond.content = CustomCommandContent(accept: accept)
         
         guard let json = respond.json(),
@@ -211,6 +235,17 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
+    /// the host respond to the participant
+    func respondCoHostRequest(_ agree: Bool, _ userID: String, callback: RoomCallback?) {
+        // remove user ID from coHost
+        guard let parameters = getRespondCoHostParameters(agree, userID: userID) else {
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+            return
+        }
+        setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
+    }
+    
     /// take to co-host seat
     func takeCoHostSeat(callback: RoomCallback?) {
         guard let parameters = getTakeOrLeaveSeatParameters(true) else {
@@ -231,12 +266,7 @@ class UserService: NSObject {
         }
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
-    
-    /// the host respond to the participant
-    func respondCoHostRequest(_ agree: Bool, callback: RoomCallback?) {
         
-    }
-    
     /// prohibit turning on the mic
     func muteUser(_ isMuted: Bool, userID: String, callback: RoomCallback?) {
         guard let hostID = RoomManager.shared.roomService.info.hostID,
@@ -360,11 +390,19 @@ extension UserService : ZIMEventHandler {
             guard let jsonStr = String(data: message.message, encoding: .utf8) else { continue }
             let command: CustomCommand? = ZegoJsonTool.jsonToModel(type: CustomCommand.self, json: jsonStr)
             guard let command = command else { continue }
-            if command.targetUserID?.count == 0 { continue }
-            //TODO: to add delegate
+            if command.targetUserIDs.count == 0 { continue }
+            
+            if let user = self.userList.getObj(command.targetUserIDs.first ?? "") {
+                user.hasInvited = command.type == .invitation
+            }
             for delegate in delegates.allObjects {
                 guard let delegate = delegate as? UserServiceDelegate else { continue }
-                delegate.receiveTakeSeatInvitation()
+                if command.type == .invitation {
+                    delegate.receiveAddCoHostInvitation()
+                } else {
+                    guard let accept = command.content?.accept else { continue }
+                    delegate.receiveAddCoHostRespond(accept)
+                }
             }
         }
     }

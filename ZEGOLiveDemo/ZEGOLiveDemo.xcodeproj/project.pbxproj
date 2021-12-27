@@ -37,6 +37,7 @@
 		8EE13F122775A5030038AFCF /* OperationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F112775A5030038AFCF /* OperationCommand.swift */; };
 		8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F132775AE170038AFCF /* CustomCommand.swift */; };
 		8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F19277770B00038AFCF /* UserService+Paramater.swift */; };
+		8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		8EE13F112775A5030038AFCF /* OperationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCommand.swift; sourceTree = "<group>"; };
 		8EE13F132775AE170038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
 		8EE13F19277770B00038AFCF /* UserService+Paramater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Paramater.swift"; sourceTree = "<group>"; };
+		8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomService+Private.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13EE027745B810038AFCF /* Define.swift */,
+				8EE13F1B2779695A0038AFCF /* Extensions */,
 				8EE13EE127745B810038AFCF /* Model */,
 				8EE13F172777703B0038AFCF /* Manager */,
 				8EE13F162777702E0038AFCF /* Service */,
@@ -263,7 +266,6 @@
 			children = (
 				8EE13EDF27745B810038AFCF /* RoomService.swift */,
 				8EE13EDC27745B810038AFCF /* UserService.swift */,
-				8EE13F19277770B00038AFCF /* UserService+Paramater.swift */,
 				8EE13EE827745B810038AFCF /* MessageService.swift */,
 				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
 			);
@@ -277,6 +279,15 @@
 				8EE13EEE27745B810038AFCF /* ZIMManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		8EE13F1B2779695A0038AFCF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */,
+				8EE13F19277770B00038AFCF /* UserService+Paramater.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C90C708D9318794277CA16FE /* Frameworks */ = {
@@ -407,6 +418,7 @@
 			files = (
 				8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */,
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
+				8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
 				8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */,
 				8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */,

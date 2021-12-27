@@ -163,23 +163,11 @@ extension RoomService: ZIMEventHandler {
         
         // update action
         guard let actionJson = updateInfo.roomAttributes["action"],
-              let action: OperationAction = ZegoJsonTool.jsonToModel(type: OperationAction.self, json: actionJson) else
-        {
+              let action: OperationAction = ZegoJsonTool.jsonToModel(type: OperationAction.self, json: actionJson)
+        else {
             return
         }
         
-        // if the seq is invalid
-        if !operation.isSeqValid(action.seq) { return }
-        operation.action = action
-        
-        // update seat list
-        if let seatJson = updateInfo.roomAttributes["seat"] {
-            operation.updateSeatList(seatJson)
-        }
-        
-        // update coHost list
-        if let coHostJson = updateInfo.roomAttributes["coHost"] {
-            operation.updateCoHostList(coHostJson)
-        }
+        roomAttributesUpdated(updateInfo.roomAttributes, action: action)
     }
 }

@@ -19,7 +19,7 @@ class LoginVC: UIViewController {
             userIDTextField.rightView = userIDRightView
             userIDTextField.rightViewMode = .always
             userIDTextField.layer.cornerRadius = 24.5
-            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("white_40%")]
+            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_40")]
             userIDTextField.attributedPlaceholder = NSAttributedString(string: "User ID",
                                                                        attributes: attributed)
         }
@@ -33,7 +33,7 @@ class LoginVC: UIViewController {
             userNameTextField.rightView = userNameRightView
             userNameTextField.rightViewMode = .always
             userNameTextField.layer.cornerRadius = 24.5
-            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("white_40%")]
+            let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_40")]
             userNameTextField.attributedPlaceholder = NSAttributedString(string: "User Name",
                                                                          attributes: attributed)
         }
@@ -108,4 +108,8 @@ class LoginVC: UIViewController {
         
     }
     
+    
+    @IBAction func popFromSettingsVC(_ segue: UIStoryboardSegue) {
+        print("pop from settings vc.")
+    }
 }

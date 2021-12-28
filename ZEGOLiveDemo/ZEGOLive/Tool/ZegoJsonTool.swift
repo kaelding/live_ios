@@ -18,7 +18,7 @@ struct ZegoJsonTool {
         
         var model: T
         do {
-            try model = JSONDecoder.init().decode(type, from: jsonData)
+            try model = JSONDecoder().decode(type, from: jsonData)
         } catch  {
             return nil
         }
@@ -107,7 +107,7 @@ struct ZegoJsonTool {
         return nil
     }
     
-    static func jsonToArrary(_ jsonStr: String?) -> [Any]? {
+    static func jsonToArray(_ jsonStr: String?) -> [Any]? {
         guard let jsonStr = jsonStr else {
             return nil
         }

@@ -29,7 +29,7 @@ class UserService: NSObject {
     // MARK: - Public
     private let delegates = NSHashTable<AnyObject>.weakObjects()
     var localInfo: UserInfo?
-    var userList = DictionaryArrary<String, UserInfo>()
+    var userList = DictionaryArray<String, UserInfo>()
     var coHostList: [CoHostSeatModel] = []
     
     override init() {

@@ -104,8 +104,6 @@ class LoginVC: UIViewController {
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
         
-        
-        
     }
     
 }

@@ -215,7 +215,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonClick:" destination="m4y-W7-AcP" eventType="touchUpInside" id="JIc-cp-wef"/>
-                                    <segue destination="SSm-r5-k9p" kind="push" id="u0X-ci-vut"/>
+                                    <segue destination="SSm-r5-k9p" kind="show" id="o6e-Ve-oa4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -280,7 +280,7 @@ please create a live room~</string>
                                 <color key="textColor" name="CCCCCC"/>
                                 <color key="highlightedColor" name="CCCCCC"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-IZ-qUc">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-IZ-qUc">
                                 <rect key="frame" x="122" y="770" width="170" height="44"/>
                                 <color key="backgroundColor" name="510DF1"/>
                                 <constraints>
@@ -302,7 +302,7 @@ please create a live room~</string>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Rle-gZ-Reo">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RoomListCell" id="Rle-gZ-Reo">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zQ5-6k-Bmp">

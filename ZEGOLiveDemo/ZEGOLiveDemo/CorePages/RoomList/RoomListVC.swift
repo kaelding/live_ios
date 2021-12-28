@@ -29,6 +29,7 @@ class RoomListVC: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     }
 

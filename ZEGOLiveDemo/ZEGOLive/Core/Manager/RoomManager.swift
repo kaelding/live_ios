@@ -128,6 +128,15 @@ extension RoomManager: ZegoEventHandler {
     }
     
     func onRoomStreamUpdate(_ updateType: ZegoUpdateType, streamList: [ZegoStream], extendedData: [AnyHashable : Any]?, roomID: String) {
+        
+        for stream in streamList {
+            if updateType == .add {
+                ZegoExpressEngine.shared().startPlayingStream(stream.streamID, canvas: nil)
+            } else {
+                ZegoExpressEngine.shared().stopPlayingStream(stream.streamID)
+            }
+        }
+        
         for delegate in rtcEventDelegates.allObjects {
             delegate.onRoomStreamUpdate?(updateType, streamList: streamList, extendedData: extendedData, roomID: roomID)
         }

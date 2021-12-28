@@ -10,7 +10,11 @@ import UIKit
 
 /// get color with name in Assets
 func ZegoColor(_ name: String) -> UIColor {
-    guard let color = UIColor(named: name) else {
+    var colorName = name
+    if colorName.contains("#") {
+        colorName = colorName.replacingOccurrences(of: "#", with: "")
+    }
+    guard let color = UIColor(named: colorName) else {
         return UIColor.white
     }
     return color

@@ -22,6 +22,7 @@
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
+		86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A222277B38E6002A7658 /* RoomListViewCell.swift */; };
 		8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E98277452A80038AFCF /* AppDelegate.swift */; };
 		8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9A277452A80038AFCF /* SceneDelegate.swift */; };
 		8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9C277452A80038AFCF /* HomeVC.swift */; };
@@ -90,6 +91,7 @@
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
+		86A8A222277B38E6002A7658 /* RoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewCell.swift; sourceTree = "<group>"; };
 		8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZEGOLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE13E98277452A80038AFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EE13E9A277452A80038AFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				86A8A1FB27796F56002A7658 /* RoomListVC.swift */,
+				86A8A222277B38E6002A7658 /* RoomListViewCell.swift */,
 			);
 			path = RoomList;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
 				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
 				8EE13F26277AC3190038AFCF /* SettingsVC.swift in Sources */,
+				86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */,
 				8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,

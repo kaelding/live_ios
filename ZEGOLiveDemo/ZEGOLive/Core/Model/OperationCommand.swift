@@ -86,7 +86,7 @@ class OperationCommand : NSObject, Codable {
     }
     
     func updateSeatList(_ json: String) {
-        guard let arr = ZegoJsonTool.jsonToArrary(json) else { return }
+        guard let arr = ZegoJsonTool.jsonToArray(json) else { return }
         var list: [CoHostSeatModel] = []
         for seatDict in arr {
             guard let seatDict = seatDict as? [String: Any] else { return }
@@ -97,7 +97,7 @@ class OperationCommand : NSObject, Codable {
     }
     
     func updateCoHostList(_ json: String) {
-        guard let arr = ZegoJsonTool.jsonToArrary(json) else { return }
+        guard let arr = ZegoJsonTool.jsonToArray(json) else { return }
         var list: [String] = []
         for userID in arr {
             guard let userID = userID as? String else { return }

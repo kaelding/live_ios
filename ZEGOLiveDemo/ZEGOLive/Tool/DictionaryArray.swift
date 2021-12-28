@@ -8,7 +8,7 @@
 import Foundation
 
 // a container contains arrary and dictionary
-class DictionaryArrary<KEY, VALUE> where KEY : Hashable, VALUE : NSObject {
+class DictionaryArray<KEY, VALUE> where KEY : Hashable, VALUE : NSObject {
     private var list: [VALUE] = []
     private var dict: [KEY : VALUE] = [ : ]
     private let queue = DispatchQueue(label: "im.zego.dictionary.arrary.queue", attributes: .concurrent)

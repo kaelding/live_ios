@@ -120,7 +120,6 @@ extension RoomService {
         roomInfo.hostID = RoomManager.shared.userService.localInfo?.userID
         roomInfo.roomID = roomID
         roomInfo.roomName = roomName.count > 0 ? roomName : roomID
-        roomInfo.seatNum = 4
         
         let config = ZIMRoomAdvancedConfig()
         let roomInfoJson = ZegoJsonTool.modelToJson(toString: roomInfo) ?? ""

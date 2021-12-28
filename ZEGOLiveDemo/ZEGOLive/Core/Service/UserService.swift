@@ -42,7 +42,7 @@ class UserService: NSObject {
     // MARK: - Public
     let delegates = NSHashTable<AnyObject>.weakObjects()
     var localInfo: UserInfo?
-    var userList = DictionaryArrary<String, UserInfo>()
+    var userList = DictionaryArray<String, UserInfo>()
     var coHostList: [CoHostSeatModel] {
         return RoomManager.shared.roomService.operation.seatList
     }

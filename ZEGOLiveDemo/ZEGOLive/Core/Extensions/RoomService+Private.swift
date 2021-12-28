@@ -75,7 +75,7 @@ extension RoomService {
     
     func resendRoomAttributes(_ roomAttributes: [String: String], action: OperationAction) {
         
-        // only the host can resent the room attributes
+        // only the host can resend the room attributes
         if !RoomManager.shared.userService.isMyselfHost { return }
         
         guard let roomID = RoomManager.shared.roomService.info.roomID else { return }

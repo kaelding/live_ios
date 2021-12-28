@@ -39,6 +39,11 @@
 		8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F19277770B00038AFCF /* UserService+Paramater.swift */; };
 		8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */; };
 		8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F202779E34C0038AFCF /* String+Stream.swift */; };
+		8EE13F26277AC3190038AFCF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F25277AC3190038AFCF /* SettingsVC.swift */; };
+		8EE13F28277AEBE10038AFCF /* SettingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F27277AEBE10038AFCF /* SettingCellModel.swift */; };
+		8EE13F2A277AEC450038AFCF /* AppDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F29277AEC450038AFCF /* AppDefine.swift */; };
+		8EE13F2F277AFBDD0038AFCF /* HUDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */; };
+		8EE13F30277AFBDD0038AFCF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */; };
 		AB0DF5E0A46E22B3453C700E /* Pods_ZEGOLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +98,13 @@
 		8EE13F19277770B00038AFCF /* UserService+Paramater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Paramater.swift"; sourceTree = "<group>"; };
 		8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomService+Private.swift"; sourceTree = "<group>"; };
 		8EE13F202779E34C0038AFCF /* String+Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Stream.swift"; sourceTree = "<group>"; };
+		8EE13F25277AC3190038AFCF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		8EE13F27277AEBE10038AFCF /* SettingCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCellModel.swift; sourceTree = "<group>"; };
+		8EE13F29277AEC450038AFCF /* AppDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefine.swift; sourceTree = "<group>"; };
+		8EE13F2B277AFBDC0038AFCF /* ZEGOLiveDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZEGOLiveDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDHelper.swift; sourceTree = "<group>"; };
+		8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,12 +159,14 @@
 		8EE13E97277452A80038AFCF /* ZEGOLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
 				8EE13F0C27756D4D0038AFCF /* Helper */,
 				8EE13F0927756BB30038AFCF /* Extensions */,
 				8EE13ED427745B1C0038AFCF /* AppCenter */,
 				8EE13F012774735E0038AFCF /* CorePages */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
 				8EE13E9A277452A80038AFCF /* SceneDelegate.swift */,
+				8EE13F2B277AFBDC0038AFCF /* ZEGOLiveDemo-Bridging-Header.h */,
 				8EE13EA1277452AA0038AFCF /* Assets.xcassets */,
 				8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */,
 				8EE13EA6277452AA0038AFCF /* Info.plist */,
@@ -214,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13E9E277452A80038AFCF /* Main.storyboard */,
+				8EE13F22277ABF8D0038AFCF /* Settings */,
 				8EE13F022774736E0038AFCF /* Home */,
 				8EE13F06277496AC0038AFCF /* Login */,
 				86A8A1FA27796F23002A7658 /* RoomList */,
@@ -248,6 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
+				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
+				8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */,
+				8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -291,6 +309,15 @@
 				8EE13F19277770B00038AFCF /* UserService+Paramater.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8EE13F22277ABF8D0038AFCF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13F27277AEBE10038AFCF /* SettingCellModel.swift */,
+				8EE13F25277AC3190038AFCF /* SettingsVC.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C90C708D9318794277CA16FE /* Frameworks */ = {
@@ -337,6 +364,7 @@
 				TargetAttributes = {
 					8EE13E94277452A80038AFCF = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 				};
 			};
@@ -420,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */,
+				8EE13F2A277AEC450038AFCF /* AppDefine.swift in Sources */,
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
 				8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
@@ -427,6 +456,7 @@
 				8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */,
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
 				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
+				8EE13F26277AC3190038AFCF /* SettingsVC.swift in Sources */,
 				8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
@@ -439,10 +469,13 @@
 				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
+				8EE13F30277AFBDD0038AFCF /* MBProgressHUD.m in Sources */,
 				86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
 				8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */,
+				8EE13F28277AEBE10038AFCF /* SettingCellModel.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
+				8EE13F2F277AFBDD0038AFCF /* HUDHelper.swift in Sources */,
 				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
 			);
@@ -592,6 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
@@ -614,6 +648,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zego.ZEGOLiveDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -625,6 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
@@ -647,6 +684,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zego.ZEGOLiveDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

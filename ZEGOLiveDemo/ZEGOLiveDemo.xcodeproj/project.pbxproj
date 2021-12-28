@@ -19,6 +19,9 @@
 		86A8A21C2779EA21002A7658 /* EndRoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21B2779EA21002A7658 /* EndRoomRequest.swift */; };
 		86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */; };
 		86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21F2779EBB0002A7658 /* RequestStatus.swift */; };
+		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
+		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
+		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
 		8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E98277452A80038AFCF /* AppDelegate.swift */; };
 		8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9A277452A80038AFCF /* SceneDelegate.swift */; };
 		8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13E9C277452A80038AFCF /* HomeVC.swift */; };
@@ -84,6 +87,9 @@
 		86A8A21B2779EA21002A7658 /* EndRoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndRoomRequest.swift; sourceTree = "<group>"; };
 		86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatRequest.swift; sourceTree = "<group>"; };
 		86A8A21F2779EBB0002A7658 /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
+		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
+		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
+		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
 		8EE13E95277452A80038AFCF /* ZEGOLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZEGOLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE13E98277452A80038AFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EE13E9A277452A80038AFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +181,24 @@
 				86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		8E0F63B3277B19620070E750 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F63B6277B3DD00070E750 /* View */,
+				8E0F63B4277B19770070E750 /* LiveRoomVC.swift */,
+			);
+			path = Room;
+			sourceTree = "<group>";
+		};
+		8E0F63B6277B3DD00070E750 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F63B9277B40100070E750 /* LiveBottomView.swift */,
+				8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8EE13E8C277452A80038AFCF = {
@@ -271,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13E9E277452A80038AFCF /* Main.storyboard */,
+				8E0F63B3277B19620070E750 /* Room */,
 				8EE13F22277ABF8D0038AFCF /* Settings */,
 				8EE13F022774736E0038AFCF /* Home */,
 				8EE13F06277496AC0038AFCF /* Login */,
@@ -436,6 +461,7 @@
 			files = (
 				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
+				8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
 				8EE13EA0277452A80038AFCF /* Main.storyboard in Resources */,
 			);
@@ -510,12 +536,14 @@
 				86A8A21C2779EA21002A7658 /* EndRoomRequest.swift in Sources */,
 				8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */,
 				8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */,
+				8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */,
 				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
 				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
 				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
 				86A8A2182779C76A002A7658 /* RoomInfoList.swift in Sources */,
+				8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */,
 				86A8A2112779BC3C002A7658 /* Request.swift in Sources */,
 				86A8A2102779BC3C002A7658 /* NetworkManager.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,

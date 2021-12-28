@@ -280,19 +280,6 @@ please create a live room~</string>
                                 <color key="textColor" name="CCCCCC"/>
                                 <color key="highlightedColor" name="CCCCCC"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-IZ-qUc">
-                                <rect key="frame" x="122" y="770" width="170" height="44"/>
-                                <color key="backgroundColor" name="510DF1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Woh-mJ-zan"/>
-                                    <constraint firstAttribute="width" constant="170" id="gtw-fh-ncC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Create Live">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-5W-ytP">
                                 <rect key="frame" x="16" y="128" width="382" height="734"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9sS-jX-iaX">
@@ -312,6 +299,22 @@ please create a live room~</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-IZ-qUc">
+                                <rect key="frame" x="122" y="770" width="170" height="44"/>
+                                <color key="backgroundColor" name="510DF1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Woh-mJ-zan"/>
+                                    <constraint firstAttribute="width" constant="170" id="gtw-fh-ncC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Create Live">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jPe-BT-8VD" kind="show" id="C8e-TU-m7Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tic-4e-tLP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -348,6 +351,144 @@ please create a live room~</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ki3-YK-KZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="861" y="33"/>
+        </scene>
+        <!--Live RoomVC-->
+        <scene sceneID="Ogy-Um-CTS">
+            <objects>
+                <viewController id="jPe-BT-8VD" customClass="LiveRoomVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ci-dq-dVb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lrq-cy-dhW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-hE-RIA" userLabel="streamView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="readyView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="The studio created by baby" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-EA-3fM">
+                                        <rect key="frame" x="50" y="149" width="314" height="60"/>
+                                        <color key="backgroundColor" name="000000_40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="paC-JO-r8y"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="roomTitleTextChanged:" destination="jPe-BT-8VD" eventType="editingDidEnd" id="hrk-BQ-wNs"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqW-cQ-IbI">
+                                        <rect key="frame" x="132" y="681.5" width="150" height="44"/>
+                                        <color key="backgroundColor" name="510DF1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="dci-ZO-ZNi"/>
+                                            <constraint firstAttribute="width" constant="150" id="qd1-TG-wyi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startLiveButtonClick:" destination="jPe-BT-8VD" eventType="touchUpInside" id="Lv2-vT-6o7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-gr-npz">
+                                        <rect key="frame" x="62" y="685.5" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Q7O-g3-VGz"/>
+                                            <constraint firstAttribute="width" constant="36" id="kPP-ND-JSX"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="beauty_button"/>
+                                        <connections>
+                                            <action selector="readyBeautyButtonClick:" destination="jPe-BT-8VD" eventType="touchUpInside" id="EUy-vU-HPy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU3-b4-eCI">
+                                        <rect key="frame" x="316" y="685.5" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="dsj-C6-Itw"/>
+                                            <constraint firstAttribute="width" constant="36" id="ibv-KR-OYv"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="create_settings"/>
+                                        <connections>
+                                            <action selector="readySettingButtonClick:" destination="jPe-BT-8VD" eventType="touchUpInside" id="AUt-cd-3jW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="RqW-cQ-IbI" firstAttribute="centerX" secondItem="SM2-kp-atx" secondAttribute="centerX" id="3hw-5K-dok"/>
+                                    <constraint firstItem="0d0-EA-3fM" firstAttribute="top" secondItem="SM2-kp-atx" secondAttribute="top" constant="149" id="4FK-ZO-hK5"/>
+                                    <constraint firstItem="zU3-b4-eCI" firstAttribute="centerY" secondItem="RqW-cQ-IbI" secondAttribute="centerY" id="5si-YN-dLo"/>
+                                    <constraint firstItem="0d0-EA-3fM" firstAttribute="leading" secondItem="SM2-kp-atx" secondAttribute="leading" constant="50" id="M2a-Je-QWd"/>
+                                    <constraint firstItem="zU3-b4-eCI" firstAttribute="leading" secondItem="RqW-cQ-IbI" secondAttribute="trailing" constant="34" id="NoV-4M-A7X"/>
+                                    <constraint firstAttribute="bottom" secondItem="RqW-cQ-IbI" secondAttribute="bottom" constant="48.5" id="WJH-oZ-gDZ"/>
+                                    <constraint firstItem="RqW-cQ-IbI" firstAttribute="leading" secondItem="LJv-gr-npz" secondAttribute="trailing" constant="34" id="bFD-ns-uc3"/>
+                                    <constraint firstAttribute="trailing" secondItem="0d0-EA-3fM" secondAttribute="trailing" constant="50" id="g23-Ri-Trd"/>
+                                    <constraint firstItem="LJv-gr-npz" firstAttribute="centerY" secondItem="RqW-cQ-IbI" secondAttribute="centerY" id="rWz-1o-uUL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CX6-wm-rNx" customClass="LiveBottomSuperView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="800" width="414" height="62"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="aBY-S7-fZ6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="2pD-dn-nBt"/>
+                            <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
+                            <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
+                            <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
+                            <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" id="IbR-aU-cxv"/>
+                            <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
+                            <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
+                            <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>
+                            <constraint firstItem="Lrq-cy-dhW" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="gqs-Ju-ddk"/>
+                            <constraint firstItem="SM2-kp-atx" firstAttribute="trailing" secondItem="Jwf-Fl-Asv" secondAttribute="trailing" id="h52-bW-kyF"/>
+                            <constraint firstItem="wzn-hE-RIA" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="me4-dk-ngp"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="CX6-wm-rNx" secondAttribute="trailing" id="p5b-FU-e7r"/>
+                            <constraint firstItem="SM2-kp-atx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="uFs-wT-tUL"/>
+                            <constraint firstAttribute="trailing" secondItem="wzn-hE-RIA" secondAttribute="trailing" id="wIo-nj-HwB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="4Lb-av-eKj">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="nav_back" id="qUW-MR-dIW">
+                            <connections>
+                                <action selector="backItemClick:" destination="jPe-BT-8VD" id="hoG-TF-CN5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="create_flip" id="5S7-QN-7zj">
+                            <connections>
+                                <action selector="changeCameraItemClick:" destination="jPe-BT-8VD" id="BSz-os-hUo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="readyBeautyButton" destination="LJv-gr-npz" id="ejb-xD-Ozh"/>
+                        <outlet property="readyContainerView" destination="SM2-kp-atx" id="M7w-wR-1gj"/>
+                        <outlet property="readySettingButton" destination="zU3-b4-eCI" id="2Fw-Wk-A8o"/>
+                        <outlet property="roomTitleTextField" destination="0d0-EA-3fM" id="6MY-ag-NdV"/>
+                        <outlet property="startLiveButton" destination="RqW-cQ-IbI" id="A4U-fL-hYv"/>
+                        <outlet property="streamView" destination="wzn-hE-RIA" id="nLY-rQ-Gfw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Bl-HA-6QG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1573.913043478261" y="32.8125"/>
         </scene>
         <!--Settings-->
         <scene sceneID="hAI-ZA-yHa">
@@ -434,13 +575,15 @@ please create a live room~</string>
     </scenes>
     <resources>
         <image name="background" width="375" height="667"/>
+        <image name="beauty_button" width="36" height="36"/>
+        <image name="create_flip" width="44" height="44"/>
         <image name="create_settings" width="44" height="44"/>
         <image name="home_live_card" width="345" height="140"/>
         <image name="home_login_icon" width="12.5" height="12"/>
         <image name="home_qrcode_icon" width="12" height="12"/>
         <image name="nav_back" width="20" height="20"/>
         <namedColor name="000000_40">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="1A1726">
             <color red="0.10199999809265137" green="0.090000003576278687" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -449,13 +592,13 @@ please create a live room~</string>
             <color red="0.31799998879432678" green="0.050999999046325684" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BD5454">
-            <color red="0.74117647058823533" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.74099999666213989" green="0.32899999618530273" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CCCCCC">
             <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FFFFFF_4">
-            <color red="1" green="1" blue="1" alpha="0.040000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="0.039999999105930328" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FFFFFF_50">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>

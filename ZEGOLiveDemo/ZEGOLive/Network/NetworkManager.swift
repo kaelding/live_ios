@@ -14,7 +14,7 @@ class NetworkManager: NSObject, RequestSender {
         super.init()
         session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue())
     }
-    //Get和Post请求
+    /// Get and Post request
     func send<T: Request>(_ req: T, handler: @escaping (T.Response?) -> Void) {
         let url = URL(string: host.appending(req.path))!
         var request = URLRequest(url: url)
@@ -55,7 +55,7 @@ class NetworkManager: NSObject, RequestSender {
         })
         task.resume()
     }
-    //合并请求参数
+    
     private func mergeParameter<T: Request>(_ req: T) -> Dictionary<String, AnyObject>{
         var tempDic = Dictionary<String, AnyObject>()
         for (key, value) in req.parameter{
@@ -151,11 +151,6 @@ extension NetworkManager : URLSessionDelegate
         var disposition = URLSession.AuthChallengeDisposition.performDefaultHandling
         
         var credential:URLCredential? = nil
-        /*disposition：如何处理证书
-         performDefaultHandling:默认方式处理
-         useCredential：使用指定的证书
-         cancelAuthenticationChallenge：取消请求
-         */
         
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
             credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
@@ -164,7 +159,6 @@ extension NetworkManager : URLSessionDelegate
                 disposition = URLSession.AuthChallengeDisposition.useCredential
             }
         }else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
-            //单向验证，客户端不需要服务端验证，此处与默认处理一致即可
             disposition = URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge
         }
         else {

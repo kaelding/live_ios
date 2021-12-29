@@ -11,7 +11,7 @@ protocol LiveBottomViewDelegate : AnyObject {
     
 }
 
-@IBDesignable class LiveBottomSuperView: UIView {
+class LiveBottomSuperView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.addBottomView()

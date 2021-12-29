@@ -281,21 +281,63 @@ please create a live room~</string>
                                 <color key="highlightedColor" name="CCCCCC"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-5W-ytP">
-                                <rect key="frame" x="16" y="128" width="382" height="734"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9sS-jX-iaX">
+                                <rect key="frame" x="0.0" y="128" width="414" height="734"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HK6-An-Z1d">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Rle-gZ-Reo">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RoomListViewCell" id="Rle-gZ-Reo" customClass="RoomListViewCell" customModule="ZEGOLiveDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zQ5-6k-Bmp">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room_list_ cover_1" translatesAutoresizingMaskIntoConstraints="NO" id="fgX-AN-1re">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room_list_people" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-Zk-Ejm">
+                                                    <rect key="frame" x="93" y="8" width="12" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="7Mg-48-cZ3"/>
+                                                        <constraint firstAttribute="width" constant="12" id="BaL-y1-CFG"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVS-6z-pM3">
+                                                    <rect key="frame" x="108" y="6" width="8" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-sK-J4w">
+                                                    <rect key="frame" x="12" y="118" width="104" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SVS-6z-pM3" firstAttribute="top" secondItem="zQ5-6k-Bmp" secondAttribute="top" constant="6" id="8js-rB-6kB"/>
+                                                <constraint firstAttribute="bottom" secondItem="fgX-AN-1re" secondAttribute="bottom" id="BMQ-9d-1BZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="SVS-6z-pM3" secondAttribute="trailing" constant="12" id="EOQ-Eq-sgl"/>
+                                                <constraint firstAttribute="trailing" secondItem="fgX-AN-1re" secondAttribute="trailing" id="IpS-zV-pLk"/>
+                                                <constraint firstItem="xhk-sK-J4w" firstAttribute="leading" secondItem="zQ5-6k-Bmp" secondAttribute="leading" constant="12" id="M2Y-pI-VSG"/>
+                                                <constraint firstItem="fgX-AN-1re" firstAttribute="leading" secondItem="zQ5-6k-Bmp" secondAttribute="leading" id="idV-T4-p1G"/>
+                                                <constraint firstItem="OFA-Zk-Ejm" firstAttribute="top" secondItem="zQ5-6k-Bmp" secondAttribute="top" constant="8" id="llG-Ki-xLh"/>
+                                                <constraint firstAttribute="bottom" secondItem="xhk-sK-J4w" secondAttribute="bottom" constant="10" id="tE8-EE-Nld"/>
+                                                <constraint firstItem="SVS-6z-pM3" firstAttribute="leading" secondItem="OFA-Zk-Ejm" secondAttribute="trailing" constant="3" id="tfI-0v-avF"/>
+                                                <constraint firstItem="fgX-AN-1re" firstAttribute="top" secondItem="zQ5-6k-Bmp" secondAttribute="top" id="yWx-iM-iFx"/>
+                                                <constraint firstAttribute="trailing" secondItem="xhk-sK-J4w" secondAttribute="trailing" constant="12" id="ygH-CB-FHe"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="backgroudImage" destination="fgX-AN-1re" id="NGW-Ak-S01"/>
+                                            <outlet property="participantNumLabel" destination="SVS-6z-pM3" id="yqX-YY-ETP"/>
+                                            <outlet property="roomNameLabel" destination="xhk-sK-J4w" id="VXe-Bp-QTy"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -308,11 +350,11 @@ please create a live room~</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Create Live">
+                                <state key="normal" title="  Create Live" image="room_list_create">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="jPe-BT-8VD" kind="show" id="C8e-TU-m7Q"/>
+                                    <action selector="pressCreateButton:" destination="SSm-r5-k9p" eventType="touchUpInside" id="ARy-OY-eAx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -321,7 +363,7 @@ please create a live room~</string>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="3Ud-IZ-qUc" secondAttribute="bottom" constant="82" id="4KC-IJ-QZe"/>
                             <constraint firstItem="tic-4e-tLP" firstAttribute="trailing" secondItem="PW4-Fu-PFV" secondAttribute="trailing" id="5Xw-TG-ibk"/>
-                            <constraint firstItem="tic-4e-tLP" firstAttribute="trailing" secondItem="hWY-5W-ytP" secondAttribute="trailing" constant="16" id="6x5-bv-ArN"/>
+                            <constraint firstItem="tic-4e-tLP" firstAttribute="trailing" secondItem="hWY-5W-ytP" secondAttribute="trailing" id="6x5-bv-ArN"/>
                             <constraint firstItem="PW4-Fu-PFV" firstAttribute="top" secondItem="eMo-P3-onn" secondAttribute="top" id="9lD-Yx-HEX"/>
                             <constraint firstItem="tic-4e-tLP" firstAttribute="trailing" secondItem="uJb-DN-ZZ3" secondAttribute="trailing" constant="100" id="FXf-rQ-8iU"/>
                             <constraint firstItem="uJb-DN-ZZ3" firstAttribute="top" secondItem="tic-4e-tLP" secondAttribute="top" constant="266" id="Tjj-dc-7M4"/>
@@ -330,7 +372,7 @@ please create a live room~</string>
                             <constraint firstItem="3Ud-IZ-qUc" firstAttribute="centerX" secondItem="eMo-P3-onn" secondAttribute="centerX" id="Zi5-S5-Xrx"/>
                             <constraint firstItem="hWY-5W-ytP" firstAttribute="top" secondItem="tic-4e-tLP" secondAttribute="top" constant="40" id="ctM-K0-n5R"/>
                             <constraint firstItem="tic-4e-tLP" firstAttribute="bottom" secondItem="hWY-5W-ytP" secondAttribute="bottom" id="eQJ-Za-uLB"/>
-                            <constraint firstItem="hWY-5W-ytP" firstAttribute="leading" secondItem="tic-4e-tLP" secondAttribute="leading" constant="16" id="hWc-ne-V4o"/>
+                            <constraint firstItem="hWY-5W-ytP" firstAttribute="leading" secondItem="tic-4e-tLP" secondAttribute="leading" id="hWc-ne-V4o"/>
                             <constraint firstAttribute="bottom" secondItem="PW4-Fu-PFV" secondAttribute="bottom" id="ogj-lr-y9v"/>
                         </constraints>
                     </view>
@@ -350,7 +392,7 @@ please create a live room~</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ki3-YK-KZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="33"/>
+            <point key="canvasLocation" x="860.86956521739137" y="32.8125"/>
         </scene>
         <!--Live RoomVC-->
         <scene sceneID="Ogy-Um-CTS">
@@ -368,7 +410,7 @@ please create a live room~</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="readyView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="The studio created by baby" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-EA-3fM">
                                         <rect key="frame" x="50" y="149" width="314" height="60"/>
@@ -384,7 +426,7 @@ please create a live room~</string>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqW-cQ-IbI">
-                                        <rect key="frame" x="132" y="681.5" width="150" height="44"/>
+                                        <rect key="frame" x="132" y="725.5" width="150" height="44"/>
                                         <color key="backgroundColor" name="510DF1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="dci-ZO-ZNi"/>
@@ -400,7 +442,7 @@ please create a live room~</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-gr-npz">
-                                        <rect key="frame" x="62" y="685.5" width="36" height="36"/>
+                                        <rect key="frame" x="62" y="729.5" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="Q7O-g3-VGz"/>
                                             <constraint firstAttribute="width" constant="36" id="kPP-ND-JSX"/>
@@ -412,7 +454,7 @@ please create a live room~</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU3-b4-eCI">
-                                        <rect key="frame" x="316" y="685.5" width="36" height="36"/>
+                                        <rect key="frame" x="316" y="729.5" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="dsj-C6-Itw"/>
                                             <constraint firstAttribute="width" constant="36" id="ibv-KR-OYv"/>
@@ -582,6 +624,9 @@ please create a live room~</string>
         <image name="home_login_icon" width="12.5" height="12"/>
         <image name="home_qrcode_icon" width="12" height="12"/>
         <image name="nav_back" width="20" height="20"/>
+        <image name="room_list_ cover_1" width="100" height="100"/>
+        <image name="room_list_create" width="12" height="12"/>
+        <image name="room_list_people" width="12" height="12"/>
         <namedColor name="000000_40">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

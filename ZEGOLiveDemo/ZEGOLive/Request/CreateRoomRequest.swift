@@ -20,7 +20,7 @@ struct CreateRoomRequest : Request {
     }
     var hostID = "" {
         willSet {
-            parameter["hostID"] = newValue as AnyObject
+            parameter["host_id"] = newValue as AnyObject
         }
     }
     var type = 0 {

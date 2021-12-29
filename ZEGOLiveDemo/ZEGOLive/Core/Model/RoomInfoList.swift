@@ -17,9 +17,10 @@ struct RoomInfoList {
     }
     
     init(json: Dictionary<String, Any>) {
-        guard let roomInfoList = json["room_list"] as? Array<String> else { return }
+        guard let dataJson = json["data"] as? [String : Any] else { return }
+        guard let roomInfoList = dataJson["room_list"] as? Array<[String : Any]> else { return }
         roomInfoArray = roomInfoList.map{
-            ZegoJsonTool.jsonToModel(type: RoomInfo.self, json: $0) ?? RoomInfo()
+            ZegoJsonTool.dictionaryToModel(type: RoomInfo.self, dict: $0) ?? RoomInfo()
         }
         requestStatus = RequestStatus(json: json)
     }

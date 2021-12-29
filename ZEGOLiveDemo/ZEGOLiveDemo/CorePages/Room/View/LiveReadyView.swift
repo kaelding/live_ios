@@ -1,5 +1,5 @@
 //
-//  LiveReadyVC.swift
+//  LiveReadyView.swift
 //  ZEGOLiveDemo
 //
 //  Created by Kael Ding on 2021/12/29.
@@ -7,12 +7,20 @@
 
 import UIKit
 
-protocol LiveReadyProtocol : AnyObject {
-    
+enum LiveReadyAction {
+    case start
+    case beauty
+    case setting
 }
 
-class LiveReadyVC: UIViewController {
+protocol LiveReadyViewDelegate : AnyObject {
+    func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction)
+}
 
+class LiveReadyView: UIView {
+
+    weak var delegate: LiveReadyViewDelegate?
+    
     @IBOutlet weak var roomTitleTextField: UITextField! {
         didSet {
             roomTitleTextField.layer.cornerRadius = 30.0
@@ -46,28 +54,27 @@ class LiveReadyVC: UIViewController {
     @IBOutlet weak var beautyButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     
+    var roomTitle: String = ""
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
-
-
+    
     // MARK: - Action
     @IBAction func roomTitleTextFieldDidChanged(_ sender: UITextField) {
-        
+        guard let text = sender.text else { return }
+        roomTitle = text
     }
     
     @IBAction func startLiveButtonClick(_ sender: UIButton) {
-        
+        delegate?.liveReadyView(self, didClickButtonWith: .start)
     }
     
     @IBAction func beautyButtonClick(_ sender: UIButton) {
-        
+        delegate?.liveReadyView(self, didClickButtonWith: .beauty)
     }
     
     @IBAction func settingButtonClick(_ sender: UIButton) {
-        
+        delegate?.liveReadyView(self, didClickButtonWith: .setting)
     }
 }

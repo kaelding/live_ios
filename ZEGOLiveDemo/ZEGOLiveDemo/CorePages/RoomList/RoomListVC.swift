@@ -48,22 +48,6 @@ class RoomListVC: UIViewController {
     }
     
     // MARK: action
-    @IBAction func pressCreateButton(_ sender: UIButton) {
-        let alter:UIAlertController = UIAlertController.init(title: ZGLocalizedString("create_page_create_room"), message: "", preferredStyle: UIAlertController.Style.alert)
-        let cancelAction:UIAlertAction = UIAlertAction.init(title: ZGLocalizedString("create_page_cancel"), style: UIAlertAction.Style.cancel, handler: nil)
-        let createAction:UIAlertAction = UIAlertAction.init(title: ZGLocalizedString("create_page_create"), style: UIAlertAction.Style.default) { action in
-            let roomNameTextField = (alter.textFields?.last)!
-            self.createRoomWithRoomName( roomName: roomNameTextField.text! as String)
-        }
-        alter.addTextField { textField in
-            textField.placeholder = ZGLocalizedString("create_page_room_name")
-            textField.font = UIFont.systemFont(ofSize: 14)
-            textField.addTarget(self, action: #selector(self.createRoomNameTextFieldDidChange), for: UIControl.Event.editingChanged)
-        }
-        alter.addAction(cancelAction)
-        alter.addAction(createAction)
-        self.present(alter, animated: true, completion: nil)
-    }
     
     // MARK: private method
     @objc func createRoomNameTextFieldDidChange(textField:UITextField) -> Void {

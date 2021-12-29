@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LiveTopView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPf-DN-g3E">
+                    <rect key="frame" x="16" y="3" width="105.5" height="34"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="create_settings" translatesAutoresizingMaskIntoConstraints="NO" id="rsO-ri-xhw">
+                            <rect key="frame" x="3" y="3" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="28" id="Asm-Wd-aE5"/>
+                                <constraint firstAttribute="height" constant="28" id="K51-zk-Ky4"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ella Brady" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIx-1Y-8mh">
+                            <rect key="frame" x="37" y="9" width="56.5" height="16.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16.5" id="zuI-Jf-1OF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="1E2740_40"/>
+                    <constraints>
+                        <constraint firstItem="fIx-1Y-8mh" firstAttribute="centerY" secondItem="qPf-DN-g3E" secondAttribute="centerY" id="9pU-Pe-ypw"/>
+                        <constraint firstItem="rsO-ri-xhw" firstAttribute="leading" secondItem="qPf-DN-g3E" secondAttribute="leading" constant="3" id="Bma-eR-f6e"/>
+                        <constraint firstItem="fIx-1Y-8mh" firstAttribute="leading" secondItem="rsO-ri-xhw" secondAttribute="trailing" constant="6" id="Hag-OP-AVt"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="tHI-Ek-vwB"/>
+                        <constraint firstAttribute="height" constant="34" id="wbo-qO-ofg"/>
+                        <constraint firstAttribute="trailing" secondItem="fIx-1Y-8mh" secondAttribute="trailing" constant="12" id="wsy-1J-hm4"/>
+                        <constraint firstItem="rsO-ri-xhw" firstAttribute="centerY" secondItem="qPf-DN-g3E" secondAttribute="centerY" id="zty-Ae-KDb"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujo-Gg-8Tg">
+                    <rect key="frame" x="166" y="6" width="53" height="28"/>
+                    <color key="backgroundColor" name="1E2740_40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="8Zm-XC-Xdn"/>
+                        <constraint firstAttribute="height" constant="28" id="eAE-qo-w0P"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
+                    <state key="normal" title="79" image="top_people"/>
+                    <connections>
+                        <action selector="participantButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="2yl-IZ-jAz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSy-Ws-uwD">
+                    <rect key="frame" x="228" y="7" width="26" height="26"/>
+                    <color key="backgroundColor" name="1E2740_40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="035-D1-jcJ"/>
+                        <constraint firstAttribute="width" constant="26" id="s73-pL-K5R"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="top_close"/>
+                    <connections>
+                        <action selector="closeButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xbc-C1-Gvj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qPf-DN-g3E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2ut-nc-PWs"/>
+                <constraint firstItem="rSy-Ws-uwD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="No6-vy-PTN"/>
+                <constraint firstItem="Ujo-Gg-8Tg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RWe-4F-XMl"/>
+                <constraint firstItem="rSy-Ws-uwD" firstAttribute="leading" secondItem="Ujo-Gg-8Tg" secondAttribute="trailing" constant="9" id="apb-ca-45p"/>
+                <constraint firstItem="qPf-DN-g3E" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ckk-aB-6z3"/>
+                <constraint firstAttribute="trailing" secondItem="rSy-Ws-uwD" secondAttribute="trailing" constant="17" id="wLP-7C-268"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="avatarImageView" destination="rsO-ri-xhw" id="Kud-eI-p2b"/>
+                <outlet property="backView" destination="qPf-DN-g3E" id="g8Z-zu-lKW"/>
+                <outlet property="closeButton" destination="rSy-Ws-uwD" id="Kzh-Ak-cR1"/>
+                <outlet property="nameLabel" destination="fIx-1Y-8mh" id="kpC-OH-d3d"/>
+                <outlet property="participantButton" destination="Ujo-Gg-8Tg" id="0G3-jW-wXH"/>
+            </connections>
+            <point key="canvasLocation" x="-38.405797101449281" y="198.88392857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="create_settings" width="44" height="44"/>
+        <image name="top_close" width="12" height="12"/>
+        <image name="top_people" width="12" height="12"/>
+        <namedColor name="1E2740_40">
+            <color red="0.11800000071525574" green="0.15299999713897705" blue="0.25099998712539673" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -11,25 +11,40 @@ class LiveRoomVC: UIViewController {
 
     @IBOutlet weak var streamView: UIView!
     
+    var readyView: LiveReadyView?
     @IBOutlet weak var readyContainer: UIView! {
         didSet {
-            readyVC.view.frame = readyContainer.bounds
-            readyContainer.addSubview(readyVC.view)
+            if let readyView = UINib(nibName: "LiveReadyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveReadyView {
+                readyView.frame = readyContainer.bounds
+                readyContainer.addSubview(readyView)
+                self.readyView = readyView
+                readyView.delegate = self
+            }
         }
     }
-    lazy var readyVC: LiveReadyVC = {
-        let vc = LiveReadyVC(nibName: "LiveReadyVC", bundle: nil)
-        return vc
-    }()
     
     var bottomView: LiveBottomView?
     @IBOutlet weak var bottomContainer: UIView! {
         didSet {
+            bottomContainer?.backgroundColor = UIColor.clear
             if let bottomView = UINib(nibName: "LiveBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveBottomView {
                 bottomView.frame = bottomContainer.bounds
                 bottomContainer.addSubview(bottomView)
                 self.bottomView = bottomView
                 bottomView.delegate = self
+            }
+        }
+    }
+    
+    var topView: LiveTopView?
+    @IBOutlet weak var topContainer: UIView! {
+        didSet {
+            topContainer.backgroundColor = UIColor.clear
+            if let topView = UINib(nibName: "LiveTopView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveTopView {
+                topView.frame = topContainer.bounds
+                topContainer.addSubview(topView)
+                self.topView = topView
+                topView.delegate = self
             }
         }
     }

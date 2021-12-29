@@ -354,7 +354,7 @@ please create a live room~</string>
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressCreateButton:" destination="SSm-r5-k9p" eventType="touchUpInside" id="ARy-OY-eAx"/>
+                                    <segue destination="jPe-BT-8VD" kind="show" id="ucP-hA-8il"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -410,14 +410,21 @@ please create a live room~</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CX6-wm-rNx">
                                 <rect key="frame" x="0.0" y="800" width="414" height="62"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="FFFFFF_40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="aBY-S7-fZ6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-cm-ybw">
+                                <rect key="frame" x="0.0" y="54" width="414" height="40"/>
+                                <color key="backgroundColor" name="FFFFFF_40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -429,10 +436,13 @@ please create a live room~</string>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Fk7-cm-ybw" secondAttribute="trailing" id="Gj8-3L-IZJ"/>
                             <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="SvM-qh-Ueg"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>
+                            <constraint firstItem="Fk7-cm-ybw" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" constant="10" id="btK-Vz-TXc"/>
+                            <constraint firstItem="Fk7-cm-ybw" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="dYo-Bj-GuQ"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="gqs-Ju-ddk"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="trailing" secondItem="0ci-dq-dVb" secondAttribute="trailing" id="h52-bW-kyF"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="me4-dk-ngp"/>
@@ -453,10 +463,12 @@ please create a live room~</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
                         <outlet property="readyContainer" destination="SM2-kp-atx" id="C7R-5K-qIH"/>
                         <outlet property="streamView" destination="wzn-hE-RIA" id="nLY-rQ-Gfw"/>
+                        <outlet property="topContainer" destination="Fk7-cm-ybw" id="JT9-Xr-v8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Bl-HA-6QG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -574,6 +586,9 @@ please create a live room~</string>
         </namedColor>
         <namedColor name="FFFFFF_4">
             <color red="1" green="1" blue="1" alpha="0.039999999105930328" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FFFFFF_40">
+            <color red="1" green="1" blue="1" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FFFFFF_50">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>

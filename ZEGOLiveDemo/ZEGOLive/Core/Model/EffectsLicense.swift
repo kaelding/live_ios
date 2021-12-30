@@ -26,7 +26,5 @@ class EffectsLicense: NSObject {
         } failure: { requestStatus in
             
         }
-
-
     }
 }

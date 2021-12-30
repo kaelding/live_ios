@@ -38,7 +38,7 @@ class FaceBeautifyService: NSObject {
     let chinLengtheningParam = ZegoEffectsLongChinParam()
     
     
-    public func enableBeautity(_ enable: Bool, type: FaceBeautifyType) {
+    public func enableBeautify(_ enable: Bool, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:
             effects.enableWhiten(enable)
@@ -63,7 +63,7 @@ class FaceBeautifyService: NSObject {
         }
     }
     
-    public func setBeautityValue(value: Int32, type: FaceBeautifyType) {
+    public func setBeautifyValue(value: Int32, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:
             self.skinToneEnhancementParam.intensity = value

@@ -19,6 +19,7 @@ enum FaceBeautifyType {
     case EyesBrightening
     case NoseSliming
     case ChinLengthening
+    case TeethWhitening
     
 }
 
@@ -36,6 +37,7 @@ class FaceBeautifyService: NSObject {
     let eyesBrighteningParam = ZegoEffectsEyesBrighteningParam()
     let noseSlimingParam = ZegoEffectsNoseNarrowingParam()
     let chinLengtheningParam = ZegoEffectsLongChinParam()
+    let teethWhiteningParam = ZegoEffectsTeethWhiteningParam()
     
     
     public func enableBeautify(_ enable: Bool, type: FaceBeautifyType) {
@@ -60,6 +62,8 @@ class FaceBeautifyService: NSObject {
             effects.enableNoseNarrowing(enable)
         case .ChinLengthening:
             effects.enableLongChin(enable)
+        case .TeethWhitening:
+            effects.enableTeethWhitening(enable)
         }
     }
     
@@ -95,7 +99,9 @@ class FaceBeautifyService: NSObject {
         case .ChinLengthening:
             self.chinLengtheningParam.intensity = value
             effects.setLongChinParam(self.chinLengtheningParam)
+        case .TeethWhitening:
+            self.teethWhiteningParam.intensity = value
+            effects.setTeethWhiteningParam(self.teethWhiteningParam)
         }
-        
     }
 }

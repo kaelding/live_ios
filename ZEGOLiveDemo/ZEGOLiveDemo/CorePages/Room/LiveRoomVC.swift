@@ -49,6 +49,18 @@ class LiveRoomVC: UIViewController {
         }
     }
     
+    var faceBeautifyView: FaceBeautifyView?
+    @IBOutlet weak var beautifyContainer: UIView! {
+        didSet {
+            if let beautifyView = UINib(nibName: "FaceBeaytifyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FaceBeautifyView {
+                beautifyView.frame = beautifyContainer.bounds
+                beautifyContainer.addSubview(beautifyView)
+                self.faceBeautifyView = beautifyView
+                self.faceBeautifyView?.isHidden = true
+            }
+        }
+    }
+    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

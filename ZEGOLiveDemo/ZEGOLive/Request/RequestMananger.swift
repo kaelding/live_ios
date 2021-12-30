@@ -52,6 +52,17 @@ struct RequestManager {
             }
         }
     }
+    
+    // get effects license
+    func getEffectsLicense(request: EffectsLicenseRequest, success:@escaping(RequestStatus?)->(), failure:@escaping(_ requestStatus: RequestStatus?)->()){
+        NetworkManager.shareManage.send(request){ requestStatus in
+            if (requestStatus?.code == 0) {
+                success(requestStatus)
+            } else {
+                failure(requestStatus)
+            }
+        }
+    }
 }
 
 

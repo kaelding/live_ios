@@ -18,6 +18,8 @@ struct RequestStatus {
         
         if let dataDic = json["data"] as? Dictionary<String, AnyObject>  {
             data = dataDic
+        } else if let dataDic = json["Data"] as? Dictionary<String, AnyObject> {
+            data = dataDic
         }
     }
 }

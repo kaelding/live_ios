@@ -1,8 +1,8 @@
 PODS:
-  - ZegoExpressEngine (2.13.1):
-    - ZegoExpressEngine/Video (= 2.13.1)
-  - ZegoExpressEngine/Video (2.13.1)
-  - ZIM (1.3.0)
+  - ZegoExpressEngine (2.15.0):
+    - ZegoExpressEngine/Video (= 2.15.0)
+  - ZegoExpressEngine/Video (2.15.0)
+  - ZIM (1.3.1)
 
 DEPENDENCIES:
   - ZegoExpressEngine
@@ -14,8 +14,8 @@ SPEC REPOS:
     - ZIM
 
 SPEC CHECKSUMS:
-  ZegoExpressEngine: 65e982c8a8d5bcc79a0824a0043020cdaeb832b4
-  ZIM: f8d32d71d0f20c48855f6e9b310b465c99c7d36c
+  ZegoExpressEngine: b3f8f173c5af47ee53caf29c6d62660118b63b97
+  ZIM: b32bc4160e652509a879999a427ac2041f4988f0
 
 PODFILE CHECKSUM: 9afb40fb7eb03af49597ce9b63e4d62ec99a302c
 

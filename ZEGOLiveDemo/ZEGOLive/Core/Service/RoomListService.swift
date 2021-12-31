@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZegoExpressEngine
 
 class RoomListService: NSObject {
     
@@ -17,6 +18,7 @@ class RoomListService: NSObject {
     
     // MARK: - Public
     func getRoomList(_ page: Int, callback: RoomListCallback?) {
+        
         
     }
 }

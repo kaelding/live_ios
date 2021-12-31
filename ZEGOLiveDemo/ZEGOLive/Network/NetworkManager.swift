@@ -16,11 +16,16 @@ class NetworkManager: NSObject, RequestSender {
     }
     /// Get and Post request
     func send<T: Request>(_ req: T, handler: @escaping (T.Response?) -> Void) {
-        let url = URL(string: host.appending(req.path))!
+        var hostPath = host
+        if let coustomHost = req.parameter["host"] as? String {
+            hostPath = coustomHost
+        }
+        let url = URL(string: hostPath.appending(req.path))!
         var request = URLRequest(url: url)
         
         request.httpMethod = req.method.rawValue
-        let parameterDic = self.mergeParameter(req)
+        var parameterDic = self.mergeParameter(req)
+        parameterDic.removeValue(forKey: "host")
         func handleParameters() {
             if needEncodesParametersForMethod(method: req.method) {
                 guard let URL = request.url else {
@@ -61,7 +66,7 @@ class NetworkManager: NSObject, RequestSender {
         for (key, value) in req.parameter{
             tempDic[key] = value as AnyObject
         }
-        tempDic["timestamp"] = NSDate().timeIntervalSince1970 as AnyObject
+        tempDic["timestamp"] = Int(NSDate().timeIntervalSince1970 * 1000) as AnyObject
         return tempDic
     }
     

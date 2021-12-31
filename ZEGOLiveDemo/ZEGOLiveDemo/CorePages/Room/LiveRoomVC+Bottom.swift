@@ -13,29 +13,30 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         print("liveBottomView did click button: \(action)")
         switch action {
         case .message:
-            return
+            print("liveBottomView did click button: \(action)")
         case .share:
-            return
+            print("liveBottomView did click button: \(action)")
         case .beauty:
-            return
+            self.faceBeautifyView?.isHidden = !(self.faceBeautifyView?.isHidden ?? false)
         case .soundEffect:
+            print("liveBottomView did click button: \(action)")
             let vc: MusicEffectsVC = MusicEffectsVC(nibName :"MusicEffectsVC",bundle : nil)
             vc.view.frame = CGRect.init(x: 0, y: self.view.bounds.size.height - 385, width: self.view.bounds.size.width, height: 385)
 //            vc.view.isHidden = true
             self.addChild(vc)
             self.view.addSubview(vc.view)
         case .more:
-            return
+                print("liveBottomView did click button: \(action)")
         case .apply:
-            return
+                print("liveBottomView did click button: \(action)")
         case .flip:
-            return
+                print("liveBottomView did click button: \(action)")
         case .camera:
-            return
+                print("liveBottomView did click button: \(action)")
         case .mic:
-            return
+                print("liveBottomView did click button: \(action)")
         case .end:
-            return
+                print("liveBottomView did click button: \(action)")
         }
     }
 }

@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		864B3EE0277EE75400699B69 /* MusicEffectsVC+BGM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */; };
+		864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EE3277EE8AF00699B69 /* BGMCollectionViewCell.swift */; };
+		864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EE4277EE8AF00699B69 /* BGMCollectionViewCell.xib */; };
+		864B3EE9277EEA9E00699B69 /* SoundChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EE7277EEA9E00699B69 /* SoundChangeCell.swift */; };
+		864B3EEA277EEA9E00699B69 /* SoundChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EE8277EEA9E00699B69 /* SoundChangeCell.xib */; };
+		864B3EED277EEB0300699B69 /* MixedRingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EEB277EEB0300699B69 /* MixedRingCell.swift */; };
+		864B3EEE277EEB0300699B69 /* MixedRingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EEC277EEB0300699B69 /* MixedRingCell.xib */; };
+		864B3EF0277EEEB900699B69 /* BGMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EEF277EEEB900699B69 /* BGMModel.swift */; };
+		864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */; };
+		864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF3277EEEE200699B69 /* MixedRingModel.swift */; };
 		8677D6C3277C44BE00612058 /* Room.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8677D6C0277C44BE00612058 /* Room.strings */; };
+		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
+		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
 		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
@@ -86,8 +98,20 @@
 		1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZEGOLiveDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D901FB2BBC566442BC68AD4 /* Pods-ZEGOLiveDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.release.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.debug.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicEffectsVC+BGM.swift"; sourceTree = "<group>"; };
+		864B3EE3277EE8AF00699B69 /* BGMCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMCollectionViewCell.swift; sourceTree = "<group>"; };
+		864B3EE4277EE8AF00699B69 /* BGMCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGMCollectionViewCell.xib; sourceTree = "<group>"; };
+		864B3EE7277EEA9E00699B69 /* SoundChangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundChangeCell.swift; sourceTree = "<group>"; };
+		864B3EE8277EEA9E00699B69 /* SoundChangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundChangeCell.xib; sourceTree = "<group>"; };
+		864B3EEB277EEB0300699B69 /* MixedRingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRingCell.swift; sourceTree = "<group>"; };
+		864B3EEC277EEB0300699B69 /* MixedRingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MixedRingCell.xib; sourceTree = "<group>"; };
+		864B3EEF277EEEB900699B69 /* BGMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMModel.swift; sourceTree = "<group>"; };
+		864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundChangeModel.swift; sourceTree = "<group>"; };
+		864B3EF3277EEEE200699B69 /* MixedRingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRingModel.swift; sourceTree = "<group>"; };
 		8677D6C1277C44BE00612058 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Room.strings"; sourceTree = "<group>"; };
 		8677D6C2277C44BE00612058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Room.strings; sourceTree = "<group>"; };
+		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
+		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		86A8A20D2779BC3C002A7658 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86A8A20E2779BC3C002A7658 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -172,12 +196,47 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		864B3EE1277EE79200699B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				864B3EEF277EEEB900699B69 /* BGMModel.swift */,
+				864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */,
+				864B3EF3277EEEE200699B69 /* MixedRingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		864B3EE2277EE88500699B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				864B3EE3277EE8AF00699B69 /* BGMCollectionViewCell.swift */,
+				864B3EE4277EE8AF00699B69 /* BGMCollectionViewCell.xib */,
+				864B3EE7277EEA9E00699B69 /* SoundChangeCell.swift */,
+				864B3EE8277EEA9E00699B69 /* SoundChangeCell.xib */,
+				864B3EEB277EEB0300699B69 /* MixedRingCell.swift */,
+				864B3EEC277EEB0300699B69 /* MixedRingCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8677D6BF277C44BE00612058 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				8677D6C0277C44BE00612058 /* Room.strings */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		869DA74C277D9D32003E6061 /* MusicEffects */ = {
+			isa = PBXGroup;
+			children = (
+				864B3EE2277EE88500699B69 /* View */,
+				864B3EE1277EE79200699B69 /* Model */,
+				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
+				869DA74E277DA063003E6061 /* MusicEffectsVC.xib */,
+				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
+			);
+			path = MusicEffects;
 			sourceTree = "<group>";
 		};
 		86A8A1FA27796F23002A7658 /* RoomList */ = {
@@ -330,6 +389,7 @@
 		8EE13F012774735E0038AFCF /* CorePages */ = {
 			isa = PBXGroup;
 			children = (
+				869DA74C277D9D32003E6061 /* MusicEffects */,
 				8EE13E9E277452A80038AFCF /* Main.storyboard */,
 				8E0F63B3277B19620070E750 /* Room */,
 				8EE13F22277ABF8D0038AFCF /* Settings */,
@@ -498,8 +558,12 @@
 			files = (
 				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
+				869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */,
 				8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */,
+				864B3EEA277EEA9E00699B69 /* SoundChangeCell.xib in Resources */,
+				864B3EEE277EEB0300699B69 /* MixedRingCell.xib in Resources */,
 				8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */,
+				864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */,
 				8677D6C3277C44BE00612058 /* Room.strings in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
 				8EA9234B277C53AF00D0BC2C /* LiveTopView.xib in Resources */,
@@ -560,15 +624,18 @@
 				8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */,
 				8EE13F2A277AEC450038AFCF /* AppDefine.swift in Sources */,
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
+				864B3EF0277EEEB900699B69 /* BGMModel.swift in Sources */,
 				8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
 				8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */,
 				8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */,
+				864B3EE0277EE75400699B69 /* MusicEffectsVC+BGM.swift in Sources */,
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,
 				8EE13EF227745B810038AFCF /* Define.swift in Sources */,
 				8EE13F26277AC3190038AFCF /* SettingsVC.swift in Sources */,
 				86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */,
 				8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */,
+				864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */,
@@ -581,6 +648,7 @@
 				8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */,
 				8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */,
 				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
+				864B3EE9277EEA9E00699B69 /* SoundChangeCell.swift in Sources */,
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
 				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
@@ -589,6 +657,7 @@
 				8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */,
 				86A8A2112779BC3C002A7658 /* Request.swift in Sources */,
 				86A8A2102779BC3C002A7658 /* NetworkManager.swift in Sources */,
+				869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
 				8EE13F30277AFBDD0038AFCF /* MBProgressHUD.m in Sources */,
@@ -598,9 +667,12 @@
 				8EA9234F277C656C00D0BC2C /* LiveRoomVC+Ready.swift in Sources */,
 				8EE13F28277AEBE10038AFCF /* SettingCellModel.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
+				864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */,
 				8EE13F2F277AFBDD0038AFCF /* HUDHelper.swift in Sources */,
+				864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */,
 				8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */,
 				8EA92349277C539D00D0BC2C /* LiveTopView.swift in Sources */,
+				864B3EED277EEB0300699B69 /* MixedRingCell.swift in Sources */,
 				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,
 				86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,

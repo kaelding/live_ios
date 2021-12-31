@@ -427,18 +427,27 @@ please create a live room~</string>
                                     <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-cP-sVp">
+                                <rect key="frame" x="0.0" y="647" width="414" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="EbG-CC-dmw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" id="52Q-0u-7gF"/>
                             <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="r7l-cP-sVp" secondAttribute="trailing" id="8zw-vr-XJE"/>
+                            <constraint firstItem="r7l-cP-sVp" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="9dv-eu-A3a"/>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Fk7-cm-ybw" secondAttribute="trailing" id="Gj8-3L-IZJ"/>
                             <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="r7l-cP-sVp" secondAttribute="bottom" id="PYS-gp-T36"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="SvM-qh-Ueg"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" constant="10" id="btK-Vz-TXc"/>
@@ -465,6 +474,7 @@ please create a live room~</string>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="beautifyContainer" destination="r7l-cP-sVp" id="3Gf-x0-c6e"/>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
                         <outlet property="readyContainer" destination="SM2-kp-atx" id="C7R-5K-qIH"/>
                         <outlet property="streamView" destination="wzn-hE-RIA" id="nLY-rQ-Gfw"/>

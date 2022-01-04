@@ -13,7 +13,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         print("liveBottomView did click button: \(action)")
         switch action {
         case .message:
-            print("liveBottomView did click button: \(action)")
+            messageButtonClick()
         case .share:
             print("liveBottomView did click button: \(action)")
         case .beauty:
@@ -33,5 +33,10 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .end:
                 print("liveBottomView did click button: \(action)")
         }
+    }
+    
+    func messageButtonClick() {
+        inputTextView.isHidden = false
+        inputTextView.textViewBecomeFirstResponse()
     }
 }

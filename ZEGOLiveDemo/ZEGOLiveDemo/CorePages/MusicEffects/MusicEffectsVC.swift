@@ -35,27 +35,27 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
     lazy var backMusicArr: [MusicEffectsModel] = {
-        let bgmArray = [["name": "欢快" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": true],
-                            ["name": "浪漫" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false],
-                            ["name": "正能量" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
+        let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": true],
+                            ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false],
+                            ["name": "Energy" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var voiceChangeArr: [MusicEffectsModel] = {
-        let voiceArray = [["name": "原声" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none, "isSelected": true],
-                          ["name": "萝莉" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild, "isSelected": false],
-                          ["name": "外国人" ,"imageName": "icon_music_uncle", "selectedImageName": "icon_music_uncle(1)", "selectedType": ZegoVoiceChangerPreset.foreigner, "isSelected": false],
-                          ["name": "机器人" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android, "isSelected": false],
-                          ["name": "空灵" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal, "isSelected": false]]
+        let voiceArray = [["name": "None" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none, "isSelected": true],
+                          ["name": "Lolita" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild, "isSelected": false],
+                          ["name": "uncle" ,"imageName": "icon_music_uncle", "selectedImageName": "icon_music_uncle(1)", "selectedType": ZegoVoiceChangerPreset.foreigner, "isSelected": false],
+                          ["name": "Robot" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android, "isSelected": false],
+                          ["name": "Empty" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal, "isSelected": false]]
         return voiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var reverberArr: [MusicEffectsModel] = {
-        let mixVoiceArray = [["name": "原声" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none , "isSelected": true],
-                             ["name": "萝莉" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV, "isSelected": false],
-                             ["name": "外国人" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall, "isSelected": false],
-                             ["name": "机器人" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular, "isSelected": false],
-                             ["name": "空灵" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert, "isSelected": false]]
+        let mixVoiceArray = [["name": "None" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none , "isSelected": true],
+                             ["name": "KTV" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV, "isSelected": false],
+                             ["name": "Hall" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall, "isSelected": false],
+                             ["name": "Concert" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular, "isSelected": false],
+                             ["name": "Rock" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert, "isSelected": false]]
         return mixVoiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     
@@ -84,14 +84,14 @@ class MusicEffectsVC: UIViewController {
         let touchEvent = event?.allTouches?.first
         switch touchEvent?.phase {
         case .began:
-            print("开始拖动")
+            print("start Draging")
         case .moved:
             if let value = slider?.value {
                 let showValue: Int = Int(value * 100)
                 musicVValueLabel.text = "\(showValue)"
             }
         case .ended:
-            print("结束拖动")
+            print("end Draging")
         default:
             break
         }
@@ -101,14 +101,14 @@ class MusicEffectsVC: UIViewController {
         let touchEvent = event?.allTouches?.first
         switch touchEvent?.phase {
         case .began:
-            print("开始拖动")
+            print("start Draging")
         case .moved:
             if let value = slider?.value {
                 let showValue: Int = Int(value * 100)
                 voiceVValueLabel.text = "\(showValue)"
             }
         case .ended:
-            print("结束拖动")
+            print("end Draging")
         default:
             break
         }

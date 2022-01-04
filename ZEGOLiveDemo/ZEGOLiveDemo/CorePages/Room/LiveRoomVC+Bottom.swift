@@ -19,7 +19,12 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .beauty:
             self.beautifyContainer.isHidden = !self.beautifyContainer.isHidden
         case .soundEffect:
-                print("liveBottomView did click button: \(action)")
+            print("liveBottomView did click button: \(action)")
+            let vc: MusicEffectsVC = MusicEffectsVC(nibName :"MusicEffectsVC",bundle : nil)
+            vc.view.frame = CGRect.init(x: 0, y: self.view.bounds.size.height - 385, width: self.view.bounds.size.width, height: 385)
+//            vc.view.isHidden = true
+            self.addChild(vc)
+            self.view.addSubview(vc.view)
         case .more:
                 print("liveBottomView did click button: \(action)")
         case .apply:

@@ -434,7 +434,7 @@ please create a live room~</string>
                                     <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-cP-sVp">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-cP-sVp">
                                 <rect key="frame" x="0.0" y="647" width="414" height="215"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="215" id="EbG-CC-dmw"/>

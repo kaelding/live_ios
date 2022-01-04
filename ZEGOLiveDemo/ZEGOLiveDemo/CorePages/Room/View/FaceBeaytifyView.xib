@@ -61,6 +61,14 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvg-qe-qVx">
+                            <rect key="frame" x="808" y="29.5" width="19" height="22"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="face_beautify_reset"/>
+                            <connections>
+                                <action selector="pressResetButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="Ref-ze-DNy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="111014_90"/>
                     <constraints>
@@ -68,7 +76,9 @@
                         <constraint firstAttribute="trailing" secondItem="gfU-t8-5L5" secondAttribute="trailing" id="A6c-9a-IRE"/>
                         <constraint firstItem="nMS-M6-11V" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="AaG-fA-EDz"/>
                         <constraint firstItem="dXp-W9-pgs" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="DKp-93-F1D"/>
+                        <constraint firstAttribute="trailing" secondItem="vvg-qe-qVx" secondAttribute="trailing" constant="19" id="Ek4-gs-Gvi"/>
                         <constraint firstItem="gfU-t8-5L5" firstAttribute="top" secondItem="dXp-W9-pgs" secondAttribute="bottom" constant="32" id="FmI-jh-I4h"/>
+                        <constraint firstItem="vvg-qe-qVx" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="29.5" id="MRI-Jv-2OT"/>
                         <constraint firstItem="vVx-jd-CWf" firstAttribute="centerX" secondItem="qfx-J2-T7U" secondAttribute="centerX" id="Usw-Ls-UA4"/>
                         <constraint firstItem="vVx-jd-CWf" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="7" id="YEI-43-ZjE"/>
                         <constraint firstItem="gfU-t8-5L5" firstAttribute="leading" secondItem="qfx-J2-T7U" secondAttribute="leading" id="ZrT-gb-Tw1"/>
@@ -82,6 +92,9 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="maximumTrackTintColor" name="FFFFFF_40"/>
+                    <connections>
+                        <action selector="sliderValueChange:" destination="xto-cw-HJh" eventType="valueChanged" id="est-FS-tbT"/>
+                    </connections>
                 </slider>
             </subviews>
             <viewLayoutGuide key="safeArea" id="u7U-1D-KBG"/>
@@ -105,11 +118,12 @@
         </view>
     </objects>
     <resources>
+        <image name="face_beautify_reset" width="19" height="19"/>
         <namedColor name="111014_90">
-            <color red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.067000001668930054" green="0.063000001013278961" blue="0.078000001609325409" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="3B3B3B">
-            <color red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23100000619888306" green="0.23100000619888306" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FFFFFF_40">
             <color red="1" green="1" blue="1" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>

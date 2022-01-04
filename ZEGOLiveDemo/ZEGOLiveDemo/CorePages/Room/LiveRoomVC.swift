@@ -56,7 +56,7 @@ class LiveRoomVC: UIViewController {
                 beautifyView.frame = beautifyContainer.bounds
                 beautifyContainer.addSubview(beautifyView)
                 self.faceBeautifyView = beautifyView
-                self.faceBeautifyView?.isHidden = true
+                self.beautifyContainer.isHidden = true
             }
         }
     }

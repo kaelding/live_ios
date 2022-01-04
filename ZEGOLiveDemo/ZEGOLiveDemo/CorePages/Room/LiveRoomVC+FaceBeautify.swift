@@ -7,6 +7,9 @@
 
 import Foundation
 
-extension LiveRoomVC {
-    
+extension LiveRoomVC: FaceBeautifyViewDelegate {
+ 
+    func beautifyValueChange(_ beautifyModel: FaceBeautifyModel) {
+        RoomManager.shared.beautifyService.setBeautifyValue(value: beautifyModel.value, type: beautifyModel.type)
+    }
 }

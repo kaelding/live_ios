@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZegoExpressEngine
 
 class MusicEffectsVC: UIViewController {
     
@@ -30,6 +31,33 @@ class MusicEffectsVC: UIViewController {
     
     
     @IBOutlet weak var bottomScrollView: UIScrollView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
+    
+    lazy var backMusicArr: [MusicEffectsModel] = {
+        let bgmArray = [["name": "欢快" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": true],
+                            ["name": "浪漫" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false],
+                            ["name": "正能量" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
+        return bgmArray.map{ MusicEffectsModel(json: $0) }
+    }()
+    
+    lazy var voiceChangeArr: [MusicEffectsModel] = {
+        let voiceArray = [["name": "原声" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none, "isSelected": true],
+                          ["name": "萝莉" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild, "isSelected": false],
+                          ["name": "外国人" ,"imageName": "icon_music_uncle", "selectedImageName": "icon_music_uncle(1)", "selectedType": ZegoVoiceChangerPreset.foreigner, "isSelected": false],
+                          ["name": "机器人" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android, "isSelected": false],
+                          ["name": "空灵" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal, "isSelected": false]]
+        return voiceArray.map{ MusicEffectsModel(json: $0) }
+    }()
+    
+    lazy var reverberArr: [MusicEffectsModel] = {
+        let mixVoiceArray = [["name": "原声" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none , "isSelected": true],
+                             ["name": "萝莉" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV, "isSelected": false],
+                             ["name": "外国人" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall, "isSelected": false],
+                             ["name": "机器人" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular, "isSelected": false],
+                             ["name": "空灵" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert, "isSelected": false]]
+        return mixVoiceArray.map{ MusicEffectsModel(json: $0) }
+    }()
     
     
     override func viewDidLoad() {
@@ -43,6 +71,7 @@ class MusicEffectsVC: UIViewController {
         super.viewDidAppear(animated)
         bottomScrollView.isScrollEnabled = true
         bottomScrollView.contentSize = CGSize.init(width: self.view.bounds.size.width, height: 487.5)
+        containerViewHeight.constant = 487.5
     }
 
     func registerCell() -> Void {

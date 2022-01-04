@@ -18,8 +18,6 @@
 		864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */; };
 		864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF3277EEEE200699B69 /* MixedRingModel.swift */; };
 		8677D6C3277C44BE00612058 /* Room.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8677D6C0277C44BE00612058 /* Room.strings */; };
-		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
-		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		8677D6C5277C499400612058 /* FaceBeautifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8677D6C4277C499400612058 /* FaceBeautifyService.swift */; };
 		86938AC7277D60BA001DD575 /* EffectsLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AC6277D60BA001DD575 /* EffectsLicense.swift */; };
 		86938AC9277D61D3001DD575 /* EffectsLicenseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AC8277D61D3001DD575 /* EffectsLicenseRequest.swift */; };
@@ -29,6 +27,8 @@
 		86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */; };
 		86938AD5277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AD4277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift */; };
 		86938AD8277DD8E5001DD575 /* FaceBeautifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */; };
+		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
+		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
 		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
@@ -42,6 +42,7 @@
 		86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */; };
 		86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21F2779EBB0002A7658 /* RequestStatus.swift */; };
 		86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A222277B38E6002A7658 /* RoomListViewCell.swift */; };
+		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
@@ -119,8 +120,6 @@
 		864B3EF3277EEEE200699B69 /* MixedRingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRingModel.swift; sourceTree = "<group>"; };
 		8677D6C1277C44BE00612058 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Room.strings"; sourceTree = "<group>"; };
 		8677D6C2277C44BE00612058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Room.strings; sourceTree = "<group>"; };
-		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
-		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		8677D6C4277C499400612058 /* FaceBeautifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBeautifyService.swift; sourceTree = "<group>"; };
 		86938AC6277D60BA001DD575 /* EffectsLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsLicense.swift; sourceTree = "<group>"; };
 		86938AC8277D61D3001DD575 /* EffectsLicenseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsLicenseRequest.swift; sourceTree = "<group>"; };
@@ -130,6 +129,8 @@
 		86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaceBeautifyColletionViewCell.xib; sourceTree = "<group>"; };
 		86938AD4277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+FaceBeautify.swift"; sourceTree = "<group>"; };
 		86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBeautifyModel.swift; sourceTree = "<group>"; };
+		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
+		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		86A8A20D2779BC3C002A7658 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86A8A20E2779BC3C002A7658 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatRequest.swift; sourceTree = "<group>"; };
 		86A8A21F2779EBB0002A7658 /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
 		86A8A222277B38E6002A7658 /* RoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewCell.swift; sourceTree = "<group>"; };
+		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				864B3EEF277EEEB900699B69 /* BGMModel.swift */,
 				864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */,
 				864B3EF3277EEEE200699B69 /* MixedRingModel.swift */,
+				86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +248,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		86938AD6277DD8A9001DD575 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		869DA74C277D9D32003E6061 /* MusicEffects */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,15 +266,6 @@
 				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
 			);
 			path = MusicEffects;
-            sourceTree = "<group>";
-        };
-
-		86938AD6277DD8A9001DD575 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		86A8A1FA27796F23002A7658 /* RoomList */ = {
@@ -694,6 +696,7 @@
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
 				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
+				86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */,
 				8EE13EF327745B810038AFCF /* UserInfo.swift in Sources */,
 				86A8A2182779C76A002A7658 /* RoomInfoList.swift in Sources */,
 				8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */,

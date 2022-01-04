@@ -13,6 +13,8 @@
                 <outlet property="backGroundLabel" destination="ufn-Ar-HSq" id="2p9-WC-Mnm"/>
                 <outlet property="bgmCollection" destination="YgD-dZ-aGb" id="r7N-8n-EWD"/>
                 <outlet property="bottomScrollView" destination="1wY-3a-usz" id="oGB-5g-1MU"/>
+                <outlet property="containerView" destination="DQm-US-F0B" id="iDz-6F-YMy"/>
+                <outlet property="containerViewHeight" destination="NRH-75-a06" id="kjw-wi-bZn"/>
                 <outlet property="mainTitleLabel" destination="MiV-gb-MAr" id="0WL-tV-XSd"/>
                 <outlet property="mixedRindCollection" destination="2nv-b5-dpV" id="bKf-oS-vYe"/>
                 <outlet property="mixedRingLabel" destination="Q4n-Tv-hdu" id="vFO-m0-m8a"/>
@@ -251,8 +253,8 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="1n4-I2-Pex" secondAttribute="trailing" constant="18" id="7Fb-0U-20W"/>
                                 <constraint firstItem="Rxh-et-Vhw" firstAttribute="leading" secondItem="DQm-US-F0B" secondAttribute="leading" constant="18" id="7P3-Ti-D50"/>
-                                <constraint firstAttribute="height" constant="585" id="7rF-hl-6qk"/>
                                 <constraint firstAttribute="trailing" secondItem="P55-Zv-tzO" secondAttribute="trailing" constant="18" id="Ad1-2p-d5Q"/>
+                                <constraint firstAttribute="height" constant="585" id="NRH-75-a06"/>
                                 <constraint firstItem="Rxh-et-Vhw" firstAttribute="top" secondItem="1n4-I2-Pex" secondAttribute="bottom" constant="27" id="Qap-Kn-I5c"/>
                                 <constraint firstAttribute="trailing" secondItem="hkT-4C-YKv" secondAttribute="trailing" constant="18" id="QmX-JC-Rc1"/>
                                 <constraint firstItem="P55-Zv-tzO" firstAttribute="leading" secondItem="DQm-US-F0B" secondAttribute="leading" constant="18" id="VuN-Bw-fKo"/>
@@ -266,7 +268,6 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="DQm-US-F0B" firstAttribute="centerY" secondItem="1wY-3a-usz" secondAttribute="centerY" id="OyX-6W-JC8"/>
                         <constraint firstItem="DQm-US-F0B" firstAttribute="top" secondItem="1wY-3a-usz" secondAttribute="top" id="TCP-eL-Bnv"/>
                         <constraint firstItem="DQm-US-F0B" firstAttribute="leading" secondItem="1wY-3a-usz" secondAttribute="leading" id="ec2-Kj-mCV"/>
                         <constraint firstItem="DQm-US-F0B" firstAttribute="centerX" secondItem="1wY-3a-usz" secondAttribute="centerX" id="hH3-O4-Ryj"/>

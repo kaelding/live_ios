@@ -36,20 +36,11 @@
                                 <color key="textColor" red="0.65098039215686276" green="0.32549019607843138" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-e5-bzW">
-                                <rect key="frame" x="61.5" y="40" width="11" height="11"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="11" id="8eZ-bq-AQC"/>
-                                    <constraint firstAttribute="height" constant="11" id="jj3-rf-Ukr"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E3G-St-fnb" firstAttribute="centerX" secondItem="ghU-JW-lbd" secondAttribute="centerX" id="3ha-aJ-FcP"/>
                             <constraint firstItem="E3G-St-fnb" firstAttribute="top" secondItem="ghU-JW-lbd" secondAttribute="top" constant="15" id="pKQ-eX-fs7"/>
-                            <constraint firstItem="VVI-e5-bzW" firstAttribute="top" secondItem="ghU-JW-lbd" secondAttribute="top" constant="40" id="peG-2I-Ea8"/>
-                            <constraint firstItem="VVI-e5-bzW" firstAttribute="leading" secondItem="E3G-St-fnb" secondAttribute="trailing" constant="-9" id="ppQ-AE-R0K"/>
                             <constraint firstItem="5Xl-Hq-ntV" firstAttribute="centerX" secondItem="ghU-JW-lbd" secondAttribute="centerX" id="uDj-eo-hzi"/>
                             <constraint firstItem="5Xl-Hq-ntV" firstAttribute="top" secondItem="E3G-St-fnb" secondAttribute="bottom" constant="5" id="y9I-e0-A7h"/>
                         </constraints>
@@ -67,7 +58,6 @@
             <connections>
                 <outlet property="musicImageView" destination="E3G-St-fnb" id="nP4-lC-YRW"/>
                 <outlet property="musicNameLabel" destination="5Xl-Hq-ntV" id="SFk-Bg-A45"/>
-                <outlet property="musicStatusImage" destination="VVI-e5-bzW" id="b5O-WP-Fkq"/>
                 <outlet property="roundRectView" destination="ghU-JW-lbd" id="vk4-AX-mNJ"/>
             </connections>
             <point key="canvasLocation" x="177.536231884058" y="113.16964285714285"/>

@@ -13,7 +13,6 @@ class BGMCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var roundRectView: UIView!
     @IBOutlet weak var musicImageView: UIImageView!
     @IBOutlet weak var musicNameLabel: UILabel!
-    @IBOutlet weak var musicStatusImage: UIImageView!
     
 
     override func awakeFromNib() {
@@ -21,6 +20,18 @@ class BGMCollectionViewCell: UICollectionViewCell {
         // Initialization code
         roundRectView.layer.masksToBounds = true
         roundRectView.layer.cornerRadius = 8.0
+    }
+    
+    var bgmModel: MusicEffectsModel?
+    
+    func updateCellWithModel(_ model: MusicEffectsModel) {
+        bgmModel = model
+        musicNameLabel.text = model.name
+        if model.isSelected {
+            musicImageView.image = UIImage.init(named: model.selectedImageName ?? "")
+        } else {
+            musicImageView.image = UIImage.init(named: model.imageName ?? "")
+        }
     }
 
 }

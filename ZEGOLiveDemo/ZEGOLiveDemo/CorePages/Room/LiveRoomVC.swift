@@ -61,15 +61,44 @@ class LiveRoomVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var messageView: MessageView!
+    
+    @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
+    
+    var messageList: [MessageModel] = []
+    
+    lazy var inputTextView: InputTextView = {
+        let textView: InputTextView = UINib(nibName: "InputTextView", bundle: nil).instantiate(withOwner: self, options: nil).last as! InputTextView
+        textView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.view.bounds.size.width, height: 55)
+        textView.delegate = self
+        return textView
+    }()
+    
+    var localUserID: String {
+        get {
+            return RoomManager.shared.userService.localInfo?.userID ?? ""
+        }
+    }
+    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        RoomManager.shared.messageService.delegate = self
+        addObserver()
 
         // Do any additional setup after loading the view.
         configUI()
+        
+        if let myself = RoomManager.shared.userService.localInfo {
+            let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
+            messageList.append(model)
+            reloadMessageData()
+        }
     }
     
     func configUI() {
+        self.view.addSubview(inputTextView)
+
         
     }
     
@@ -88,5 +117,10 @@ class LiveRoomVC: UIViewController {
         
     }
     
+    // MARK: - private method
+    func addObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow(node:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide(node:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
 }

@@ -13,11 +13,11 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         print("liveBottomView did click button: \(action)")
         switch action {
         case .message:
-            print("liveBottomView did click button: \(action)")
+            messageButtonClick()
         case .share:
             print("liveBottomView did click button: \(action)")
         case .beauty:
-            self.faceBeautifyView?.isHidden = !(self.faceBeautifyView?.isHidden ?? false)
+            self.beautifyContainer.isHidden = !self.beautifyContainer.isHidden
         case .soundEffect:
             print("liveBottomView did click button: \(action)")
             let vc: MusicEffectsVC = MusicEffectsVC(nibName :"MusicEffectsVC",bundle : nil)
@@ -38,5 +38,10 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .end:
                 print("liveBottomView did click button: \(action)")
         }
+    }
+    
+    func messageButtonClick() {
+        inputTextView.isHidden = false
+        inputTextView.textViewBecomeFirstResponse()
     }
 }

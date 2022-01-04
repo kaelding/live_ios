@@ -409,6 +409,13 @@ please create a live room~</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-IS-InW" customClass="MessageView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+                                <rect key="frame" x="16" y="600" width="309" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="1PB-I6-fkD"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -439,6 +446,7 @@ please create a live room~</string>
                         <constraints>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" id="52Q-0u-7gF"/>
                             <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Zci-IS-InW" secondAttribute="trailing" constant="89" id="6Qu-ei-Ilu"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="r7l-cP-sVp" secondAttribute="trailing" id="8zw-vr-XJE"/>
                             <constraint firstItem="r7l-cP-sVp" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="9dv-eu-A3a"/>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
@@ -449,6 +457,8 @@ please create a live room~</string>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
                             <constraint firstAttribute="bottomMargin" secondItem="r7l-cP-sVp" secondAttribute="bottom" id="PYS-gp-T36"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="SvM-qh-Ueg"/>
+                            <constraint firstItem="Zci-IS-InW" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" constant="16" id="UV0-La-CHv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Zci-IS-InW" secondAttribute="bottom" constant="62" id="XKI-hn-4y1"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" constant="10" id="btK-Vz-TXc"/>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="dYo-Bj-GuQ"/>
@@ -476,6 +486,8 @@ please create a live room~</string>
                     <connections>
                         <outlet property="beautifyContainer" destination="r7l-cP-sVp" id="3Gf-x0-c6e"/>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
+                        <outlet property="messageHeightConstraint" destination="1PB-I6-fkD" id="5vP-hs-fiH"/>
+                        <outlet property="messageView" destination="Zci-IS-InW" id="PSa-as-qCh"/>
                         <outlet property="readyContainer" destination="SM2-kp-atx" id="C7R-5K-qIH"/>
                         <outlet property="streamView" destination="wzn-hE-RIA" id="nLY-rQ-Gfw"/>
                         <outlet property="topContainer" destination="Fk7-cm-ybw" id="JT9-Xr-v8H"/>

@@ -9,6 +9,13 @@ import Foundation
 
 extension LiveRoomVC : LiveReadyViewDelegate {
     func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction) {
-        print("liveReadyView did click button: \(action)")
+        switch action {
+        case .start:
+            print("liveReadyView did click button: \(action)")
+        case .beauty:
+            self.beautifyContainer.isHidden = !self.beautifyContainer.isHidden
+        case .setting:
+            print("liveReadyView did click button: \(action)")
+        }
     }
 }

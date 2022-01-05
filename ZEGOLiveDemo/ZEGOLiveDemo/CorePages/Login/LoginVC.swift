@@ -103,11 +103,49 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
+        let userInfo = UserInfo(myUserID, myUserName, .participant)
+        if userInfo.userName == nil || userInfo.userName?.count == 0 {
+            userInfo.userName = userInfo.userID
+        }
         
+        var errMsg : String = ""
+        if userInfo.userID == "" || userInfo.userID == nil {
+            errMsg = ZGLocalizedString("toast_userid_login_fail")
+        } else if (userInfo.userID?.isUserIdValidated() == false) {
+            errMsg = ZGLocalizedString("toast_user_id_error")
+        }
+        
+        if errMsg.count > 0 {
+            HUDHelper.showMessage(message:errMsg)
+            return
+        }
+                
+        let token: String = AppToken.getZIMToken(withUserID: userInfo.userID) ?? ""
+        HUDHelper.showNetworkLoading()
+        RoomManager.shared.userService.login(userInfo, token) { result in
+            HUDHelper.hideNetworkLoading()
+            switch result {
+            case .success:
+                let roomListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RoomListVC")
+                self.navigationController?.pushViewController(roomListVC, animated: true)
+                break
+            case .failure(let error):
+                let message = String(format: ZGLocalizedString("toast_login_fail"), error.code)
+                HUDHelper.showMessage(message: message)
+                break
+            }
+        }
     }
     
     
     @IBAction func popFromSettingsVC(_ segue: UIStoryboardSegue) {
         print("pop from settings vc.")
+    }
+    
+    
+    // MARK: - private method
+    func getKeyWindow() -> UIWindow {
+        let window: UIWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).last!
+        return window
     }
 }

@@ -20,6 +20,9 @@ typealias OnlineRoomUsersCallback = (Result<[UserInfo], ZegoError>) -> Void
 /// room list callback
 typealias RoomListCallback = (Result<[RoomInfo], ZegoError>) -> Void
 
+/// create room callback
+typealias CreateRoomCallback = (Result<RoomInfo, ZegoError>) -> Void
+
 
 enum ZegoError: Error {
         

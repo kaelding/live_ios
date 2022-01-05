@@ -20,7 +20,6 @@ enum FaceBeautifyType {
     case NoseSliming
     case ChinLengthening
     case TeethWhitening
-    
 }
 
 class FaceBeautifyService: NSObject {

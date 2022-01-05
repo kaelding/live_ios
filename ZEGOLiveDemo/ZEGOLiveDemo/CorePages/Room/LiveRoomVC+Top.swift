@@ -10,7 +10,10 @@ import Foundation
 extension LiveRoomVC : LiveTopViewDelegate {
     func liveTopView(_ topView: LiveTopView, didClickButtonWith action: LiveTopAction) {
         print("liveTopView did click button: \(action)")
-        if action == .close {
+        switch action {
+        case .participant:
+            participantListView.isHidden = false
+        case .close:
             self.navigationController?.popViewController(animated: true)
         }
     }

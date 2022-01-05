@@ -27,8 +27,6 @@
 		86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */; };
 		86938AD5277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AD4277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift */; };
 		86938AD8277DD8E5001DD575 /* FaceBeautifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */; };
-		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
-		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		86938ADF278426CC001DD575 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938ADA278426CC001DD575 /* MessageModel.swift */; };
 		86938AE0278426CC001DD575 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938ADB278426CC001DD575 /* InputTextView.swift */; };
 		86938AE1278426CC001DD575 /* InputTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86938ADC278426CC001DD575 /* InputTextView.xib */; };
@@ -50,6 +48,8 @@
 		86938B3F2784772C001DD575 /* aes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86938B322784772C001DD575 /* aes.cpp */; };
 		86938B402784772C001DD575 /* Base64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 86938B332784772C001DD575 /* Base64.cc */; };
 		86938B412784772C001DD575 /* AuthorizedCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938B342784772C001DD575 /* AuthorizedCheck.swift */; };
+		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
+		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
 		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
@@ -64,6 +64,15 @@
 		86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21F2779EBB0002A7658 /* RequestStatus.swift */; };
 		86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A222277B38E6002A7658 /* RoomListViewCell.swift */; };
 		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
+		86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB02784428A00DBE379 /* SoundEffectService.swift */; };
+		86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB2278542C500DBE379 /* LiveSettingView.swift */; };
+		86BD9EB5278542F800DBE379 /* LiveSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EB4278542F800DBE379 /* LiveSettingView.xib */; };
+		86BD9EB927854A9100DBE379 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB727854A9100DBE379 /* SettingSwitchCell.swift */; };
+		86BD9EBA27854A9100DBE379 /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EB827854A9100DBE379 /* SettingSwitchCell.xib */; };
+		86BD9EBD27854C6100DBE379 /* SettingParamDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EBB27854C6100DBE379 /* SettingParamDisplayCell.swift */; };
+		86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EBC27854C6100DBE379 /* SettingParamDisplayCell.xib */; };
+		86BD9EC027856EC400DBE379 /* LiveSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */; };
+		86BD9EC2278587FF00DBE379 /* SettingBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */; };
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
@@ -150,8 +159,6 @@
 		86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaceBeautifyColletionViewCell.xib; sourceTree = "<group>"; };
 		86938AD4277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+FaceBeautify.swift"; sourceTree = "<group>"; };
 		86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBeautifyModel.swift; sourceTree = "<group>"; };
-		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
-		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		86938ADA278426CC001DD575 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		86938ADB278426CC001DD575 /* InputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		86938ADC278426CC001DD575 /* InputTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextView.xib; sourceTree = "<group>"; };
@@ -219,6 +226,8 @@
 		86938B322784772C001DD575 /* aes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aes.cpp; sourceTree = "<group>"; };
 		86938B332784772C001DD575 /* Base64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cc; sourceTree = "<group>"; };
 		86938B342784772C001DD575 /* AuthorizedCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedCheck.swift; sourceTree = "<group>"; };
+		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
+		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		86A8A20D2779BC3C002A7658 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86A8A20E2779BC3C002A7658 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -231,6 +240,15 @@
 		86A8A21F2779EBB0002A7658 /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
 		86A8A222277B38E6002A7658 /* RoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewCell.swift; sourceTree = "<group>"; };
 		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
+		86BD9EB02784428A00DBE379 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
+		86BD9EB2278542C500DBE379 /* LiveSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingView.swift; sourceTree = "<group>"; };
+		86BD9EB4278542F800DBE379 /* LiveSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveSettingView.xib; sourceTree = "<group>"; };
+		86BD9EB727854A9100DBE379 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
+		86BD9EB827854A9100DBE379 /* SettingSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
+		86BD9EBB27854C6100DBE379 /* SettingParamDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingParamDisplayCell.swift; sourceTree = "<group>"; };
+		86BD9EBC27854C6100DBE379 /* SettingParamDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingParamDisplayCell.xib; sourceTree = "<group>"; };
+		86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingModel.swift; sourceTree = "<group>"; };
+		86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseCell.swift; sourceTree = "<group>"; };
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
@@ -340,22 +358,11 @@
 			isa = PBXGroup;
 			children = (
 				86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */,
+				86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		869DA74C277D9D32003E6061 /* MusicEffects */ = {
-			isa = PBXGroup;
-			children = (
-				864B3EE2277EE88500699B69 /* View */,
-				864B3EE1277EE79200699B69 /* Model */,
-				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
-				869DA74E277DA063003E6061 /* MusicEffectsVC.xib */,
-				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
-			);
-			path = MusicEffects;
-            sourceTree = "<group>";
-        };
 		86938AD9278426CB001DD575 /* IM */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +557,18 @@
 				86938B322784772C001DD575 /* aes.cpp */,
 			);
 			path = "crypto-algorithms";
+            sourceTree = "<group>";
+        };
+		869DA74C277D9D32003E6061 /* MusicEffects */ = {
+			isa = PBXGroup;
+			children = (
+				864B3EE2277EE88500699B69 /* View */,
+				864B3EE1277EE79200699B69 /* Model */,
+				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
+				869DA74E277DA063003E6061 /* MusicEffectsVC.xib */,
+				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
+			);
+			path = MusicEffects;
 			sourceTree = "<group>";
 		};
 		86A8A1FA27796F23002A7658 /* RoomList */ = {
@@ -584,9 +603,22 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		86BD9EB627854A6500DBE379 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				86BD9EB727854A9100DBE379 /* SettingSwitchCell.swift */,
+				86BD9EB827854A9100DBE379 /* SettingSwitchCell.xib */,
+				86BD9EBB27854C6100DBE379 /* SettingParamDisplayCell.swift */,
+				86BD9EBC27854C6100DBE379 /* SettingParamDisplayCell.xib */,
+				86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		8E0F63B3277B19620070E750 /* Room */ = {
 			isa = PBXGroup;
 			children = (
+				86BD9EB627854A6500DBE379 /* Cell */,
 				86938AD6277DD8A9001DD575 /* Model */,
 				8E0F63B6277B3DD00070E750 /* View */,
 				8E0F63B4277B19770070E750 /* LiveRoomVC.swift */,
@@ -612,6 +644,8 @@
 				86938ACE277DA122001DD575 /* FaceBeaytifyView.xib */,
 				86938AD0277DA9AC001DD575 /* FaceBeautifyColletionViewCell.swift */,
 				86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */,
+				86BD9EB2278542C500DBE379 /* LiveSettingView.swift */,
+				86BD9EB4278542F800DBE379 /* LiveSettingView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -781,6 +815,7 @@
 				8EE13EE827745B810038AFCF /* MessageService.swift */,
 				8EE13EFF277461DB0038AFCF /* RoomListService.swift */,
 				8677D6C4277C499400612058 /* FaceBeautifyService.swift */,
+				86BD9EB02784428A00DBE379 /* SoundEffectService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -886,8 +921,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				86938AE1278426CC001DD575 /* InputTextView.xib in Resources */,
+				86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */,
 				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
 				86938ACF277DA122001DD575 /* FaceBeaytifyView.xib in Resources */,
+				86BD9EB5278542F800DBE379 /* LiveSettingView.xib in Resources */,
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
 				86938AE92784323A001DD575 /* MessageCell.xib in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
@@ -900,6 +937,7 @@
 				8677D6C3277C44BE00612058 /* Room.strings in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
 				8EA9234B277C53AF00D0BC2C /* LiveTopView.xib in Resources */,
+				86BD9EBA27854A9100DBE379 /* SettingSwitchCell.xib in Resources */,
 				8EE13EA0277452A80038AFCF /* Main.storyboard in Resources */,
 				86938B3D2784772C001DD575 /* CMakeLists.txt in Resources */,
 			);
@@ -976,8 +1014,11 @@
 				8EE13F26277AC3190038AFCF /* SettingsVC.swift in Sources */,
 				86938B3B2784772C001DD575 /* ZegoServerAssistantImpl.cpp in Sources */,
 				86938AD8277DD8E5001DD575 /* FaceBeautifyModel.swift in Sources */,
+				86BD9EC2278587FF00DBE379 /* SettingBaseCell.swift in Sources */,
 				86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */,
 				8EE13F212779E34C0038AFCF /* String+Stream.swift in Sources */,
+				86BD9EBD27854C6100DBE379 /* SettingParamDisplayCell.swift in Sources */,
+				86BD9EB927854A9100DBE379 /* SettingSwitchCell.swift in Sources */,
 				864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
@@ -985,6 +1026,7 @@
 				8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */,
 				8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */,
 				86938B3A2784772C001DD575 /* ZegoRTCServerAssistant.cpp in Sources */,
+				86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */,
 				86938AE0278426CC001DD575 /* InputTextView.swift in Sources */,
 				8EE13F122775A5030038AFCF /* OperationCommand.swift in Sources */,
 				86A8A21C2779EA21002A7658 /* EndRoomRequest.swift in Sources */,
@@ -1015,6 +1057,7 @@
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
 				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
 				8EE13F30277AFBDD0038AFCF /* MBProgressHUD.m in Sources */,
+				86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */,
 				86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */,
 				86938AD1277DA9AC001DD575 /* FaceBeautifyColletionViewCell.swift in Sources */,
 				8EE13EFE27745B810038AFCF /* ZIMManager.swift in Sources */,
@@ -1023,6 +1066,7 @@
 				8EA9234F277C656C00D0BC2C /* LiveRoomVC+Ready.swift in Sources */,
 				86938B3F2784772C001DD575 /* aes.cpp in Sources */,
 				8EE13F28277AEBE10038AFCF /* SettingCellModel.swift in Sources */,
+				86BD9EC027856EC400DBE379 /* LiveSettingModel.swift in Sources */,
 				86938ACD277DA10F001DD575 /* FaceBeautifyView.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
 				864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */,

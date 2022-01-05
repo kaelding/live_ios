@@ -22,6 +22,7 @@ class RoomManager: NSObject {
         messageService = MessageService()
         roomListService = RoomListService()
         beautifyService = FaceBeautifyService()
+        soundService = SoundEffectService()
         super.init()
     }
     
@@ -31,6 +32,7 @@ class RoomManager: NSObject {
     var messageService: MessageService
     var roomListService: RoomListService
     var beautifyService: FaceBeautifyService
+    var soundService: SoundEffectService
     
     func initWithAppID(appID: UInt32, appSign: String, callback: RoomCallback?) {
         if appSign.count == 0 {

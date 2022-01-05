@@ -10,7 +10,7 @@ import UIKit
 class FaceBeautifyModel: NSObject {
     
     var type: FaceBeautifyType = FaceBeautifyType.SkinToneEnhancement
-    var value: Int32 = 0
+    var value: Int = 0
     var imageName: String = "face_beautify_skin_tone_enhancement"
     var name: String = "skin tone enhancement"
     
@@ -18,7 +18,7 @@ class FaceBeautifyModel: NSObject {
         if let type = json["type"] as? FaceBeautifyType {
             self.type = type
         }
-        if let value = json["value"] as? Int32 {
+        if let value = json["value"] as? Int {
             self.value = value
         }
         if let imageName = json["imageName"] as? String {

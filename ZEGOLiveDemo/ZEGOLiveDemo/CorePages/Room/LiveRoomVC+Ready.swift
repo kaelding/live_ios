@@ -13,7 +13,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
         case .start:
             pressCreateButton()
         case .beauty:
-            self.beautifyContainer.isHidden = !self.beautifyContainer.isHidden
+            self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .setting:
             print("liveReadyView did click button: \(action)")
         }

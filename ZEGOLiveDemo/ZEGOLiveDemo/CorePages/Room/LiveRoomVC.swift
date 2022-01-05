@@ -49,17 +49,13 @@ class LiveRoomVC: UIViewController {
         }
     }
     
-    var faceBeautifyView: FaceBeautifyView?
-    @IBOutlet weak var beautifyContainer: UIView! {
-        didSet {
-            if let beautifyView = UINib(nibName: "FaceBeaytifyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FaceBeautifyView {
-                beautifyView.frame = beautifyContainer.bounds
-                beautifyContainer.addSubview(beautifyView)
-                self.faceBeautifyView = beautifyView
-                self.beautifyContainer.isHidden = true
-            }
-        }
-    }
+    lazy var faceBeautifyView: FaceBeautifyView = {
+        let beautifyView = UINib(nibName: "FaceBeaytifyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! FaceBeautifyView
+        beautifyView.frame = self.view.bounds
+        beautifyView.isHidden = true
+        self.view.addSubview(beautifyView)
+        return beautifyView
+    }()
     
     lazy var musicEffectsVC : MusicEffectsVC = {
         let vc: MusicEffectsVC = MusicEffectsVC(nibName :"MusicEffectsVC",bundle : nil)

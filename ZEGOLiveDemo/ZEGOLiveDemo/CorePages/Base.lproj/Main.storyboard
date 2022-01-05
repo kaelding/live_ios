@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcT-kr-NNs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcT-kr-NNs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -433,12 +433,6 @@ please create a live room~</string>
                                     <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-cP-sVp">
-                                <rect key="frame" x="0.0" y="647" width="414" height="215"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="215" id="EbG-CC-dmw"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -446,15 +440,12 @@ please create a live room~</string>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" id="52Q-0u-7gF"/>
                             <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Zci-IS-InW" secondAttribute="trailing" constant="89" id="6Qu-ei-Ilu"/>
-                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="r7l-cP-sVp" secondAttribute="trailing" id="8zw-vr-XJE"/>
-                            <constraint firstItem="r7l-cP-sVp" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="9dv-eu-A3a"/>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Fk7-cm-ybw" secondAttribute="trailing" id="Gj8-3L-IZJ"/>
                             <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="r7l-cP-sVp" secondAttribute="bottom" id="PYS-gp-T36"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="SvM-qh-Ueg"/>
                             <constraint firstItem="Zci-IS-InW" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" constant="16" id="UV0-La-CHv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Zci-IS-InW" secondAttribute="bottom" constant="62" id="XKI-hn-4y1"/>
@@ -483,7 +474,6 @@ please create a live room~</string>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="beautifyContainer" destination="r7l-cP-sVp" id="3Gf-x0-c6e"/>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
                         <outlet property="messageHeightConstraint" destination="1PB-I6-fkD" id="5vP-hs-fiH"/>
                         <outlet property="messageView" destination="Zci-IS-InW" id="PSa-as-qCh"/>

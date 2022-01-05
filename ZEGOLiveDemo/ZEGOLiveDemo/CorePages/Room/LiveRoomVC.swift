@@ -76,7 +76,7 @@ class LiveRoomVC: UIViewController {
         return nil
     }()
     
-    var participantListView: ParticipantListView {
+    lazy var participantListView: ParticipantListView = {
         guard let participantListView = UINib(nibName: "ParticipantListView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ParticipantListView else {
             return ParticipantListView()
         }
@@ -84,7 +84,7 @@ class LiveRoomVC: UIViewController {
         participantListView.isHidden = true
         self.view.addSubview(participantListView)
         return participantListView
-    }
+    }()
     
     @IBOutlet weak var messageView: MessageView!
     

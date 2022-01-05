@@ -61,6 +61,25 @@ class LiveRoomVC: UIViewController {
         }
     }
     
+    lazy var musicEffectsVC : MusicEffectsVC = {
+        let vc: MusicEffectsVC = MusicEffectsVC(nibName :"MusicEffectsVC",bundle : nil)
+        vc.view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        vc.view.isHidden = true
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        return vc
+    }()
+    
+    lazy var liveSettingView : LiveSettingView? = {
+        if let view: LiveSettingView = UINib.init(nibName: "LiveSettingView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingView {
+            view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            view.isHidden = true
+            self.view.addSubview(view)
+            return view
+        }
+        return nil
+    }()
+    
     @IBOutlet weak var messageView: MessageView!
     
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!

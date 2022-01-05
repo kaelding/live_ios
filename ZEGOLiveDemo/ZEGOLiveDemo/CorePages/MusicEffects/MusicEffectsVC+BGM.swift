@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ZegoExpressEngine
 
 enum MusicEffectsType: Int {
     case bgm = 100
@@ -95,7 +96,8 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
         case .bgm:
             for model in self.backMusicArr {
                 if index == newIndex {
-                    model.isSelected = true
+                    model.isSelected = !model.isSelected
+                    RoomManager.shared.soundService.setBGM(model.selectedType, stop: model.isSelected)
                 } else {
                     model.isSelected = false
                 }
@@ -105,6 +107,7 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
             for model in self.voiceChangeArr {
                 if index == newIndex {
                     model.isSelected = true
+                    RoomManager.shared.soundService.setVoiceChangeType(ZegoVoiceChangerPreset(rawValue: UInt(model.selectedType)) ?? .none)
                 } else {
                     model.isSelected = false
                 }
@@ -114,6 +117,7 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
             for model in self.reverberArr {
                 if index == newIndex {
                     model.isSelected = true
+                    RoomManager.shared.soundService.setReverbPreset(ZegoReverbPreset(rawValue: UInt(model.selectedType)) ?? .none)
                 } else {
                     model.isSelected = false
                 }

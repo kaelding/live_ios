@@ -8,6 +8,7 @@
 import UIKit
 import ZegoExpressEngine
 
+
 class MusicEffectsVC: UIViewController {
     
     @IBOutlet weak var mainTitleLabel: UILabel!
@@ -37,7 +38,7 @@ class MusicEffectsVC: UIViewController {
     lazy var backMusicArr: [MusicEffectsModel] = {
         let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": true],
                             ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false],
-                            ["name": "Energy" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
+                            ["name": "Positive" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     
@@ -65,6 +66,13 @@ class MusicEffectsVC: UIViewController {
         registerCell()
         musicVSlider.addTarget(self, action: #selector(musicVSSliderValueChanged(_:for:)), for: .valueChanged)
         voiceVSlider.addTarget(self, action: #selector(voiceVSliderValueChanged(_:for:)), for: .valueChanged)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func tapClick() -> Void {
+        self.view.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +100,10 @@ class MusicEffectsVC: UIViewController {
             }
         case .ended:
             print("end Draging")
+            if let value = slider?.value {
+                let showValue: Int = Int(value * 100)
+                RoomManager.shared.soundService.setCurrentBGMVolume(showValue)
+            }
         default:
             break
         }
@@ -109,6 +121,10 @@ class MusicEffectsVC: UIViewController {
             }
         case .ended:
             print("end Draging")
+            if let value = slider?.value {
+                let showValue: Int = Int(value * 100)
+                RoomManager.shared.soundService.setVoiceVolume(showValue)
+            }
         default:
             break
         }

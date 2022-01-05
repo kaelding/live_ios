@@ -215,7 +215,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonClick:" destination="m4y-W7-AcP" eventType="touchUpInside" id="JIc-cp-wef"/>
-                                    <segue destination="SSm-r5-k9p" kind="show" id="u0X-ci-vut"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -261,7 +260,7 @@
         <!--Room ListVC-->
         <scene sceneID="cis-hG-UA4">
             <objects>
-                <viewController id="SSm-r5-k9p" customClass="RoomListVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoomListVC" id="SSm-r5-k9p" customClass="RoomListVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eMo-P3-onn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +269,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-DN-ZZ3">
-                                <rect key="frame" x="100" y="354" width="214" height="40"/>
+                                <rect key="frame" x="100" y="310" width="214" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0sF-c5-UOU"/>
                                 </constraints>
@@ -281,7 +280,7 @@ please create a live room~</string>
                                 <color key="highlightedColor" name="CCCCCC"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-5W-ytP">
-                                <rect key="frame" x="0.0" y="128" width="414" height="734"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="778"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HK6-An-Z1d">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -346,7 +345,7 @@ please create a live room~</string>
                                 <color key="backgroundColor" name="510DF1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Woh-mJ-zan"/>
-                                    <constraint firstAttribute="width" constant="170" id="gtw-fh-ncC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="gtw-fh-ncC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -399,36 +398,36 @@ please create a live room~</string>
             <objects>
                 <viewController id="jPe-BT-8VD" customClass="LiveRoomVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ci-dq-dVb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lrq-cy-dhW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-hE-RIA" userLabel="streamView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-IS-InW" customClass="MessageView" customModule="ZEGOLiveDemo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="600" width="309" height="200"/>
+                                <rect key="frame" x="16" y="580" width="309" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="1PB-I6-fkD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CX6-wm-rNx">
-                                <rect key="frame" x="0.0" y="800" width="414" height="62"/>
+                                <rect key="frame" x="0.0" y="780" width="414" height="62"/>
                                 <color key="backgroundColor" name="FFFFFF_40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="aBY-S7-fZ6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-cm-ybw">
-                                <rect key="frame" x="0.0" y="54" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="10" width="414" height="40"/>
                                 <color key="backgroundColor" name="FFFFFF_40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
@@ -502,7 +501,7 @@ please create a live room~</string>
             <objects>
                 <tableViewController id="QTf-vx-h0B" customClass="SettingsVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="54" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="HlY-tl-HFL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="1A1726"/>
                         <prototypes>

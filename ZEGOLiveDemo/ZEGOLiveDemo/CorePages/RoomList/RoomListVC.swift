@@ -9,8 +9,9 @@ import UIKit
 
 class RoomListVC: UIViewController {
     
-    var roomInfoList = RoomInfoList()
-
+    var roomInfoList: Array<RoomInfo> {
+        return RoomManager.shared.roomListService.roomList
+    }
     @IBOutlet weak var roomListCollectionView: UICollectionView! {
         didSet {
             roomListCollectionView.backgroundColor = UIColor.clear
@@ -49,51 +50,19 @@ class RoomListVC: UIViewController {
     
     // MARK: action
     
-    // MARK: private method
-    @objc func createRoomNameTextFieldDidChange(textField:UITextField) -> Void {
-        let text:String = textField.text! as String
-        if text.count > 16 {
-            let startIndex = text.index(text.startIndex, offsetBy: 0)
-            let index = text.index(text.startIndex, offsetBy: 15)
-            textField.text = String(text[startIndex...index])
-        }
-    }
     
-    func createRoomWithRoomName(roomName: String) -> Void {
-        var message:String = ""
-        if roomName.count == 0 {
-            message = ZGLocalizedString("toast_room_name_error")
-        }
-        if message.count > 0 {
-            HUDHelper .showMessage(message: message)
-            return
-        }
-        
-        HUDHelper.showNetworkLoading()
-        var request = CreateRoomRequest()
-        request.name = roomName
-        request.hostID = "123"
-        RequestManager.shared.createRoomRequest(request: request) { status in
-            HUDHelper.hideNetworkLoading()
-            self.refreshRoomList()
-        } failure: { requestStatus in
-            let message = String(format: ZGLocalizedString("toast_create_room_fail"), requestStatus?.code ?? 0)
-            HUDHelper.showMessage(message: message)
-        }
-    }
     
     func refreshRoomList() {
-        let request = RoomListRequest()
-        RequestManager.shared.getRoomListRequest(request: request) { roomInfoList in
-            guard let roomInfoList = roomInfoList else { return }
-            
-            self.roomListCollectionView.isHidden = roomInfoList.roomInfoArray.count == 0
-            self.emptyLabel.isHidden = roomInfoList.roomInfoArray.count > 0
-            self.emptyLabel.isHidden = roomInfoList.roomInfoArray.count > 0
-            
-            self.roomInfoList = roomInfoList
-            self.roomListCollectionView.reloadData()
-        } failure: { roomInfoList in
+        RoomManager.shared.roomListService.getRoomList(nil) { result in
+            switch result {
+            case .success(_):
+                self.roomListCollectionView.isHidden = self.roomInfoList.count == 0
+                self.emptyLabel.isHidden = self.roomInfoList.count > 0
+                self.emptyLabel.isHidden = self.roomInfoList.count > 0
+                self.roomListCollectionView.reloadData()
+            case .failure(_):
+                break
+            }
         }
     }
 }
@@ -101,13 +70,13 @@ class RoomListVC: UIViewController {
 extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let num = Int(ceil(Double(self.roomInfoList.roomInfoArray.count) / 2.0))
+        let num = Int(ceil(Double(self.roomInfoList.count) / 2.0))
         return num
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section > self.roomInfoList.roomInfoArray.count / 2 - 1 {
-            return 2 - self.roomInfoList.roomInfoArray.count % 2;
+        if section > self.roomInfoList.count / 2 - 1 {
+            return 2 - self.roomInfoList.count % 2;
         }
         return 2
     }
@@ -117,8 +86,8 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
             return RoomListViewCell()
         }
         let index = indexPath.section * 2 + indexPath.row
-        if roomInfoList.roomInfoArray.count > index {
-            let roomInfo = roomInfoList.roomInfoArray[index]
+        if roomInfoList.count > index {
+            let roomInfo = roomInfoList[index]
             cell.roomNameLabel.text = roomInfo.roomName;
         }
         return cell

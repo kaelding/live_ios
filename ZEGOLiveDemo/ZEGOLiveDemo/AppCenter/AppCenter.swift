@@ -27,9 +27,9 @@ struct AppCenter {
         return ""
     }
     
-    static func appSecret() -> String {
+    static func serverSecret() -> String {
         if let dict = getJsonDictionary() {
-            let appSecret = dict["appSecret"] as! String
+            let appSecret = dict["serverSecret"] as! String
             return appSecret
         }
         return ""

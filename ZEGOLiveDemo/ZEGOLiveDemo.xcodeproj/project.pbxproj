@@ -50,6 +50,11 @@
 		86938B412784772C001DD575 /* AuthorizedCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938B342784772C001DD575 /* AuthorizedCheck.swift */; };
 		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
 		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
+		869F6D2427859B360018788E /* ParticipantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2327859B360018788E /* ParticipantListView.swift */; };
+		869F6D2627859B560018788E /* ParticipantListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869F6D2527859B560018788E /* ParticipantListView.xib */; };
+		869F6D2827859E7B0018788E /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */; };
+		869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */; };
+		869F6D2D2785A3710018788E /* String+Head.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2C2785A3700018788E /* String+Head.swift */; };
 		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
 		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
@@ -229,6 +234,11 @@
 		86938B342784772C001DD575 /* AuthorizedCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedCheck.swift; sourceTree = "<group>"; };
 		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
 		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
+		869F6D2327859B360018788E /* ParticipantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantListView.swift; sourceTree = "<group>"; };
+		869F6D2527859B560018788E /* ParticipantListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantListView.xib; sourceTree = "<group>"; };
+		869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
+		869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantTableViewCell.xib; sourceTree = "<group>"; };
+		869F6D2C2785A3700018788E /* String+Head.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Head.swift"; sourceTree = "<group>"; };
 		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		86A8A20D2779BC3C002A7658 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86A8A20E2779BC3C002A7658 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -573,6 +583,18 @@
 			path = MusicEffects;
 			sourceTree = "<group>";
 		};
+		869DA74C277D9D32003E6061 /* MusicEffects */ = {
+			isa = PBXGroup;
+			children = (
+				864B3EE2277EE88500699B69 /* View */,
+				864B3EE1277EE79200699B69 /* Model */,
+				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
+				869DA74E277DA063003E6061 /* MusicEffectsVC.xib */,
+				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
+			);
+			path = MusicEffects;
+			sourceTree = "<group>";
+		};
 		86A8A1FA27796F23002A7658 /* RoomList */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +671,10 @@
 				86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */,
 				86BD9EB2278542C500DBE379 /* LiveSettingView.swift */,
 				86BD9EB4278542F800DBE379 /* LiveSettingView.xib */,
+				869F6D2327859B360018788E /* ParticipantListView.swift */,
+				869F6D2527859B560018788E /* ParticipantListView.xib */,
+				869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */,
+				869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,7 +703,6 @@
 			children = (
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
 				8EE13F0C27756D4D0038AFCF /* Helper */,
-				8EE13F0927756BB30038AFCF /* Extensions */,
 				8EE13ED427745B1C0038AFCF /* AppCenter */,
 				8EE13F012774735E0038AFCF /* CorePages */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
@@ -775,16 +800,10 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		8EE13F0927756BB30038AFCF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		8EE13F0C27756D4D0038AFCF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				869F6D2C2785A3700018788E /* String+Head.swift */,
 				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
@@ -929,6 +948,8 @@
 				86938ACF277DA122001DD575 /* FaceBeaytifyView.xib in Resources */,
 				86BD9EB5278542F800DBE379 /* LiveSettingView.xib in Resources */,
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
+				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
+				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
 				86938AE92784323A001DD575 /* MessageCell.xib in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
 				869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */,
@@ -1006,6 +1027,7 @@
 				86938B3E2784772C001DD575 /* ZegoCrypto.cpp in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
 				86938AC7277D60BA001DD575 /* EffectsLicense.swift in Sources */,
+				869F6D2D2785A3710018788E /* String+Head.swift in Sources */,
 				86938AD5277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift in Sources */,
 				8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */,
 				86938B382784772C001DD575 /* ZegoToken.mm in Sources */,
@@ -1025,6 +1047,7 @@
 				86BD9EB927854A9100DBE379 /* SettingSwitchCell.swift in Sources */,
 				864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
+				869F6D2427859B360018788E /* ParticipantListView.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */,
 				8EE13EF027745B810038AFCF /* Result+Zego.swift in Sources */,
@@ -1084,6 +1107,7 @@
 				86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
 				86938B352784772C001DD575 /* AppToken.swift in Sources */,
+				869F6D2827859E7B0018788E /* ParticipantTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

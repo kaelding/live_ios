@@ -76,6 +76,16 @@ class LiveRoomVC: UIViewController {
         return nil
     }()
     
+    lazy var participantListView: ParticipantListView = {
+        guard let participantListView = UINib(nibName: "ParticipantListView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ParticipantListView else {
+            return ParticipantListView()
+        }
+        participantListView.frame = self.view.bounds
+        participantListView.isHidden = true
+        self.view.addSubview(participantListView)
+        return participantListView
+    }()
+    
     @IBOutlet weak var messageView: MessageView!
     
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!

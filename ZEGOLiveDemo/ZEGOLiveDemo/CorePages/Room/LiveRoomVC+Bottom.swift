@@ -17,7 +17,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .share:
             print("liveBottomView did click button: \(action)")
         case .beauty:
-            self.beautifyContainer.isHidden = !self.beautifyContainer.isHidden
+            self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .soundEffect:
             print("liveBottomView did click button: \(action)")
             self.musicEffectsVC.view.isHidden = false

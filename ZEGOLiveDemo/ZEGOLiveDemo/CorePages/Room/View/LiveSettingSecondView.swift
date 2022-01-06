@@ -17,7 +17,7 @@ protocol LiveSettingSecondViewDelegate {
     func settingSecondViewDidBack()
 }
 
-class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource, SettingSecondLevelCellDelegate {
+class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var backGroundView: UIView!
@@ -113,7 +113,6 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource,
         }
         let model: LiveSettingSecondLevelModel = dataSource[indexPath.row]
         cell.updateCell(model)
-        cell.delegate = self
         return cell
     }
     
@@ -121,20 +120,16 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource,
         return 50
     }
     
-    //MARK: - SettingSecondLevelCellDelegate
-    func settingSecondLevelCellSelectedClick(_ isSelected: Bool, cell: SettingSecondLevelCell) {
-        let indexPath: NSIndexPath? = tableView.indexPath(for: cell) as NSIndexPath?
-        if let indexPath = indexPath {
-            var index: Int = 0
-            for model in dataSource {
-                if indexPath.row != index {
-                    model.isSelected = false
-                } else {
-                    model.isSelected = isSelected
-                    setDeviceExpressConfig(model)
-                }
-                index += 1
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var index: Int = 0
+        for model in dataSource {
+            if indexPath.row != index {
+                model.isSelected = false
+            } else {
+                model.isSelected = true
+                setDeviceExpressConfig(model)
             }
+            index += 1
         }
         tableView.reloadData()
     }

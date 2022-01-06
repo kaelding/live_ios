@@ -40,7 +40,7 @@ extension RoomService {
         
         
         // delegate to UI
-        let myUserID = RoomManager.shared.userService.localInfo?.userID ?? ""
+        let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         if myUserID != action.targetID { return }
         
         for delegate in RoomManager.shared.userService.delegates.allObjects {
@@ -78,7 +78,7 @@ extension RoomService {
         // only the host can resend the room attributes
         if !RoomManager.shared.userService.isMyselfHost { return }
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID else { return }
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
         
         let operation = OperationCommand()
         operation.action = action

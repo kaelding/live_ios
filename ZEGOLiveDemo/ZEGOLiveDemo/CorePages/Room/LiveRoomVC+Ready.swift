@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZegoExpressEngine
 
 extension LiveRoomVC : LiveReadyViewDelegate {
     func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction) {

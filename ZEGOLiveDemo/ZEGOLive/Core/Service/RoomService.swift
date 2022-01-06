@@ -26,7 +26,7 @@ class RoomService: NSObject {
     
     // MARK: - Public
     
-    var info: RoomInfo = RoomInfo()
+    var roomInfo: RoomInfo = RoomInfo()
     weak var delegate: RoomServiceDelegate?
     var operation: OperationCommand = OperationCommand()
     /// Create a chat room
@@ -43,8 +43,8 @@ class RoomService: NSObject {
             
             var result: ZegoResult = .success(())
             if error.code == .ZIMErrorCodeSuccess {
-                RoomManager.shared.roomService.info = parameters.2
-                RoomManager.shared.userService.localInfo?.role = .host
+                RoomManager.shared.roomService.roomInfo = parameters.2
+                RoomManager.shared.userService.localUserInfo?.role = .host
                 RoomManager.shared.loginRtcRoom(with: token)
             }
             else {
@@ -75,8 +75,8 @@ class RoomService: NSObject {
                 return
             }
             
-            RoomManager.shared.roomService.info.roomID = fullRoomInfo.baseInfo.roomID
-            RoomManager.shared.roomService.info.roomName = fullRoomInfo.baseInfo.roomName
+            RoomManager.shared.roomService.roomInfo.roomID = fullRoomInfo.baseInfo.roomID
+            RoomManager.shared.roomService.roomInfo.roomName = fullRoomInfo.baseInfo.roomName
             RoomManager.shared.loginRtcRoom(with: token)
             
             guard let callback = callback else { return }
@@ -89,7 +89,7 @@ class RoomService: NSObject {
         // if call the leave room api, just logout rtc room
         RoomManager.shared.logoutRtcRoom()
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID else {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -117,7 +117,7 @@ extension RoomService {
         zimRoomInfo.roomName = roomName
         
         let roomInfo = RoomInfo()
-        roomInfo.hostID = RoomManager.shared.userService.localInfo?.userID
+        roomInfo.hostID = RoomManager.shared.userService.localUserInfo?.userID
         roomInfo.roomID = roomID
         roomInfo.roomName = roomName.count > 0 ? roomName : roomID
         
@@ -135,7 +135,7 @@ extension RoomService: ZIMEventHandler {
     func zim(_ zim: ZIM, connectionStateChanged state: ZIMConnectionState, event: ZIMConnectionEvent, extendedData: [AnyHashable : Any]) {
         // if host reconneted
         if state == .connected && event == .success {
-            guard let roomID = RoomManager.shared.roomService.info.roomID else { return }
+            guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
             ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
                 if error.code != .ZIMErrorCodeSuccess { return }
                 if dict.count == 0 {
@@ -155,7 +155,7 @@ extension RoomService: ZIMEventHandler {
             // if the room info is nil, we should not set self.info = nil
             // because it can't get room info outside.
             if let roomInfo = roomInfo {
-                self.info = roomInfo
+                self.roomInfo = roomInfo
             }
             delegate?.receiveRoomInfoUpdate(roomInfo)
         }

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum LiveSettingViewType: Int {
+    case nomal
+    case less
+}
+
 protocol LiveSettingViewDelegate {
     func settingViewDidSelected(_ model: LiveSettingModel)
 }
@@ -18,21 +23,12 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingTableView: UITableView!
+    @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
+    
     
     var delegate: LiveSettingViewDelegate?
     
-    lazy var settingDataSource: [LiveSettingModel] = {
-        let dataSource = [["title": "Encoding type" ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
-                          ["title": "Layered coding" ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": false],
-                          ["title": "Hardware coding" ,"subTitle": "", "selectionType": SettingSelectionType.hardware, "switchStatus": false],
-                          ["title": "Hardware decoding" ,"subTitle": "", "selectionType": SettingSelectionType.decoding, "switchStatus": false],
-                          ["title": "Background noise reduction" ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": false],
-                          ["title": "Echo cancellation" ,"subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": false],
-                          ["title": "Mic volume auto-adjustment" ,"subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": false],
-                          ["title": "Resolution settings" ,"subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
-                          ["title": "Audio bitrate" ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]]
-        return dataSource.map{ LiveSettingModel(json: $0) }
-    }()
+    var settingDataSource: [LiveSettingModel] = []
     
     lazy var resolutionDic: [RTCVideoPreset:String] = {
         let dic: [RTCVideoPreset:String] = [RTCVideoPreset.p1080:"1920x1080",
@@ -78,6 +74,26 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         
         let tapClick: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
         backGroundView.addGestureRecognizer(tapClick)
+    }
+    
+    func setViewType(_ type: LiveSettingViewType)  {
+        if type == .nomal {
+            containerViewHeight.constant = 564
+            settingDataSource = [["title": "Encoding type" ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
+                                 ["title": "Layered coding" ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": RoomManager.shared.deviceService.layerCoding],
+                                 ["title": "Hardware coding" ,"subTitle": "", "selectionType": SettingSelectionType.hardware, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],
+                                 ["title": "Hardware decoding" ,"subTitle": "", "selectionType": SettingSelectionType.decoding, "switchStatus": RoomManager.shared.deviceService.hardwareDecoding],
+                                 ["title": "Background noise reduction" ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": RoomManager.shared.deviceService.noiseRedution],
+                                 ["title": "Echo cancellation" ,"subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": RoomManager.shared.deviceService.echo],
+                                 ["title": "Mic volume auto-adjustment" ,"subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": RoomManager.shared.deviceService.micVolume],
+                                 ["title": "Resolution settings" ,"subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+                                 ["title": "Audio bitrate" ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
+        } else if type == .less {
+            containerViewHeight.constant = 201
+            settingDataSource = [["title": "Resolution settings" ,"subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+                                 ["title": "Audio bitrate" ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
+        }
+        settingTableView.reloadData()
     }
     
     func updateUI() -> Void {

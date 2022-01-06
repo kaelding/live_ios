@@ -42,6 +42,28 @@ struct RequestManager {
         }
     }
     
+    // join room
+    func joinRoomRequest(request: JoinRoomRequest, success:@escaping(RequestStatus?)->(), failure:@escaping(_ requestStatus: RequestStatus?)->()){
+        NetworkManager.shareManage.send(request){ requestStatus in
+            if (requestStatus?.code == 0) {
+                success(requestStatus)
+            } else {
+                failure(requestStatus)
+            }
+        }
+    }
+    
+    // leave room
+    func leaveRoomRequest(request: LeaveRoomRequest, success:@escaping(RequestStatus?)->(), failure:@escaping(_ requestStatus: RequestStatus?)->()){
+        NetworkManager.shareManage.send(request){ requestStatus in
+            if (requestStatus?.code == 0) {
+                success(requestStatus)
+            } else {
+                failure(requestStatus)
+            }
+        }
+    }
+    
     // heart beat
     func heartBeatRequest(request: HeartBeatRequest, success:@escaping(RequestStatus?)->(), failure:@escaping(_ requestStatus: RequestStatus?)->()){
         NetworkManager.shareManage.send(request){ requestStatus in

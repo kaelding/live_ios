@@ -15,11 +15,19 @@ class RoomListVC: UIViewController {
     @IBOutlet weak var roomListCollectionView: UICollectionView! {
         didSet {
             roomListCollectionView.backgroundColor = UIColor.clear
-            
             roomListCollectionView.delegate = self
             roomListCollectionView.dataSource = self
+            roomListCollectionView.alwaysBounceVertical = true
+            roomListCollectionView.contentInsetAdjustmentBehavior = .never
+            roomListCollectionView.addSubview(refreshControl)
         }
     }
+    lazy var refreshControl: UIRefreshControl = {
+        var refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh...")
+        refreshControl.addTarget(self, action: #selector(refreshRoomList), for: .valueChanged)
+        return refreshControl
+    }()
     
     @IBOutlet weak var creatButton: UIButton! {
         didSet {
@@ -49,10 +57,7 @@ class RoomListVC: UIViewController {
     }
     
     // MARK: action
-    
-    
-    
-    func refreshRoomList() {
+    @objc func refreshRoomList() {
         RoomManager.shared.roomListService.getRoomList(nil) { result in
             switch result {
             case .success(_):
@@ -63,7 +68,14 @@ class RoomListVC: UIViewController {
             case .failure(_):
                 break
             }
+            self.refreshControl.endRefreshing()
         }
+    }
+    
+    // MARK: private method
+    func joinLiveRoom() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LiveRoomVC")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -94,7 +106,25 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let index = indexPath.section * 2 + indexPath.row
+        if roomInfoList.count > index {
+            let roomInfo = roomInfoList[index]
+            guard let roomID = roomInfo.roomID else { return }
+            let rtcToken = AppToken.getRtcToken(withRoomID: roomID) ?? ""
+            RoomManager.shared.roomService.joinRoom(roomID, rtcToken) { result in
+                switch result {
+                case .success:
+                    self.joinLiveRoom()
+                    RoomManager.shared.roomListService.joinServerRoom(roomID, callback: nil)
+                case .failure(let error):
+                    var message = String(format: ZGLocalizedString("toast_join_room_fail"), error.code)
+                    if case .roomNotFound = error {
+                        message = ZGLocalizedString("toast_room_not_exist_fail")
+                    }
+                    HUDHelper.showMessage(message: message)
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

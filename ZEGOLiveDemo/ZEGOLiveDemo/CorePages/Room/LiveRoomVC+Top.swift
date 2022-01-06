@@ -14,7 +14,7 @@ extension LiveRoomVC : LiveTopViewDelegate {
         case .participant:
             participantListView.isHidden = false
         case .close:
-            self.navigationController?.popViewController(animated: true)
+            leaveRoom()
         }
     }
 }

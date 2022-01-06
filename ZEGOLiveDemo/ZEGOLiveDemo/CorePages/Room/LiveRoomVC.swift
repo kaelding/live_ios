@@ -153,8 +153,7 @@ class LiveRoomVC: UIViewController {
 
         // Do any additional setup after loading the view.
         configUI()
-        updatePreview()
-        
+        configVideoStream()
         
         if let myself = RoomManager.shared.userService.localUserInfo {
             let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
@@ -168,16 +167,6 @@ class LiveRoomVC: UIViewController {
         super.touchesBegan(touches, with: event)
         let window : UIWindow = UIApplication.shared.windows.first!
         window.endEditing(true)
-    }
-
-    // MARK: - Action
-    @IBAction func backItemClick(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func changeCameraItemClick(_ sender: UIBarButtonItem) {
-        isFrontCamera = !isFrontCamera
-        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
     }
     
     // MARK: - private method
@@ -193,17 +182,51 @@ class LiveRoomVC: UIViewController {
         canvas.viewMode = .aspectFill
         ZegoExpressEngine.shared().enableCamera(true)
         ZegoExpressEngine.shared().startPreview(canvas)
-//        let videoConfig = ZegoVideoConfig(preset: .preset1080P)
-//        ZegoExpressEngine.shared().setVideoConfig(videoConfig)
     }
     
     func configUI() {
         self.view.addSubview(inputTextView)
+        navigationController?.navigationBar.isHidden = true
         let isReadyView = RoomManager.shared.roomService.roomInfo.roomID == nil
         readyContainer.isHidden = !isReadyView
         topContainer.isHidden = isReadyView
         bottomContainer.isHidden = isReadyView
         messageView.isHidden = isReadyView
     }
+     
+    func configVideoStream() {
+        if RoomManager.shared.roomService.roomInfo.roomID == nil {
+            startPreview()
+        } else {
+            if RoomManager.shared.userService.isMyselfHost {
+                startPublish()
+            } else {
+                startPlaying()
+            }
+        }
+    }
     
+    func startPreview() {
+        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+        let canvas = ZegoCanvas(view: streamView)
+        canvas.viewMode = .aspectFill
+        ZegoExpressEngine.shared().enableCamera(true)
+        ZegoExpressEngine.shared().startPreview(canvas)
+    }
+    
+    func startPublish() {
+        if let userID = RoomManager.shared.userService.localUserInfo?.userID {
+            ZegoExpressEngine.shared().startPublishingStream(userID)
+            ZegoExpressEngine.shared().enableCamera(true)
+            ZegoExpressEngine.shared().muteMicrophone(false)
+        }
+    }
+    
+    func startPlaying() {
+        if let userID = RoomManager.shared.userService.localUserInfo?.userID {
+            let canvas = ZegoCanvas(view: streamView)
+            canvas.viewMode = .aspectFill
+            ZegoExpressEngine.shared().startPlayingStream(userID, canvas: canvas)
+        }
+    }
 }

@@ -7,10 +7,18 @@
 
 import Foundation
 import ZegoExpressEngine
+import AVFoundation
 
 extension LiveRoomVC : LiveReadyViewDelegate {
     func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction) {
         switch action {
+        case .back:
+            leaveRoom()
+            break
+        case .cameraFlip:
+            isFrontCamera = !isFrontCamera
+            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+            break
         case .start:
             pressCreateButton()
         case .beauty:
@@ -21,20 +29,8 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     }
     
     func pressCreateButton() {
-         let alter:UIAlertController = UIAlertController.init(title: ZGLocalizedString("create_page_create_room"), message: "", preferredStyle: UIAlertController.Style.alert)
-         let cancelAction:UIAlertAction = UIAlertAction.init(title: ZGLocalizedString("create_page_cancel"), style: UIAlertAction.Style.cancel, handler: nil)
-         let createAction:UIAlertAction = UIAlertAction.init(title: ZGLocalizedString("create_page_create"), style: UIAlertAction.Style.default) { action in
-             let roomNameTextField = (alter.textFields?.last)!
-             self.createRoomWithRoomName( roomName: roomNameTextField.text! as String)
-         }
-         alter.addTextField { textField in
-             textField.placeholder = ZGLocalizedString("create_page_room_name")
-             textField.font = UIFont.systemFont(ofSize: 14)
-             textField.addTarget(self, action: #selector(self.createRoomNameTextFieldDidChange), for: UIControl.Event.editingChanged)
-         }
-         alter.addAction(cancelAction)
-         alter.addAction(createAction)
-         self.present(alter, animated: true, completion: nil)
+        guard let name = self.readyView?.roomTitleTextField.text else { return }
+        createRoomWithRoomName(roomName: name)
      }
     
     // MARK: private method
@@ -77,14 +73,46 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     func createRTCRoomWith(roomID: String, roomName: String) {
         
         let rtcToken = AppToken.getRtcToken(withRoomID: roomID) ?? ""
-        RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { result in
+        RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { [self] result in
             HUDHelper.hideNetworkLoading()
             switch result {
-            case .success(let roomInfo):
+            case .success():
+                self.joinServerRoom()
+                self.updateStartView()
+                self.startPublish()
                 break
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
                 HUDHelper.showMessage(message: message)
+                break
+            }
+        }
+    }
+    
+    func updateStartView() {
+        self.readyContainer.isHidden = true
+        self.topContainer.isHidden = false
+        self.bottomContainer.isHidden = false
+        self.messageView.isHidden = false
+    }
+    
+    func joinServerRoom() {
+        if let roomID = RoomManager.shared.roomService.roomInfo.roomID {
+            RoomManager.shared.roomListService.joinServerRoom(roomID) { result in
+            }
+        }
+    }
+    
+    func leaveRoom() {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+        RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
+        RoomManager.shared.roomService.leaveRoom { result in
+            switch result {
+            case .success():
+                self.navigationController?.popViewController(animated: true)
+                break
+            case .failure(_):
+                break
             }
         }
     }

@@ -51,6 +51,7 @@ class LiveReadyView: UIView {
             startLiveButton.layer.cornerRadius = 22.0
         }
     }
+    
     @IBOutlet weak var beautyButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     
@@ -77,4 +78,7 @@ class LiveReadyView: UIView {
     @IBAction func settingButtonClick(_ sender: UIButton) {
         delegate?.liveReadyView(self, didClickButtonWith: .setting)
     }
+    
+    
+    
 }

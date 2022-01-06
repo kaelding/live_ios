@@ -80,12 +80,12 @@ class RoomManager: NSObject {
 
 extension RoomManager {
     func loginRtcRoom(with rtcToken: String) {
-        guard let userID = RoomManager.shared.userService.localInfo?.userID else {
+        guard let userID = RoomManager.shared.userService.localUserInfo?.userID else {
             assert(false, "user id can't be nil.")
             return
         }
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID else {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room id can't be nil.")
             return
         }

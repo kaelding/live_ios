@@ -569,18 +569,6 @@
 				86938B322784772C001DD575 /* aes.cpp */,
 			);
 			path = "crypto-algorithms";
-            sourceTree = "<group>";
-        };
-		869DA74C277D9D32003E6061 /* MusicEffects */ = {
-			isa = PBXGroup;
-			children = (
-				864B3EE2277EE88500699B69 /* View */,
-				864B3EE1277EE79200699B69 /* Model */,
-				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
-				869DA74E277DA063003E6061 /* MusicEffectsVC.xib */,
-				864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */,
-			);
-			path = MusicEffects;
 			sourceTree = "<group>";
 		};
 		869DA74C277D9D32003E6061 /* MusicEffects */ = {
@@ -1271,6 +1259,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the voice interaction.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1307,6 +1297,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the voice interaction.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

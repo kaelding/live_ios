@@ -132,7 +132,7 @@ extension ParticipantListView: UITableViewDelegate, UITableViewDataSource {
         cell?.delegate = self
         if indexPath.row < RoomManager.shared.userService.userList.count {
             let roomUser = RoomManager.shared.userService.userList.allObjects()[indexPath.row]
-            let isHost = RoomManager.shared.userService.localInfo?.userID == RoomManager.shared.roomService.info.hostID
+            let isHost = RoomManager.shared.userService.localUserInfo?.userID == RoomManager.shared.roomService.roomInfo.hostID
             cell?.setRoomUser(user: roomUser, isHost: isHost)
         }
         return cell ?? ParticipantTableViewCell()

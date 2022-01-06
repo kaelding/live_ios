@@ -41,15 +41,15 @@ extension UserServiceDelegate {
 class UserService: NSObject {
     // MARK: - Public
     let delegates = NSHashTable<AnyObject>.weakObjects()
-    var localInfo: UserInfo?
+    var localUserInfo: UserInfo?
     var userList = DictionaryArray<String, UserInfo>()
     var coHostList: [CoHostSeatModel] {
         return RoomManager.shared.roomService.operation.seatList
     }
     
     var isMyselfHost: Bool {
-        let hostID = RoomManager.shared.roomService.info.hostID ?? ""
-        let userID = localInfo?.userID ?? ""
+        let hostID = RoomManager.shared.roomService.roomInfo.hostID ?? ""
+        let userID = localUserInfo?.userID ?? ""
         return hostID == userID
     }
     
@@ -88,7 +88,7 @@ class UserService: NSObject {
         ZIMManager.shared.zim?.login(zimUser, token: token, callback: { error in
             var result: ZegoResult
             if error.code == .ZIMErrorCodeSuccess {
-                self.localInfo = user
+                self.localUserInfo = user
                 result = .success(())
             } else {
                 result = .failure(.other(Int32(error.code.rawValue)))
@@ -106,7 +106,7 @@ class UserService: NSObject {
         
     /// get the number of chat rooms available online
     func getOnlineRoomUsersNum(callback: OnlineRoomUsersCountCallback?) {
-        guard let roomID = RoomManager.shared.roomService.info.roomID else {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -127,7 +127,7 @@ class UserService: NSObject {
     
     /// get users of target page.
     func getOnlineRoomUsers(_ page: UInt, callback: OnlineRoomUsersCallback?) {
-        guard let roomID = RoomManager.shared.roomService.info.roomID else {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -146,7 +146,7 @@ class UserService: NSObject {
             var users: [UserInfo] = []
             
             for zimUser in zimUsers {
-                let role: UserRole = zimUser.userID == RoomManager.shared.roomService.info.hostID ? .host : .participant
+                let role: UserRole = zimUser.userID == RoomManager.shared.roomService.roomInfo.hostID ? .host : .participant
                 let user = UserInfo(zimUser.userID, zimUser.userName, role)
                 users.append(user)
             }
@@ -185,7 +185,7 @@ class UserService: NSObject {
     /// respond to the co-host invitation
     func respondCoHostInvitation(_ accept: Bool, callback: RoomCallback?) {
     
-        guard let hostID = RoomManager.shared.roomService.info.hostID else {
+        guard let hostID = RoomManager.shared.roomService.roomInfo.hostID else {
             assert(false, "the room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -254,7 +254,7 @@ class UserService: NSObject {
             return
         }
         // publish stream
-        guard let myUserID = localInfo?.userID else { return }
+        guard let myUserID = localUserInfo?.userID else { return }
         let streamID = String.getStreamID(myUserID, roomID: parameters.1)
         ZegoExpressEngine.shared().startPublishingStream(streamID)
         
@@ -274,8 +274,8 @@ class UserService: NSObject {
         
     /// prohibit turning on the mic
     func muteUser(_ isMuted: Bool, userID: String, callback: RoomCallback?) {
-        guard let hostID = RoomManager.shared.roomService.info.hostID,
-              let myUserID = localInfo?.userID
+        guard let hostID = RoomManager.shared.roomService.roomInfo.hostID,
+              let myUserID = localUserInfo?.userID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             guard let callback = callback else { return }
@@ -354,13 +354,13 @@ extension UserService : ZIMEventHandler {
     func zim(_ zim: ZIM, roomMemberJoined memberList: [ZIMUserInfo], roomID: String) {
         var addUsers: [UserInfo] = []
         for zimUser in memberList {
-            let role: UserRole = zimUser.userID == RoomManager.shared.roomService.info.hostID ? .host : .participant
+            let role: UserRole = zimUser.userID == RoomManager.shared.roomService.roomInfo.hostID ? .host : .participant
             let user = UserInfo(zimUser.userID, zimUser.userName, role)
             addUsers.append(user)
             guard let userID = user.userID else { continue }
             userList.addObj(userID, user)
-            if localInfo?.userID == userID {
-                localInfo = user
+            if localUserInfo?.userID == userID {
+                localUserInfo = user
             }
         }
         
@@ -374,7 +374,7 @@ extension UserService : ZIMEventHandler {
     func zim(_ zim: ZIM, roomMemberLeft memberList: [ZIMUserInfo], roomID: String) {
         var leftUsers: [UserInfo] = []
         for zimUser in memberList {
-            let role: UserRole = zimUser.userID == RoomManager.shared.roomService.info.hostID ? .host : .participant
+            let role: UserRole = zimUser.userID == RoomManager.shared.roomService.roomInfo.hostID ? .host : .participant
             let user = UserInfo(zimUser.userID, zimUser.userName, role)
             leftUsers.append(user)
             guard let userID = user.userID else { continue }

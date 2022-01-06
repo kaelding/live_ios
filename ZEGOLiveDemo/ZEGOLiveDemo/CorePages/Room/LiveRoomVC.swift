@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZegoExpressEngine
 
 class LiveRoomVC: UIViewController {
 
@@ -91,6 +92,7 @@ class LiveRoomVC: UIViewController {
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
     
     var messageList: [MessageModel] = []
+    var isFrontCamera: Bool = true
     
     lazy var inputTextView: InputTextView = {
         let textView: InputTextView = UINib(nibName: "InputTextView", bundle: nil).instantiate(withOwner: self, options: nil).last as! InputTextView
@@ -101,7 +103,7 @@ class LiveRoomVC: UIViewController {
     
     var localUserID: String {
         get {
-            return RoomManager.shared.userService.localInfo?.userID ?? ""
+            return RoomManager.shared.userService.localUserInfo?.userID ?? ""
         }
     }
     
@@ -113,19 +115,16 @@ class LiveRoomVC: UIViewController {
 
         // Do any additional setup after loading the view.
         configUI()
+        updatePreview()
         
-        if let myself = RoomManager.shared.userService.localInfo {
+        
+        if let myself = RoomManager.shared.userService.localUserInfo {
             let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
             messageList.append(model)
             reloadMessageData()
         }
     }
     
-    func configUI() {
-        self.view.addSubview(inputTextView)
-
-        
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -139,13 +138,34 @@ class LiveRoomVC: UIViewController {
     }
     
     @IBAction func changeCameraItemClick(_ sender: UIBarButtonItem) {
-        
+        isFrontCamera = !isFrontCamera
+        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
     }
     
     // MARK: - private method
     func addObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow(node:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide(node:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func updatePreview() {
+        if RoomManager.shared.roomService.roomInfo.roomID != nil { return }
+        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+        let canvas = ZegoCanvas(view: streamView)
+        canvas.viewMode = .aspectFill
+        ZegoExpressEngine.shared().enableCamera(true)
+        ZegoExpressEngine.shared().startPreview(canvas)
+//        let videoConfig = ZegoVideoConfig(preset: .preset1080P)
+//        ZegoExpressEngine.shared().setVideoConfig(videoConfig)
+    }
+    
+    func configUI() {
+        self.view.addSubview(inputTextView)
+        let isReadyView = RoomManager.shared.roomService.roomInfo.roomID == nil
+        readyContainer.isHidden = !isReadyView
+        topContainer.isHidden = isReadyView
+        bottomContainer.isHidden = isReadyView
+        messageView.isHidden = isReadyView
     }
     
 }

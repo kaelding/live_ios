@@ -36,7 +36,7 @@ class RoomListService: NSObject {
     func createRoom(_ roomName: String, callback: CreateRoomCallback?) {
         var request = CreateRoomRequest()
         request.name = roomName
-        request.hostID = RoomManager.shared.userService.localInfo?.userID ?? ""
+        request.hostID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         
         RequestManager.shared.createRoomRequest(request: request) { status in
             guard let dataDic = status?.data else { return }

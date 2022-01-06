@@ -15,9 +15,9 @@ extension UserService {
     
     // get request or cancel request to host parameters
     func getRequestOrCancelToHostParameters(_ isRequest: Bool) -> ParametersResult? {
-        guard let hostID = RoomManager.shared.roomService.info.hostID,
-              let roomID = RoomManager.shared.roomService.info.roomID,
-              let myUserID = localInfo?.userID
+        guard let hostID = RoomManager.shared.roomService.roomInfo.hostID,
+              let roomID = RoomManager.shared.roomService.roomInfo.roomID,
+              let myUserID = localUserInfo?.userID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil
@@ -49,8 +49,8 @@ extension UserService {
     // get take or leave seat parameters
     func getTakeOrLeaveSeatParameters(_ isTake: Bool) -> ParametersResult? {
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID,
-              let myUserID = localInfo?.userID
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
+              let myUserID = localUserInfo?.userID
         else {
             assert(false, "the userID or roomID cannot be nil")
             return nil
@@ -85,8 +85,8 @@ extension UserService {
     // flag: 0 - mic, 1 - camera, 2 - mute
     func getSeatChangeParameters(_ targetUserID: String = "", enable: Bool, flag: Int) -> ParametersResult? {
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID,
-              let myUserID = localInfo?.userID
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
+              let myUserID = localUserInfo?.userID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil
@@ -130,8 +130,8 @@ extension UserService {
     
     func getRespondCoHostParameters(_ agree: Bool, userID: String) -> ParametersResult? {
         
-        guard let roomID = RoomManager.shared.roomService.info.roomID,
-              let myUserID = localInfo?.userID
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
+              let myUserID = localUserInfo?.userID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil

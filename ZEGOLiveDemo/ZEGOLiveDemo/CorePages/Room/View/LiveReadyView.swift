@@ -8,6 +8,8 @@
 import UIKit
 
 enum LiveReadyAction {
+    case back
+    case cameraFlip
     case start
     case beauty
     case setting
@@ -79,6 +81,12 @@ class LiveReadyView: UIView {
         delegate?.liveReadyView(self, didClickButtonWith: .setting)
     }
     
+    @IBAction func backButtonClick(_ sender: UIButton) {
+        delegate?.liveReadyView(self, didClickButtonWith: .back)
+    }
     
+    @IBAction func cameraFlipButtonClick(_ sender: UIButton) {
+        delegate?.liveReadyView(self, didClickButtonWith: .cameraFlip)
+    }
     
 }

@@ -1,14 +1,14 @@
 //
-//  HeartBeatRequest.swift
+//  JoinRoomRequest.swift
 //  ZEGOLiveDemo
 //
-//  Created by Larry on 2021/12/27.
+//  Created by Larry on 2022/1/6.
 //
 
 import Foundation
 
-struct HeartBeatRequest : Request {
-    var path = "/v1/room/heartbeat"
+struct JoinRoomRequest : Request {
+    var path = "/v1/room/join_room"
     var method: HTTPMethod = .POST
     typealias Response = RequestStatus
     var parameter = Dictionary<String, AnyObject>()
@@ -31,14 +31,7 @@ struct HeartBeatRequest : Request {
         }
     }
     
-    var keepRoom = false {
-        willSet {
-            parameter["keep_room"] = newValue as AnyObject
-        }
-    }
-    
     init() {
         parameter["type"] = 0 as AnyObject
-        parameter["keep_room"] = 0 as AnyObject
     }
 }

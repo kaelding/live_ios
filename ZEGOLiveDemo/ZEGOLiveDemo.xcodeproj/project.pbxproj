@@ -57,6 +57,8 @@
 		869F6D2827859E7B0018788E /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */; };
 		869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */; };
 		869F6D2D2785A3710018788E /* String+Head.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2C2785A3700018788E /* String+Head.swift */; };
+		869F6D2F2786CA330018788E /* JoinRoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2E2786CA330018788E /* JoinRoomRequest.swift */; };
+		869F6D312786CA470018788E /* LeaveRoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D302786CA470018788E /* LeaveRoomRequest.swift */; };
 		86A8A1F727796E09002A7658 /* ZegoEffects.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; };
 		86A8A1F827796E09002A7658 /* ZegoEffects.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A1FB27796F56002A7658 /* RoomListVC.swift */; };
@@ -251,6 +253,8 @@
 		869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
 		869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantTableViewCell.xib; sourceTree = "<group>"; };
 		869F6D2C2785A3700018788E /* String+Head.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Head.swift"; sourceTree = "<group>"; };
+		869F6D2E2786CA330018788E /* JoinRoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomRequest.swift; sourceTree = "<group>"; };
+		869F6D302786CA470018788E /* LeaveRoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRoomRequest.swift; sourceTree = "<group>"; };
 		86A8A1FB27796F56002A7658 /* RoomListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListVC.swift; sourceTree = "<group>"; };
 		86A8A20D2779BC3C002A7658 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86A8A20E2779BC3C002A7658 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -631,6 +635,8 @@
 				86A8A2152779BE02002A7658 /* RoomListRequest.swift */,
 				86A8A2192779EA11002A7658 /* CreateRoomRequest.swift */,
 				86A8A21B2779EA21002A7658 /* EndRoomRequest.swift */,
+				869F6D2E2786CA330018788E /* JoinRoomRequest.swift */,
+				869F6D302786CA470018788E /* LeaveRoomRequest.swift */,
 				86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */,
 				86938AC8277D61D3001DD575 /* EffectsLicenseRequest.swift */,
 			);
@@ -1097,6 +1103,7 @@
 				8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */,
 				860E11752786A873008847C4 /* DeviceService.swift in Sources */,
 				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
+				869F6D312786CA470018788E /* LeaveRoomRequest.swift in Sources */,
 				864B3EE9277EEA9E00699B69 /* SoundChangeCell.swift in Sources */,
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
@@ -1126,6 +1133,7 @@
 				8EA9234F277C656C00D0BC2C /* LiveRoomVC+Ready.swift in Sources */,
 				86938B3F2784772C001DD575 /* aes.cpp in Sources */,
 				8EE13F28277AEBE10038AFCF /* SettingCellModel.swift in Sources */,
+				869F6D2F2786CA330018788E /* JoinRoomRequest.swift in Sources */,
 				86BD9EC027856EC400DBE379 /* LiveSettingModel.swift in Sources */,
 				86938ACD277DA10F001DD575 /* FaceBeautifyView.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,

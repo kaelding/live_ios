@@ -11,6 +11,7 @@ import ZegoExpressEngine
 class RoomListService: NSObject {
     
     var roomList = Array<RoomInfo>()
+    let timer = ZegoTimer(30000)
     
     // MARK: - Public
     func getRoomList(_ fromRoomID: String?, callback: RoomListCallback?) {
@@ -47,6 +48,50 @@ class RoomListService: NSObject {
         } failure: { requestStatus in
             guard let callback = callback else { return }
             callback(.failure(.failed))
+        }
+    }
+    
+    func joinServerRoom(_ roomID: String, callback: RoomCallback?) {
+        var request = JoinRoomRequest()
+        request.roomID = roomID
+        request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
+        
+        RequestManager.shared.joinRoomRequest(request: request) { requestStatus in
+            guard let callback = callback else { return }
+            callback(.success(()))
+            self.timer.setEventHandler {
+                self.heartBeatRequest()
+            }
+            self.timer.start()
+        } failure: { requestStatus in
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+        }
+    }
+    
+    func leaveServerRoom(_ roomID: String, callback: RoomCallback?) {
+        var request = LeaveRoomRequest()
+        request.roomID = roomID
+        request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
+        RequestManager.shared.leaveRoomRequest(request: request) { requestStatus in
+            guard let callback = callback else { return }
+            callback(.success(()))
+            self.timer.stop()
+        } failure: { requestStatus in
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+            self.timer.stop()
+        }
+    }
+    
+    // MARK: private method
+    private func heartBeatRequest() {
+        var request = HeartBeatRequest()
+        request.roomID = RoomManager.shared.roomService.roomInfo.roomID ?? ""
+        request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
+        request.keepRoom = RoomManager.shared.userService.isMyselfHost
+        RequestManager.shared.heartBeatRequest(request: request) { requestStatus in
+        } failure: { requestStatus in
         }
     }
 }

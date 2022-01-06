@@ -87,8 +87,6 @@ class RoomService: NSObject {
     /// Leave the chat room
     func leaveRoom(callback: RoomCallback?) {
         // if call the leave room api, just logout rtc room
-        RoomManager.shared.logoutRtcRoom()
-        
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
@@ -103,6 +101,7 @@ class RoomService: NSObject {
             }
             guard let callback = callback else { return }
             callback(result)
+            RoomManager.shared.logoutRtcRoom()
         })
     }
 }

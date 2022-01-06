@@ -85,7 +85,7 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let type: MusicEffectsType = MusicEffectsType(rawValue: collectionView.tag) ?? .bgm
+        let type: MusicEffectsType = MusicEffectsType(rawValue: collectionView.tag)!
         selectedItem(type: type, index: indexPath.row)
         collectionView.reloadData()
     }
@@ -97,7 +97,7 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
             for model in self.backMusicArr {
                 if index == newIndex {
                     model.isSelected = !model.isSelected
-                    RoomManager.shared.soundService.setBGM(model.selectedType, stop: model.isSelected)
+                    RoomManager.shared.soundService.setBGM(model.selectedType, stop: !model.isSelected)
                 } else {
                     model.isSelected = false
                 }

@@ -14,8 +14,12 @@
             <rect key="frame" x="0.0" y="0.0" width="342" height="587"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b32-Pf-8dw">
+                    <rect key="frame" x="0.0" y="44" width="342" height="543"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNJ-wz-qRn">
-                    <rect key="frame" x="0.0" y="217" width="342" height="370"/>
+                    <rect key="frame" x="0.0" y="23" width="342" height="564"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-fN-qvl">
                             <rect key="frame" x="151" y="7" width="40" height="5"/>
@@ -35,18 +39,14 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-AH-2AQ">
-                            <rect key="frame" x="0.0" y="58" width="342" height="312"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-AH-2AQ">
+                            <rect key="frame" x="0.0" y="58" width="342" height="506"/>
                             <color key="sectionIndexBackgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="nsP-TW-sZ4"/>
-                                <outlet property="delegate" destination="-1" id="gZD-2m-YUK"/>
-                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="370" id="1xt-on-e3n"/>
+                        <constraint firstAttribute="height" constant="564" id="1xt-on-e3n"/>
                         <constraint firstItem="aqe-fN-qvl" firstAttribute="top" secondItem="uNJ-wz-qRn" secondAttribute="top" constant="7" id="SJx-lZ-9HA"/>
                         <constraint firstItem="ufl-AH-2AQ" firstAttribute="top" secondItem="aF2-O5-1YM" secondAttribute="bottom" id="fig-Ov-nNm"/>
                         <constraint firstItem="aqe-fN-qvl" firstAttribute="centerX" secondItem="uNJ-wz-qRn" secondAttribute="centerX" id="ib4-c2-W8G"/>
@@ -61,12 +61,17 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="b32-Pf-8dw" secondAttribute="bottom" id="2if-Kd-CBe"/>
+                <constraint firstItem="b32-Pf-8dw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="J2j-0J-eub"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b32-Pf-8dw" secondAttribute="trailing" id="dgg-HX-Ss1"/>
+                <constraint firstItem="b32-Pf-8dw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="drQ-UR-JW2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uNJ-wz-qRn" secondAttribute="bottom" id="fkr-PB-Jye"/>
                 <constraint firstItem="uNJ-wz-qRn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="haX-cm-A1R"/>
                 <constraint firstItem="uNJ-wz-qRn" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ykc-Ol-IGQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="backGroundView" destination="b32-Pf-8dw" id="LB4-Bl-W77"/>
                 <outlet property="settingLabel" destination="aF2-O5-1YM" id="dB0-Av-Td8"/>
                 <outlet property="settingTableView" destination="ufl-AH-2AQ" id="VjA-Li-R8h"/>
                 <outlet property="topLineView" destination="aqe-fN-qvl" id="Lmu-vq-HR0"/>

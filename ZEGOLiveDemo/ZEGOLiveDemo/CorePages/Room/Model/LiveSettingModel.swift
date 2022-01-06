@@ -8,6 +8,10 @@
 import UIKit
 
 enum SettingSelectionType {
+    case encoding
+    case layered
+    case hardware
+    case decoding
     case noise
     case echo
     case volume

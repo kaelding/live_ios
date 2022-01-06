@@ -11,6 +11,8 @@ import ZegoExpressEngine
 class SoundEffectService: NSObject {
     
     var currentMusicIndex: Int = 0
+    var musicVolume: Int32 = 80
+    var voiceVolume: Int32 = 80
     
     lazy var player: ZegoMediaPlayer? = {
         let mediaPlayer: ZegoMediaPlayer? = ZegoExpressEngine.shared().createMediaPlayer()
@@ -61,10 +63,12 @@ class SoundEffectService: NSObject {
     }
     
     func setCurrentBGMVolume(_ volume: Int) -> Void {
+        musicVolume = Int32(volume)
         player?.setVolume(Int32(volume))
     }
     
     func setVoiceVolume(_ volume: Int) -> Void {
+        voiceVolume = Int32(volume)
         player?.setVolume(Int32(volume))
     }
     

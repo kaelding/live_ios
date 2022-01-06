@@ -11,6 +11,8 @@ import ZegoExpressEngine
 
 class MusicEffectsVC: UIViewController {
     
+    
+    @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var backGroundLabel: UILabel!
     @IBOutlet weak var bgmCollection: UICollectionView!
@@ -68,7 +70,7 @@ class MusicEffectsVC: UIViewController {
         voiceVSlider.addTarget(self, action: #selector(voiceVSliderValueChanged(_:for:)), for: .valueChanged)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-        self.view.addGestureRecognizer(tap)
+        backGroundView.addGestureRecognizer(tap)
     }
     
     @objc func tapClick() -> Void {

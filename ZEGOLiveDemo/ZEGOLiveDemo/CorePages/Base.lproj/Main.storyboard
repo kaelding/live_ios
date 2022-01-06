@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcT-kr-NNs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcT-kr-NNs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -408,14 +408,7 @@ please create a live room~</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-IS-InW" customClass="MessageView" customModule="ZEGOLiveDemo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="580" width="309" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="1PB-I6-fkD"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -431,6 +424,41 @@ please create a live room~</string>
                                 <color key="backgroundColor" name="FFFFFF_40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GO3-kT-ak9"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FrA-AV-VTC">
+                                <rect key="frame" x="309" y="372" width="93" height="388"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="4fx-Kw-OFu"/>
+                                    <constraint firstAttribute="height" constant="388" id="VTr-Qy-2Hj"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="10" id="Ara-gX-ckl">
+                                    <size key="itemSize" width="93" height="124"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="9YL-QL-rHU">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="124"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S0r-cB-Vth">
+                                            <rect key="frame" x="0.0" y="0.0" width="93" height="124"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="jPe-BT-8VD" id="xQF-cj-Zgy"/>
+                                    <outlet property="delegate" destination="jPe-BT-8VD" id="TNy-KG-m5n"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-IS-InW" customClass="MessageView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+                                <rect key="frame" x="16" y="580" width="309" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="1PB-I6-fkD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -454,8 +482,10 @@ please create a live room~</string>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="dYo-Bj-GuQ"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="gqs-Ju-ddk"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="trailing" secondItem="0ci-dq-dVb" secondAttribute="trailing" id="h52-bW-kyF"/>
+                            <constraint firstItem="CX6-wm-rNx" firstAttribute="top" secondItem="FrA-AV-VTC" secondAttribute="bottom" constant="20" id="l6u-ow-i9g"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="me4-dk-ngp"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="CX6-wm-rNx" secondAttribute="trailing" id="p5b-FU-e7r"/>
+                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="FrA-AV-VTC" secondAttribute="trailing" constant="12" id="pmA-6h-DkD"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="uFs-wT-tUL"/>
                             <constraint firstAttribute="trailing" secondItem="wzn-hE-RIA" secondAttribute="trailing" id="wIo-nj-HwB"/>
                         </constraints>
@@ -475,6 +505,8 @@ please create a live room~</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
+                        <outlet property="coHostCollectionView" destination="FrA-AV-VTC" id="Wbw-lA-pKV"/>
+                        <outlet property="coHostViewHeightConstraint" destination="VTr-Qy-2Hj" id="Q68-Ce-Doh"/>
                         <outlet property="messageHeightConstraint" destination="1PB-I6-fkD" id="5vP-hs-fiH"/>
                         <outlet property="messageView" destination="Zci-IS-InW" id="PSa-as-qCh"/>
                         <outlet property="readyContainer" destination="SM2-kp-atx" id="C7R-5K-qIH"/>

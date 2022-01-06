@@ -94,6 +94,9 @@
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
 		8E2244282785B9FB00B86C52 /* ZegoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2244272785B9FB00B86C52 /* ZegoSlider.swift */; };
+		8E22442A2786983E00B86C52 /* LiveRoomVC+CoHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */; };
+		8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22442F2786A13500B86C52 /* CoHostCell.swift */; };
+		8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2244332786A17500B86C52 /* CoHostCell.xib */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -288,6 +291,9 @@
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
 		8E2244272785B9FB00B86C52 /* ZegoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZegoSlider.swift; sourceTree = "<group>"; };
+		8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+CoHost.swift"; sourceTree = "<group>"; };
+		8E22442F2786A13500B86C52 /* CoHostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostCell.swift; sourceTree = "<group>"; };
+		8E2244332786A17500B86C52 /* CoHostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoHostCell.xib; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -680,6 +686,7 @@
 				86938AD4277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift */,
 				86938AE427842BE2001DD575 /* LiveRoomVC+IM.swift */,
 				860E11762786CDB8008847C4 /* LiveRoomVC+Setting.swift */,
+				8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -706,6 +713,8 @@
 				869F6D2527859B560018788E /* ParticipantListView.xib */,
 				869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */,
 				869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */,
+				8E22442F2786A13500B86C52 /* CoHostCell.swift */,
+				8E2244332786A17500B86C52 /* CoHostCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -981,6 +990,7 @@
 				86938ACF277DA122001DD575 /* FaceBeaytifyView.xib in Resources */,
 				86BD9EB5278542F800DBE379 /* LiveSettingView.xib in Resources */,
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
+				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
 				86938AE92784323A001DD575 /* MessageCell.xib in Resources */,
@@ -1085,6 +1095,7 @@
 				864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */,
 				860E11772786CDB8008847C4 /* LiveRoomVC+Setting.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
+				8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */,
 				869F6D2427859B360018788E /* ParticipantListView.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */,
@@ -1141,6 +1152,7 @@
 				8EE13F2F277AFBDD0038AFCF /* HUDHelper.swift in Sources */,
 				86BD9ECB278698DB00DBE379 /* LiveSettingSecondView.swift in Sources */,
 				864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */,
+				8E22442A2786983E00B86C52 /* LiveRoomVC+CoHost.swift in Sources */,
 				8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */,
 				86938ADF278426CC001DD575 /* MessageModel.swift in Sources */,
 				8EA92349277C539D00D0BC2C /* LiveTopView.swift in Sources */,

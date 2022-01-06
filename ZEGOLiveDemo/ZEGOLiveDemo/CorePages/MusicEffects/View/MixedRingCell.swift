@@ -28,6 +28,8 @@ class MixedRingCell: UICollectionViewCell {
         
         self.mixedImageView.layer.borderWidth = model.isSelected ? 1.5 : 0;
         self.mixedImageView.layer.borderColor = ZegoColor("A653FF").cgColor
+        
+        mixedNameLabel.textColor = model.isSelected ? ZegoColor("A653FF") : ZegoColor("CCCCCC")
     }
 
 }

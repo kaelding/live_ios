@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingSwitchCellDelegate {
-    func cellSwitchValueChange(_ value: Bool)
+    func cellSwitchValueChange(_ value: Bool, cell: SettingSwitchCell)
 }
 
 class SettingSwitchCell: SettingBaseCell {
@@ -31,6 +31,6 @@ class SettingSwitchCell: SettingBaseCell {
     }
     
     @IBAction func switchValueChange(_ sender: UISwitch) {
-        delegate?.cellSwitchValueChange(sender.isOn)
+        delegate?.cellSwitchValueChange(sender.isOn , cell: self)
     }
 }

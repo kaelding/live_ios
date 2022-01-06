@@ -25,8 +25,10 @@ class SoundChangeCell: UICollectionViewCell {
         voiceNameLabel.text = model.name
         if model.isSelected {
             VoiceImageView.image = UIImage.init(named: model.selectedImageName ?? "")
+            voiceNameLabel.textColor = ZegoColor("A653FF")
         } else {
             VoiceImageView.image = UIImage.init(named: model.imageName ?? "")
+            voiceNameLabel.textColor = ZegoColor("CCCCCC")
         }
     }
 

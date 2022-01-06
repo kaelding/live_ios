@@ -71,6 +71,43 @@ class LiveRoomVC: UIViewController {
         if let view: LiveSettingView = UINib.init(nibName: "LiveSettingView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingView {
             view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
             view.isHidden = true
+            view.delegate = self
+            self.view.addSubview(view)
+            return view
+        }
+        return nil
+    }()
+    
+    lazy var resolutionView: LiveSettingSecondView? = {
+        if let view: LiveSettingSecondView = UINib(nibName: "LiveSettingSecondView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingSecondView {
+            view.setShowDataSourceType(.resolution)
+            view.frame = self.view.bounds
+            view.isHidden = true
+            view.delegate = self
+            self.view.addSubview(view)
+            return view
+        }
+        return nil
+    }()
+    
+    lazy var bitrateView: LiveSettingSecondView? = {
+        if let view: LiveSettingSecondView = UINib(nibName: "LiveSettingSecondView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingSecondView{
+            view.setShowDataSourceType(.audio)
+            view.frame = self.view.bounds
+            view.isHidden = true
+            view.delegate = self
+            self.view.addSubview(view)
+            return view
+        }
+        return nil
+    }()
+    
+    lazy var encodingView: LiveSettingSecondView? = {
+        if let view: LiveSettingSecondView = UINib(nibName: "LiveSettingSecondView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingSecondView{
+            view.setShowDataSourceType(.encoding)
+            view.frame = self.view.bounds
+            view.isHidden = true
+            view.delegate = self
             self.view.addSubview(view)
             return view
         }

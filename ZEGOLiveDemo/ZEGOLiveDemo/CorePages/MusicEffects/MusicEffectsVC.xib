@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicEffectsVC" customModule="ZEGOLiveDemo" customModuleProvider="target">
             <connections>
                 <outlet property="backGroundLabel" destination="ufn-Ar-HSq" id="2p9-WC-Mnm"/>
+                <outlet property="backGroundView" destination="6bI-X2-nMo" id="J4k-oH-Ei9"/>
                 <outlet property="bgmCollection" destination="YgD-dZ-aGb" id="r7N-8n-EWD"/>
                 <outlet property="bottomScrollView" destination="1wY-3a-usz" id="oGB-5g-1MU"/>
                 <outlet property="containerView" destination="DQm-US-F0B" id="iDz-6F-YMy"/>
@@ -34,6 +35,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bI-X2-nMo">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-UL-7V0">
                     <rect key="frame" x="0.0" y="282" width="375" height="385"/>
                     <subviews>
@@ -261,7 +266,6 @@
                             <constraints>
                                 <constraint firstItem="DQm-US-F0B" firstAttribute="top" secondItem="1wY-3a-usz" secondAttribute="top" id="Q1T-4I-6OV"/>
                                 <constraint firstAttribute="trailing" secondItem="DQm-US-F0B" secondAttribute="trailing" id="aC4-qp-q6A"/>
-                                <constraint firstItem="DQm-US-F0B" firstAttribute="centerY" secondItem="1wY-3a-usz" secondAttribute="centerY" id="aVR-gu-gE4"/>
                                 <constraint firstItem="DQm-US-F0B" firstAttribute="centerX" secondItem="1wY-3a-usz" secondAttribute="centerX" id="enk-Ty-O8X"/>
                                 <constraint firstItem="DQm-US-F0B" firstAttribute="leading" secondItem="1wY-3a-usz" secondAttribute="leading" id="np0-SL-vxZ"/>
                                 <constraint firstAttribute="bottom" secondItem="DQm-US-F0B" secondAttribute="bottom" id="wjH-ra-VK0"/>
@@ -295,8 +299,12 @@
             <color key="backgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q9a-UL-7V0" secondAttribute="trailing" id="1qS-Fl-imv"/>
+                <constraint firstItem="6bI-X2-nMo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6i8-4m-Zrk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="q9a-UL-7V0" secondAttribute="bottom" id="BX3-tF-bC2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6bI-X2-nMo" secondAttribute="trailing" id="GFM-Vl-N7X"/>
                 <constraint firstItem="q9a-UL-7V0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Lkj-D8-oCM"/>
+                <constraint firstItem="6bI-X2-nMo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Nuu-xH-9QW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6bI-X2-nMo" secondAttribute="bottom" id="jzl-Gz-xDE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="258.69565217391306" y="-15.736607142857142"/>

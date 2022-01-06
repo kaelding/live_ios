@@ -32,6 +32,9 @@ class BGMCollectionViewCell: UICollectionViewCell {
         } else {
             musicImageView.image = UIImage.init(named: model.imageName ?? "")
         }
+        
+        musicNameLabel.textColor = model.isSelected ? ZegoColor("A653FF") : ZegoColor("CCCCCC")
+        
     }
 
 }

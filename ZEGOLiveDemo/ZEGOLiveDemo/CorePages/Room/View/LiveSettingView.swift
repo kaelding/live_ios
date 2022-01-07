@@ -23,6 +23,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingTableView: UITableView!
+    @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
     
@@ -75,6 +76,19 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         
         let tapClick: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
         backGroundView.addGestureRecognizer(tapClick)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        clipRoundCorners()
+    }
+    
+    func clipRoundCorners() -> Void {
+        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
+        let maskLayer: CAShapeLayer = CAShapeLayer()
+        maskLayer.frame = roundView.bounds
+        maskLayer.path = maskPath.cgPath
+        roundView.layer.mask = maskLayer
     }
     
     func setViewType(_ type: LiveSettingViewType)  {
@@ -177,7 +191,10 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     func cellSwitchValueChange(_ value: Bool, cell: SettingSwitchCell) {
         let model:LiveSettingModel? = cell.cellModel
         if let model = model {
-            RoomManager.shared.deviceService.setLiveDeviceStatus(model.selectionType, enable: value)
+            if model.selectionType == .layered && RoomManager.shared.deviceService.videoCodeID == .h265{
+                return
+            }
+            delegate?.settingViewDidSelected(model, type: viewType)
         }
     }
 }

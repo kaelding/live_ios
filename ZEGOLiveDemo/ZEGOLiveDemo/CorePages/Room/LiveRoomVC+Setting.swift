@@ -21,7 +21,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
             }
         case .bitrate:
             if type == .nomal {
-                self.LivingSettingView?.isHidden = true
+                self.liveSettingView?.isHidden = true
                 self.bitrateView?.isHidden = false
             } else {
                 self.LivingSettingView?.isHidden = true
@@ -29,7 +29,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
             }
         case .encoding:
             if type == .nomal {
-                self.LivingSettingView?.isHidden = true
+                self.liveSettingView?.isHidden = true
                 self.encodingView?.isHidden = false
             } else {
                 self.LivingSettingView?.isHidden = true

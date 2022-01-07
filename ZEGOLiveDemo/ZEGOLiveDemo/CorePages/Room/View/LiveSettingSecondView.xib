@@ -89,6 +89,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backGroundView" destination="ieN-7L-mpS" id="GRi-gg-25k"/>
+                <outlet property="roundView" destination="L6g-7A-ZKs" id="ZAQ-gf-1pN"/>
                 <outlet property="tableView" destination="ZaA-39-QAo" id="kXP-Ln-EPc"/>
                 <outlet property="titleLabel" destination="waG-j0-2iG" id="Do9-Xh-AVq"/>
                 <outlet property="topLineView" destination="bwE-84-WNX" id="Mmn-7E-3BY"/>

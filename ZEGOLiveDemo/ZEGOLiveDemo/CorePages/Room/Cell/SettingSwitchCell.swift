@@ -28,6 +28,18 @@ class SettingSwitchCell: SettingBaseCell {
         cellModel = model
         titleLabel.text = model.title
         switchButton.isOn = model.switchStatus
+        if model.selectionType == .layered {
+            if RoomManager.shared.deviceService.videoCodeID == .h265 {
+                switchButton.isUserInteractionEnabled = false
+                titleLabel.textColor = ZegoColor("CCCCCC")
+            } else {
+                switchButton.isUserInteractionEnabled = true
+                titleLabel.textColor = ZegoColor("FFFFFF")
+            }
+        } else {
+            switchButton.isUserInteractionEnabled = true
+            titleLabel.textColor = ZegoColor("FFFFFF")
+        }
     }
     
     @IBAction func switchValueChange(_ sender: UISwitch) {

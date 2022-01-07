@@ -23,6 +23,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var roundView: UIView!
     
     lazy var encodDataSource: [LiveSettingSecondLevelModel] = {
         let data = [["title": "H.264" ,"isSelected": true, "type": RTCVideoCode.h264.rawValue],
@@ -95,6 +96,19 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
         
         let tapClick: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
         backGroundView.addGestureRecognizer(tapClick)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        clipRoundCorners()
+    }
+    
+    func clipRoundCorners() -> Void {
+        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
+        let maskLayer: CAShapeLayer = CAShapeLayer()
+        maskLayer.frame = roundView.bounds
+        maskLayer.path = maskPath.cgPath
+        roundView.layer.mask = maskLayer
     }
     
     @objc func tapClick() -> Void {

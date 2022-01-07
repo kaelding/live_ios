@@ -37,7 +37,7 @@ class DeviceService: NSObject {
     var audioBitrate: RTCAudioBitrate = .b48
     var videoCodeID: RTCVideoCode = .h264
     var layerCoding: Bool = false
-    var hardwareCoding: Bool = false
+    var hardwareCoding: Bool = true
     var hardwareDecoding: Bool = false
     var noiseRedution: Bool = false
     var echo: Bool = false
@@ -100,16 +100,19 @@ class DeviceService: NSObject {
         case .encoding:
             return
         case .layered:
-            return
+            layerCoding = enable
         case .hardware:
-            return
+            ZegoExpressEngine.shared().enableHardwareEncoder(enable)
+            hardwareCoding = enable
         case .decoding:
-            return
+            ZegoExpressEngine.shared().enableHardwareDecoder(enable)
+            hardwareDecoding = enable
         case .noise:
-            return
+            noiseRedution = enable
         case .echo:
-            return
+            echo = enable
         case .volume:
+            micVolume = enable
             return
         case .resolution:
             return

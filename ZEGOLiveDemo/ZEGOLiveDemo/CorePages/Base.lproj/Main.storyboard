@@ -458,23 +458,24 @@ please create a live room~</string>
                                 <rect key="frame" x="16" y="580" width="309" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="1PB-I6-fkD"/>
+                                    <constraint firstAttribute="height" priority="750" constant="200" id="1PB-I6-fkD"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="tlW-T5-3Sj"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" id="52Q-0u-7gF"/>
                             <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Zci-IS-InW" secondAttribute="trailing" constant="89" id="6Qu-ei-Ilu"/>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
+                            <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="F3w-0Y-eON"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Fk7-cm-ybw" secondAttribute="trailing" id="Gj8-3L-IZJ"/>
                             <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
                             <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
-                            <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="SvM-qh-Ueg"/>
+                            <constraint firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="UGC-g6-KB4"/>
                             <constraint firstItem="Zci-IS-InW" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" constant="16" id="UV0-La-CHv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Zci-IS-InW" secondAttribute="bottom" constant="62" id="XKI-hn-4y1"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>

@@ -7,6 +7,7 @@
 
 import UIKit
 import ZegoExpressEngine
+import ZIM
 
 class LiveRoomVC: UIViewController {
 
@@ -171,17 +172,13 @@ class LiveRoomVC: UIViewController {
         return textView
     }()
     
-    var localUserID: String {
-        get {
-            return RoomManager.shared.userService.localUserInfo?.userID ?? ""
-        }
-    }
     
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         RoomManager.shared.messageService.delegate = self
-        RoomManager.shared.userService.delegates.add(self)
+        RoomManager.shared.roomService.delegate = self
+        RoomManager.shared.userService.addUserServiceDelegate(self)
         addObserver()
 
         // Do any additional setup after loading the view.
@@ -220,23 +217,17 @@ class LiveRoomVC: UIViewController {
     func configUI() {
         self.view.addSubview(inputTextView)
         navigationController?.navigationBar.isHidden = true
-        let isReadyView = RoomManager.shared.roomService.roomInfo.roomID == nil
-        readyContainer.isHidden = !isReadyView
-        topContainer.isHidden = isReadyView
-        bottomContainer.isHidden = isReadyView
-        messageView.isHidden = isReadyView
+        readyContainer.isHidden = isLiving
+        topContainer.isHidden = !isLiving
+        bottomContainer.isHidden = !isLiving
+        messageView.isHidden = !isLiving
+        coHostCollectionView.isHidden = !isLiving
         self.updateTopView()
     }
      
     func configVideoStream() {
-        if RoomManager.shared.roomService.roomInfo.roomID == nil {
+        if !isLiving {
             startPreview()
-        } else {
-            if RoomManager.shared.userService.isMyselfHost {
-                startPublish()
-            } else {
-                startPlaying()
-            }
         }
     }
     
@@ -247,26 +238,25 @@ class LiveRoomVC: UIViewController {
         ZegoExpressEngine.shared().enableCamera(true)
         ZegoExpressEngine.shared().startPreview(canvas)
     }
-    
-    func startPublish() {
-        if let userID = RoomManager.shared.userService.localUserInfo?.userID {
-            ZegoExpressEngine.shared().startPublishingStream(userID)
-            ZegoExpressEngine.shared().enableCamera(true)
-            ZegoExpressEngine.shared().muteMicrophone(false)
-        }
-    }
-    
+        
     func startPlaying() {
-        if let userID = RoomManager.shared.userService.localUserInfo?.userID {
-            let canvas = ZegoCanvas(view: streamView)
-            canvas.viewMode = .aspectFill
-            ZegoExpressEngine.shared().startPlayingStream(userID, canvas: canvas)
-        }
+        let hostID = RoomManager.shared.roomService.roomInfo.hostID
+        let roomID = RoomManager.shared.roomService.roomInfo.roomID
+        let streamID = String.getStreamID(hostID, roomID: roomID)
+        let canvas = ZegoCanvas(view: streamView)
+        canvas.viewMode = .aspectFill
+        ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
     }
     
     func joinRoom() {
         RoomManager.shared.userService.getOnlineRoomUsers(nil) { result in
         
         }
+    }
+}
+
+extension LiveRoomVC : RoomServiceDelegate {
+    func receiveRoomInfoUpdate(_ info: RoomInfo?) {
+        
     }
 }

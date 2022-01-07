@@ -60,7 +60,7 @@ extension LiveRoomVC : InputTextViewDelegate {
         RoomManager.shared.messageService.sendTextMessage(message) { result in
             switch result {
             case .success(()):
-                let model = MessageModelBuilder.buildModel(userID: self.localUserID, message: message)
+                let model = MessageModelBuilder.buildModel(with: self.getUser(self.localUserID), message: message)
                 self.messageList.append(model)
                 self.reloadMessageData()
             case .failure(let error):
@@ -73,7 +73,7 @@ extension LiveRoomVC : InputTextViewDelegate {
 
 extension LiveRoomVC : MessageServiceDelegate {
     func receiveTextMessage(_ message: TextMessage) {
-        let model = MessageModelBuilder.buildModel(userID: message.userID, message: message.message)
+        let model = MessageModelBuilder.buildModel(with: getUser(localUserID), message: message.message)
         messageList.append(model)
         reloadMessageData()
     }

@@ -21,8 +21,7 @@ class MessageModelBuilder: NSObject {
         }
     }
     
-    static func buildModel(userID: String, message: String) -> MessageModel {
-        let user: UserInfo? = getUser(with: userID)
+    static func buildModel(with user: UserInfo?, message: String) -> MessageModel {
         let isHost: Bool = user?.role == .host;
         let attributedStr: NSMutableAttributedString = NSMutableAttributedString()
         
@@ -55,23 +54,14 @@ class MessageModelBuilder: NSObject {
     
     static func buildLeftMessageModel(user: UserInfo) -> MessageModel {
         let message = String(format: ZGLocalizedString("room_page_has_left_the_room"))
-        return buildModel(userID: user.userID ?? "", message: message)
+        return buildModel(with: user, message: message)
     }
     
     static func buildJoinMessageModel(user: UserInfo) -> MessageModel {
         let message = String(format: ZGLocalizedString("room_page_joined_the_room"))
-        return buildModel(userID: user.userID ?? "", message: message)
+        return buildModel(with: user, message: message)
     }
-    
-    private static func getUser(with userID:String) -> UserInfo? {
-        for user:UserInfo in RoomManager.shared.userService.userList.allObjects() {
-            if user.userID == userID {
-                return user
-            }
-        }
-        return nil
-    }
-    
+        
     private static func getNameAttributes(isHost: Bool) -> [NSAttributedString.Key : Any] {
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.paragraphSpacing = 0

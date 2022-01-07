@@ -63,7 +63,6 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 guard let roomName = roomInfo.roomName else { return }
                 
                 self.createRTCRoomWith(roomID: roomID, roomName: roomName)
-                self.isLiving = true
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
                 HUDHelper.showMessage(message: message)
@@ -78,10 +77,13 @@ extension LiveRoomVC : LiveReadyViewDelegate {
             HUDHelper.hideNetworkLoading()
             switch result {
             case .success():
+                self.isLiving = true
                 self.joinServerRoom()
                 self.updateStartView()
-                self.startPublish()
                 self.updateTopView()
+                RoomManager.shared.userService.takeCoHostSeat { result in
+                    
+                }
                 break
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)

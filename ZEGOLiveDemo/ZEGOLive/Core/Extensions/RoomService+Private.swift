@@ -41,25 +41,34 @@ extension RoomService {
         
         // delegate to UI
         let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
-        if myUserID != action.targetID { return }
+        let isMyselfUpdate = myUserID == action.targetID
+        let seat = self.operation.seatList.filter({ $0.userID == action.targetID }).first
         
         for delegate in RoomManager.shared.userService.delegates.allObjects {
             guard let delegate = delegate as? UserServiceDelegate else { continue }
-            if action.type == .requestToCoHost {
-                delegate.receiveToCoHostRequest()
-            } else if action.type == .cancelRequestCoHost {
-                delegate.receiveCancelToCoHostRequest()
-            } else if action.type == .agreeToCoHost {
-                delegate.receiveToCoHostRespond(true)
-            } else if action.type == .declineToCoHost {
-                delegate.receiveToCoHostRespond(false)
+            
+            switch action.type {
+            case .requestToCoHost:
+                if isMyselfUpdate { delegate.receiveToCoHostRequest() }
+            case .cancelRequestCoHost:
+                if isMyselfUpdate { delegate.receiveCancelToCoHostRequest() }
+            case .agreeToCoHost:
+                if isMyselfUpdate { delegate.receiveToCoHostRespond(true) }
+            case .declineToCoHost:
+                if isMyselfUpdate { delegate.receiveToCoHostRespond(false) }
+            case .takeCoHostSeat: delegate.coHostChange(seat, type: .add)
+            case .leaveCoHostSeat: delegate.coHostChange(seat, type: .leave)
+            case .mic: delegate.coHostChange(seat, type: .mic)
+            case .camera: delegate.coHostChange(seat, type: .camera)
+            case .mute: delegate.coHostChange(seat, type: .mute)
+            default: break
             }
         }
         
+        // if it is myself update
+        guard let seat = seat else { return }
+        if !isMyselfUpdate { return }
         
-        guard let seat = self.operation.seatList.filter({ $0.userID == myUserID }).first else {
-            return
-        }
         if action.type == .mic {
             ZegoExpressEngine.shared().muteMicrophone(!seat.mic)
         }

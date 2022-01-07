@@ -143,7 +143,7 @@ extension RoomManager: ZegoEventHandler {
         
         for stream in streamList {
             if updateType == .add {
-                ZegoExpressEngine.shared().startPlayingStream(stream.streamID, canvas: nil)
+//                ZegoExpressEngine.shared().startPlayingStream(stream.streamID, canvas: nil)
             } else {
                 ZegoExpressEngine.shared().stopPlayingStream(stream.streamID)
             }

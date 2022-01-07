@@ -73,6 +73,19 @@ class MusicEffectsVC: UIViewController {
         backGroundView.addGestureRecognizer(tap)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
+    
+    func clipRoundCorners() -> Void {
+        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
+        let maskLayer: CAShapeLayer = CAShapeLayer()
+        maskLayer.frame = containerView.bounds
+        maskLayer.path = maskPath.cgPath
+        containerView.layer.mask = maskLayer
+    }
+    
     @objc func tapClick() -> Void {
         self.view.isHidden = true
     }

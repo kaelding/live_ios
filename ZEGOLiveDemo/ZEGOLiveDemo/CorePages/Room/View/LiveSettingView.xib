@@ -73,6 +73,7 @@
             <connections>
                 <outlet property="backGroundView" destination="b32-Pf-8dw" id="LB4-Bl-W77"/>
                 <outlet property="containerViewHeight" destination="1xt-on-e3n" id="opB-gF-MU2"/>
+                <outlet property="roundView" destination="uNJ-wz-qRn" id="AWk-pB-rB9"/>
                 <outlet property="settingLabel" destination="aF2-O5-1YM" id="dB0-Av-Td8"/>
                 <outlet property="settingTableView" destination="ufl-AH-2AQ" id="VjA-Li-R8h"/>
                 <outlet property="topLineView" destination="aqe-fN-qvl" id="Lmu-vq-HR0"/>

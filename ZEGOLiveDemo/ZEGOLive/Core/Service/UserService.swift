@@ -9,6 +9,14 @@ import Foundation
 import ZIM
 import ZegoExpressEngine
 
+enum CoHostChangeType {
+    case add
+    case leave
+    case mic
+    case camera
+    case mute
+}
+
 protocol UserServiceDelegate : AnyObject  {
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent)
     /// receive user join room
@@ -25,6 +33,8 @@ protocol UserServiceDelegate : AnyObject  {
     func receiveCancelToCoHostRequest()
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool)
+    
+    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType)
 }
 
 // default realized
@@ -36,6 +46,7 @@ extension UserServiceDelegate {
     func receiveToCoHostRequest() { }
     func receiveCancelToCoHostRequest() { }
     func receiveToCoHostRespond() { }
+    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) { }
 }
 
 class UserService: NSObject {

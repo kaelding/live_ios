@@ -68,4 +68,8 @@ extension LiveRoomVC : UserServiceDelegate {
     func receiveToCoHostRespond(_ agree: Bool) {
         
     }
+    
+    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) {
+        
+    }
 }

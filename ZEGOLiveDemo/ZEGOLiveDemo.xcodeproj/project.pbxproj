@@ -103,6 +103,7 @@
 		8E22442A2786983E00B86C52 /* LiveRoomVC+CoHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */; };
 		8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22442F2786A13500B86C52 /* CoHostCell.swift */; };
 		8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2244332786A17500B86C52 /* CoHostCell.xib */; };
+		8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -306,6 +307,7 @@
 		8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+CoHost.swift"; sourceTree = "<group>"; };
 		8E22442F2786A13500B86C52 /* CoHostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostCell.swift; sourceTree = "<group>"; };
 		8E2244332786A17500B86C52 /* CoHostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoHostCell.xib; sourceTree = "<group>"; };
+		8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Util.swift"; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				860E11762786CDB8008847C4 /* LiveRoomVC+Setting.swift */,
 				8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */,
 				86966BBB278817F500245F25 /* LiveRoomVC+Participant.swift */,
+				8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				8EE13EFD27745B810038AFCF /* ZegoJsonTool.swift in Sources */,
 				8EE13F2A277AEC450038AFCF /* AppDefine.swift in Sources */,
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
+				8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */,
 				864B3EF0277EEEB900699B69 /* BGMModel.swift in Sources */,
 				8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */,
 				86938AE2278426CC001DD575 /* MessageModelBuilder.swift in Sources */,
@@ -1352,7 +1356,7 @@
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the voice interaction.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风进行语音通话，需要开启麦克风权限";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1390,7 +1394,7 @@
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the voice interaction.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风进行语音通话，需要开启麦克风权限";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

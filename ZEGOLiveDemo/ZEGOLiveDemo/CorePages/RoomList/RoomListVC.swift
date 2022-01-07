@@ -75,7 +75,8 @@ class RoomListVC: UIViewController {
     
     // MARK: private method
     func joinLiveRoom() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LiveRoomVC")
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LiveRoomVC") as! LiveRoomVC
+        vc.isLiving = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -25,7 +25,7 @@ class TipView: UIView {
     }
     
     
-    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool)  {
+    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = false)  {
         let tipView: TipView = UINib(nibName: "TipView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TipView
         tipView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 70)
         tipView.autoDismiss = autoDismiss

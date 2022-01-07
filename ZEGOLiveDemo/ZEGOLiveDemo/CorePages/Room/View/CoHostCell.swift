@@ -43,7 +43,8 @@ class CoHostCell: UICollectionViewCell {
             self.backView.isHidden = model?.camera ?? false
             self.micOffImageView.isHidden = model?.mic ?? false
             let user = getUser(model?.userID)
-            setAvatar(user?.avatar)
+            nameLabel.text = user?.userName
+            setAvatar(String.getHeadImageName(userName: user?.userName ?? ""))
         }
     }
         

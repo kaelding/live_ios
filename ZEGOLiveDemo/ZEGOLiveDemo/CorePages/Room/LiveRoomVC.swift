@@ -238,15 +238,6 @@ class LiveRoomVC: UIViewController {
         ZegoExpressEngine.shared().enableCamera(true)
         ZegoExpressEngine.shared().startPreview(canvas)
     }
-        
-    func startPlaying() {
-        let hostID = RoomManager.shared.roomService.roomInfo.hostID
-        let roomID = RoomManager.shared.roomService.roomInfo.roomID
-        let streamID = String.getStreamID(hostID, roomID: roomID)
-        let canvas = ZegoCanvas(view: streamView)
-        canvas.viewMode = .aspectFill
-        ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
-    }
     
     func joinRoom() {
         RoomManager.shared.userService.getOnlineRoomUsers(nil) { result in

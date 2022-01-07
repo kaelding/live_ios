@@ -81,6 +81,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 self.joinServerRoom()
                 self.updateStartView()
                 self.startPublish()
+                self.updateTopView()
                 break
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)

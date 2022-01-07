@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension LiveRoomVC : LiveTopViewDelegate {
     func liveTopView(_ topView: LiveTopView, didClickButtonWith action: LiveTopAction) {
@@ -30,5 +31,16 @@ extension LiveRoomVC : LiveTopViewDelegate {
                 break
             }
         }
+    }
+        
+    func updateTopView() {
+        let roomInfo = RoomManager.shared.roomService.roomInfo
+//        guard let hostID = roomInfo.hostID else { return }
+        guard let roomName = roomInfo.roomName else { return }
+//        guard let hostInfo = RoomManager.shared.userService.userList.getObj(hostID) else { return }
+//        topView?.avatarImageView.image = UIImage(named: hostInfo.)
+        let number = RoomManager.shared.userService.userList.count
+        topView?.nameLabel.text = roomName
+        topView?.participantButton.setTitle(String(number), for: .normal)
     }
 }

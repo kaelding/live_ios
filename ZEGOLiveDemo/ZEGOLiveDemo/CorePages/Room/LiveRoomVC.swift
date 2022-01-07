@@ -181,6 +181,7 @@ class LiveRoomVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         RoomManager.shared.messageService.delegate = self
+        RoomManager.shared.userService.delegates.add(self)
         addObserver()
 
         // Do any additional setup after loading the view.
@@ -224,6 +225,7 @@ class LiveRoomVC: UIViewController {
         topContainer.isHidden = isReadyView
         bottomContainer.isHidden = isReadyView
         messageView.isHidden = isReadyView
+        self.updateTopView()
     }
      
     func configVideoStream() {
@@ -259,6 +261,12 @@ class LiveRoomVC: UIViewController {
             let canvas = ZegoCanvas(view: streamView)
             canvas.viewMode = .aspectFill
             ZegoExpressEngine.shared().startPlayingStream(userID, canvas: canvas)
+        }
+    }
+    
+    func joinRoom() {
+        RoomManager.shared.userService.getOnlineRoomUsers(nil) { result in
+        
         }
     }
 }

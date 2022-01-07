@@ -126,7 +126,7 @@ class UserService: NSObject {
     }
     
     /// get users of target page.
-    func getOnlineRoomUsers(_ page: UInt, callback: OnlineRoomUsersCallback?) {
+    func getOnlineRoomUsers(_ nextFlag: String?, callback: OnlineRoomUsersCallback?) {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
@@ -135,7 +135,7 @@ class UserService: NSObject {
         }
         let config = ZIMQueryMemberConfig()
         config.count = 100
-        config.nextFlag = String(page)
+        config.nextFlag = nextFlag ?? ""
         ZIMManager.shared.zim?.queryRoomMember(roomID, config: config, callback: { zimUsers, nextFlag, error in
             
             if error.code != .ZIMErrorCodeSuccess {

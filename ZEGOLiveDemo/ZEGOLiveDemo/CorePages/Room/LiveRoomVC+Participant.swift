@@ -70,6 +70,6 @@ extension LiveRoomVC : UserServiceDelegate {
     }
     
     func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) {
-        
+        reloadCoHost()
     }
 }

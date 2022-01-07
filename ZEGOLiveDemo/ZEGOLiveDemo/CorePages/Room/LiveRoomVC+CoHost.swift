@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZegoExpressEngine
 
 extension LiveRoomVC :
     UICollectionViewDataSource,
@@ -14,15 +15,15 @@ extension LiveRoomVC :
 {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = RoomManager.shared.userService.coHostList.count
-        return count
+        return coHostList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoHostCell", for: indexPath) as! CoHostCell
-        cell.model = RoomManager.shared.userService.coHostList[indexPath.row]
+        let model = coHostList[indexPath.row]
+        cell.model = model
         cell.delegate = self
-        
+        startPlaying(model.userID, streamView: cell.streamView)
         return cell
     }
     
@@ -30,9 +31,8 @@ extension LiveRoomVC :
         
     }
     
-    
-    func updateCollectionViewHeight() {
-        let count = RoomManager.shared.userService.coHostList.count
+    func updateCollectionViewConstraint() {
+        let count = coHostList.count
         var height = CGFloat(count) * (124.0 + 8.0) - 8.0
         if height < 124.0 {
             height = 124.0
@@ -41,6 +41,7 @@ extension LiveRoomVC :
             height = 388.0
         }
         coHostViewHeightConstraint.constant = height
+        coHostCollectionView.isHidden = count <= 0
     }
 }
 
@@ -67,5 +68,54 @@ extension LiveRoomVC : CoHostCellDelegate {
         alert.addAction(prohibitAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LiveRoomVC {
+    func reloadCoHost() {
+        
+        if let hostSeat = RoomManager.shared.userService.coHostList.filter({ $0.userID ==  getHostID()}).first {
+            if !isMyselfHost {
+                startPlaying(hostSeat.userID, streamView: streamView)
+            }
+        }
+        setCoHostList()
+        updateCollectionViewConstraint()
+        coHostCollectionView.reloadData()
+    }
+    
+    private func startPlaying(_ userID: String?, streamView: UIView) {
+        let streamID = String.getStreamID(userID, roomID: getRoomID())
+        let canvas = ZegoCanvas(view: streamView)
+        canvas.viewMode = .aspectFill
+        ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
+    }
+    
+    private func setCoHostList() {
+        let mySeat = RoomManager.shared.userService.coHostList.filter({
+            $0.userID == localUserID && $0.userID != getHostID()
+        }).first
+        var list = RoomManager.shared.userService.coHostList.filter {
+            $0.userID != localUserID && $0.userID != getHostID()
+        }
+        if let mySeat = mySeat {
+            if !isMyselfHost { list.insert(mySeat, at: 0) }
+        }
+        coHostList = list
+    }
+}
+
+
+extension LiveRoomVC {
+    private struct AssociatedKey {
+        static var identifier: String = "identifier_dataSource"
+    }
+    private var coHostList: [CoHostSeatModel] {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKey.identifier) as? [CoHostSeatModel] ?? []
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKey.identifier, newValue, .OBJC_ASSOCIATION_COPY)
+        }
     }
 }

@@ -23,6 +23,14 @@ extension LiveRoomVC {
         return nil
     }
     
+    func getHostID() -> String {
+        return RoomManager.shared.roomService.roomInfo.hostID ?? ""
+    }
+    
+    func getRoomID() -> String {
+        return RoomManager.shared.roomService.roomInfo.roomID ?? ""
+    }
+    
     // get local user ID
     var localUserID: String {
         get {
@@ -30,7 +38,7 @@ extension LiveRoomVC {
         }
     }
     
-    var isHost: Bool {
+    var isMyselfHost: Bool {
         RoomManager.shared.roomService.roomInfo.hostID == localUserID
     }
 }

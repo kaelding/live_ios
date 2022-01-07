@@ -55,3 +55,8 @@ enum ZegoError: Error {
         }
     }
 }
+
+func getKeyWindow() -> UIWindow {
+    let window: UIWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).last!
+    return window
+}

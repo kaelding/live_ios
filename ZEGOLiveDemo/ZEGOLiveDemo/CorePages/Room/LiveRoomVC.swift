@@ -79,6 +79,18 @@ class LiveRoomVC: UIViewController {
         return nil
     }()
     
+    lazy var LivingSettingView : LiveSettingView? = {
+        if let view: LiveSettingView = UINib.init(nibName: "LiveSettingView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingView {
+            view.setViewType(.less)
+            view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            view.isHidden = true
+            view.delegate = self
+            self.view.addSubview(view)
+            return view
+        }
+        return nil
+    }()
+    
     lazy var resolutionView: LiveSettingSecondView? = {
         if let view: LiveSettingSecondView = UINib(nibName: "LiveSettingSecondView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LiveSettingSecondView {
             view.setShowDataSourceType(.resolution)
@@ -124,6 +136,17 @@ class LiveRoomVC: UIViewController {
         self.view.addSubview(participantListView)
         return participantListView
     }()
+    
+    lazy var moreSettingView: MoreSettingView = {
+        let view: MoreSettingView = UINib(nibName: "MoreSettingView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! MoreSettingView
+        view.frame = self.view.bounds
+        view.isHidden = true
+        view.delegate = self
+        self.view.addSubview(view)
+        return view
+    }()
+    
+    var isLiving: Bool = false
     
     @IBOutlet weak var messageView: MessageView!
     

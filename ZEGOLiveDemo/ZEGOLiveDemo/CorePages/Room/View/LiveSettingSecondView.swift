@@ -13,7 +13,7 @@ enum SettingSecondViewType: Int {
     case encoding
 }
 
-protocol LiveSettingSecondViewDelegate {
+protocol LiveSettingSecondViewDelegate: AnyObject {
     func settingSecondViewDidBack()
 }
 
@@ -49,7 +49,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
-    var delegate: LiveSettingSecondViewDelegate?
+    weak var delegate: LiveSettingSecondViewDelegate?
     var viewType: SettingSecondViewType = .resolution
     var dataSource: [LiveSettingSecondLevelModel] = []
     

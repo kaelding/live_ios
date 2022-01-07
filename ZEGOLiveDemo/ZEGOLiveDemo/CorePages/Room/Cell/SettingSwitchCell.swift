@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SettingSwitchCellDelegate {
+protocol SettingSwitchCellDelegate: AnyObject {
     func cellSwitchValueChange(_ value: Bool, cell: SettingSwitchCell)
 }
 
@@ -16,7 +16,7 @@ class SettingSwitchCell: SettingBaseCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     
-    var delegate: SettingSwitchCellDelegate?
+    weak var delegate: SettingSwitchCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

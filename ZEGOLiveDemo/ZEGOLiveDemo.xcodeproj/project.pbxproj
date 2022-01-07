@@ -72,6 +72,11 @@
 		86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */; };
 		86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A21F2779EBB0002A7658 /* RequestStatus.swift */; };
 		86A8A223277B38E6002A7658 /* RoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A8A222277B38E6002A7658 /* RoomListViewCell.swift */; };
+		86B6DF912787E4FD0023A898 /* MoreSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6DF902787E4FD0023A898 /* MoreSettingView.swift */; };
+		86B6DF932787E5190023A898 /* MoreSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF922787E5190023A898 /* MoreSettingView.xib */; };
+		86B6DF962787E8280023A898 /* MoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6DF942787E8280023A898 /* MoreCollectionViewCell.swift */; };
+		86B6DF972787E8280023A898 /* MoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF952787E8280023A898 /* MoreCollectionViewCell.xib */; };
+		86B6DF992787E9570023A898 /* MoreSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6DF982787E9570023A898 /* MoreSettingModel.swift */; };
 		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
 		86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB02784428A00DBE379 /* SoundEffectService.swift */; };
 		86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB2278542C500DBE379 /* LiveSettingView.swift */; };
@@ -269,6 +274,11 @@
 		86A8A21D2779EA34002A7658 /* HeartBeatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatRequest.swift; sourceTree = "<group>"; };
 		86A8A21F2779EBB0002A7658 /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
 		86A8A222277B38E6002A7658 /* RoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewCell.swift; sourceTree = "<group>"; };
+		86B6DF902787E4FD0023A898 /* MoreSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingView.swift; sourceTree = "<group>"; };
+		86B6DF922787E5190023A898 /* MoreSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreSettingView.xib; sourceTree = "<group>"; };
+		86B6DF942787E8280023A898 /* MoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		86B6DF952787E8280023A898 /* MoreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreCollectionViewCell.xib; sourceTree = "<group>"; };
+		86B6DF982787E9570023A898 /* MoreSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingModel.swift; sourceTree = "<group>"; };
 		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
 		86BD9EB02784428A00DBE379 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
 		86BD9EB2278542C500DBE379 /* LiveSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingView.swift; sourceTree = "<group>"; };
@@ -402,6 +412,7 @@
 				86938AD7277DD8E5001DD575 /* FaceBeautifyModel.swift */,
 				86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */,
 				86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */,
+				86B6DF982787E9570023A898 /* MoreSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -659,6 +670,8 @@
 				86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */,
 				86BD9ECE27869CD600DBE379 /* SettingSecondLevelCell.swift */,
 				86BD9ECF27869CD600DBE379 /* SettingSecondLevelCell.xib */,
+				86B6DF942787E8280023A898 /* MoreCollectionViewCell.swift */,
+				86B6DF952787E8280023A898 /* MoreCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -715,6 +728,8 @@
 				869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */,
 				8E22442F2786A13500B86C52 /* CoHostCell.swift */,
 				8E2244332786A17500B86C52 /* CoHostCell.xib */,
+				86B6DF902787E4FD0023A898 /* MoreSettingView.swift */,
+				86B6DF922787E5190023A898 /* MoreSettingView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -985,6 +1000,7 @@
 			files = (
 				86938AE1278426CC001DD575 /* InputTextView.xib in Resources */,
 				86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */,
+				86B6DF932787E5190023A898 /* MoreSettingView.xib in Resources */,
 				86BD9EC82786939800DBE379 /* liveshow-backgroundMusic_0.mp3 in Resources */,
 				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
 				86938ACF277DA122001DD575 /* FaceBeaytifyView.xib in Resources */,
@@ -993,6 +1009,7 @@
 				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
+				86B6DF972787E8280023A898 /* MoreCollectionViewCell.xib in Resources */,
 				86938AE92784323A001DD575 /* MessageCell.xib in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
 				869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */,
@@ -1073,6 +1090,7 @@
 				86938AE2278426CC001DD575 /* MessageModelBuilder.swift in Sources */,
 				86938B3E2784772C001DD575 /* ZegoCrypto.cpp in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
+				86B6DF912787E4FD0023A898 /* MoreSettingView.swift in Sources */,
 				86938AC7277D60BA001DD575 /* EffectsLicense.swift in Sources */,
 				869F6D2D2785A3710018788E /* String+Head.swift in Sources */,
 				86938AD5277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift in Sources */,
@@ -1096,6 +1114,7 @@
 				860E11772786CDB8008847C4 /* LiveRoomVC+Setting.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */,
+				86B6DF962787E8280023A898 /* MoreCollectionViewCell.swift in Sources */,
 				869F6D2427859B360018788E /* ParticipantListView.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,
 				86A8A21E2779EA34002A7658 /* HeartBeatRequest.swift in Sources */,
@@ -1160,6 +1179,7 @@
 				8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */,
 				86BD9ED027869CD600DBE379 /* SettingSecondLevelCell.swift in Sources */,
 				86A8A2202779EBB0002A7658 /* RequestStatus.swift in Sources */,
+				86B6DF992787E9570023A898 /* MoreSettingModel.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
 				86BD9ED327869E4F00DBE379 /* LiveSettingSecondLevelModel.swift in Sources */,
 				86938B352784772C001DD575 /* AppToken.swift in Sources */,

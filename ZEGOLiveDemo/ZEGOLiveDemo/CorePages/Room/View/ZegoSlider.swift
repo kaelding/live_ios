@@ -60,7 +60,7 @@ class ZegoSlider: UIView {
         indicatorImgView.frame = CGRect(x: 0, y: 0, width: 36, height: 30.5)
         label.frame = CGRect(x: 0, y: 1.0, width: 36, height: 21)
         label.center = CGPoint(x: indicatorImgView.center.x, y: label.center.y)
-        slider.frame = CGRect(x: 0, y: 35, width: self.bounds.width, height: 16.0)
+        slider.frame = CGRect(x: 0, y: 50.5, width: self.bounds.width, height: 16.0)
     }
     
     // MARK: - action

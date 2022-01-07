@@ -128,6 +128,15 @@ class LiveRoomVC: UIViewController {
     @IBOutlet weak var messageView: MessageView!
     
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var coHostViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var coHostCollectionView: UICollectionView! {
+        didSet {
+            coHostCollectionView.backgroundColor = UIColor.clear
+            coHostCollectionView.register(UINib(nibName: "CoHostCell", bundle: nil), forCellWithReuseIdentifier: "CoHostCell")
+        }
+    }
+    
     
     var messageList: [MessageModel] = []
     var isFrontCamera: Bool = true

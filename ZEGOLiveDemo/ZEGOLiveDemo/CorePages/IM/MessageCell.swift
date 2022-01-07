@@ -26,10 +26,10 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        backView.layer.cornerRadius = 5.0
+        backView.layer.cornerRadius = 13.0
         backView.clipsToBounds = true
         
-        ownerLabel.layer.cornerRadius = 2.0
+        ownerLabel.layer.cornerRadius = 9.0
         ownerLabel.clipsToBounds = true
         ownerLabel.text = ZGLocalizedString("room_page_host")
     }

@@ -17,4 +17,18 @@ extension LiveRoomVC : LiveTopViewDelegate {
             leaveRoom()
         }
     }
+    
+    func leaveRoom() {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+        RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
+        RoomManager.shared.roomService.leaveRoom { result in
+            switch result {
+            case .success():
+                self.navigationController?.popViewController(animated: true)
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
 }

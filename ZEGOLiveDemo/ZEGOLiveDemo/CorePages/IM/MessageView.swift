@@ -11,8 +11,8 @@ class MessageView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     
 //    var _tableView:UITableView?
-    var messageTableView:UITableView?
-    var dataSource:Array<MessageModel>?
+    var messageTableView: UITableView?
+    var dataSource: Array<MessageModel>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,15 +24,15 @@ class MessageView: UIView,UITableViewDataSource,UITableViewDelegate {
         MessageModelBuilder.messageViewWidth = self.frame.size.width
     }
     
-    var constraintLeft:NSLayoutConstraint!
+    var constraintLeft: NSLayoutConstraint!
     //MARK: -Private
     private func configUI() -> Void {
         self.backgroundColor = UIColor.clear
         setupTableView()
-        let constraintLeft:NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .left)
-        let constraintRight:NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .right)
-        let constraintTop:NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .top)
-        let constraintBottom:NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .bottom)
+        let constraintLeft: NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .left)
+        let constraintRight: NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .right)
+        let constraintTop: NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .top)
+        let constraintBottom: NSLayoutConstraint = equallyRelatedConstraint(view: messageTableView ?? UITableView(), attribute: .bottom)
         self.addConstraints([constraintLeft,constraintRight,constraintTop,constraintBottom])
     }
     
@@ -71,7 +71,7 @@ class MessageView: UIView,UITableViewDataSource,UITableViewDelegate {
             return
         }
         self.layoutIfNeeded()
-        let indexPath:IndexPath = IndexPath.init(row: dataSource!.count - 1, section: 0)
+        let indexPath: IndexPath = IndexPath.init(row: dataSource!.count - 1, section: 0)
         messageTableView?.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
     }
     
@@ -82,17 +82,17 @@ class MessageView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let messageCell:MessageCell = tableView.dequeueReusableCell(withIdentifier:"MessageCell", for: indexPath) as! MessageCell
+        let messageCell: MessageCell = tableView.dequeueReusableCell(withIdentifier:"MessageCell", for: indexPath) as! MessageCell
         if indexPath.row < dataSource!.count {
-            let index:Int = indexPath.row
+            let index: Int = indexPath.row
             messageCell.model = dataSource![index]
         }
         return messageCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let model:MessageModel = dataSource![indexPath.row]
-        return model.messageHeight! + 10*2 + 10
+        let model: MessageModel = dataSource![indexPath.row]
+        return model.messageHeight! + 10.0 + 4.0
     }
 
 }

@@ -10,7 +10,7 @@ import Foundation
 extension LiveRoomVC {
     // MARK: - Notification
     @objc func keyBoardDidShow(node : Notification){
-        
+        if !self.readyContainer.isHidden { return }
         guard let userInfo = node.userInfo else { return }
         guard let keyboardValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
@@ -43,9 +43,9 @@ extension LiveRoomVC {
     }
     
     func updateMessageHeightConstraint() -> Void {
-        var height:CGFloat = 0
-        for model:MessageModel in messageList {
-            height += (model.messageHeight ?? 0) + 10*2 + 10
+        var height: CGFloat = 0
+        for model: MessageModel in messageList {
+            height += (model.messageHeight ?? 0) + 4.0 + 10.0
         }
         messageHeightConstraint.constant = height
     }

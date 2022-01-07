@@ -13,7 +13,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction) {
         switch action {
         case .back:
-            leaveRoom()
+            self.navigationController?.popViewController(animated: true)
             break
         case .cameraFlip:
             isFrontCamera = !isFrontCamera
@@ -41,7 +41,6 @@ extension LiveRoomVC : LiveReadyViewDelegate {
             let startIndex = text.index(text.startIndex, offsetBy: 0)
             let index = text.index(text.startIndex, offsetBy: 15)
             textField.text = String(text[startIndex...index])
-            
         }
     }
     
@@ -96,25 +95,12 @@ extension LiveRoomVC : LiveReadyViewDelegate {
         self.topContainer.isHidden = false
         self.bottomContainer.isHidden = false
         self.messageView.isHidden = false
+        self.coHostCollectionView.isHidden = true
     }
     
     func joinServerRoom() {
         if let roomID = RoomManager.shared.roomService.roomInfo.roomID {
             RoomManager.shared.roomListService.joinServerRoom(roomID) { result in
-            }
-        }
-    }
-    
-    func leaveRoom() {
-        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
-        RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
-        RoomManager.shared.roomService.leaveRoom { result in
-            switch result {
-            case .success():
-                self.navigationController?.popViewController(animated: true)
-                break
-            case .failure(_):
-                break
             }
         }
     }

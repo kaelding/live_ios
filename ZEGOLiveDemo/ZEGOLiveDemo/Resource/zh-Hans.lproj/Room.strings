@@ -42,8 +42,8 @@
 "room_page_settings" = "设置";
 "room_page_set_take_seat" = "禁止房间用户上麦";
 "room_page_set_silence" = "禁止房间用户发送消息";
-"room_page_has_left_the_room" = "%@ 离开房间";
-"room_page_joined_the_room" = "%@ 加入房间";
+"room_page_has_left_the_room" = "离开直播间";
+"room_page_joined_the_room" = "加入直播间";
 "toast_send_message_error" = "发送消息失败，错误码：%d";
 "room_page_bands_send_message" = "房主已开启禁言";
 "room_page_gift" = "礼物";

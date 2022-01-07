@@ -26,7 +26,9 @@ class ParticipantTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
+        backgroundColor = UIColor.clear
+        contentView.backgroundColor = UIColor.clear
     }
     
     public func setRoomUser(user: UserInfo, isHost: Bool) -> Void {
@@ -49,14 +51,14 @@ class ParticipantTableViewCell: UITableViewCell {
         switch userInfo.role {
         case .participant:
             moreButton.isHidden = !selfIsHost
-            roleLabel.isHidden = selfIsHost
+            roleLabel.isHidden = true
             break
         case .coHost:
-            roleLabel.isHidden = selfIsHost
+            roleLabel.isHidden = false
             roleLabel.text =  "co-host";
             break
         case .host:
-            roleLabel.isHidden = selfIsHost
+            roleLabel.isHidden = false
             roleLabel.text = "host";
             break
         case .invited:

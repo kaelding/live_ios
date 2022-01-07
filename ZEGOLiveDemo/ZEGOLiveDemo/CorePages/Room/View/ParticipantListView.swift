@@ -32,6 +32,9 @@ class ParticipantListView: UIView {
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var paticipantTableView: UITableView! {
         didSet {
+            paticipantTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            paticipantTableView.delegate = self
+            paticipantTableView.dataSource = self
             paticipantTableView.backgroundColor = UIColor.clear
             paticipantTableView.register(UINib(nibName: "ParticipantTableViewCell", bundle: nil), forCellReuseIdentifier: "ParticipantTableViewCell")
         }
@@ -45,7 +48,8 @@ class ParticipantListView: UIView {
     }
     var inviteUserInfo: UserInfo?
     
-    func updateMemberListData() {
+    func reloadListView() {
+        self.numLabel.text = String(RoomManager.shared.userService.userList.count)
         paticipantTableView.reloadData()
     }
 

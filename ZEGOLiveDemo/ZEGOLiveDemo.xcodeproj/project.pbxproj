@@ -50,6 +50,7 @@
 		86938B3F2784772C001DD575 /* aes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86938B322784772C001DD575 /* aes.cpp */; };
 		86938B402784772C001DD575 /* Base64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 86938B332784772C001DD575 /* Base64.cc */; };
 		86938B412784772C001DD575 /* AuthorizedCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938B342784772C001DD575 /* AuthorizedCheck.swift */; };
+		86966BBC278817F500245F25 /* LiveRoomVC+Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86966BBB278817F500245F25 /* LiveRoomVC+Participant.swift */; };
 		869DA74F277DA064003E6061 /* MusicEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DA74D277DA063003E6061 /* MusicEffectsVC.swift */; };
 		869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 869DA74E277DA063003E6061 /* MusicEffectsVC.xib */; };
 		869F6D2427859B360018788E /* ParticipantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F6D2327859B360018788E /* ParticipantListView.swift */; };
@@ -254,6 +255,7 @@
 		86938B322784772C001DD575 /* aes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aes.cpp; sourceTree = "<group>"; };
 		86938B332784772C001DD575 /* Base64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cc; sourceTree = "<group>"; };
 		86938B342784772C001DD575 /* AuthorizedCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedCheck.swift; sourceTree = "<group>"; };
+		86966BBB278817F500245F25 /* LiveRoomVC+Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Participant.swift"; sourceTree = "<group>"; };
 		869DA74D277DA063003E6061 /* MusicEffectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsVC.swift; sourceTree = "<group>"; };
 		869DA74E277DA063003E6061 /* MusicEffectsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEffectsVC.xib; sourceTree = "<group>"; };
 		869F6D2327859B360018788E /* ParticipantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantListView.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 				86938AE427842BE2001DD575 /* LiveRoomVC+IM.swift */,
 				860E11762786CDB8008847C4 /* LiveRoomVC+Setting.swift */,
 				8E2244292786983E00B86C52 /* LiveRoomVC+CoHost.swift */,
+				86966BBB278817F500245F25 /* LiveRoomVC+Participant.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -1096,6 +1099,7 @@
 				86938AD5277DABD4001DD575 /* LiveRoomVC+FaceBeautify.swift in Sources */,
 				8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */,
 				86938B382784772C001DD575 /* ZegoToken.mm in Sources */,
+				86966BBC278817F500245F25 /* LiveRoomVC+Participant.swift in Sources */,
 				8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */,
 				864B3EE0277EE75400699B69 /* MusicEffectsVC+BGM.swift in Sources */,
 				8EE13EEF27745B810038AFCF /* UserService.swift in Sources */,

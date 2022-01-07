@@ -24,6 +24,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
         case .beauty:
             self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .setting:
+            self.liveSettingView?.isHidden = false
             print("liveReadyView did click button: \(action)")
         }
     }
@@ -63,6 +64,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 guard let roomName = roomInfo.roomName else { return }
                 
                 self.createRTCRoomWith(roomID: roomID, roomName: roomName)
+                self.isLiving = true
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
                 HUDHelper.showMessage(message: message)

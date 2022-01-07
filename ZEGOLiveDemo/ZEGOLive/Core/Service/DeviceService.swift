@@ -118,4 +118,16 @@ class DeviceService: NSObject {
         }
     }
     
+    func enableCamera(_ enable: Bool) {
+        ZegoExpressEngine.shared().enableCamera(enable)
+    }
+    
+    func muteMicrophone(_ mute: Bool) {
+        ZegoExpressEngine.shared().muteMicrophone(mute)
+    }
+    
+    func useFrontCamera(_ enable: Bool) {
+        ZegoExpressEngine.shared().useFrontCamera(enable)
+    }
+    
 }

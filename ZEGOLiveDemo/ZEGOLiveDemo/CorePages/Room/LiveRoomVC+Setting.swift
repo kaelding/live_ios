@@ -7,19 +7,34 @@
 
 import Foundation
 
-extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate {
- 
-    func settingViewDidSelected(_ model: LiveSettingModel) {
+extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, MoreSettingViewDelegate {
+    
+    func settingViewDidSelected(_ model: LiveSettingModel, type: LiveSettingViewType) {
         switch model.selectionType {
         case .resolution:
-            self.liveSettingView?.isHidden = true
-            self.resolutionView?.isHidden = false
+            if type == .nomal {
+                self.liveSettingView?.isHidden = true
+                self.resolutionView?.isHidden = false
+            } else {
+                self.LivingSettingView?.isHidden = true
+                self.resolutionView?.isHidden = false
+            }
         case .bitrate:
-            self.liveSettingView?.isHidden = true
-            self.bitrateView?.isHidden = false
+            if type == .nomal {
+                self.LivingSettingView?.isHidden = true
+                self.bitrateView?.isHidden = false
+            } else {
+                self.LivingSettingView?.isHidden = true
+                self.resolutionView?.isHidden = false
+            }
         case .encoding:
-            self.liveSettingView?.isHidden = true
-            self.encodingView?.isHidden = false
+            if type == .nomal {
+                self.LivingSettingView?.isHidden = true
+                self.encodingView?.isHidden = false
+            } else {
+                self.LivingSettingView?.isHidden = true
+                self.encodingView?.isHidden = false
+            }
         case .layered:
             return
         case .hardware:
@@ -36,7 +51,20 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate {
     }
     
     func settingSecondViewDidBack() {
-        self.liveSettingView?.isHidden = false
-        self.liveSettingView?.updateUI()
+        if self.isLiving {
+            self.LivingSettingView?.isHidden = false
+            self.LivingSettingView?.updateUI()
+        } else {
+            self.liveSettingView?.isHidden = false
+            self.liveSettingView?.updateUI()
+        }
+        
+    }
+    
+    func moreSettingViewDidSelectedCell(_ type: MoreSettingViewSelectedType) {
+        if type == .setting {
+            self.moreSettingView.isHidden = true
+            self.LivingSettingView?.isHidden = false
+        }
     }
 }

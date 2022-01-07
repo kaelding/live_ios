@@ -12,8 +12,8 @@ enum LiveSettingViewType: Int {
     case less
 }
 
-protocol LiveSettingViewDelegate {
-    func settingViewDidSelected(_ model: LiveSettingModel)
+protocol LiveSettingViewDelegate: AnyObject {
+    func settingViewDidSelected(_ model: LiveSettingModel, type: LiveSettingViewType)
 }
 
 class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, SettingSwitchCellDelegate {
@@ -26,7 +26,8 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
     
-    var delegate: LiveSettingViewDelegate?
+    weak var delegate: LiveSettingViewDelegate?
+    var viewType: LiveSettingViewType = .nomal
     
     var settingDataSource: [LiveSettingModel] = []
     
@@ -77,6 +78,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     }
     
     func setViewType(_ type: LiveSettingViewType)  {
+        viewType = type
         if type == .nomal {
             containerViewHeight.constant = 564
             settingDataSource = [["title": "Encoding type" ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
@@ -161,7 +163,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             case .noise, .echo, .volume:
             break
         case .encoding, .resolution, .bitrate:
-            delegate?.settingViewDidSelected(model)
+            delegate?.settingViewDidSelected(model, type: viewType)
         case .layered:
             break
         case .hardware:

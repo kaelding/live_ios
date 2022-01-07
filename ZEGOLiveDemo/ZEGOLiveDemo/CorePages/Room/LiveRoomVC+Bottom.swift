@@ -22,7 +22,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             print("liveBottomView did click button: \(action)")
             self.musicEffectsVC.view.isHidden = false
         case .more:
-            self.liveSettingView?.isHidden = false
+            self.moreSettingView.isHidden = false
                 print("liveBottomView did click button: \(action)")
         case .apply:
                 print("liveBottomView did click button: \(action)")

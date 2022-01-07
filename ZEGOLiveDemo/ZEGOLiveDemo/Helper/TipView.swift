@@ -25,7 +25,7 @@ class TipView: UIView {
     }
     
     
-    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = false)  {
+    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = false) -> TipView {
         let tipView: TipView = UINib(nibName: "TipView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TipView
         tipView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 70)
         tipView.autoDismiss = autoDismiss
@@ -37,19 +37,27 @@ class TipView: UIView {
         }
         tipView.messageLabel.text = message
         tipView.show()
+        return tipView
     }
     
     func show()  {
         getKeyWindow().addSubview(self)
         if autoDismiss {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.dismiss()
+                TipView.dismiss()
             }
         }
     }
     
-    func dismiss() {
-        self.removeFromSuperview()
+    static func dismiss() {
+        DispatchQueue.main.async {
+            for subview in KeyWindow().subviews {
+                if subview is TipView {
+                    let view: TipView = subview as! TipView
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
 
 }

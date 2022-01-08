@@ -12,6 +12,7 @@ import ZegoExpressEngine
 enum CoHostChangeType {
     case add
     case leave
+    case remove
     case mic
     case camera
     case mute
@@ -34,7 +35,7 @@ protocol UserServiceDelegate : AnyObject  {
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool)
     
-    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType)
+    func coHostChange(_ targetUserID: String, type: CoHostChangeType)
 }
 
 // default realized
@@ -46,7 +47,7 @@ extension UserServiceDelegate {
     func receiveToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveToCoHostRespond() { }
-    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType) { }
+    func coHostChange(_ targetUserID: String, type: CoHostChangeType) { }
 }
 
 class UserService: NSObject {
@@ -276,10 +277,10 @@ class UserService: NSObject {
     
     /// leave co-host seat
     func leaveCoHostSeat(callback: RoomCallback?) {
-        leaveCoHostSeat(localUserInfo?.userID, callback: callback)
+        removeUserFromSeat(localUserInfo?.userID, callback: callback)
     }
-    // private method, host can use this method to leave co-host
-    private func leaveCoHostSeat(_ userID: String?, callback: RoomCallback?) {
+    
+    func removeUserFromSeat(_ userID: String?, callback: RoomCallback?) {
         guard let parameters = getTakeOrLeaveSeatParameters(userID, isTake: false) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -306,7 +307,7 @@ class UserService: NSObject {
             return
         }
         
-        guard let parameters = getSeatChangeParameters(userID ,enable: isMuted, flag: 0) else {
+        guard let parameters = getSeatChangeParameters(userID ,enable: isMuted, flag: 2) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
@@ -318,7 +319,7 @@ class UserService: NSObject {
     /// mic operation
     func micOperation(_ open: Bool) {
         
-        guard let parameters = getSeatChangeParameters(enable: open, flag: 0) else {
+        guard let parameters = getSeatChangeParameters(localUserInfo?.userID, enable: open, flag: 0) else {
             return
         }
         
@@ -331,7 +332,7 @@ class UserService: NSObject {
     /// camera operation
     func cameraOpen(_ open: Bool) {
         
-        guard let parameters = getSeatChangeParameters(enable: open, flag: 1) else {
+        guard let parameters = getSeatChangeParameters(localUserInfo?.userID, enable: open, flag: 1) else {
             return
         }
         
@@ -411,7 +412,7 @@ extension UserService : ZIMEventHandler {
                 cancelRequestToCoHost(leftUser.userID, callback: nil)
             }
             if isUserOnSeat(leftUser.userID) {
-                leaveCoHostSeat(leftUser.userID, callback: nil)
+                removeUserFromSeat(leftUser.userID, callback: nil)
             }
         }
     }

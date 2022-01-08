@@ -61,11 +61,26 @@ extension RoomService {
             }
         }
         
+        // update the user role
+        let coHostUserIDs = self.operation.coHost.compactMap { $0.userID }
+        for user in RoomManager.shared.userService.userList.allObjects() {
+            if user.role == .host { continue }
+            guard let userID = user.userID else {
+                user.role = .participant
+                continue
+            }
+            if coHostUserIDs.contains(userID) {
+                user.role = .coHost
+            } else {
+                user.role = .participant
+            }
+        }
+        
         // delegate to UI
         let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         let isMyselfUpdate = myUserID == action.targetID
         let isMyselfHost = RoomManager.shared.userService.isMyselfHost
-        let seat = self.operation.coHost.filter({ $0.userID == action.targetID }).first
+        let isOperatedSelf = action.targetID == action.operatorID
         let targetUser = RoomManager.shared.userService.userList.getObj(action.targetID) ?? UserInfo()
        
         for delegate in RoomManager.shared.userService.delegates.allObjects {
@@ -73,25 +88,50 @@ extension RoomService {
             
             switch action.type {
             case .requestToCoHost:
-                if isMyselfHost { delegate.receiveToCoHostRequest(targetUser) }
+                if isMyselfHost {
+                    delegate.receiveToCoHostRequest(targetUser)
+                }
             case .cancelRequestCoHost:
-                if isMyselfHost { delegate.receiveCancelToCoHostRequest(targetUser) }
+                if isMyselfHost {
+                    delegate.receiveCancelToCoHostRequest(targetUser)
+                }
             case .agreeToCoHost:
-                if isMyselfUpdate { delegate.receiveToCoHostRespond(true) }
+                if isMyselfUpdate {
+                    delegate.receiveToCoHostRespond(true)
+                }
             case .declineToCoHost:
-                if isMyselfUpdate { delegate.receiveToCoHostRespond(false) }
-            case .takeCoHostSeat: delegate.coHostChange(seat, type: .add)
-            case .leaveCoHostSeat: delegate.coHostChange(seat, type: .leave)
-            case .mic: delegate.coHostChange(seat, type: .mic)
-            case .camera: delegate.coHostChange(seat, type: .camera)
-            case .mute: delegate.coHostChange(seat, type: .mute)
+                if isMyselfUpdate {
+                    delegate.receiveToCoHostRespond(false)
+                }
+            case .takeCoHostSeat:
+                delegate.coHostChange(action.targetID, type: .add)
+            case .leaveCoHostSeat:
+                // coHost leave or host remove coHost
+                if isOperatedSelf {
+                    delegate.coHostChange(action.targetID, type: .leave)
+                } else {
+                    delegate.coHostChange(action.targetID, type: .remove)
+                }
+            case .mic:
+                delegate.coHostChange(action.targetID, type: .mic)
+            case .camera:
+                delegate.coHostChange(action.targetID, type: .camera)
+            case .mute:
+                delegate.coHostChange(action.targetID, type: .mute)
             default: break
             }
         }
         
         // if it is myself update
-        guard let seat = seat else { return }
         if !isMyselfUpdate { return }
+        
+        // myself leave the coHost seat(leave or be removed)
+        if action.type == .leaveCoHostSeat {
+            ZegoExpressEngine.shared().stopPublishingStream()
+        }
+        
+        let seat = self.operation.coHost.filter({ $0.userID == action.targetID }).first
+        guard let seat = seat else { return }
         
         if action.type == .mic {
             ZegoExpressEngine.shared().muteMicrophone(!seat.mic)

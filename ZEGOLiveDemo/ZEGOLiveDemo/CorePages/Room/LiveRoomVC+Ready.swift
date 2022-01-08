@@ -25,7 +25,6 @@ extension LiveRoomVC : LiveReadyViewDelegate {
             self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .setting:
             self.liveSettingView?.isHidden = false
-            print("liveReadyView did click button: \(action)")
         }
     }
     

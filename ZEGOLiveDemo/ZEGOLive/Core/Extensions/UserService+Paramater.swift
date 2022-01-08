@@ -14,9 +14,10 @@ extension UserService {
     typealias ParametersResult = ([String: String], String, ZIMRoomAttributesSetConfig)
     
     // get request or cancel request to host parameters
-    func getRequestOrCancelToHostParameters(_ myUserID: String?, isRequest: Bool) -> ParametersResult? {
+    func getRequestOrCancelToHostParameters(_ targetUserID: String?, isRequest: Bool) -> ParametersResult? {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
-              let myUserID = myUserID
+              let myUserID = localUserInfo?.userID,
+              let targetUserID = targetUserID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil
@@ -25,7 +26,7 @@ extension UserService {
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
         operation.action.seq += 1
         operation.action.operatorID = myUserID
-        operation.action.targetID = myUserID
+        operation.action.targetID = targetUserID
         
         if isRequest {
             operation.action.type = .requestToCoHost
@@ -46,10 +47,11 @@ extension UserService {
     }
     
     // get take or leave seat parameters
-    func getTakeOrLeaveSeatParameters(_ myUserID: String?, isTake: Bool) -> ParametersResult? {
+    func getTakeOrLeaveSeatParameters(_ targetUserID: String?, isTake: Bool) -> ParametersResult? {
         
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
-              let myUserID = myUserID
+              let myUserID = localUserInfo?.userID,
+              let targetUserID = targetUserID
         else {
             assert(false, "the userID or roomID cannot be nil")
             return nil
@@ -58,16 +60,16 @@ extension UserService {
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
         operation.action.seq += 1
         operation.action.operatorID = myUserID
-        operation.action.targetID = myUserID
+        operation.action.targetID = targetUserID
         
         if isTake {
             operation.action.type = .takeCoHostSeat
             let seat: CoHostModel = CoHostModel()
-            seat.userID = myUserID
+            seat.userID = targetUserID
             operation.coHost.append(seat)
         } else {
             operation.action.type = .leaveCoHostSeat
-            operation.coHost = operation.coHost.filter { $0.userID != myUserID }
+            operation.coHost = operation.coHost.filter { $0.userID != targetUserID }
         }
         
         let config = ZIMRoomAttributesSetConfig()
@@ -82,10 +84,11 @@ extension UserService {
     
     // get the seat releated parameters
     // flag: 0 - mic, 1 - camera, 2 - mute
-    func getSeatChangeParameters(_ targetUserID: String = "", enable: Bool, flag: Int) -> ParametersResult? {
+    func getSeatChangeParameters(_ targetUserID: String?, enable: Bool, flag: Int) -> ParametersResult? {
         
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
-              let myUserID = localUserInfo?.userID
+              let myUserID = localUserInfo?.userID,
+              let targetUserID = targetUserID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil
@@ -94,15 +97,15 @@ extension UserService {
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
         operation.action.seq += 1
         operation.action.operatorID = myUserID
-        operation.action.targetID = myUserID
+        operation.action.targetID = targetUserID
         
-        guard let seatModel = operation.coHost.filter({ $0.userID == myUserID }).first else {
+        guard let seatModel = operation.coHost.filter({ $0.userID == targetUserID }).first else {
             assert(false, "myself did not on the seat")
             return nil
         }
         
-        if (flag == 0 || flag == 1) && seatModel.isMuted {
-            assert(false, "the seat is muted, can not change the mic or camera.")
+        if flag == 0 && enable && seatModel.isMuted {
+            assert(false, "the seat is muted, can not open the mic.")
             return nil
         }
         

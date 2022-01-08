@@ -15,7 +15,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .message:
             messageButtonClick()
         case .share:
-            print("liveBottomView did click button: \(action)")
+            share()
         case .beauty:
             self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .soundEffect:
@@ -101,5 +101,17 @@ extension LiveRoomVC {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func share() {
+        let title = "Will share this picture to you."
+        let image = UIImage(named: "room_list_cover_1")! as Any
+        let item: [Any] = [title, image]
+        let activityVC = UIActivityViewController(activityItems: item, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
+        activityVC.completionWithItemsHandler = { type, completed, items, error in
+            
+        }
     }
 }

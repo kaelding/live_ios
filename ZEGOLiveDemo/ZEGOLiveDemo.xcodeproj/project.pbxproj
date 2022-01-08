@@ -16,9 +16,6 @@
 		864B3EEA277EEA9E00699B69 /* SoundChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EE8277EEA9E00699B69 /* SoundChangeCell.xib */; };
 		864B3EED277EEB0300699B69 /* MixedRingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EEB277EEB0300699B69 /* MixedRingCell.swift */; };
 		864B3EEE277EEB0300699B69 /* MixedRingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EEC277EEB0300699B69 /* MixedRingCell.xib */; };
-		864B3EF0277EEEB900699B69 /* BGMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EEF277EEEB900699B69 /* BGMModel.swift */; };
-		864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */; };
-		864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EF3277EEEE200699B69 /* MixedRingModel.swift */; };
 		8677D6C3277C44BE00612058 /* Room.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8677D6C0277C44BE00612058 /* Room.strings */; };
 		8677D6C5277C499400612058 /* FaceBeautifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8677D6C4277C499400612058 /* FaceBeautifyService.swift */; };
 		86938AC7277D60BA001DD575 /* EffectsLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86938AC6277D60BA001DD575 /* EffectsLicense.swift */; };
@@ -178,9 +175,6 @@
 		864B3EE8277EEA9E00699B69 /* SoundChangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundChangeCell.xib; sourceTree = "<group>"; };
 		864B3EEB277EEB0300699B69 /* MixedRingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRingCell.swift; sourceTree = "<group>"; };
 		864B3EEC277EEB0300699B69 /* MixedRingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MixedRingCell.xib; sourceTree = "<group>"; };
-		864B3EEF277EEEB900699B69 /* BGMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMModel.swift; sourceTree = "<group>"; };
-		864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundChangeModel.swift; sourceTree = "<group>"; };
-		864B3EF3277EEEE200699B69 /* MixedRingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRingModel.swift; sourceTree = "<group>"; };
 		8677D6C1277C44BE00612058 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Room.strings"; sourceTree = "<group>"; };
 		8677D6C2277C44BE00612058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Room.strings; sourceTree = "<group>"; };
 		8677D6C4277C499400612058 /* FaceBeautifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBeautifyService.swift; sourceTree = "<group>"; };
@@ -387,9 +381,6 @@
 		864B3EE1277EE79200699B69 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				864B3EEF277EEEB900699B69 /* BGMModel.swift */,
-				864B3EF1277EEECE00699B69 /* SoundChangeModel.swift */,
-				864B3EF3277EEEE200699B69 /* MixedRingModel.swift */,
 				86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */,
 			);
 			path = Model;
@@ -1102,7 +1093,6 @@
 				8EE13F2A277AEC450038AFCF /* AppDefine.swift in Sources */,
 				8EE13EF427745B810038AFCF /* TextMessage.swift in Sources */,
 				8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */,
-				864B3EF0277EEEB900699B69 /* BGMModel.swift in Sources */,
 				8EE13F1F2779A26B0038AFCF /* RoomService+Private.swift in Sources */,
 				86938AE2278426CC001DD575 /* MessageModelBuilder.swift in Sources */,
 				86938B3E2784772C001DD575 /* ZegoCrypto.cpp in Sources */,
@@ -1187,10 +1177,8 @@
 				86BD9EC027856EC400DBE379 /* LiveSettingModel.swift in Sources */,
 				86938ACD277DA10F001DD575 /* FaceBeautifyView.swift in Sources */,
 				8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */,
-				864B3EF4277EEEE200699B69 /* MixedRingModel.swift in Sources */,
 				8EE13F2F277AFBDD0038AFCF /* HUDHelper.swift in Sources */,
 				86BD9ECB278698DB00DBE379 /* LiveSettingSecondView.swift in Sources */,
-				864B3EF2277EEECE00699B69 /* SoundChangeModel.swift in Sources */,
 				8E22442A2786983E00B86C52 /* LiveRoomVC+CoHost.swift in Sources */,
 				8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */,
 				86938ADF278426CC001DD575 /* MessageModel.swift in Sources */,

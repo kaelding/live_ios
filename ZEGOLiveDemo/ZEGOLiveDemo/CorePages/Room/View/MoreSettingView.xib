@@ -12,18 +12,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MoreSettingView" customModule="ZEGOLiveDemo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="301" height="498"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XjQ-cG-Bq5">
-                    <rect key="frame" x="0.0" y="0.0" width="301" height="498"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-CP-Spm">
-                    <rect key="frame" x="0.0" y="328" width="301" height="170"/>
+                    <rect key="frame" x="0.0" y="726" width="414" height="170"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmL-zg-mT4">
-                            <rect key="frame" x="130.5" y="7" width="40" height="5"/>
+                            <rect key="frame" x="187" y="7" width="40" height="5"/>
                             <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="pX6-3y-MeJ"/>
@@ -31,7 +31,7 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="p4S-Tr-c5U">
-                            <rect key="frame" x="0.0" y="58" width="301" height="112"/>
+                            <rect key="frame" x="0.0" y="58" width="414" height="112"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yor-ph-CEV">
                                 <size key="itemSize" width="128" height="128"/>
@@ -69,15 +69,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="XjQ-cG-Bq5" secondAttribute="bottom" id="6f9-j1-BMC"/>
+                <constraint firstAttribute="bottom" secondItem="6kf-CP-Spm" secondAttribute="bottom" id="Ncl-Cg-EgR"/>
                 <constraint firstItem="XjQ-cG-Bq5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Uho-l1-3Z8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XjQ-cG-Bq5" secondAttribute="trailing" id="Z5I-zs-Lsr"/>
                 <constraint firstItem="6kf-CP-Spm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ztn-Nv-qQT"/>
                 <constraint firstItem="6kf-CP-Spm" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="eae-qN-0rN"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XjQ-cG-Bq5" secondAttribute="bottom" id="mWx-h2-2Ht"/>
-                <constraint firstItem="6kf-CP-Spm" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="r2b-6J-v9h"/>
                 <constraint firstItem="XjQ-cG-Bq5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wNA-Uf-a1p"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backGroundView" destination="XjQ-cG-Bq5" id="yrw-3u-WfN"/>
                 <outlet property="containerView" destination="6kf-CP-Spm" id="tGf-ux-peL"/>
@@ -85,7 +84,7 @@
                 <outlet property="titleLabel" destination="WcY-Iz-ObY" id="o9V-OE-4NN"/>
                 <outlet property="topLineView" destination="KmL-zg-mT4" id="syF-sW-BiJ"/>
             </connections>
-            <point key="canvasLocation" x="34.057971014492757" y="-155.35714285714286"/>
+            <point key="canvasLocation" x="33.333333333333336" y="-155.35714285714286"/>
         </view>
     </objects>
     <resources>

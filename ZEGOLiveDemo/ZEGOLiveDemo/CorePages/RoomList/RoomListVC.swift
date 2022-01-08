@@ -19,7 +19,7 @@ class RoomListVC: UIViewController {
             roomListCollectionView.dataSource = self
             roomListCollectionView.alwaysBounceVertical = true
             roomListCollectionView.contentInsetAdjustmentBehavior = .never
-            roomListCollectionView.addSubview(refreshControl)
+            roomListCollectionView.refreshControl = refreshControl
         }
     }
     lazy var refreshControl: UIRefreshControl = {

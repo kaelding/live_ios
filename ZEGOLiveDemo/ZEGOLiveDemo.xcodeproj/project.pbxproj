@@ -1364,7 +1364,7 @@
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风进行语音通话，需要开启麦克风权限";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the live interaction.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1402,7 +1402,7 @@
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to use your camera to help you join the live interaction.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风进行语音通话，需要开启麦克风权限";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to use your mic to help you join the live interaction.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

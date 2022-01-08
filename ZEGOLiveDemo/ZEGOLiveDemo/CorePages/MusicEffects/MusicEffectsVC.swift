@@ -38,16 +38,14 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
     lazy var backMusicArr: [MusicEffectsModel] = {
-        let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": true],
-                            ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false],
-                            ["name": "Positive" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 2, "isSelected": false]]
+        let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": false],
+                            ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var voiceChangeArr: [MusicEffectsModel] = {
         let voiceArray = [["name": "None" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none, "isSelected": true],
                           ["name": "Lolita" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild, "isSelected": false],
-                          ["name": "uncle" ,"imageName": "icon_music_uncle", "selectedImageName": "icon_music_uncle(1)", "selectedType": ZegoVoiceChangerPreset.foreigner, "isSelected": false],
                           ["name": "Robot" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android, "isSelected": false],
                           ["name": "Empty" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal, "isSelected": false]]
         return voiceArray.map{ MusicEffectsModel(json: $0) }
@@ -66,6 +64,10 @@ class MusicEffectsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        musicVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"
+        voiceVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"
+        musicVSlider.value = Float(RoomManager.shared.soundService.musicVolume) * 0.01
+        musicVSlider.value = Float(RoomManager.shared.soundService.voiceVolume) * 0.01
         musicVSlider.addTarget(self, action: #selector(musicVSSliderValueChanged(_:for:)), for: .valueChanged)
         voiceVSlider.addTarget(self, action: #selector(voiceVSliderValueChanged(_:for:)), for: .valueChanged)
         

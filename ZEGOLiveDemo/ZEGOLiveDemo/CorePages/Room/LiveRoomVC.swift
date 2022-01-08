@@ -135,6 +135,7 @@ class LiveRoomVC: UIViewController {
         participantListView.frame = self.view.bounds
         participantListView.isHidden = true
         self.view.addSubview(participantListView)
+        participantListView.delegate = self
         return participantListView
     }()
     

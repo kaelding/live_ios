@@ -7,8 +7,12 @@
 
 import UIKit
 
-class ParticipantListView: UIView {
+protocol ParticipantListViewDelegate: AnyObject {
+    func invitedUserAddCoHost(userInfo:UserInfo)
+}
 
+class ParticipantListView: UIView {
+    weak var delegate: ParticipantListViewDelegate?
     @IBOutlet weak var backgroudView: UIView! {
         didSet {
             let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: backgroudView.bounds.size.width, height: backgroudView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
@@ -56,6 +60,7 @@ class ParticipantListView: UIView {
     @IBOutlet weak var inviteButton: UIButton! {
         didSet {
             inviteButton.layer.cornerRadius = 24.5
+            inviteButton.clipsToBounds = true
             let layer = CAGradientLayer()
             layer.startPoint = CGPoint(x: 0, y: 0)
             layer.endPoint = CGPoint(x: 1, y: 0)
@@ -96,22 +101,10 @@ class ParticipantListView: UIView {
         }
     }
     
-    
     // MARK: -action
     @IBAction func pressInviteButton(_ sender: UIButton) {
-        guard let userID = inviteUserInfo?.userID else { return }
-        RoomManager.shared.userService.addCoHost(userID, callback: { result in
-            switch result {
-            case .success:
-                self.inviteMaskView.isHidden = true
-                self.isHidden = true
-                HUDHelper.showMessage(message:ZGLocalizedString("room_page_invitation_has_sent"))
-                break
-            case .failure(let error):
-                HUDHelper.showMessage(message:"\(error.code)")
-                break
-            }
-        })
+        guard let inviteUserInfo = inviteUserInfo else { return }
+        delegate?.invitedUserAddCoHost(userInfo: inviteUserInfo)
     }
 }
 

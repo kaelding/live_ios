@@ -26,7 +26,7 @@ protocol UserServiceDelegate : AnyObject  {
     /// receive custom command: invitation
     func receiveAddCoHostInvitation()
     /// receive add co-host invitation respond
-    func receiveAddCoHostRespond(_ accept: Bool)
+    func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool)
     /// receive request to co-host request
     func receiveToCoHostRequest()
     /// receive cancel request to co-host
@@ -42,7 +42,7 @@ extension UserServiceDelegate {
     func roomUserJoin(_ users: [UserInfo]) { }
     func roomUserLeave(_ users: [UserInfo]) { }
     func receiveAddCoHostInvitation() { }
-    func receiveAddCoHostRespond(_ accept: Bool) { }
+    func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool) { }
     func receiveToCoHostRequest() { }
     func receiveCancelToCoHostRequest() { }
     func receiveToCoHostRespond() { }
@@ -408,16 +408,16 @@ extension UserService : ZIMEventHandler {
             guard let command = command else { continue }
             if command.targetUserIDs.count == 0 { continue }
             
-            if let user = self.userList.getObj(command.targetUserIDs.first ?? "") {
-                user.hasInvited = command.type == .invitation
-            }
+            
             for delegate in delegates.allObjects {
                 guard let delegate = delegate as? UserServiceDelegate else { continue }
                 if command.type == .invitation {
                     delegate.receiveAddCoHostInvitation()
                 } else {
                     guard let accept = command.content?.accept else { continue }
-                    delegate.receiveAddCoHostRespond(accept)
+                    if let user = self.userList.getObj(command.targetUserIDs.first ?? "") {
+                        delegate.receiveAddCoHostRespond(user, accept: accept)
+                    }
                 }
             }
         }

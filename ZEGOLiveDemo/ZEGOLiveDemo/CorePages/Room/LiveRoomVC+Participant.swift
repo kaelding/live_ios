@@ -167,6 +167,7 @@ extension LiveRoomVC: UserServiceDelegate {
     }
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool) {
+        TipView.dismiss()
         if agree {
             if RoomManager.shared.userService.coHostList.count >= 4 {
                 TipView.showWarn("toast_room_maximum")

@@ -48,14 +48,14 @@ class TipView: UIView {
     }
         
     static func dismiss() {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             for subview in KeyWindow().subviews {
                 if subview is TipView {
                     let view: TipView = subview as! TipView
                     view.removeFromSuperview()
                 }
             }
-        }
+//        }
     }
     
     private func show()  {

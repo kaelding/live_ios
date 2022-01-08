@@ -143,5 +143,13 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_has_destroyed" = "房间已被解散";
 "toast_room_leave_fail_tip" = "离开房间失败，错误码：%d";
 "toast_room_end_fail_tip" = "解散房间失败，错误码：%d";
-"dialog_attetion_title" = "注意";
-"dialog_close" = "结束";
+"dialog_attetion_title" = "";
+"dialog_close" = "关闭";
+"room_settings_page_more" = "更多";
+"room_settings_page_more" = "More";
+"room_more_flip" = "翻转";
+"room_more_mic" = "麦克风";
+"room_more_camera" = "摄像头";
+"room_more_setting" = "设置";
+"dialog_invition_title" = "邀请";
+"dialog_invition_descrip" = "主持人邀请你连麦";

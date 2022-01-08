@@ -118,6 +118,7 @@ extension LiveRoomVC: UserServiceDelegate {
             let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
             TipView.showWarn(message)
         }
+        participantListView.reloadListView()
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {

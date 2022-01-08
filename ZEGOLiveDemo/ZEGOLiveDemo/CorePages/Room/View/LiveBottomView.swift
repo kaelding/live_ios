@@ -110,6 +110,10 @@ class LiveBottomView: UIView {
         self.moreButton.isHidden = type != .host
     }
     
+    func resetApplyStatus() {
+        applyButton.isSelected = false
+    }
+    
     // MARK: - actions
     @IBAction func messageButtonClick(_ sender: UIButton) {
         delegate?.liveBottomView(self, didClickButtonWith: .message)

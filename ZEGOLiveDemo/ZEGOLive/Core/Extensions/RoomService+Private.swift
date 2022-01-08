@@ -13,8 +13,8 @@ extension RoomService {
     
     func roomAttributesUpdated(_ roomAttributes: [String: String]) {
         // update room info
-        if roomAttributes.keys.contains("roomInfo") {
-            let roomJson = roomAttributes["roomInfo"] ?? ""
+        if roomAttributes.keys.contains("room_info") {
+            let roomJson = roomAttributes["room_info"] ?? ""
             let roomInfo = ZegoJsonTool.jsonToModel(type: RoomInfo.self, json: roomJson)
             
             // if the room info is nil, we should not set self.info = nil
@@ -44,16 +44,16 @@ extension RoomService {
         }
         
         // update seat list
-        if let seatJson = roomAttributes["seat"] {
+        if let seatJson = roomAttributes["co_host"] {
             self.operation.updateSeatList(seatJson)
         }
         
         // update coHost list
-        if let coHostJson = roomAttributes["coHost"] {
-            operation.updateCoHostList(coHostJson)
+        if let coHostJson = roomAttributes["request_co_host"] {
+            operation.updateRequestCoHostList(coHostJson)
             for user in RoomManager.shared.userService.userList.allObjects() {
                 guard let userID = user.userID else { continue }
-                if operation.coHostList.contains(userID) {
+                if operation.requestCoHost.contains(userID) {
                     user.hasRequestedCoHost = true
                 } else {
                     user.hasRequestedCoHost = false
@@ -66,7 +66,7 @@ extension RoomService {
         let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         let isMyselfUpdate = myUserID == action.targetID
         let isMyselfHost = RoomManager.shared.userService.isMyselfHost
-        let seat = self.operation.seatList.filter({ $0.userID == action.targetID }).first
+        let seat = self.operation.coHost.filter({ $0.userID == action.targetID }).first
         let targetUser = RoomManager.shared.userService.userList.getObj(action.targetID) ?? UserInfo()
        
         for delegate in RoomManager.shared.userService.delegates.allObjects {
@@ -120,14 +120,14 @@ extension RoomService {
         
         var attributeType: OperationAttributeType = []
         // update seat list from json
-        if let seatJson = roomAttributes["seat"] {
+        if let seatJson = roomAttributes["co_host"] {
             operation.updateSeatList(seatJson)
-            attributeType.insert(.seat)
+            attributeType.insert(.coHost)
         }
         
         // update coHost list from json
-        if let coHostJson = roomAttributes["coHost"] {
-            operation.updateCoHostList(coHostJson)
+        if let coHostJson = roomAttributes["request_co_host"] {
+            operation.updateRequestCoHostList(coHostJson)
             attributeType.insert(.coHost)
         }
         
@@ -136,9 +136,9 @@ extension RoomService {
             action.type == .camera ||
             action.type == .mute {
             
-            let seat = operation.seatList.filter { $0.userID == action.targetID }.first
-            operation.seatList = self.operation.seatList
-            let newSeat = operation.seatList.filter { $0.userID == action.targetID }.first
+            let seat = operation.coHost.filter { $0.userID == action.targetID }.first
+            operation.coHost = self.operation.coHost
+            let newSeat = operation.coHost.filter { $0.userID == action.targetID }.first
             if let seat = seat, let newSeat = newSeat {
                 newSeat.updateModel(seat)
             }
@@ -146,23 +146,23 @@ extension RoomService {
         
         // update the seat list
         if action.type == .takeCoHostSeat {
-            let seat = operation.seatList.filter { $0.userID == action.targetID }.first
-            operation.seatList = self.operation.seatList.filter { $0.userID != action.targetID }
-            if let seat = seat { operation.seatList.append(seat) }
+            let seat = operation.coHost.filter { $0.userID == action.targetID }.first
+            operation.coHost = self.operation.coHost.filter { $0.userID != action.targetID }
+            if let seat = seat { operation.coHost.append(seat) }
         }
         if action.type == .leaveCoHostSeat {
-            operation.seatList = self.operation.seatList.filter { $0.userID != action.targetID }
+            operation.coHost = self.operation.coHost.filter { $0.userID != action.targetID }
         }
         
         // update the co-host list
         if action.type == .requestToCoHost {
-            operation.coHostList = self.operation.coHostList.filter { $0 != action.targetID }
-            operation.coHostList.append(action.targetID)
+            operation.requestCoHost = self.operation.requestCoHost.filter { $0 != action.targetID }
+            operation.requestCoHost.append(action.targetID)
         }
         if action.type == .cancelRequestCoHost ||
             action.type == .declineToCoHost ||
             action.type == .agreeToCoHost {
-            operation.coHostList = self.operation.coHostList.filter { $0 != action.targetID }
+            operation.requestCoHost = self.operation.requestCoHost.filter { $0 != action.targetID }
         }
         
         let newRoomAttributes = operation.attributes(attributeType)

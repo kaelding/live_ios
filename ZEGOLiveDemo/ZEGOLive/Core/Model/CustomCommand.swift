@@ -23,7 +23,7 @@ class CustomCommand : NSObject, Codable {
     
     enum CodingKeys: String, CodingKey {
         case targetUserIDs = "target"
-        case type = "actionType"
+        case type = "action_type"
         case content = "content"
     }
     

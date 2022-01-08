@@ -25,8 +25,12 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             self.moreSettingView.isHidden = false
                 print("liveBottomView did click button: \(action)")
         case .apply:
-            RoomManager.shared.userService.requestToCoHost(callback: nil)
-            _ = TipView.showTipView(.tip, message: ZGLocalizedString("room_apply_to_connect_tip"), autoDismiss: true)
+            if applicationHasMicAndCameraAccess() {
+                RoomManager.shared.userService.requestToCoHost(callback: nil)
+                TipView.showTip(ZGLocalizedString("room_apply_to_connect_tip"))
+            } else {
+                bottomView.resetApplyStatus()
+            }
         case .cancelApply:
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
@@ -43,5 +47,32 @@ extension LiveRoomVC : LiveBottomViewDelegate {
     func messageButtonClick() {
         inputTextView.isHidden = false
         inputTextView.textViewBecomeFirstResponse()
+    }
+}
+
+extension LiveRoomVC {
+    private func applicationHasMicAndCameraAccess() -> Bool {
+        // not determined
+        if !AuthorizedCheck.isCameraAuthorizationDetermined(){
+            AuthorizedCheck.takeCameraAuthorityStatus(completion: nil)
+            return false
+        }
+        // determined but not authorized
+        if !AuthorizedCheck.isCameraAuthorized() {
+            AuthorizedCheck.showCameraUnauthorizedAlert(self)
+            return false
+        }
+        
+        // not determined
+        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined(){
+            AuthorizedCheck.takeMicPhoneAuthorityStatus(completion: nil)
+            return false
+        }
+        // determined but not authorized
+        if !AuthorizedCheck.isMicrophoneAuthorized() {
+            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+            return false
+        }
+        return true
     }
 }

@@ -51,6 +51,14 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         return dic
     }()
     
+    override var isHidden: Bool {
+        didSet {
+            if isHidden == false {
+                updateUI()
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         settingTableView.register(UINib.init(nibName: "SettingSwitchCell", bundle: nil), forCellReuseIdentifier: "SettingSwitchCell")
@@ -131,13 +139,13 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
                 model.switchStatus = RoomManager.shared.deviceService.micVolume
             case .resolution:
                 model.subTitle = resolutionDic[RoomManager.shared.deviceService.videoPreset]
-                break
             case .bitrate:
                 model.subTitle = bitrateDic[RoomManager.shared.deviceService.audioBitrate]
-                break
             }
         }
-        settingTableView.reloadData()
+        if let settingTableView = settingTableView {
+            settingTableView.reloadData()
+        }
     }
     
     

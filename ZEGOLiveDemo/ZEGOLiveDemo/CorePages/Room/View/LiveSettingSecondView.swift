@@ -26,27 +26,27 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var roundView: UIView!
     
     lazy var encodDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "H.264" ,"isSelected": true, "type": RTCVideoCode.h264.rawValue],
-                    ["title": "H.265" ,"isSelected": false, "type": RTCVideoCode.h265.rawValue]]
+        let data = [["title": "H.264" ,"isSelected": (RoomManager.shared.deviceService.videoCodeID == .h264), "type": RTCVideoCode.h264.rawValue],
+                    ["title": "H.265" ,"isSelected": (RoomManager.shared.deviceService.videoCodeID == .h265), "type": RTCVideoCode.h265.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
     lazy var audioDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "16Kbps" ,"isSelected": false, "type": RTCAudioBitrate.b16.rawValue],
-                    ["title": "48Kbps" ,"isSelected": true, "type": RTCAudioBitrate.b48.rawValue],
-                    ["title": "56kbps" ,"isSelected": false, "type": RTCAudioBitrate.b56.rawValue],
-                    ["title": "128kbps" ,"isSelected": false, "type": RTCAudioBitrate.b128.rawValue],
-                    ["title": "192kbps" ,"isSelected": false, "type": RTCAudioBitrate.b192.rawValue]]
+        let data = [["title": "16Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b16), "type": RTCAudioBitrate.b16.rawValue],
+                    ["title": "48Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b48), "type": RTCAudioBitrate.b48.rawValue],
+                    ["title": "56kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b56), "type": RTCAudioBitrate.b56.rawValue],
+                    ["title": "128kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b128), "type": RTCAudioBitrate.b128.rawValue],
+                    ["title": "192kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b192), "type": RTCAudioBitrate.b192.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
     lazy var videoDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "1920x1080" ,"isSelected": true, "type": RTCVideoPreset.p1080.rawValue],
-                    ["title": "720x1280" ,"isSelected": false, "type": RTCVideoPreset.p720.rawValue],
-                    ["title": "540x960" ,"isSelected": false, "type": RTCVideoPreset.p540.rawValue],
-                    ["title": "360x640" ,"isSelected": false, "type": RTCVideoPreset.p360.rawValue],
-                    ["title": "270x480" ,"isSelected": false, "type": RTCVideoPreset.p270.rawValue],
-                    ["title": "180x320" ,"isSelected": false, "type": RTCVideoPreset.p180.rawValue]]
+        let data = [["title": "1920x1080" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p1080), "type": RTCVideoPreset.p1080.rawValue],
+                    ["title": "720x1280" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p720), "type": RTCVideoPreset.p720.rawValue],
+                    ["title": "540x960" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p540), "type": RTCVideoPreset.p540.rawValue],
+                    ["title": "360x640" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p360), "type": RTCVideoPreset.p360.rawValue],
+                    ["title": "270x480" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p270), "type": RTCVideoPreset.p270.rawValue],
+                    ["title": "180x320" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p180), "type": RTCVideoPreset.p180.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     

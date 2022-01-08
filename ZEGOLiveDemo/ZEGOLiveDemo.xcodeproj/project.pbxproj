@@ -80,6 +80,9 @@
 		86B6DF992787E9570023A898 /* MoreSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6DF982787E9570023A898 /* MoreSettingModel.swift */; };
 		86B6DF9B2788549B0023A898 /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6DF9A2788549B0023A898 /* TipView.swift */; };
 		86B6DF9D278854AF0023A898 /* TipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9C278854AF0023A898 /* TipView.xib */; };
+		86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */; };
+		86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */; };
+		86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */; };
 		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
 		86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB02784428A00DBE379 /* SoundEffectService.swift */; };
 		86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB2278542C500DBE379 /* LiveSettingView.swift */; };
@@ -90,9 +93,6 @@
 		86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EBC27854C6100DBE379 /* SettingParamDisplayCell.xib */; };
 		86BD9EC027856EC400DBE379 /* LiveSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */; };
 		86BD9EC2278587FF00DBE379 /* SettingBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */; };
-		86BD9EC72786939800DBE379 /* liveshow-backgroundMusic_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EC42786939700DBE379 /* liveshow-backgroundMusic_1.mp3 */; };
-		86BD9EC82786939800DBE379 /* liveshow-backgroundMusic_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EC52786939800DBE379 /* liveshow-backgroundMusic_0.mp3 */; };
-		86BD9EC92786939800DBE379 /* liveshow-backgroundMusic_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9EC62786939800DBE379 /* liveshow-backgroundMusic_2.mp3 */; };
 		86BD9ECB278698DB00DBE379 /* LiveSettingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ECA278698DB00DBE379 /* LiveSettingSecondView.swift */; };
 		86BD9ECD2786990200DBE379 /* LiveSettingSecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9ECC2786990200DBE379 /* LiveSettingSecondView.xib */; };
 		86BD9ED027869CD600DBE379 /* SettingSecondLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ECE27869CD600DBE379 /* SettingSecondLevelCell.swift */; };
@@ -286,6 +286,9 @@
 		86B6DF982787E9570023A898 /* MoreSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingModel.swift; sourceTree = "<group>"; };
 		86B6DF9A2788549B0023A898 /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		86B6DF9C278854AF0023A898 /* TipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipView.xib; sourceTree = "<group>"; };
+		86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_1.mp3"; sourceTree = "<group>"; };
+		86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_0.mp3"; sourceTree = "<group>"; };
+		86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_2.mp3"; sourceTree = "<group>"; };
 		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
 		86BD9EB02784428A00DBE379 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
 		86BD9EB2278542C500DBE379 /* LiveSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingView.swift; sourceTree = "<group>"; };
@@ -296,9 +299,6 @@
 		86BD9EBC27854C6100DBE379 /* SettingParamDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingParamDisplayCell.xib; sourceTree = "<group>"; };
 		86BD9EBF27856EC400DBE379 /* LiveSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingModel.swift; sourceTree = "<group>"; };
 		86BD9EC1278587FF00DBE379 /* SettingBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseCell.swift; sourceTree = "<group>"; };
-		86BD9EC42786939700DBE379 /* liveshow-backgroundMusic_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_1.mp3"; sourceTree = "<group>"; };
-		86BD9EC52786939800DBE379 /* liveshow-backgroundMusic_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_0.mp3"; sourceTree = "<group>"; };
-		86BD9EC62786939800DBE379 /* liveshow-backgroundMusic_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_2.mp3"; sourceTree = "<group>"; };
 		86BD9ECA278698DB00DBE379 /* LiveSettingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingSecondView.swift; sourceTree = "<group>"; };
 		86BD9ECC2786990200DBE379 /* LiveSettingSecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveSettingSecondView.xib; sourceTree = "<group>"; };
 		86BD9ECE27869CD600DBE379 /* SettingSecondLevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSecondLevelCell.swift; sourceTree = "<group>"; };
@@ -624,7 +624,6 @@
 		869DA74C277D9D32003E6061 /* MusicEffects */ = {
 			isa = PBXGroup;
 			children = (
-				86BD9EC32786938600DBE379 /* Resource */,
 				864B3EE2277EE88500699B69 /* View */,
 				864B3EE1277EE79200699B69 /* Model */,
 				869DA74D277DA063003E6061 /* MusicEffectsVC.swift */,
@@ -668,6 +667,16 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		86B6DF9E278971720023A898 /* MediaResources */ = {
+			isa = PBXGroup;
+			children = (
+				86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */,
+				86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */,
+				86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */,
+			);
+			path = MediaResources;
+			sourceTree = SOURCE_ROOT;
+		};
 		86BD9EB627854A6500DBE379 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,16 +691,6 @@
 				86B6DF952787E8280023A898 /* MoreCollectionViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		86BD9EC32786938600DBE379 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				86BD9EC52786939800DBE379 /* liveshow-backgroundMusic_0.mp3 */,
-				86BD9EC42786939700DBE379 /* liveshow-backgroundMusic_1.mp3 */,
-				86BD9EC62786939800DBE379 /* liveshow-backgroundMusic_2.mp3 */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		8E0F63B3277B19620070E750 /* Room */ = {
@@ -767,6 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
+				86B6DF9E278971720023A898 /* MediaResources */,
 				8EE13F0C27756D4D0038AFCF /* Helper */,
 				8EE13ED427745B1C0038AFCF /* AppCenter */,
 				8EE13F012774735E0038AFCF /* CorePages */,
@@ -1013,12 +1013,14 @@
 				86938AE1278426CC001DD575 /* InputTextView.xib in Resources */,
 				86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */,
 				86B6DF932787E5190023A898 /* MoreSettingView.xib in Resources */,
-				86BD9EC82786939800DBE379 /* liveshow-backgroundMusic_0.mp3 in Resources */,
 				8EE13ED927745B1C0038AFCF /* AppCenter.json in Resources */,
 				86938ACF277DA122001DD575 /* FaceBeaytifyView.xib in Resources */,
 				86BD9EB5278542F800DBE379 /* LiveSettingView.xib in Resources */,
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
 				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
+				86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */,
+				86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */,
+				86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
 				86B6DF972787E8280023A898 /* MoreCollectionViewCell.xib in Resources */,
@@ -1029,9 +1031,7 @@
 				864B3EEA277EEA9E00699B69 /* SoundChangeCell.xib in Resources */,
 				86B6DF9D278854AF0023A898 /* TipView.xib in Resources */,
 				864B3EEE277EEB0300699B69 /* MixedRingCell.xib in Resources */,
-				86BD9EC72786939800DBE379 /* liveshow-backgroundMusic_1.mp3 in Resources */,
 				8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */,
-				86BD9EC92786939800DBE379 /* liveshow-backgroundMusic_2.mp3 in Resources */,
 				864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */,
 				8677D6C3277C44BE00612058 /* Room.strings in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,

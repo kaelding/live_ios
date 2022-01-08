@@ -46,7 +46,7 @@ class SoundEffectService: NSObject {
     }
     
     func loadMusicResource(_ value: Int) -> Void {
-        let urlPath:String = String(format: "liveshow-backgroundMusic_", "\(value)")
+        let urlPath:String = String(format:"liveshow-backgroundMusic_%d", value)
         let path: String = Bundle.main.url(forResource: urlPath, withExtension: "mp3")?.absoluteString ?? ""
         player?.loadResource(path, callback: { code in
             if code == 0 {

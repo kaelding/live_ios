@@ -136,4 +136,16 @@ class DeviceService: NSObject {
         ZegoExpressEngine.shared().useFrontCamera(enable)
     }
     
+    func resert() {
+        videoPreset = .p720
+        audioBitrate = .b48
+        videoCodeID = .h264
+        layerCoding = false
+        hardwareCoding = true
+        hardwareDecoding = false
+        noiseRedution = false
+        echo = false
+        micVolume = false
+    }
+    
 }

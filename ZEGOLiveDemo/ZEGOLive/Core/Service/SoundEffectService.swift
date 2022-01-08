@@ -79,5 +79,12 @@ class SoundEffectService: NSObject {
     func setReverbPreset(_ type: ZegoReverbPreset) -> Void {
         ZegoExpressEngine.shared().setReverbPreset(type)
     }
+    
+    func resert() {
+        currentMusicIndex = 0
+        musicVolume = 50
+        voiceVolume = 50
+        stopBGM()
+    }
 
 }

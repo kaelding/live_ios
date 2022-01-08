@@ -24,6 +24,8 @@ extension LiveRoomVC : LiveTopViewDelegate {
         RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         RoomManager.shared.roomService.leaveRoom(callback: nil)
         self.navigationController?.popViewController(animated: true)
+        RoomManager.shared.deviceService.resert()
+        RoomManager.shared.soundService.resert()
     }
         
     func updateTopView() {

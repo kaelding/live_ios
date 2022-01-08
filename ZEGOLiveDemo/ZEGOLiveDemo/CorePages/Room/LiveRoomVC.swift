@@ -13,6 +13,19 @@ class LiveRoomVC: UIViewController {
 
     @IBOutlet weak var streamView: UIView!
     
+    @IBOutlet weak var backgroundView: UIView! {
+        didSet {
+            backgroundView.isHidden = true
+        }
+    }
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var blurHeadImageView: UIImageView!
+    @IBOutlet weak var headImageView: UIImageView! {
+        didSet {
+            headImageView.layer.cornerRadius = 50.0
+        }
+    }
+    
     var readyView: LiveReadyView?
     @IBOutlet weak var readyContainer: UIView! {
         didSet {
@@ -249,9 +262,20 @@ class LiveRoomVC: UIViewController {
         ZegoExpressEngine.shared().startPreview(canvas)
     }
     
-    func joinRoom() {
-        RoomManager.shared.userService.getOnlineRoomUsers(nil) { result in
+    func updateHostBackgroundView() {
+        let hostID = getHostID()
+        guard let coHost = getCoHost(hostID) else {
+            self.backgroundView.isHidden = false
+            return
+        }
+        self.backgroundView.isHidden = coHost.camera
         
+        let host = getUser(hostID)
+        if let userName = host?.userName {
+            self.nameLabel.text = userName
+            let image = UIImage(named: String.getHeadImageName(userName: userName))
+            self.headImageView.image = image
+            self.blurHeadImageView.image = UIImage.getBlurImage(image)
         }
     }
 }

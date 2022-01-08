@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZegoExpressEngine
 
 extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, MoreSettingViewDelegate {
     
@@ -62,7 +63,17 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
     }
     
     func moreSettingViewDidSelectedCell(_ type: MoreSettingViewSelectedType) {
-        if type == .setting {
+        switch type {
+        case .flip:
+            isFrontCamera = !isFrontCamera
+            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+        case .camera:
+            guard let coHost = localCoHost else { break }
+            RoomManager.shared.userService.cameraOpen(!coHost.camera)
+        case .mic:
+            guard let coHost = localCoHost else { break }
+            RoomManager.shared.userService.micOperation(!coHost.mic)
+        case .setting:
             self.moreSettingView.isHidden = true
             self.LivingSettingView?.isHidden = false
         }

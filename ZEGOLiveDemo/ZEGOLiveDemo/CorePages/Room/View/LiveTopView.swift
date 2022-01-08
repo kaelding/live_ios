@@ -49,6 +49,12 @@ class LiveTopView: UIView {
         
     }
     
+    func updateUI(userName: String?, num: String) {
+        nameLabel.text = userName
+        avatarImageView.image = UIImage(named: String.getHeadImageName(userName: userName))
+        participantButton.setTitle(num, for: .normal)
+    }
+    
     
     // MARK: - action
     @IBAction func participantButtonClick(_ sender: UIButton) {

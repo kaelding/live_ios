@@ -8,6 +8,9 @@
 import UIKit
 
 enum MoreSettingViewSelectedType {
+    case flip
+    case camera
+    case mic
     case setting
 }
 
@@ -97,13 +100,13 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         model.isSelected = !model.isSelected
         switch model.type {
         case .flip:
-            RoomManager.shared.deviceService.useFrontCamera(!model.isSelected)
+            delegate?.moreSettingViewDidSelectedCell(.flip)
         case .camera:
             model.imageName = model.isSelected ? "bottombar_cam_off" : "bottombar_cam_on"
-            RoomManager.shared.deviceService.enableCamera(!model.isSelected)
+            delegate?.moreSettingViewDidSelectedCell(.camera)
         case .mute:
             model.imageName = model.isSelected ? "bottombar_mic_off" : "bottombar_mic_on"
-            RoomManager.shared.deviceService.muteMicrophone(model.isSelected)
+            delegate?.moreSettingViewDidSelectedCell(.mic)
         case .data:
             break
         case .setting:

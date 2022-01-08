@@ -15,7 +15,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .message:
             messageButtonClick()
         case .share:
-            print("liveBottomView did click button: \(action)")
+            share()
         case .beauty:
             self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .soundEffect:
@@ -39,6 +39,10 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             RoomManager.shared.userService.cameraOpen(!coHost.camera)
         case .mic:
             guard let coHost = localCoHost else { break }
+            if coHost.isMuted {
+                TipView.showWarn(ZGLocalizedString("toast_room_muted_by_host"))
+                break
+            }
             RoomManager.shared.userService.micOperation(!coHost.mic)
         case .end:
             endCoHost()
@@ -97,5 +101,17 @@ extension LiveRoomVC {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func share() {
+        let title = "Will share this picture to you."
+        let image = UIImage(named: "room_list_cover_1")! as Any
+        let item: [Any] = [title, image]
+        let activityVC = UIActivityViewController(activityItems: item, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
+        activityVC.completionWithItemsHandler = { type, completed, items, error in
+            
+        }
     }
 }

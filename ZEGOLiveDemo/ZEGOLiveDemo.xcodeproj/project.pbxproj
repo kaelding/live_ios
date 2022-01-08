@@ -104,6 +104,7 @@
 		8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2244332786A17500B86C52 /* CoHostCell.xib */; };
 		8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */; };
 		8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443C2789868900B86C52 /* UserService+Util.swift */; };
+		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -308,6 +309,7 @@
 		8E2244332786A17500B86C52 /* CoHostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoHostCell.xib; sourceTree = "<group>"; };
 		8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Util.swift"; sourceTree = "<group>"; };
 		8E22443C2789868900B86C52 /* UserService+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Util.swift"; sourceTree = "<group>"; };
+		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -861,11 +863,11 @@
 		8EE13F0C27756D4D0038AFCF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				86938AED2784772C001DD575 /* Token */,
 				869F6D2C2785A3700018788E /* String+Head.swift */,
 				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
-				86938AED2784772C001DD575 /* Token */,
 				86938AEB2784772C001DD575 /* ZegoTimer.swift */,
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
 				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
@@ -873,6 +875,7 @@
 				8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */,
 				86B6DF9A2788549B0023A898 /* TipView.swift */,
 				86B6DF9C278854AF0023A898 /* TipView.xib */,
+				8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1123,6 +1126,7 @@
 				860E11772786CDB8008847C4 /* LiveRoomVC+Setting.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */,
+				8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */,
 				86B6DF962787E8280023A898 /* MoreCollectionViewCell.swift in Sources */,
 				869F6D2427859B360018788E /* ParticipantListView.swift in Sources */,
 				8EE13EFC27745B810038AFCF /* DictionaryArray.swift in Sources */,

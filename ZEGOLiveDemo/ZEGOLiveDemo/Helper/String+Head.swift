@@ -9,7 +9,11 @@ import Foundation
 
 extension String {
     
-    static func getHeadImageName(userName: String) -> String {
+    static func getHeadImageName(userName: String?) -> String {
+        guard let userName = userName else {
+            return ""
+        }
+
         if userName.count == 0 {
             return ""
         }

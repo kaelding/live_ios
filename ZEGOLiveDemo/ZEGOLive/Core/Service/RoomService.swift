@@ -79,7 +79,7 @@ class RoomService: NSObject {
                 guard let callback = callback else { return }
                 switch result {
                 case .success():
-                    RoomManager.shared.logoutRtcRoom()
+                    RoomManager.shared.loginRtcRoom(with: roomID)
                     callback(.success(()))
                 case .failure(let error):
                     callback(.failure(error))

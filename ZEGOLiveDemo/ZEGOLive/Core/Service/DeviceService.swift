@@ -43,6 +43,12 @@ class DeviceService: NSObject {
     var echo: Bool = false
     var micVolume: Bool = false
     
+    override init() {
+        super.init()
+        setNomalConfigValue()
+    }
+    
+    
     func setVideoPreset(_ preset: RTCVideoPreset) -> Void {
         videoPreset = preset
         var expressVideoPreset: ZegoVideoConfigPreset = .preset720P
@@ -136,6 +142,18 @@ class DeviceService: NSObject {
         ZegoExpressEngine.shared().useFrontCamera(enable)
     }
     
+    func setNomalConfigValue() {
+        setVideoPreset(videoPreset)
+        setAudioBitrate(audioBitrate)
+        setVideoCodeID(videoCodeID)
+        setLiveDeviceStatus(.layered, enable: layerCoding)
+        setLiveDeviceStatus(.hardware, enable: hardwareCoding)
+        setLiveDeviceStatus(.decoding, enable: hardwareDecoding)
+        setLiveDeviceStatus(.noise, enable: noiseRedution)
+        setLiveDeviceStatus(.echo, enable: echo)
+        setLiveDeviceStatus(.volume, enable: micVolume)
+    }
+    
     func resert() {
         videoPreset = .p720
         audioBitrate = .b48
@@ -146,6 +164,7 @@ class DeviceService: NSObject {
         noiseRedution = false
         echo = false
         micVolume = false
+        setNomalConfigValue()
     }
     
 }

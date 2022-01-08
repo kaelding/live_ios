@@ -99,9 +99,28 @@ class RoomService: NSObject {
             if error.code != .ZIMErrorCodeSuccess {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
+            RoomManager.shared.logoutRtcRoom()
             guard let callback = callback else { return }
             callback(result)
-            RoomManager.shared.logoutRtcRoom()
+        })
+    }
+    
+    func getRoomStatus(callback: RoomCallback?) {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
+            assert(false, "room ID can't be nil")
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+            return
+        }
+        ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { roomAttributes, error in
+            var result: ZegoResult = .success(())
+            if error.code == .ZIMErrorCodeSuccess {
+                self.roomAttributesUpdated(roomAttributes)
+            } else {
+                result = .failure(.other(Int32(error.code.rawValue)))
+            }
+            guard let callback = callback else { return }
+            callback(result)
         })
     }
 }
@@ -145,27 +164,6 @@ extension RoomService: ZIMEventHandler {
     }
     
     func zim(_ zim: ZIM, roomAttributesUpdated updateInfo: ZIMRoomAttributesUpdateInfo, roomID: String) {
-        
-        // update room info
-        if updateInfo.roomAttributes.keys.contains("roomInfo") {
-            let roomJson = updateInfo.roomAttributes["roomInfo"] ?? ""
-            let roomInfo = ZegoJsonTool.jsonToModel(type: RoomInfo.self, json: roomJson)
-            
-            // if the room info is nil, we should not set self.info = nil
-            // because it can't get room info outside.
-            if let roomInfo = roomInfo {
-                self.roomInfo = roomInfo
-            }
-            delegate?.receiveRoomInfoUpdate(roomInfo)
-        }
-        
-        // update action
-        guard let actionJson = updateInfo.roomAttributes["action"],
-              let action: OperationAction = ZegoJsonTool.jsonToModel(type: OperationAction.self, json: actionJson)
-        else {
-            return
-        }
-        
-        roomAttributesUpdated(updateInfo.roomAttributes, action: action)
+        roomAttributesUpdated(updateInfo.roomAttributes)
     }
 }

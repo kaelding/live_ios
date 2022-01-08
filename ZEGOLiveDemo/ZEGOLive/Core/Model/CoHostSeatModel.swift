@@ -11,8 +11,8 @@ class CoHostSeatModel : NSObject, Codable {
     
     var userID: String = ""
     var isMuted: Bool = false
-    var mic: Bool = false
-    var camera: Bool = false
+    var mic: Bool = true
+    var camera: Bool = true
     
     enum CodingKeys: String, CodingKey {
         case userID = "id"

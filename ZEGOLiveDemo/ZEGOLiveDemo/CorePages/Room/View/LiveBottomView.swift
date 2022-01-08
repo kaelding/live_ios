@@ -20,6 +20,7 @@ enum LiveBottomAction {
     case soundEffect
     case more
     case apply
+    case cancelApply
     case flip
     case camera
     case mic
@@ -67,6 +68,10 @@ class LiveBottomView: UIView {
     @IBOutlet weak var applyButton: UIButton! {
         didSet {
             applyButton.layer.cornerRadius = 18.0
+            applyButton.setTitle(ZGLocalizedString("room_apply_to_connect"), for: .normal)
+            applyButton.setTitle(ZGLocalizedString("room_apply_to_connect"), for: [.normal, .highlighted])
+            applyButton.setTitle(ZGLocalizedString("room_cancel_to_connect"), for: .selected)
+            applyButton.setTitle(ZGLocalizedString("room_cancel_to_connect"), for: [.selected, .highlighted])
         }
     }
     @IBOutlet weak var beautyButton: UIButton! {
@@ -131,7 +136,9 @@ class LiveBottomView: UIView {
     }
     
     @IBAction func applyButtonClick(_ sender: UIButton) {
-        delegate?.liveBottomView(self, didClickButtonWith: .apply)
+        sender.isSelected = !sender.isSelected
+        let action: LiveBottomAction = sender.isSelected ? .apply : .cancelApply
+        delegate?.liveBottomView(self, didClickButtonWith: action)
     }
     
     @IBAction func beautyButtonClick(_ sender: UIButton) {

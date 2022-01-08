@@ -86,3 +86,6 @@
 "network_connect_failed_title" = "网络错误";
 "network_connect_failed" = "网络连接失败，请尝试退出房间重新加入";
 "toast_lock_seat_already_take_seat" = "锁定麦位失败，麦上已有用户";
+"room_apply_to_connect" = "申请连麦";
+"room_cancel_to_connect" = "取消申请";
+"room_apply_to_connect_tip" = "你已经申请连麦，请等待主持人的确认！";

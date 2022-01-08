@@ -15,7 +15,11 @@ class ParticipantTableViewCell: UITableViewCell {
     
     weak var delegate: ParticipantTableViewCellDelegate?
 
-    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var avatarImage: UIImageView! {
+        didSet {
+            avatarImage.layer.cornerRadius = 23
+        }
+    }
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,27 +27,27 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-W9-pgs">
-                            <rect key="frame" x="16" y="25.5" width="58.5" height="22.5"/>
+                            <rect key="frame" x="16" y="25.5" width="150" height="22.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22.5" id="512-3u-vdp"/>
-                                <constraint firstAttribute="width" constant="58.5" id="UBx-zr-FUM"/>
+                                <constraint firstAttribute="width" constant="150" id="UBx-zr-FUM"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Beauty"/>
+                            <state key="normal" title="Face beautification"/>
                             <connections>
                                 <action selector="pressBeautyButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="b2W-aS-XdB"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-M6-11V">
-                            <rect key="frame" x="90.5" y="25.5" width="70" height="22.5"/>
+                            <rect key="frame" x="182" y="25.5" width="130" height="22.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22.5" id="PnN-Tc-Que"/>
-                                <constraint firstAttribute="width" constant="70" id="YGd-ut-EgK"/>
+                                <constraint firstAttribute="width" constant="130" id="YGd-ut-EgK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Reshape"/>
+                            <state key="normal" title="Face shape retouch"/>
                             <connections>
                                 <action selector="pressReshapeButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="Zon-4b-Y7i"/>
                             </connections>

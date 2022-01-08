@@ -103,6 +103,9 @@ class RoomService: NSObject {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
             RoomManager.shared.logoutRtcRoom()
+            RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
+            
+
             guard let callback = callback else { return }
             callback(result)
         })

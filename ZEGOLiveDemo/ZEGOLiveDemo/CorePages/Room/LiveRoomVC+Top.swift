@@ -20,6 +20,14 @@ extension LiveRoomVC : LiveTopViewDelegate {
     }
     
     func leaveRoom() {
+        // cancel request to cohost and leave co host when leave room.
+        if isMyselfInRequestList {
+            RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
+        }
+        if isMyselfOnSeat {
+            RoomManager.shared.userService.leaveCoHostSeat(callback: nil)
+        }
+        
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
         RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         RoomManager.shared.roomService.leaveRoom(callback: nil)

@@ -103,6 +103,7 @@
 		8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22442F2786A13500B86C52 /* CoHostCell.swift */; };
 		8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2244332786A17500B86C52 /* CoHostCell.xib */; };
 		8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */; };
+		8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443C2789868900B86C52 /* UserService+Util.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -306,6 +307,7 @@
 		8E22442F2786A13500B86C52 /* CoHostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostCell.swift; sourceTree = "<group>"; };
 		8E2244332786A17500B86C52 /* CoHostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoHostCell.xib; sourceTree = "<group>"; };
 		8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Util.swift"; sourceTree = "<group>"; };
+		8E22443C2789868900B86C52 /* UserService+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Util.swift"; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 			children = (
 				8EE13F1E2779A26B0038AFCF /* RoomService+Private.swift */,
 				8EE13F19277770B00038AFCF /* UserService+Paramater.swift */,
+				8E22443C2789868900B86C52 /* UserService+Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1141,6 +1144,7 @@
 				8EE13EF927745B810038AFCF /* MessageService.swift in Sources */,
 				869F6D312786CA470018788E /* LeaveRoomRequest.swift in Sources */,
 				864B3EE9277EEA9E00699B69 /* SoundChangeCell.swift in Sources */,
+				8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */,
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
 				86938AE82784323A001DD575 /* MessageCell.swift in Sources */,

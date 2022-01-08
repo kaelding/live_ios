@@ -55,13 +55,10 @@ class UserService: NSObject {
     var localUserInfo: UserInfo?
     var userList = DictionaryArray<String, UserInfo>()
     var coHostList: [CoHostModel] {
-        return RoomManager.shared.roomService.operation.coHost
+        RoomManager.shared.roomService.operation.coHost
     }
-    
-    var isMyselfHost: Bool {
-        let hostID = RoomManager.shared.roomService.roomInfo.hostID ?? ""
-        let userID = localUserInfo?.userID ?? ""
-        return hostID == userID
+    var requestCoHostList: [String] {
+        RoomManager.shared.roomService.operation.requestCoHost
     }
     
     override init() {
@@ -229,7 +226,7 @@ class UserService: NSObject {
     
     /// the participant request to host to be a co-host
     func requestToCoHost(callback: RoomCallback?) {
-        guard let parameters = getRequestOrCancelToHostParameters(true) else {
+        guard let parameters = getRequestOrCancelToHostParameters(localUserInfo?.userID, isRequest: true) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
@@ -238,7 +235,11 @@ class UserService: NSObject {
     }
     
     func cancelRequestToCoHost(callback: RoomCallback?) {
-        guard let parameters = getRequestOrCancelToHostParameters(false) else {
+        cancelRequestToCoHost(localUserInfo?.userID, callback: callback)
+    }
+    // private method, host can use this method to cancel request
+    private func cancelRequestToCoHost(_ userID: String?, callback: RoomCallback?) {
+        guard let parameters = getRequestOrCancelToHostParameters(userID, isRequest: false) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
@@ -259,7 +260,7 @@ class UserService: NSObject {
     
     /// take to co-host seat
     func takeCoHostSeat(callback: RoomCallback?) {
-        guard let parameters = getTakeOrLeaveSeatParameters(true) else {
+        guard let parameters = getTakeOrLeaveSeatParameters(localUserInfo?.userID, isTake: true) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
@@ -275,7 +276,11 @@ class UserService: NSObject {
     
     /// leave co-host seat
     func leaveCoHostSeat(callback: RoomCallback?) {
-        guard let parameters = getTakeOrLeaveSeatParameters(false) else {
+        leaveCoHostSeat(localUserInfo?.userID, callback: callback)
+    }
+    // private method, host can use this method to leave co-host
+    private func leaveCoHostSeat(_ userID: String?, callback: RoomCallback?) {
+        guard let parameters = getTakeOrLeaveSeatParameters(userID, isTake: false) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
@@ -395,6 +400,18 @@ extension UserService : ZIMEventHandler {
         for obj in delegates.allObjects {
             if let delegate = obj as? UserServiceDelegate {
                 delegate.roomUserLeave(leftUsers)
+            }
+        }
+        
+        // if the host receive user leave callback,
+        // the host must remove the user from seat list and request list.
+        if !isMyselfHost { return }
+        for leftUser in leftUsers {
+            if isUserInRequestList(leftUser.userID) {
+                cancelRequestToCoHost(leftUser.userID, callback: nil)
+            }
+            if isUserOnSeat(leftUser.userID) {
+                leaveCoHostSeat(leftUser.userID, callback: nil)
             }
         }
     }

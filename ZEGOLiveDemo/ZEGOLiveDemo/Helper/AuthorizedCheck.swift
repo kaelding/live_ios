@@ -88,8 +88,8 @@ class AuthorizedCheck: NSObject {
     
     static func showCameraUnauthorizedAlert(_ viewController: UIViewController) {
         // TODO: - need add localized string
-        let title: String = ""
-        let message: String = ""
+        let title: String = "Cannot use Camera！"
+        let message: String = "Please enable camera access in the system settings!"
         showAlert(title, message, viewController) {
             openAppSettings()
         }

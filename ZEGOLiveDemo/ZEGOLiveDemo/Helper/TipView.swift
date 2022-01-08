@@ -18,16 +18,24 @@ class TipView: UIView {
     @IBOutlet weak var messageLabel: UILabel!
     
     var viewType: TipViewType = .warn
-    var autoDismiss: Bool = false
+    var autoDismiss: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    static func showTip(_ message: String, autoDismiss: Bool = true) {
+        showTipView(.tip, message: message, autoDismiss: autoDismiss)
+    }
     
-    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = false) -> TipView {
+    static func showWarn(_ message: String, autoDismiss: Bool = true) {
+        showTipView(.warn, message: message, autoDismiss: autoDismiss)
+    }
+    
+    static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = true) {
         let tipView: TipView = UINib(nibName: "TipView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TipView
-        tipView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 70)
+        let y = getKeyWindow().safeAreaInsets.top
+        tipView.frame = CGRect.init(x: 0, y: y, width: UIScreen.main.bounds.size.width, height: 70)
         tipView.autoDismiss = autoDismiss
         switch type {
         case .warn:
@@ -37,18 +45,8 @@ class TipView: UIView {
         }
         tipView.messageLabel.text = message
         tipView.show()
-        return tipView
     }
-    
-    func show()  {
-        getKeyWindow().addSubview(self)
-        if autoDismiss {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                TipView.dismiss()
-            }
-        }
-    }
-    
+        
     static func dismiss() {
         DispatchQueue.main.async {
             for subview in KeyWindow().subviews {
@@ -56,6 +54,15 @@ class TipView: UIView {
                     let view: TipView = subview as! TipView
                     view.removeFromSuperview()
                 }
+            }
+        }
+    }
+    
+    private func show()  {
+        getKeyWindow().addSubview(self)
+        if autoDismiss {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                TipView.dismiss()
             }
         }
     }

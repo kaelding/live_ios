@@ -52,7 +52,6 @@ class CoHostCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         layer.cornerRadius = 8.0
-        contentView.backgroundColor = UIColor.clear
         setAvatar("liveShow_KTV")
     }
     

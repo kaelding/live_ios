@@ -33,11 +33,11 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var mixedRindCollection: UICollectionView!
     
     
+    @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var bottomScrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
-    
-    lazy var backMusicArr: [MusicEffectsModel] = {
+         lazy var backMusicArr: [MusicEffectsModel] = {
         let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": false],
                             ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
@@ -77,15 +77,15 @@ class MusicEffectsVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        clipRoundCorners()
     }
     
     func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
+        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
         let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = containerView.bounds
+        maskLayer.frame = roundView.bounds
         maskLayer.path = maskPath.cgPath
-        containerView.layer.mask = maskLayer
+        roundView.layer.mask = maskLayer
     }
     
     @objc func tapClick() -> Void {

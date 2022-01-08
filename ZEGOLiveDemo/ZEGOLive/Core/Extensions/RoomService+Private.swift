@@ -61,7 +61,6 @@ extension RoomService {
             }
         }
         
-        
         // delegate to UI
         let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         let isMyselfUpdate = myUserID == action.targetID

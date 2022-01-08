@@ -12,7 +12,7 @@ class MusicEffectsModel: NSObject {
     var name: String?
     var imageName: String?
     var selectedImageName: String?
-    var selectedType: Int = 0
+    var selectedType: UInt = 0
     var isSelected: Bool = false
     
     init(json: Dictionary<String, Any>) {
@@ -25,7 +25,7 @@ class MusicEffectsModel: NSObject {
         if let selectedImageName = json["selectedImageName"] as? String {
             self.selectedImageName = selectedImageName
         }
-        if let selectedType = json["selectedType"] as? Int {
+        if let selectedType = json["selectedType"] as? UInt {
             self.selectedType = selectedType
         }
         

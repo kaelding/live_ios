@@ -142,7 +142,7 @@ extension RoomService {
         let config = ZIMRoomAdvancedConfig()
         let roomInfoJson = ZegoJsonTool.modelToJson(toString: roomInfo) ?? ""
         
-        config.roomAttributes = ["roomInfo" : roomInfoJson]
+        config.roomAttributes = ["room_info" : roomInfoJson]
         
         return (zimRoomInfo, config, roomInfo)
     }

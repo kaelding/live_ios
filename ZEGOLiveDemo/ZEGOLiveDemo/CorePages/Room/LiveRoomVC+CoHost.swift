@@ -110,9 +110,9 @@ extension LiveRoomVC {
     private struct AssociatedKey {
         static var identifier: String = "identifier_dataSource"
     }
-    private var coHostList: [CoHostSeatModel] {
+    private var coHostList: [CoHostModel] {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKey.identifier) as? [CoHostSeatModel] ?? []
+            return objc_getAssociatedObject(self, &AssociatedKey.identifier) as? [CoHostModel] ?? []
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKey.identifier, newValue, .OBJC_ASSOCIATION_COPY)

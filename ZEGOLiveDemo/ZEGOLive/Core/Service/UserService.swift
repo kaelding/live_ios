@@ -34,7 +34,7 @@ protocol UserServiceDelegate : AnyObject  {
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool)
     
-    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType)
+    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType)
 }
 
 // default realized
@@ -46,7 +46,7 @@ extension UserServiceDelegate {
     func receiveToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveToCoHostRespond() { }
-    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) { }
+    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType) { }
 }
 
 class UserService: NSObject {
@@ -54,8 +54,8 @@ class UserService: NSObject {
     let delegates = NSHashTable<AnyObject>.weakObjects()
     var localUserInfo: UserInfo?
     var userList = DictionaryArray<String, UserInfo>()
-    var coHostList: [CoHostSeatModel] {
-        return RoomManager.shared.roomService.operation.seatList
+    var coHostList: [CoHostModel] {
+        return RoomManager.shared.roomService.operation.coHost
     }
     
     var isMyselfHost: Bool {

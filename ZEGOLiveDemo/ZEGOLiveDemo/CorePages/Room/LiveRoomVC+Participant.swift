@@ -185,7 +185,7 @@ extension LiveRoomVC: UserServiceDelegate {
         bottomView?.resetApplyStatus()
     }
     
-    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) {
+    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType) {
         reloadCoHost()
     }
 }

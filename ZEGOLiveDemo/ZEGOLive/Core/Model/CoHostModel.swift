@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CoHostSeatModel : NSObject, Codable {
+class CoHostModel : NSObject, Codable {
     
     var userID: String = ""
     var isMuted: Bool = false
@@ -22,9 +22,9 @@ class CoHostSeatModel : NSObject, Codable {
     }
 }
 
-extension CoHostSeatModel: NSCopying {
+extension CoHostModel: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = CoHostSeatModel()
+        let copy = CoHostModel()
         copy.userID = userID
         copy.isMuted = isMuted
         copy.mic = mic
@@ -32,7 +32,7 @@ extension CoHostSeatModel: NSCopying {
         return copy
     }
     
-    func updateModel(_ oldModel: CoHostSeatModel) {
+    func updateModel(_ oldModel: CoHostModel) {
         self.userID = oldModel.userID
         self.isMuted = oldModel.isMuted
         self.mic = oldModel.mic

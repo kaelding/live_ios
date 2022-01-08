@@ -10,8 +10,8 @@ import UIKit
 
 struct OperationAttributeType : OptionSet {
     let rawValue: Int
-    static let seat = OperationAttributeType(rawValue: 1)
-    static let coHost = OperationAttributeType(rawValue: 2)
+    static let coHost = OperationAttributeType(rawValue: 1)
+    static let requestCoHost = OperationAttributeType(rawValue: 2)
     // the -1 every bit is 1
     static let all = OperationAttributeType(rawValue: -1)
 }
@@ -37,19 +37,19 @@ struct OperationAction : Codable {
     enum CodingKeys: String, CodingKey {
         case seq = "seq"
         case type = "type"
-        case targetID = "targetID"
-        case operatorID = "operatorID"
+        case targetID = "target_id"
+        case operatorID = "operator_id"
     }
 }
 
 class OperationCommand : NSObject, Codable {
-    var seatList: [CoHostSeatModel] = []
-    var coHostList: [String] = []
+    var coHost: [CoHostModel] = []
+    var requestCoHost: [String] = []
     var action: OperationAction = OperationAction()
     
     enum CodingKeys: String, CodingKey {
-        case seatList = "seat"
-        case coHostList = "coHost"
+        case coHost = "co_host"
+        case requestCoHost = "request_co_host"
         case action = "action"
     }
     
@@ -64,15 +64,15 @@ class OperationCommand : NSObject, Codable {
             attributes["action"] = actionJson
         }
         
-        if type.contains(.seat) {
-            if let seatListJson = ZegoJsonTool.modelToJson(toString: seatList) {
-                attributes["seat"] = seatListJson
+        if type.contains(.coHost) {
+            if let seatListJson = ZegoJsonTool.modelToJson(toString: coHost) {
+                attributes["co_host"] = seatListJson
             }
         }
         
-        if type.contains(.coHost) {
-            if let coHostJson = ZegoJsonTool.modelToJson(toString: coHostList) {
-                attributes["coHost"] = coHostJson
+        if type.contains(.requestCoHost) {
+            if let coHostJson = ZegoJsonTool.modelToJson(toString: requestCoHost) {
+                attributes["request_co_host"] = coHostJson
             }
         }
         
@@ -87,33 +87,33 @@ class OperationCommand : NSObject, Codable {
     
     func updateSeatList(_ json: String) {
         guard let arr = ZegoJsonTool.jsonToArray(json) else { return }
-        var list: [CoHostSeatModel] = []
+        var list: [CoHostModel] = []
         for seatDict in arr {
             guard let seatDict = seatDict as? [String: Any] else { return }
-            guard let seat = ZegoJsonTool.dictionaryToModel(type: CoHostSeatModel.self, dict: seatDict) else { return }
+            guard let seat = ZegoJsonTool.dictionaryToModel(type: CoHostModel.self, dict: seatDict) else { return }
             list.append(seat)
         }
-        self.seatList = list
+        self.coHost = list
     }
     
-    func updateCoHostList(_ json: String) {
+    func updateRequestCoHostList(_ json: String) {
         guard let arr = ZegoJsonTool.jsonToArray(json) else { return }
         var list: [String] = []
         for userID in arr {
             guard let userID = userID as? String else { return }
             list.append(userID)
         }
-        self.coHostList = list
+        self.requestCoHost = list
     }
 }
 
 extension OperationCommand: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = OperationCommand()
-        copy.seatList = self.seatList.compactMap({ seat in
-            seat.copy() as? CoHostSeatModel
+        copy.coHost = self.coHost.compactMap({ seat in
+            seat.copy() as? CoHostModel
         })
-        copy.coHostList = self.coHostList
+        copy.requestCoHost = self.requestCoHost
         copy.action = OperationAction()
         copy.action.seq = self.action.seq
         return copy

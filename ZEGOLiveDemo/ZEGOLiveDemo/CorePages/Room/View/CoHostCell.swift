@@ -38,7 +38,7 @@ class CoHostCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var micOffImageView: UIImageView!
     
-    var model: CoHostSeatModel? {
+    var model: CoHostModel? {
         didSet {
             self.backView.isHidden = model?.camera ?? false
             self.micOffImageView.isHidden = model?.mic ?? false

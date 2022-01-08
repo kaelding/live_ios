@@ -128,10 +128,12 @@ class LiveBottomView: UIView {
     }
     
     @IBAction func cameraButtonClick(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         delegate?.liveBottomView(self, didClickButtonWith: .camera)
     }
     
     @IBAction func micButtonClick(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         delegate?.liveBottomView(self, didClickButtonWith: .mic)
     }
     

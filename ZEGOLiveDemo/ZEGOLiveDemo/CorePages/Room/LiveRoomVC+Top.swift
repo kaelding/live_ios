@@ -37,14 +37,8 @@ extension LiveRoomVC : LiveTopViewDelegate {
     }
         
     func updateTopView() {
-        let roomInfo = RoomManager.shared.roomService.roomInfo
-        guard let hostID = roomInfo.hostID else { return }
-        guard let roomName = roomInfo.roomName else { return }
-        guard let hostInfo = RoomManager.shared.userService.userList.getObj(hostID) else { return }
-        let imageName = String.getHeadImageName(userName: hostInfo.userName ?? "")
-        topView?.avatarImageView.image = UIImage(named: imageName)
+        let host = getHost()
         let number = RoomManager.shared.userService.userList.count
-        topView?.nameLabel.text = roomName
-        topView?.participantButton.setTitle(String(number), for: .normal)
+        self.topView?.updateUI(userName: host?.userName, num: String(number))
     }
 }

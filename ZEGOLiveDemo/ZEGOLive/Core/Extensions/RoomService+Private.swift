@@ -137,7 +137,7 @@ extension RoomService {
             ZegoExpressEngine.shared().muteMicrophone(!seat.mic)
         }
         if action.type == .camera {
-            ZegoExpressEngine.shared().enableCamera(!seat.camera)
+            ZegoExpressEngine.shared().enableCamera(seat.camera)
         }
         
         if action.type == .mute && seat.isMuted {

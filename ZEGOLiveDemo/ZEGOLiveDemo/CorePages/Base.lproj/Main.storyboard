@@ -401,12 +401,44 @@ please create a live room~</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lrq-cy-dhW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-hE-RIA" userLabel="streamView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dib-rc-O4S">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lrq-cy-dhW">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seat_3_icon" translatesAutoresizingMaskIntoConstraints="NO" id="HKs-X3-NAY">
+                                        <rect key="frame" x="157" y="180" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="NhS-S3-KYJ"/>
+                                            <constraint firstAttribute="width" constant="100" id="VOZ-cz-THA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ella Brady" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCn-KS-YED">
+                                        <rect key="frame" x="162.5" y="302" width="89" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="0y5-u0-v09"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="dib-rc-O4S" secondAttribute="leading" id="1QN-WC-D2f"/>
+                                    <constraint firstItem="PCn-KS-YED" firstAttribute="top" secondItem="HKs-X3-NAY" secondAttribute="bottom" constant="22" id="90O-Yc-v7F"/>
+                                    <constraint firstItem="HKs-X3-NAY" firstAttribute="top" secondItem="dib-rc-O4S" secondAttribute="top" constant="180" id="A2l-xQ-zo8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="AlV-sY-Vbv"/>
+                                    <constraint firstItem="Lrq-cy-dhW" firstAttribute="top" secondItem="dib-rc-O4S" secondAttribute="top" id="KzV-aQ-nbD"/>
+                                    <constraint firstItem="HKs-X3-NAY" firstAttribute="centerX" secondItem="dib-rc-O4S" secondAttribute="centerX" id="Lwy-cm-DLL"/>
+                                    <constraint firstItem="PCn-KS-YED" firstAttribute="centerX" secondItem="dib-rc-O4S" secondAttribute="centerX" id="Xpv-mG-yzd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="hIw-tY-ASv"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-kp-atx" userLabel="ReadyContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -466,29 +498,29 @@ please create a live room~</string>
                         <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Lrq-cy-dhW" secondAttribute="trailing" id="5cv-tA-BwA"/>
+                            <constraint firstAttribute="bottom" secondItem="dib-rc-O4S" secondAttribute="bottom" id="6IT-Qp-M5v"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Zci-IS-InW" secondAttribute="trailing" constant="89" id="6Qu-ei-Ilu"/>
                             <constraint firstAttribute="bottom" secondItem="wzn-hE-RIA" secondAttribute="bottom" id="9nf-kt-yEq"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="bottom" secondItem="CX6-wm-rNx" secondAttribute="bottom" id="AFa-Bq-ymm"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="BTY-Fd-9ml"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="F3w-0Y-eON"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Fk7-cm-ybw" secondAttribute="trailing" id="Gj8-3L-IZJ"/>
-                            <constraint firstAttribute="bottom" secondItem="Lrq-cy-dhW" secondAttribute="bottom" id="MLR-HY-fKW"/>
-                            <constraint firstItem="Lrq-cy-dhW" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="OF4-E6-0C9"/>
                             <constraint firstAttribute="bottom" secondItem="SM2-kp-atx" secondAttribute="bottom" id="UGC-g6-KB4"/>
                             <constraint firstItem="Zci-IS-InW" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" constant="16" id="UV0-La-CHv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Zci-IS-InW" secondAttribute="bottom" constant="62" id="XKI-hn-4y1"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="bpN-7G-oy0"/>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="top" secondItem="Jwf-Fl-Asv" secondAttribute="top" constant="10" id="btK-Vz-TXc"/>
+                            <constraint firstItem="dib-rc-O4S" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="bx9-43-B9d"/>
                             <constraint firstItem="Fk7-cm-ybw" firstAttribute="leading" secondItem="Jwf-Fl-Asv" secondAttribute="leading" id="dYo-Bj-GuQ"/>
-                            <constraint firstItem="Lrq-cy-dhW" firstAttribute="top" secondItem="0ci-dq-dVb" secondAttribute="top" id="gqs-Ju-ddk"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="trailing" secondItem="0ci-dq-dVb" secondAttribute="trailing" id="h52-bW-kyF"/>
                             <constraint firstItem="CX6-wm-rNx" firstAttribute="top" secondItem="FrA-AV-VTC" secondAttribute="bottom" constant="20" id="l6u-ow-i9g"/>
                             <constraint firstItem="wzn-hE-RIA" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="me4-dk-ngp"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="CX6-wm-rNx" secondAttribute="trailing" id="p5b-FU-e7r"/>
+                            <constraint firstAttribute="trailing" secondItem="dib-rc-O4S" secondAttribute="trailing" id="pN0-K3-BEb"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="FrA-AV-VTC" secondAttribute="trailing" constant="12" id="pmA-6h-DkD"/>
                             <constraint firstItem="SM2-kp-atx" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="uFs-wT-tUL"/>
                             <constraint firstAttribute="trailing" secondItem="wzn-hE-RIA" secondAttribute="trailing" id="wIo-nj-HwB"/>
+                            <constraint firstItem="dib-rc-O4S" firstAttribute="leading" secondItem="0ci-dq-dVb" secondAttribute="leading" id="wPk-xA-6Pm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4Lb-av-eKj">
@@ -505,11 +537,15 @@ please create a live room~</string>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundView" destination="dib-rc-O4S" id="dDX-5R-QSl"/>
+                        <outlet property="blurHeadImageView" destination="Lrq-cy-dhW" id="US5-ut-9zC"/>
                         <outlet property="bottomContainer" destination="CX6-wm-rNx" id="5Bh-lv-PdP"/>
                         <outlet property="coHostCollectionView" destination="FrA-AV-VTC" id="Wbw-lA-pKV"/>
                         <outlet property="coHostViewHeightConstraint" destination="VTr-Qy-2Hj" id="Q68-Ce-Doh"/>
+                        <outlet property="headImageView" destination="HKs-X3-NAY" id="R2B-Ac-CRN"/>
                         <outlet property="messageHeightConstraint" destination="1PB-I6-fkD" id="5vP-hs-fiH"/>
                         <outlet property="messageView" destination="Zci-IS-InW" id="PSa-as-qCh"/>
+                        <outlet property="nameLabel" destination="PCn-KS-YED" id="NO3-sc-r3c"/>
                         <outlet property="readyContainer" destination="SM2-kp-atx" id="C7R-5K-qIH"/>
                         <outlet property="streamView" destination="wzn-hE-RIA" id="nLY-rQ-Gfw"/>
                         <outlet property="topContainer" destination="Fk7-cm-ybw" id="JT9-Xr-v8H"/>
@@ -613,6 +649,7 @@ please create a live room~</string>
         <image name="room_list_ cover_1" width="100" height="100"/>
         <image name="room_list_create" width="12" height="12"/>
         <image name="room_list_people" width="12" height="12"/>
+        <image name="seat_3_icon" width="54" height="54"/>
         <namedColor name="000000_40">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

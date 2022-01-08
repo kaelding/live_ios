@@ -178,6 +178,8 @@ extension LiveRoomVC: UserServiceDelegate {
     func coHostChange(_ targetUserID: String, type: CoHostChangeType) {
         reloadCoHost()
         updateBottomView()
+        updateHostBackgroundView()
+        
         // be removed by host
         if type == .remove && isUserMyself(targetUserID) {
             TipView.showTip(ZGLocalizedString("toast_room_prohibited_connection"))

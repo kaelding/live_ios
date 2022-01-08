@@ -39,6 +39,10 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             RoomManager.shared.userService.cameraOpen(!coHost.camera)
         case .mic:
             guard let coHost = localCoHost else { break }
+            if coHost.isMuted {
+                TipView.showWarn(ZGLocalizedString("toast_room_muted_by_host"))
+                break
+            }
             RoomManager.shared.userService.micOperation(!coHost.mic)
         case .end:
             endCoHost()

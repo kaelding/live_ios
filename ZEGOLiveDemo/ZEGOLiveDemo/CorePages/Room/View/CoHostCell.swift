@@ -40,9 +40,11 @@ class CoHostCell: UICollectionViewCell {
     
     var model: CoHostModel? {
         didSet {
-            self.backView.isHidden = model?.camera ?? false
-            self.micOffImageView.isHidden = model?.mic ?? false
+            streamView.isHidden = !(model?.camera ?? false)
+            backView.isHidden = model?.camera ?? false
+            micOffImageView.isHidden = model?.mic ?? false
             let user = getUser(model?.userID)
+            moreButton.isHidden = user?.role != .host
             nameLabel.text = user?.userName
             setAvatar(String.getHeadImageName(userName: user?.userName ?? ""))
         }
@@ -63,20 +65,9 @@ class CoHostCell: UICollectionViewCell {
         
     private func setAvatar(_ imageName: String?) {
         guard let imageName = imageName else { return }
-        guard let image = UIImage(named: imageName) else { return }
-        guard let ciimage = CIImage(image: image) else { return }
-        let filter = CIFilter(name: "CIGaussianBlur")
-        filter?.setValue(ciimage, forKey: kCIInputImageKey)
-        filter?.setValue(10, forKey: kCIInputRadiusKey)
-        let context = CIContext(options: nil)
-        guard let result = filter?.outputImage else { return }
-        let rect = CGRect(x: 0,
-                          y: 0,
-                          width: result.extent.width + result.extent.origin.x * 2,
-                          height: result.extent.height + result.extent.origin.y * 2)
-        guard let cgimage = context.createCGImage(result, from: rect) else { return }
-        backgroundImageView.image = UIImage(cgImage: cgimage)
-        headImageView.image = UIImage(named: imageName)
+        let image = UIImage(named: imageName)
+        backgroundImageView.image = UIImage.getBlurImage(image)
+        headImageView.image = image
     }
     
     private func getUser(_ userID: String?) -> UserInfo? {

@@ -9,11 +9,10 @@ import Foundation
 
 class NetworkManager: NSObject, RequestSender {
     static let shareManage: NetworkManager = NetworkManager()
-    var session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue())
-    override init() {
-        super.init()
-        session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue())
-    }
+    lazy var session: URLSession = {
+        return URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue())
+    }()
+    
     /// Get and Post request
     func send<T: Request>(_ req: T, handler: @escaping (T.Response?) -> Void) {
         var hostPath = host
@@ -149,28 +148,27 @@ class NetworkManager: NSObject, RequestSender {
     
 }
 
-extension NetworkManager : URLSessionDelegate
-{
+extension NetworkManager: URLSessionDelegate {
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
-        var disposition = URLSession.AuthChallengeDisposition.performDefaultHandling
-        
-        var credential:URLCredential? = nil
-        
-        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-            
-            if credential != nil {
-                disposition = URLSession.AuthChallengeDisposition.useCredential
+            var disposition = URLSession.AuthChallengeDisposition.performDefaultHandling
+
+            var credential:URLCredential? = nil
+
+            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+                credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+
+                if credential != nil {
+                    disposition = URLSession.AuthChallengeDisposition.useCredential
+                }
+            } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
+                disposition = URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge
+            } else {
+                disposition = URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge
             }
-        }else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
-            disposition = URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge
-        }
-        else {
-            disposition = URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge
-        }
-        
-        completionHandler(disposition, credential)
+//        let disposition = URLSession.AuthChallengeDisposition.useCredential
+//        let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+//        return (disposition, credential)
+            completionHandler(disposition, credential)
     }
 }
                             

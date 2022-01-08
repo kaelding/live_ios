@@ -212,6 +212,7 @@ class LiveRoomVC: UIViewController {
             RoomManager.shared.roomService.getRoomStatus { result in
                 if result.isSuccess {
                     self.reloadCoHost()
+                    self.updateBottomView()
                 }
             }
         }

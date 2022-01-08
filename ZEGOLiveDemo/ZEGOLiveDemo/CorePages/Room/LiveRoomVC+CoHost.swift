@@ -21,6 +21,7 @@ extension LiveRoomVC :
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoHostCell", for: indexPath) as! CoHostCell
         let model = coHostList[indexPath.row]
+        cell.moreButton.isHidden = getUser(localUserID)?.role != .host
         cell.model = model
         cell.delegate = self
         startPlaying(model.userID, streamView: cell.streamView)

@@ -43,25 +43,26 @@ extension LiveRoomVC {
     
     // if the user on the co-host seat
     func isUserOnSeat(_ userID: String?) -> Bool {
-        guard let userID = userID else {
-            return false
-        }
-
-        for seat in RoomManager.shared.userService.coHostList {
-            if seat.userID == userID { return true }
-        }
-        return false
+        return RoomManager.shared.userService.isUserOnSeat(userID)
     }
     
     // if the user in the request co-host list.
     func isUserInRequestList(_ userID: String?) -> Bool {
+        return RoomManager.shared.userService.isUserInRequestList(userID)
+    }
+    
+    func isUserMyself(_ userID: String?) -> Bool {
+        return localUserID == userID
+    }
+    
+    func getCoHost(_ userID: String?) -> CoHostModel? {
         guard let userID = userID else {
-            return false
+            return nil
         }
-        for coHostID in RoomManager.shared.userService.requestCoHostList {
-            if coHostID == userID { return true }
+        for coHost in RoomManager.shared.userService.coHostList {
+            if coHost.userID == userID { return coHost }
         }
-        return false
+        return nil
     }
     
     // is myself on the co-host seat
@@ -82,5 +83,12 @@ extension LiveRoomVC {
     
     var isMyselfHost: Bool {
         RoomManager.shared.userService.isMyselfHost
+    }
+    
+    var localCoHost: CoHostModel? {
+        for coHost in RoomManager.shared.userService.coHostList {
+            if coHost.userID == localUserID { return coHost }
+        }
+        return nil
     }
 }

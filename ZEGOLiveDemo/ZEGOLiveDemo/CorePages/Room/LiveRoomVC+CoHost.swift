@@ -52,16 +52,17 @@ extension LiveRoomVC : CoHostCellDelegate {
         let muteTitle = model.isMuted ? "Unmute" : "Mute"
         let muteAction = UIAlertAction(title: muteTitle, style: .default) { action in
             RoomManager.shared.userService.muteUser(!model.isMuted, userID: model.userID) { result in
-                if result.isSuccess {
-                    model.isMuted = !model.isMuted
-                    self.coHostCollectionView.reloadData()
-                } else {
-                    HUDHelper.showMessage(message: "Failed to operate， please try it again")
+                if result.isFailure {
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
                 }
             }
         }
         let prohibitAction = UIAlertAction(title: "Prohibit to connect", style: .default) { action in
-            //TODO: to add prohibit to connect logic.
+            RoomManager.shared.userService.removeUserFromSeat(model.userID) { result in
+                if result.isFailure {
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                }
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(muteAction)

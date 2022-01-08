@@ -11,7 +11,6 @@ enum UserRole: Codable {
     case participant
     case coHost
     case host
-    case invited
 }
 
 class UserInfo: NSObject, Codable {

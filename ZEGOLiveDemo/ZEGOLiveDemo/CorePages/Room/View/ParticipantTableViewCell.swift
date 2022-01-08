@@ -61,10 +61,10 @@ class ParticipantTableViewCell: UITableViewCell {
             roleLabel.isHidden = false
             roleLabel.text = "host";
             break
-        case .invited:
+        }
+        if userInfo.hasInvited {
             roleLabel.isHidden = false
             roleLabel.text = "invited";
-            break
         }
     }
     

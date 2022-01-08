@@ -119,8 +119,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_sound_page_hall" = "音乐厅";
 "room_sound_page_concert" = "演唱会";
 "room_sound_page_rock" = "摇滚";
-"room_page_has_left_the_room" = "%@ 离开房间";
-"room_page_joined_the_room" = "%@ 加入房间";
+"room_page_has_left_the_room" = "离开直播间";
+"room_page_joined_the_room" = "加入直播间";
 "toast_send_message_error" = "发送消息失败，错误码：%d";
 "room_page_send_message" = "发送";
 "room_page_bands_send_message" = "房主已开启禁言";

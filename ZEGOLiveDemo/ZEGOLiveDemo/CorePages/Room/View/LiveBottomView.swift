@@ -68,10 +68,10 @@ class LiveBottomView: UIView {
     @IBOutlet weak var applyButton: UIButton! {
         didSet {
             applyButton.layer.cornerRadius = 18.0
-            applyButton.setTitle(ZGLocalizedString("room_apply_to_connect"), for: .normal)
-            applyButton.setTitle(ZGLocalizedString("room_apply_to_connect"), for: [.normal, .highlighted])
-            applyButton.setTitle(ZGLocalizedString("room_cancel_to_connect"), for: .selected)
-            applyButton.setTitle(ZGLocalizedString("room_cancel_to_connect"), for: [.selected, .highlighted])
+            applyButton.setTitle(ZGLocalizedString("room_page_apply_to_connect"), for: .normal)
+            applyButton.setTitle(ZGLocalizedString("room_page_apply_to_connect"), for: [.normal, .highlighted])
+            applyButton.setTitle(ZGLocalizedString("room_page_cancel_to_connect"), for: .selected)
+            applyButton.setTitle(ZGLocalizedString("room_page_cancel_to_connect"), for: [.selected, .highlighted])
         }
     }
     @IBOutlet weak var beautyButton: UIButton! {

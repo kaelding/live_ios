@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import ZegoExpressEngine
 
 extension LiveRoomVC : LiveBottomViewDelegate {
     
     func liveBottomView(_ bottomView: LiveBottomView, didClickButtonWith action: LiveBottomAction) {
-        print("liveBottomView did click button: \(action)")
         switch action {
         case .message:
             messageButtonClick()
@@ -19,11 +19,9 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .beauty:
             self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .soundEffect:
-            print("liveBottomView did click button: \(action)")
             self.musicEffectsVC.view.isHidden = false
         case .more:
             self.moreSettingView.isHidden = false
-                print("liveBottomView did click button: \(action)")
         case .apply:
             if applicationHasMicAndCameraAccess() {
                 RoomManager.shared.userService.requestToCoHost(callback: nil)
@@ -34,13 +32,16 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .cancelApply:
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
-                print("liveBottomView did click button: \(action)")
+            isFrontCamera = !isFrontCamera
+            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
         case .camera:
-                print("liveBottomView did click button: \(action)")
+            guard let coHost = localCoHost else { break }
+            RoomManager.shared.userService.cameraOpen(!coHost.camera)
         case .mic:
-                print("liveBottomView did click button: \(action)")
+            guard let coHost = localCoHost else { break }
+            RoomManager.shared.userService.micOperation(!coHost.mic)
         case .end:
-                print("liveBottomView did click button: \(action)")
+            endCoHost()
         }
     }
     
@@ -51,6 +52,11 @@ extension LiveRoomVC : LiveBottomViewDelegate {
 }
 
 extension LiveRoomVC {
+    
+    func updateBottomView() {
+        bottomView?.updateUI(type: getBottomUIType())
+    }
+    
     private func applicationHasMicAndCameraAccess() -> Bool {
         // not determined
         if !AuthorizedCheck.isCameraAuthorizationDetermined(){
@@ -74,5 +80,22 @@ extension LiveRoomVC {
             return false
         }
         return true
+    }
+    
+    private func endCoHost() {
+        let title = ZGLocalizedString("toast_room_title_ended_the_connection")
+        let message = ZGLocalizedString("dialog_room_message_ended_the_connection")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_cancel"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_ok"), style: .default) { action in
+            RoomManager.shared.userService.leaveCoHostSeat { result in
+                if result.isFailure {
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                }
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

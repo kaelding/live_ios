@@ -16,7 +16,6 @@ extension LiveRoomVC: ParticipantListViewDelegate {
             case .success:
                 self.participantListView.inviteMaskView.isHidden = true
                 self.participantListView.isHidden = true
-                userInfo.role = .invited
                 self.participantListView.reloadListView()
                 HUDHelper.showMessage(message:ZGLocalizedString("room_page_invitation_has_sent"))
                 self.restoreInvitedUserStatus(userInfo)
@@ -34,9 +33,7 @@ extension LiveRoomVC: ParticipantListViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 60000) {
             
             if let userInfo = RoomManager.shared.userService.userList.getObj(userID) {
-                if userInfo.role == .invited {
-                    userInfo.role = .participant
-                }
+                userInfo.hasInvited = false
             }
         }
     }
@@ -64,8 +61,7 @@ extension LiveRoomVC: UserServiceDelegate {
         reloadMessageData()
         participantListView.reloadListView()
         updateTopView()
-        
-        bottomView?.updateUI(type: getBottomUIType())
+        updateBottomView()
     }
     
     func roomUserLeave(_ users: [UserInfo]) {
@@ -86,8 +82,8 @@ extension LiveRoomVC: UserServiceDelegate {
         let message = ZGLocalizedString("dialog_invition_descrip")
         let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_refuse"), style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_accept"), style: .default) { action in
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
             
             if RoomManager.shared.userService.coHostList.count > 4 {
                 HUDHelper.showMessage(message: ZGLocalizedString("room_page_no_more_seat_available"))
@@ -114,9 +110,7 @@ extension LiveRoomVC: UserServiceDelegate {
     /// receive add co-host invitation respond
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool) {
         guard let user = RoomManager.shared.userService.userList.getObj(userInfo.userID ?? "") else { return }
-        if user.role == .invited {
-            user.role = .participant
-        }
+        user.hasInvited = false
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {
@@ -176,7 +170,7 @@ extension LiveRoomVC: UserServiceDelegate {
             }
             RoomManager.shared.userService.takeCoHostSeat { result in
                 if result.isSuccess {
-                    self.bottomView?.updateUI(type: .coHost)
+                    self.updateBottomView()
                 }
             }
         } else {
@@ -185,7 +179,23 @@ extension LiveRoomVC: UserServiceDelegate {
         bottomView?.resetApplyStatus()
     }
     
-    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType) {
+    func coHostChange(_ targetUserID: String, type: CoHostChangeType) {
         reloadCoHost()
+        updateBottomView()
+        // be removed by host
+        if type == .remove && isUserMyself(targetUserID) {
+            TipView.showTip(ZGLocalizedString("toast_room_prohibited_connection"))
+        }
+        
+        if isMyselfHost && type == .leave && !isUserMyself(targetUserID) {
+            if let user = getUser(targetUserID) {
+                TipView.showWarn(String(format: ZGLocalizedString("toast_room_ended_the_connection"), user.userName ?? ""))
+            }
+        }
+        
+        guard let coHost = getCoHost(targetUserID) else { return }
+        if coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
+            TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
+        }
     }
 }

@@ -136,7 +136,7 @@
 		8EE13F00277461DB0038AFCF /* RoomListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13EFF277461DB0038AFCF /* RoomListService.swift */; };
 		8EE13F08277496C30038AFCF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F07277496C30038AFCF /* LoginVC.swift */; };
 		8EE13F0E27756D5F0038AFCF /* ZegoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */; };
-		8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */; };
+		8EE13F10277577FB0038AFCF /* CoHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F0F277577FB0038AFCF /* CoHostModel.swift */; };
 		8EE13F122775A5030038AFCF /* OperationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F112775A5030038AFCF /* OperationCommand.swift */; };
 		8EE13F142775AE170038AFCF /* CustomCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F132775AE170038AFCF /* CustomCommand.swift */; };
 		8EE13F1A277770B00038AFCF /* UserService+Paramater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE13F19277770B00038AFCF /* UserService+Paramater.swift */; };
@@ -345,7 +345,7 @@
 		8EE13F05277484FD0038AFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EE13F07277496C30038AFCF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZegoColor.swift; sourceTree = "<group>"; };
-		8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostSeatModel.swift; sourceTree = "<group>"; };
+		8EE13F0F277577FB0038AFCF /* CoHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostModel.swift; sourceTree = "<group>"; };
 		8EE13F112775A5030038AFCF /* OperationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCommand.swift; sourceTree = "<group>"; };
 		8EE13F132775AE170038AFCF /* CustomCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommand.swift; sourceTree = "<group>"; };
 		8EE13F19277770B00038AFCF /* UserService+Paramater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Paramater.swift"; sourceTree = "<group>"; };
@@ -819,7 +819,7 @@
 				8EE13F112775A5030038AFCF /* OperationCommand.swift */,
 				8EE13F132775AE170038AFCF /* CustomCommand.swift */,
 				8EE13EE627745B810038AFCF /* RoomInfo.swift */,
-				8EE13F0F277577FB0038AFCF /* CoHostSeatModel.swift */,
+				8EE13F0F277577FB0038AFCF /* CoHostModel.swift */,
 				86A8A2172779C76A002A7658 /* RoomInfoList.swift */,
 				86938AC6277D60BA001DD575 /* EffectsLicense.swift */,
 			);
@@ -1168,7 +1168,7 @@
 				86938AE3278426CC001DD575 /* MessageView.swift in Sources */,
 				86938AE527842BE2001DD575 /* LiveRoomVC+IM.swift in Sources */,
 				8EE13EF727745B810038AFCF /* RoomInfo.swift in Sources */,
-				8EE13F10277577FB0038AFCF /* CoHostSeatModel.swift in Sources */,
+				8EE13F10277577FB0038AFCF /* CoHostModel.swift in Sources */,
 				8EE13F30277AFBDD0038AFCF /* MBProgressHUD.m in Sources */,
 				86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */,
 				86A8A1FC27796F56002A7658 /* RoomListVC.swift in Sources */,

@@ -163,31 +163,29 @@ extension LiveRoomVC: UserServiceDelegate {
         guard let name = userInfo.userName else { return }
         let message = name + String(format: ZGLocalizedString("has cancel coHost request"))
         HUDHelper.showMessage(message: message)
+        if self.presentedViewController != nil {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool) {
         if agree {
-            if RoomManager.shared.userService.coHostList.count > 4 {
-                HUDHelper.showMessage(message: ZGLocalizedString("room_page_no_more_seat_available"))
+            if RoomManager.shared.userService.coHostList.count >= 4 {
+                TipView.showWarn("A maximum of 3 viewers can connect with the host！")
                 return
             }
             RoomManager.shared.userService.takeCoHostSeat { result in
-                switch result {
-                case .success:
-                    RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
-                    break
-                case .failure(let error):
-                    RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
-                    let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
-                    HUDHelper.showMessage(message: message)
+                if result.isSuccess {
+                    self.bottomView?.updateUI(type: .coHost)
                 }
             }
         } else {
-            
+            TipView.showWarn("Host has rejected your request！")
         }
+        bottomView?.resetApplyStatus()
     }
     
-    func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) {
+    func coHostChange(_ coHost: CoHostModel?, type: CoHostChangeType) {
         reloadCoHost()
     }
 }

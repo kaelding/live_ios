@@ -29,10 +29,10 @@ extension UserService {
         
         if isRequest {
             operation.action.type = .requestToCoHost
-            operation.coHostList.append(myUserID)
+            operation.requestCoHost.append(myUserID)
         } else {
             operation.action.type = .cancelRequestCoHost
-            operation.coHostList = operation.coHostList.filter { $0 != myUserID }
+            operation.requestCoHost = operation.requestCoHost.filter { $0 != myUserID }
         }
         
         let config = ZIMRoomAttributesSetConfig()
@@ -40,7 +40,7 @@ extension UserService {
         config.isForce = true
         config.isUpdateOwner = true
         
-        let attributes = operation.attributes(.coHost)
+        let attributes = operation.attributes(.requestCoHost)
         
         return (attributes, roomID, config)
     }
@@ -62,12 +62,12 @@ extension UserService {
         
         if isTake {
             operation.action.type = .takeCoHostSeat
-            let seat: CoHostSeatModel = CoHostSeatModel()
+            let seat: CoHostModel = CoHostModel()
             seat.userID = myUserID
-            operation.seatList.append(seat)
+            operation.coHost.append(seat)
         } else {
             operation.action.type = .leaveCoHostSeat
-            operation.seatList = operation.seatList.filter { $0.userID != myUserID }
+            operation.coHost = operation.coHost.filter { $0.userID != myUserID }
         }
         
         let config = ZIMRoomAttributesSetConfig()
@@ -75,7 +75,7 @@ extension UserService {
         config.isForce = true
         config.isUpdateOwner = true
         
-        let attributes = operation.attributes(.seat)
+        let attributes = operation.attributes(.coHost)
         
         return (attributes, roomID, config)
     }
@@ -96,7 +96,7 @@ extension UserService {
         operation.action.operatorID = myUserID
         operation.action.targetID = myUserID
         
-        guard let seatModel = operation.seatList.filter({ $0.userID == myUserID }).first else {
+        guard let seatModel = operation.coHost.filter({ $0.userID == myUserID }).first else {
             assert(false, "myself did not on the seat")
             return nil
         }
@@ -117,7 +117,7 @@ extension UserService {
             operation.action.type = .mute
         }
         
-        let attributes = operation.attributes(.seat)
+        let attributes = operation.attributes(.coHost)
         
         let config = ZIMRoomAttributesSetConfig()
         config.isDeleteAfterOwnerLeft = false
@@ -141,7 +141,7 @@ extension UserService {
         operation.action.operatorID = myUserID
         operation.action.targetID = userID
         
-        if !operation.coHostList.contains(userID) {
+        if !operation.requestCoHost.contains(userID) {
             assert(false, "the user ID did not in coHost list.")
             return nil
         }
@@ -151,9 +151,9 @@ extension UserService {
         } else {
             operation.action.type = .declineToCoHost
         }
-        operation.coHostList = operation.coHostList.filter { $0 != userID }
+        operation.requestCoHost = operation.requestCoHost.filter { $0 != userID }
         
-        let attributes = operation.attributes(.coHost)
+        let attributes = operation.attributes(.requestCoHost)
         
         let config = ZIMRoomAttributesSetConfig()
         config.isDeleteAfterOwnerLeft = false

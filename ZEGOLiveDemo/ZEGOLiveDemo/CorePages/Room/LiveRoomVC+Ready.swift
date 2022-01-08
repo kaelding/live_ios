@@ -49,7 +49,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
             message = ZGLocalizedString("toast_room_name_error")
         }
         if message.count > 0 {
-            HUDHelper .showMessage(message: message)
+            TipView.showWarn(message)
             return
         }
         
@@ -64,7 +64,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 self.createRTCRoomWith(roomID: roomID, roomName: roomName)
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
-                HUDHelper.showMessage(message: message)
+                TipView.showWarn(message)
             }
         }
     }
@@ -86,7 +86,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 break
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
-                HUDHelper.showMessage(message: message)
+                TipView.showWarn(message)
                 break
             }
         }

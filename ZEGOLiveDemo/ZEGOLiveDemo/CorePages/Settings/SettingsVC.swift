@@ -113,10 +113,10 @@ class SettingsVC: UITableViewController {
                 HUDHelper.hideNetworkLoading()
                 switch result {
                 case .success:
-                    HUDHelper.showMessage(message: ZGLocalizedString("toast_upload_log_success"))
+                    TipView.showTip(ZGLocalizedString("toast_upload_log_success"))
                     break
                 case .failure(let error):
-                    HUDHelper.showMessage(message: String(format: ZGLocalizedString("toast_upload_log_fail"), error.code))
+                    TipView.showWarn(String(format: ZGLocalizedString("toast_upload_log_fail"), error.code))
                     break
                 }
             };

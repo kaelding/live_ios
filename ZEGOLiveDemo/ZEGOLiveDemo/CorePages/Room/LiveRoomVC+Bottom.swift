@@ -25,11 +25,12 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .apply:
             if applicationHasMicAndCameraAccess() {
                 RoomManager.shared.userService.requestToCoHost(callback: nil)
-                TipView.showTip(ZGLocalizedString("room_apply_to_connect_tip"))
+                TipView.showTip(ZGLocalizedString("room_apply_to_connect_tip"), autoDismiss: false)
             } else {
                 bottomView.resetApplyStatus()
             }
         case .cancelApply:
+            TipView.dismiss()
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
             isFrontCamera = !isFrontCamera

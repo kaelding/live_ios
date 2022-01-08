@@ -17,11 +17,11 @@ extension LiveRoomVC: ParticipantListViewDelegate {
                 self.participantListView.inviteMaskView.isHidden = true
                 self.participantListView.isHidden = true
                 self.participantListView.reloadListView()
-                HUDHelper.showMessage(message:ZGLocalizedString("room_page_invitation_has_sent"))
+                TipView.showTip(ZGLocalizedString("room_page_invitation_has_sent"))
                 self.restoreInvitedUserStatus(userInfo)
                 break
             case .failure(let error):
-                HUDHelper.showMessage(message:"\(error.code)")
+                TipView.showWarn(String(error.code))
                 break
             }
         })
@@ -88,7 +88,7 @@ extension LiveRoomVC: UserServiceDelegate {
         let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
             
             if RoomManager.shared.userService.coHostList.count > 4 {
-                HUDHelper.showMessage(message: ZGLocalizedString("room_page_no_more_seat_available"))
+                TipView.showWarn(ZGLocalizedString("room_page_no_more_seat_available"))
                 return
             }
             
@@ -100,7 +100,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 case .failure(let error):
                     RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
                     let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
-                    HUDHelper.showMessage(message: message)
+                    TipView.showWarn(message)
                 }
             }
         }
@@ -158,7 +158,7 @@ extension LiveRoomVC: UserServiceDelegate {
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) {
         guard let name = userInfo.userName else { return }
         let message = String(format: ZGLocalizedString("toast_room_has_canceled_connection_apply"), name)
-        HUDHelper.showMessage(message: message)
+        TipView.showTip(message)
         
         if self.presentedViewController != nil {
             self.dismiss(animated: true, completion: nil)

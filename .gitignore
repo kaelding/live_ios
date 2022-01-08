@@ -68,4 +68,5 @@ fastlane/test_output
 iOSInjectionProject/
 ZEGOLiveDemo/Pods
 ZEGOLiveDemo/ZEGOLiveDemo/AppCenter/AppCenter.json
-ZEGOLiveDemo/Lib
+ZEGOLiveDemo/LibMediaResources
+ZEGOLiveDemo/MediaResources

@@ -117,12 +117,50 @@ extension LiveRoomVC: UserServiceDelegate {
         }
     }
     /// receive request to co-host request
-    func receiveToCoHostRequest() {
+    func receiveToCoHostRequest(_ userInfo: UserInfo) {
+        guard let name = userInfo.userName else { return }
+        guard let userID = userInfo.userID else { return }
+        let title = ZGLocalizedString("Connection request!")
+        let message = name + ZGLocalizedString(" is requesting a connection with you. Do you agree?")
+        let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_refuse"), style: .cancel) { action in
+            RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
+                switch result {
+                case .success:
+                    let message = String(format: ZGLocalizedString("rejected request success"))
+                    HUDHelper.showMessage(message: message)
+                    break
+                case .failure(let error):
+                    let message = String(format: ZGLocalizedString("rejected request fail"), error.code)
+                    HUDHelper.showMessage(message: message)
+                }
+            }
+        }
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_accept"), style: .default) { action in
+            
+            RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
+                switch result {
+                case .success:
+                    let message = String(format: ZGLocalizedString("access request success"))
+                    HUDHelper.showMessage(message: message)
+                    break
+                case .failure(let error):
+                    let message = String(format: ZGLocalizedString("access request fail"), error.code)
+                    HUDHelper.showMessage(message: message)
+                }
+            }
+        }
+        
+        inviteAlter.addAction(cancelAction)
+        inviteAlter.addAction(okAction)
+        self.present(inviteAlter, animated: true, completion: nil)
     }
     /// receive cancel request to co-host
-    func receiveCancelToCoHostRequest() {
-        
+    func receiveCancelToCoHostRequest(_ userInfo: UserInfo) {
+        guard let name = userInfo.userName else { return }
+        let message = name + String(format: ZGLocalizedString("has cancel coHost request"))
+        HUDHelper.showMessage(message: message)
     }
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool) {
@@ -131,7 +169,6 @@ extension LiveRoomVC: UserServiceDelegate {
                 HUDHelper.showMessage(message: ZGLocalizedString("room_page_no_more_seat_available"))
                 return
             }
-            
             RoomManager.shared.userService.takeCoHostSeat { result in
                 switch result {
                 case .success:

@@ -34,6 +34,10 @@ class UserInfo: NSObject, Codable {
     /// has add co-hosts
     var hasInvited: Bool = false
     
+    override init() {
+        
+    }
+    
     init(_ userID: String, _ userName: String, _ role: UserRole) {
         self.userID = userID
         self.userName = userName

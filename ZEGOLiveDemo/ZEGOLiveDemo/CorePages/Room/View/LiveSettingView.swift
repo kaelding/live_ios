@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZegoExpressEngine
 
 enum LiveSettingViewType: Int {
     case nomal
@@ -148,6 +149,17 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         }
     }
     
+    func updateDeviceConfig() {
+        if RoomManager.shared.deviceService.videoCodeID == .h264 {
+            RoomManager.shared.deviceService.hardwareCoding = true
+        } else if RoomManager.shared.deviceService.videoCodeID == .h265 {
+            if !ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
+                RoomManager.shared.deviceService.setVideoCodeID(.h264)
+                HUDHelper.showMessage(message: "This device does not support H.265 encoding type")
+            }
+        }
+    }
+    
     
     @objc func tapClick() -> Void {
         self.isHidden = true
@@ -202,7 +214,19 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             if model.selectionType == .layered && RoomManager.shared.deviceService.videoCodeID == .h265{
                 return
             }
-            delegate?.settingViewDidSelected(model, type: viewType)
+            if model.selectionType == .hardware && RoomManager.shared.deviceService.videoCodeID == .h265 && !value {
+                model.switchStatus = true
+                HUDHelper.showMessage(message: "H.265 encoding type does not support software encoding")
+                settingTableView.reloadData()
+                return
+            }
+            switch model.selectionType {
+            case .encoding, .resolution, .bitrate:
+                delegate?.settingViewDidSelected(model, type: viewType)
+            case .layered, .hardware, .decoding, .noise, .echo, .volume:
+                RoomManager.shared.deviceService.setLiveDeviceStatus(model.selectionType, enable: value)
+                model.switchStatus = value
+            }
         }
     }
 }

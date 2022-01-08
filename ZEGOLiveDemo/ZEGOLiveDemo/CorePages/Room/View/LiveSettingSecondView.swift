@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum SettingSecondViewType: Int {
     case resolution

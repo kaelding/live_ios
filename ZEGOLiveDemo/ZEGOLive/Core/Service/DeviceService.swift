@@ -49,7 +49,7 @@ class DeviceService: NSObject {
     }
     
     
-    func setVideoPreset(_ preset: RTCVideoPreset) -> Void {
+    func setVideoPreset(_ preset: RTCVideoPreset) {
         videoPreset = preset
         var expressVideoPreset: ZegoVideoConfigPreset = .preset720P
         switch preset {
@@ -67,10 +67,20 @@ class DeviceService: NSObject {
             expressVideoPreset = .preset180P
         }
         let videoConfig: ZegoVideoConfig = ZegoVideoConfig.init(preset: expressVideoPreset)
+        switch videoCodeID {
+        case .h264:
+            if layerCoding {
+                videoConfig.codecID = .IDSVC
+            } else {
+                videoConfig.codecID = .idDefault
+            }
+        case .h265:
+            videoConfig.codecID = .IDH265
+        }
         ZegoExpressEngine.shared().setVideoConfig(videoConfig)
     }
     
-    func setAudioBitrate(_ bitrate: RTCAudioBitrate) -> Void {
+    func setAudioBitrate(_ bitrate: RTCAudioBitrate) {
         audioBitrate = bitrate
         var expressAudioPreset: ZegoAudioConfigPreset = .standardQuality
         switch bitrate {
@@ -89,7 +99,7 @@ class DeviceService: NSObject {
         ZegoExpressEngine.shared().setAudioConfig(audioConfig)
     }
     
-    func setVideoCodeID(_ ID: RTCVideoCode) -> Void {
+    func setVideoCodeID(_ ID: RTCVideoCode) {
         videoCodeID = ID
         var expressCodeID: ZegoVideoCodecID = .idDefault
         switch ID {
@@ -99,10 +109,15 @@ class DeviceService: NSObject {
             } else {
                 expressCodeID = .idDefault
             }
+            setLiveDeviceStatus(.hardware, enable: true)
         case .h265:
-            expressCodeID = .IDH265
+            if !ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
+                expressCodeID = .idDefault
+            } else {
+                expressCodeID = .IDH265
+                setLiveDeviceStatus(.hardware, enable: true)
+            }
         }
-        ZegoExpressEngine.shared().isVideoDecoderSupported(expressCodeID)
     }
     
     func setLiveDeviceStatus(_ statusType: SettingSelectionType, enable: Bool) {
@@ -143,9 +158,9 @@ class DeviceService: NSObject {
     }
     
     func setNomalConfigValue() {
+        setVideoCodeID(videoCodeID)
         setVideoPreset(videoPreset)
         setAudioBitrate(audioBitrate)
-        setVideoCodeID(videoCodeID)
         setLiveDeviceStatus(.layered, enable: layerCoding)
         setLiveDeviceStatus(.hardware, enable: hardwareCoding)
         setLiveDeviceStatus(.decoding, enable: hardwareDecoding)

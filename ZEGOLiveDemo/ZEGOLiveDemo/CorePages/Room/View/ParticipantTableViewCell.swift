@@ -63,12 +63,12 @@ class ParticipantTableViewCell: UITableViewCell {
             break
         case .host:
             roleLabel.isHidden = false
-            roleLabel.text = "host";
+            roleLabel.text = ZGLocalizedString("room_page_host");
             break
         }
         if userInfo.hasInvited {
             roleLabel.isHidden = false
-            roleLabel.text = "invited";
+            roleLabel.text = ZGLocalizedString("user_list_page_invited");
         }
     }
     

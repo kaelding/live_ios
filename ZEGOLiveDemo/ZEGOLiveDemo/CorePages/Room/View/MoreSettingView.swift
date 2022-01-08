@@ -44,6 +44,9 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        titleLabel.text = ZGLocalizedString("room_settings_page_more")
+        
         topLineView.layer.masksToBounds = true
         topLineView.layer.cornerRadius = 2.5
         

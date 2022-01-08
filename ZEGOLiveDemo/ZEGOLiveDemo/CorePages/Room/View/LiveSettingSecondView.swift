@@ -59,13 +59,13 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
         viewType = type
         switch type {
         case .resolution:
-            titleLabel.text = "Resolution Settings"
+            titleLabel.text = ZGLocalizedString("room_settings_page_frame_rate")
             dataSource = videoDataSource
         case .audio:
-            titleLabel.text = "Audio bitrate"
+            titleLabel.text = ZGLocalizedString("room_settings_page_audio_bitrate")
             dataSource = audioDataSource
         case .encoding:
-            titleLabel.text = "Encoding type"
+            titleLabel.text = ZGLocalizedString("room_settings_page_layered_coding")
             dataSource = encodDataSource
         }
         tableView.reloadData()

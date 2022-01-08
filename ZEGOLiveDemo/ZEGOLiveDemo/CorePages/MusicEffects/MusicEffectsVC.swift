@@ -38,31 +38,39 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
          lazy var backMusicArr: [MusicEffectsModel] = {
-        let bgmArray = [["name": "Joyful" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": false],
-                            ["name": "Romantic" ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false]]
+        let bgmArray = [["name": ZGLocalizedString("room_sound_page_joyful") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": false],
+                            ["name": ZGLocalizedString("room_sound_page_romantic") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var voiceChangeArr: [MusicEffectsModel] = {
-        let voiceArray = [["name": "None" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none.rawValue, "isSelected": true],
-                          ["name": "Lolita" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild.rawValue, "isSelected": false],
-                          ["name": "Robot" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android.rawValue, "isSelected": false],
-                          ["name": "Empty" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal.rawValue, "isSelected": false]]
+        let voiceArray = [["name": ZGLocalizedString("room_sound_page_none") ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none.rawValue, "isSelected": true],
+                          ["name": ZGLocalizedString("room_sound_page_lolita") ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild.rawValue, "isSelected": false],
+                          ["name": ZGLocalizedString("room_sound_page_robot") ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android.rawValue, "isSelected": false],
+                          ["name": ZGLocalizedString("room_sound_page_empt") ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal.rawValue, "isSelected": false]]
         return voiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var reverberArr: [MusicEffectsModel] = {
-        let mixVoiceArray = [["name": "None" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none.rawValue , "isSelected": true],
-                             ["name": "KTV" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV.rawValue, "isSelected": false],
+        let mixVoiceArray = [["name": ZGLocalizedString("room_sound_page_none") ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none.rawValue , "isSelected": true],
+                             ["name": ZGLocalizedString("room_sound_page_ktv") ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV.rawValue, "isSelected": false],
                              ["name": "Hall" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall.rawValue, "isSelected": false],
-                             ["name": "Concert" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular.rawValue, "isSelected": false],
-                             ["name": "Rock" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert.rawValue, "isSelected": false]]
+                             ["name": ZGLocalizedString("room_sound_page_concert") ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular.rawValue, "isSelected": false],
+                             ["name": ZGLocalizedString("room_sound_page_rock") ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert.rawValue, "isSelected": false]]
         return mixVoiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainTitleLabel.text = ZGLocalizedString("room_sound_page_sound_effects")
+        backGroundLabel.text = ZGLocalizedString("room_sound_page_sound_background")
+        musicVLabel.text = ZGLocalizedString("room_sound_page_music_volume")
+        voiceVLabel.text = ZGLocalizedString("room_sound_page_voice_volume")
+        soundChangeLabel.text = ZGLocalizedString("room_sound_page_voice_changing")
+        mixedRingLabel.text = ZGLocalizedString("room_sound_page_reverb")
+        
         registerCell()
         musicVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"
         voiceVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"

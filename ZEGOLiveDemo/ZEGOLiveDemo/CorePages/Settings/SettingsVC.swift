@@ -21,7 +21,7 @@ class SettingsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Settings"
+        self.navigationItem.title = ZGLocalizedString("setting_page_settings")
     }
     
     func configModel(type:SettingCellType) -> SettingCellModel {

@@ -44,19 +44,19 @@ class MusicEffectsVC: UIViewController {
     }()
     
     lazy var voiceChangeArr: [MusicEffectsModel] = {
-        let voiceArray = [["name": "None" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none, "isSelected": true],
-                          ["name": "Lolita" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild, "isSelected": false],
-                          ["name": "Robot" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android, "isSelected": false],
-                          ["name": "Empty" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal, "isSelected": false]]
+        let voiceArray = [["name": "None" ,"imageName": "icon_music_none", "selectedImageName": "icon_music_none(1)", "selectedType": ZegoVoiceChangerPreset.none.rawValue, "isSelected": true],
+                          ["name": "Lolita" ,"imageName": "icon_music_lolita", "selectedImageName": "icon_music_lolita(1)", "selectedType": ZegoVoiceChangerPreset.womenToChild.rawValue, "isSelected": false],
+                          ["name": "Robot" ,"imageName": "icon_music_robot", "selectedImageName": "icon_music_robot(1)", "selectedType": ZegoVoiceChangerPreset.android.rawValue, "isSelected": false],
+                          ["name": "Empty" ,"imageName": "icon_music_ethereal", "selectedImageName": "icon_music_ethereal(1)", "selectedType": ZegoVoiceChangerPreset.ethereal.rawValue, "isSelected": false]]
         return voiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     
     lazy var reverberArr: [MusicEffectsModel] = {
-        let mixVoiceArray = [["name": "None" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none , "isSelected": true],
-                             ["name": "KTV" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV, "isSelected": false],
-                             ["name": "Hall" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall, "isSelected": false],
-                             ["name": "Concert" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular, "isSelected": false],
-                             ["name": "Rock" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert, "isSelected": false]]
+        let mixVoiceArray = [["name": "None" ,"imageName": "liveShow_origin", "selectedImageName": "", "selectedType": ZegoReverbPreset.none.rawValue , "isSelected": true],
+                             ["name": "KTV" ,"imageName": "liveShow_KTV", "selectedImageName": "", "selectedType": ZegoReverbPreset.KTV.rawValue, "isSelected": false],
+                             ["name": "Hall" ,"imageName": "liveShow_musicConer", "selectedImageName": "", "selectedType": ZegoReverbPreset.concertHall.rawValue, "isSelected": false],
+                             ["name": "Concert" ,"imageName": "liveShow_concert", "selectedImageName": "", "selectedType": ZegoReverbPreset.popular.rawValue, "isSelected": false],
+                             ["name": "Rock" ,"imageName": "liveShow_rock", "selectedImageName": "", "selectedType": ZegoReverbPreset.vocalConcert.rawValue, "isSelected": false]]
         return mixVoiceArray.map{ MusicEffectsModel(json: $0) }
     }()
     

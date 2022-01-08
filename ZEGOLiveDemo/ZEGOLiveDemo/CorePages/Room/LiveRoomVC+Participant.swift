@@ -187,6 +187,7 @@ extension LiveRoomVC: UserServiceDelegate {
         reloadCoHost()
         updateBottomView()
         updateHostBackgroundView()
+        participantListView.reloadListView()
         
         // be removed by host
         if type == .remove && isUserMyself(targetUserID) {

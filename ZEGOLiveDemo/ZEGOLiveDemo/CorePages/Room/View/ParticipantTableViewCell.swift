@@ -54,7 +54,7 @@ class ParticipantTableViewCell: UITableViewCell {
         guard let userInfo = userInfo else {  return }
         switch userInfo.role {
         case .participant:
-            moreButton.isHidden = !selfIsHost
+            moreButton.isHidden = !selfIsHost || userInfo.hasInvited
             roleLabel.isHidden = true
             if userInfo.userID == RoomManager.shared.userService.localUserInfo?.userID ?? "" {
                 roleLabel.isHidden = false

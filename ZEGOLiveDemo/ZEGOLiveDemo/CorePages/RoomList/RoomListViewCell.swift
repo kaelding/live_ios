@@ -15,9 +15,19 @@ class RoomListViewCell: UICollectionViewCell {
     
     @IBOutlet weak var roomNameLabel: UILabel!
     
+    var roomInfo: RoomInfo?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 12.0
+    }
+    
+    func updateCellWithRoomInfo(_ roomInfo: RoomInfo) {
+        self.roomInfo = roomInfo
+        roomNameLabel.text = roomInfo.roomName
+        participantNumLabel.text = String(roomInfo.userNum)
+        let imageName = String.getRoomCoverImageName(roomName: roomInfo.roomName ?? "")
+        backgroudImage.image = UIImage(named: imageName)
     }
 }

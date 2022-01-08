@@ -116,34 +116,29 @@ extension LiveRoomVC: UserServiceDelegate {
     func receiveToCoHostRequest(_ userInfo: UserInfo) {
         guard let name = userInfo.userName else { return }
         guard let userID = userInfo.userID else { return }
-        let title = ZGLocalizedString("Connection request!")
-        let message = name + ZGLocalizedString(" is requesting a connection with you. Do you agree?")
+        let title = ZGLocalizedString("dialog_room_page_title_connection_request")
+        let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
         let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_refuse"), style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
             RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
                 switch result {
                 case .success:
-                    let message = String(format: ZGLocalizedString("rejected request success"))
-                    HUDHelper.showMessage(message: message)
                     break
-                case .failure(let error):
-                    let message = String(format: ZGLocalizedString("rejected request fail"), error.code)
-                    HUDHelper.showMessage(message: message)
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                    break
                 }
             }
         }
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_accept"), style: .default) { action in
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
             
             RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
                 switch result {
                 case .success:
-                    let message = String(format: ZGLocalizedString("access request success"))
-                    HUDHelper.showMessage(message: message)
                     break
-                case .failure(let error):
-                    let message = String(format: ZGLocalizedString("access request fail"), error.code)
-                    HUDHelper.showMessage(message: message)
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
                 }
             }
         }
@@ -155,8 +150,9 @@ extension LiveRoomVC: UserServiceDelegate {
     /// receive cancel request to co-host
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) {
         guard let name = userInfo.userName else { return }
-        let message = name + String(format: ZGLocalizedString("has cancel coHost request"))
+        let message = String(format: ZGLocalizedString("toast_room_has_canceled_connection_apply"), name)
         HUDHelper.showMessage(message: message)
+        
         if self.presentedViewController != nil {
             self.dismiss(animated: true, completion: nil)
         }
@@ -165,7 +161,7 @@ extension LiveRoomVC: UserServiceDelegate {
     func receiveToCoHostRespond(_ agree: Bool) {
         if agree {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn("A maximum of 3 viewers can connect with the host！")
+                TipView.showWarn("toast_room_maximum")
                 return
             }
             RoomManager.shared.userService.takeCoHostSeat { result in
@@ -174,7 +170,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 }
             }
         } else {
-            TipView.showWarn("Host has rejected your request！")
+            TipView.showWarn("toast_room_has_rejected")
         }
         bottomView?.resetApplyStatus()
     }

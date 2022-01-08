@@ -74,13 +74,16 @@ class RoomService: NSObject {
                 }
                 return
             }
-            
             RoomManager.shared.roomService.roomInfo.roomID = fullRoomInfo.baseInfo.roomID
-            RoomManager.shared.roomService.roomInfo.roomName = fullRoomInfo.baseInfo.roomName
-            RoomManager.shared.loginRtcRoom(with: token)
-            
-            guard let callback = callback else { return }
-            callback(.success(()))
+            RoomManager.shared.roomService.getRoomStatus { result in
+                guard let callback = callback else { return }
+                switch result {
+                case .success():
+                    callback(.success(()))
+                case .failure(let error):
+                    callback(.failure(error))
+                }
+            }
         })
     }
     

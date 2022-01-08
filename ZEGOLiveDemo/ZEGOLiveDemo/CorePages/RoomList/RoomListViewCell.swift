@@ -26,7 +26,7 @@ class RoomListViewCell: UICollectionViewCell {
     func updateCellWithRoomInfo(_ roomInfo: RoomInfo) {
         self.roomInfo = roomInfo
         roomNameLabel.text = roomInfo.roomName
-        participantNumLabel.text = String(roomInfo.userNum)
+        participantNumLabel.text = String(roomInfo.userNum ?? 0)
         let imageName = String.getRoomCoverImageName(roomName: roomInfo.roomName ?? "")
         backgroudImage.image = UIImage(named: imageName)
     }

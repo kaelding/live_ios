@@ -28,6 +28,6 @@ class FaceBeautifyColletionViewCell: UICollectionViewCell {
     func updateCellWithModel(_ model: FaceBeautifyModel) {
         faceBeautifyModel = model
         iconImage.image = UIImage(named: model.imageName)
-        nameLabel.text = model.name
+        nameLabel.text = ZGLocalizedString(model.name)
     }
 }

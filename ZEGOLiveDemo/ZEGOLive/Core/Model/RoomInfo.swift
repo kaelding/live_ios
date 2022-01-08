@@ -18,7 +18,7 @@ class RoomInfo: NSObject, Codable {
     var hostID: String?
     
     /// host user ID
-    var userNum: Int = 0
+    var userNum: Int?
     
     enum CodingKeys: String, CodingKey {
         case roomID = "id"

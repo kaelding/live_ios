@@ -89,7 +89,11 @@ extension LiveRoomVC {
         let streamID = String.getStreamID(userID, roomID: getRoomID())
         let canvas = ZegoCanvas(view: streamView)
         canvas.viewMode = .aspectFill
-        ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
+        if isUserMyself(userID) {
+            ZegoExpressEngine.shared().startPreview(canvas)
+        } else {
+            ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
+        }
     }
     
     private func setCoHostList() {

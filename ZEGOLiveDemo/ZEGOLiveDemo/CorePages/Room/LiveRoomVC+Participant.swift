@@ -82,7 +82,9 @@ extension LiveRoomVC: UserServiceDelegate {
         let message = ZGLocalizedString("dialog_invition_descrip")
         let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
+            RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+        }
         let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
             
             if RoomManager.shared.userService.coHostList.count > 4 {
@@ -111,6 +113,11 @@ extension LiveRoomVC: UserServiceDelegate {
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool) {
         guard let user = RoomManager.shared.userService.userList.getObj(userInfo.userID ?? "") else { return }
         user.hasInvited = false
+        
+        if accept == false {
+            let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
+            TipView.showWarn(message)
+        }
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {

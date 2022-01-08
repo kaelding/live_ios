@@ -8,6 +8,7 @@
 import Foundation
 import ZIM
 import ZegoExpressEngine
+import ZegoEffects
 
 class RoomManager: NSObject {
     static let shared = RoomManager()
@@ -51,6 +52,20 @@ class RoomManager: NSObject {
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
         
         EffectsLicense.shared.getLicense(appID, appSign: appSign)
+        
+        let faceDetectionModelPath = Bundle.main.path(forResource: "FaceDetectionModel", ofType: "model") ?? ""
+        let segmentationModelPath = Bundle.main.path(forResource: "SegmentationModel", ofType: "model") ?? ""
+        let whitenBundlePath = Bundle.main.path(forResource: "FaceWhiteningResources", ofType: "bundle") ?? ""
+        let commonBundlePath = Bundle.main.path(forResource: "CommonResources", ofType: "bundle") ?? ""
+        let rosyBundlePath = Bundle.main.path(forResource: "RosyResources", ofType: "bundle") ?? ""
+        let teethWhiteningBundlePath = Bundle.main.path(forResource: "TeethWhiteningResources", ofType: "bundle") ?? ""
+        let pathArray: Array<String> = [faceDetectionModelPath, segmentationModelPath, whitenBundlePath, commonBundlePath, rosyBundlePath, teethWhiteningBundlePath]
+        ZegoEffects.setResources(pathArray)
+        
+        let processConfig = ZegoCustomVideoProcessConfig()
+        processConfig.bufferType = .cvPixelBuffer
+        ZegoExpressEngine.shared().enableCustomVideoProcessing(true, config: processConfig)
+        ZegoExpressEngine.shared().setCustomVideoProcessHandler(self)
         
         var result: ZegoResult = .success(())
         if ZIMManager.shared.zim == nil {
@@ -171,7 +186,6 @@ extension RoomManager: ZegoEventHandler {
             delegate.onNetworkQuality?(userID, upstreamQuality: upstreamQuality, downstreamQuality: downstreamQuality)
         }
     }
-
 }
 
 extension RoomManager: ZIMEventHandler {
@@ -230,5 +244,18 @@ extension RoomManager: ZIMEventHandler {
         for delegate in zimEventDelegates.allObjects {
             delegate.zim?(zim, roomAttributesUpdated: updateInfo, roomID: roomID)
         }
+    }
+}
+
+extension RoomManager: ZegoCustomVideoProcessHandler {
+    
+    func onStart(_ channel: ZegoPublishChannel) {
+        self.beautifyService.effects.initEnv(CGSize(width: 720, height: 1280))
+    }
+    
+    
+    func onCapturedUnprocessedCVPixelBuffer(_ buffer: CVPixelBuffer, timestamp: CMTime, channel: ZegoPublishChannel) {
+        self.beautifyService.effects.processImageBuffer(buffer)
+        ZegoExpressEngine.shared().sendCustomVideoProcessedCVPixelBuffer(buffer, timestamp: timestamp, channel: channel)
     }
 }

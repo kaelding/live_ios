@@ -147,7 +147,7 @@ class MusicEffectsVC: UIViewController {
         case .ended:
             print("end Draging")
             if let value = slider?.value {
-                let showValue: Int = Int(value * 100)
+                let showValue: Int = Int(value * 200)
                 RoomManager.shared.soundService.setVoiceVolume(showValue)
             }
         default:

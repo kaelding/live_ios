@@ -69,7 +69,7 @@ class SoundEffectService: NSObject {
     
     func setVoiceVolume(_ volume: Int) -> Void {
         voiceVolume = Int32(volume)
-        player?.setVolume(Int32(volume))
+        ZegoExpressEngine.shared().setCaptureVolume(Int32(volume) * 2)
     }
     
     func setVoiceChangeType(_ type: ZegoVoiceChangerPreset) -> Void {

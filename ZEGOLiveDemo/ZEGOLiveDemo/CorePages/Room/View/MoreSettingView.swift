@@ -30,10 +30,10 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     @IBOutlet weak var iconCollectionView: UICollectionView!
     
     lazy var dataSource: [MoreSettingModel] = {
-        let data = [["title": "Flip" ,"imageName": "bottombar_flip", "type": selectedType.flip, "isSelected": false],
-                    ["title": "Camera" ,"imageName": "bottombar_cam_on", "type": selectedType.camera, "isSelected": false],
-                    ["title": "Mute" ,"imageName": "bottombar_mic_on", "type": selectedType.mute, "isSelected": false],
-                    ["title": "Settings" ,"imageName": "bottombar_more", "type": selectedType.setting, "isSelected": false]]
+        let data = [["title": ZGLocalizedString("room_more_flip") ,"imageName": "bottombar_flip", "type": selectedType.flip, "isSelected": false],
+                    ["title": ZGLocalizedString("room_more_camera") ,"imageName": "bottombar_cam_on", "type": selectedType.camera, "isSelected": false],
+                    ["title": ZGLocalizedString("room_more_mic") ,"imageName": "bottombar_mic_on", "type": selectedType.mute, "isSelected": false],
+                    ["title": ZGLocalizedString("room_more_setting") ,"imageName": "bottombar_more", "type": selectedType.setting, "isSelected": false]]
         return data.map{ MoreSettingModel(json: $0) }
     }()
     

@@ -139,3 +139,7 @@ please create a live room~";
 "dialog_attetion_title" = "Attention!";
 "dialog_close" = "Close";
 "room_settings_page_more" = "More";
+"room_more_flip" = "Flip";
+"room_more_mic" = "Mic";
+"room_more_camera" = "Camera";
+"room_more_setting" = "Settings";

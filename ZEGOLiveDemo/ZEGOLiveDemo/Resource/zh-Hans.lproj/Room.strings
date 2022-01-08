@@ -138,3 +138,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "dialog_attetion_title" = "";
 "dialog_close" = "";
 "room_settings_page_more" = "更多";
+"room_settings_page_more" = "More";
+"room_more_flip" = "翻转";
+"room_more_mic" = "麦克风";
+"room_more_camera" = "摄像头";
+"room_more_setting" = "设置";

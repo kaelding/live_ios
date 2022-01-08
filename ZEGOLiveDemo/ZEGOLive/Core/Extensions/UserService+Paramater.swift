@@ -14,9 +14,9 @@ extension UserService {
     typealias ParametersResult = ([String: String], String, ZIMRoomAttributesSetConfig)
     
     // get request or cancel request to host parameters
-    func getRequestOrCancelToHostParameters(_ isRequest: Bool) -> ParametersResult? {
+    func getRequestOrCancelToHostParameters(_ myUserID: String?, isRequest: Bool) -> ParametersResult? {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
-              let myUserID = localUserInfo?.userID
+              let myUserID = myUserID
         else {
             assert(false, "the hostID or roomID cannot be nil")
             return nil
@@ -46,10 +46,10 @@ extension UserService {
     }
     
     // get take or leave seat parameters
-    func getTakeOrLeaveSeatParameters(_ isTake: Bool) -> ParametersResult? {
+    func getTakeOrLeaveSeatParameters(_ myUserID: String?, isTake: Bool) -> ParametersResult? {
         
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
-              let myUserID = localUserInfo?.userID
+              let myUserID = myUserID
         else {
             assert(false, "the userID or roomID cannot be nil")
             return nil

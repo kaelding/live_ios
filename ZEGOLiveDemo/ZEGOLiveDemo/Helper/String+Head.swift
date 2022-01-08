@@ -30,11 +30,9 @@ extension String {
             "seat_4_icon",
             "seat_5_icon",
             "seat_6_icon",
-            "seat_7_icon",
-            "seat_8_icon",
         ]
         
-        let n = (Int(String(hash)) ?? 0) % 8
+        let n = (Int(String(hash)) ?? 0) % 6
         return headImageArray[n]
     }
     

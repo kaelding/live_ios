@@ -128,6 +128,8 @@ extension RoomManager {
         }
         roomService = RoomService()
         messageService = MessageService()
+        userService.userList = DictionaryArray<String, UserInfo>()
+        userService.localUserInfo?.role = .participant
     }
     
     // MARK: - event handler

@@ -25,7 +25,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
                 self.bitrateView?.isHidden = false
             } else {
                 self.LivingSettingView?.isHidden = true
-                self.resolutionView?.isHidden = false
+                self.bitrateView?.isHidden = false
             }
         case .encoding:
             if type == .nomal {

@@ -65,7 +65,7 @@ extension LiveRoomVC : InputTextViewDelegate {
                 self.reloadMessageData()
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_send_message_error"), error.code)
-                HUDHelper.showMessage(message: message)
+                TipView.showWarn(message)
             }
         }
     }

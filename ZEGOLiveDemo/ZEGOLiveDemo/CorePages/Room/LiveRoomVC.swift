@@ -284,6 +284,10 @@ class LiveRoomVC: UIViewController {
 
 extension LiveRoomVC : RoomServiceDelegate {
     func receiveRoomInfoUpdate(_ info: RoomInfo?) {
+        guard let info = info else {
+            leaveRoom()
+            return
+        }
         
     }
 }

@@ -116,7 +116,7 @@ class LoginVC: UIViewController {
         }
         
         if errMsg.count > 0 {
-            HUDHelper.showMessage(message:errMsg)
+            TipView.showWarn(errMsg)
             return
         }
                 
@@ -131,7 +131,7 @@ class LoginVC: UIViewController {
                 break
             case .failure(let error):
                 let message = String(format: ZGLocalizedString("toast_login_fail"), error.code)
-                HUDHelper.showMessage(message: message)
+                TipView.showWarn(message)
                 break
             }
         }

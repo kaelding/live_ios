@@ -156,7 +156,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         } else if RoomManager.shared.deviceService.videoCodeID == .h265 {
             if !ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
                 RoomManager.shared.deviceService.setVideoCodeID(.h264)
-                HUDHelper.showMessage(message: ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
+                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
             }
         }
     }
@@ -217,7 +217,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             }
             if model.selectionType == .hardware && RoomManager.shared.deviceService.videoCodeID == .h265 && !value {
                 model.switchStatus = true
-                HUDHelper.showMessage(message: ZGLocalizedString("toast_room_page_settings_h265_error"))
+                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_h265_error"))
                 settingTableView.reloadData()
                 return
             }

@@ -69,7 +69,7 @@ class ParticipantListView: UIView {
             let endColor = ZegoColor("510DF1")
             layer.colors = [startColor.cgColor, endColor.cgColor]
             layer.frame = inviteButton.bounds
-            inviteButton.layer.addSublayer(layer)
+            inviteButton.layer.insertSublayer(layer, at: 0)
         }
     }
     

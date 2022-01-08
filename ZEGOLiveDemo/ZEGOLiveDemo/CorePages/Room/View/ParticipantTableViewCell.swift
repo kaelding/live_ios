@@ -56,10 +56,14 @@ class ParticipantTableViewCell: UITableViewCell {
         case .participant:
             moreButton.isHidden = !selfIsHost
             roleLabel.isHidden = true
+            if userInfo.userID == RoomManager.shared.userService.localUserInfo?.userID ?? "" {
+                roleLabel.isHidden = false
+                roleLabel.text = ZGLocalizedString("user_list_page_me")
+            }
             break
         case .coHost:
             roleLabel.isHidden = false
-            roleLabel.text =  "co-host";
+            roleLabel.text =  ZGLocalizedString("user_list_page_co_host")
             break
         case .host:
             roleLabel.isHidden = false

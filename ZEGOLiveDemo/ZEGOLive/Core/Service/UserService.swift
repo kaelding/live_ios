@@ -193,7 +193,7 @@ class UserService: NSObject {
     
     /// respond to the co-host invitation
     func respondCoHostInvitation(_ accept: Bool, callback: RoomCallback?) {
-    
+        guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
         guard let hostID = RoomManager.shared.roomService.roomInfo.hostID else {
             assert(false, "the room ID can't be nil")
             guard let callback = callback else { return }
@@ -202,7 +202,7 @@ class UserService: NSObject {
         }
         
         let respond = CustomCommand(.respondInvitation)
-        respond.targetUserIDs.append(hostID)
+        respond.targetUserIDs.append(userID)
         respond.content = CustomCommandContent(accept: accept)
         
         guard let json = respond.json(),

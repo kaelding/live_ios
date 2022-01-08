@@ -68,6 +68,7 @@ class LiveRoomVC: UIViewController {
         let beautifyView = UINib(nibName: "FaceBeaytifyView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! FaceBeautifyView
         beautifyView.frame = self.view.bounds
         beautifyView.isHidden = true
+        beautifyView.delegate = self
         self.view.addSubview(beautifyView)
         return beautifyView
     }()
@@ -198,6 +199,7 @@ class LiveRoomVC: UIViewController {
         // Do any additional setup after loading the view.
         configUI()
         configVideoStream()
+        configFaceBeautify()
         
         if let myself = RoomManager.shared.userService.localUserInfo {
             let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)

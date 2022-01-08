@@ -24,7 +24,9 @@ enum FaceBeautifyType {
 
 class FaceBeautifyService: NSObject {
     
-    let effects = ZegoEffects.create(EffectsLicense.shared.license)
+    lazy var effects: ZegoEffects = {
+        return ZegoEffects.create(EffectsLicense.shared.license)
+    }()
     
     let skinToneEnhancementParam = ZegoEffectsWhitenParam()
     let skinSmoothingParam = ZegoEffectsSmoothParam()

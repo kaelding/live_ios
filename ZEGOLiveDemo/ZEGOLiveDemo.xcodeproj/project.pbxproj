@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		860E11752786A873008847C4 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E11742786A873008847C4 /* DeviceService.swift */; };
 		860E11772786CDB8008847C4 /* LiveRoomVC+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E11762786CDB8008847C4 /* LiveRoomVC+Setting.swift */; };
+		8624088E2789D2B60010A5EC /* FaceWhiteningResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 862408542789D2B60010A5EC /* FaceWhiteningResources.bundle */; };
+		8624088F2789D2B60010A5EC /* TeethWhiteningResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 862408552789D2B60010A5EC /* TeethWhiteningResources.bundle */; };
+		862408B32789D2B60010A5EC /* RosyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 862408812789D2B60010A5EC /* RosyResources.bundle */; };
+		862408B42789D2B60010A5EC /* CommonResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 862408822789D2B60010A5EC /* CommonResources.bundle */; };
+		862408B82789D6DE0010A5EC /* FaceDetectionModel.model in Resources */ = {isa = PBXBuildFile; fileRef = 862408B62789D6DE0010A5EC /* FaceDetectionModel.model */; };
+		862408B92789D6DE0010A5EC /* SegmentationModel.model in Resources */ = {isa = PBXBuildFile; fileRef = 862408B72789D6DE0010A5EC /* SegmentationModel.model */; };
 		864B3EE0277EE75400699B69 /* MusicEffectsVC+BGM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */; };
 		864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B3EE3277EE8AF00699B69 /* BGMCollectionViewCell.swift */; };
 		864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864B3EE4277EE8AF00699B69 /* BGMCollectionViewCell.xib */; };
@@ -169,6 +175,12 @@
 		6E00E478F60CC3D81A7EC14C /* Pods-ZEGOLiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZEGOLiveDemo.debug.xcconfig"; path = "Target Support Files/Pods-ZEGOLiveDemo/Pods-ZEGOLiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		860E11742786A873008847C4 /* DeviceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
 		860E11762786CDB8008847C4 /* LiveRoomVC+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Setting.swift"; sourceTree = "<group>"; };
+		862408542789D2B60010A5EC /* FaceWhiteningResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FaceWhiteningResources.bundle; sourceTree = "<group>"; };
+		862408552789D2B60010A5EC /* TeethWhiteningResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TeethWhiteningResources.bundle; sourceTree = "<group>"; };
+		862408812789D2B60010A5EC /* RosyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RosyResources.bundle; sourceTree = "<group>"; };
+		862408822789D2B60010A5EC /* CommonResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CommonResources.bundle; sourceTree = "<group>"; };
+		862408B62789D6DE0010A5EC /* FaceDetectionModel.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = FaceDetectionModel.model; sourceTree = "<group>"; };
+		862408B72789D6DE0010A5EC /* SegmentationModel.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = SegmentationModel.model; sourceTree = "<group>"; };
 		864B3EDF277EE75400699B69 /* MusicEffectsVC+BGM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicEffectsVC+BGM.swift"; sourceTree = "<group>"; };
 		864B3EE3277EE8AF00699B69 /* BGMCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMCollectionViewCell.swift; sourceTree = "<group>"; };
 		864B3EE4277EE8AF00699B69 /* BGMCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGMCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -379,6 +391,19 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		862408482789D2B60010A5EC /* EffectResources */ = {
+			isa = PBXGroup;
+			children = (
+				862408B62789D6DE0010A5EC /* FaceDetectionModel.model */,
+				862408B72789D6DE0010A5EC /* SegmentationModel.model */,
+				862408542789D2B60010A5EC /* FaceWhiteningResources.bundle */,
+				862408552789D2B60010A5EC /* TeethWhiteningResources.bundle */,
+				862408812789D2B60010A5EC /* RosyResources.bundle */,
+				862408822789D2B60010A5EC /* CommonResources.bundle */,
+			);
+			path = EffectResources;
+			sourceTree = SOURCE_ROOT;
 		};
 		864B3EE1277EE79200699B69 /* Model */ = {
 			isa = PBXGroup;
@@ -760,6 +785,7 @@
 		8EE13E97277452A80038AFCF /* ZEGOLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
+				862408482789D2B60010A5EC /* EffectResources */,
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
 				86B6DF9E278971720023A898 /* MediaResources */,
 				8EE13F0C27756D4D0038AFCF /* Helper */,
@@ -1007,6 +1033,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862408B42789D2B60010A5EC /* CommonResources.bundle in Resources */,
 				86938AE1278426CC001DD575 /* InputTextView.xib in Resources */,
 				86BD9EBE27854C6100DBE379 /* SettingParamDisplayCell.xib in Resources */,
 				86B6DF932787E5190023A898 /* MoreSettingView.xib in Resources */,
@@ -1021,15 +1048,20 @@
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
 				86B6DF972787E8280023A898 /* MoreCollectionViewCell.xib in Resources */,
+				8624088E2789D2B60010A5EC /* FaceWhiteningResources.bundle in Resources */,
 				86938AE92784323A001DD575 /* MessageCell.xib in Resources */,
 				8EE13EA5277452AA0038AFCF /* LaunchScreen.storyboard in Resources */,
+				862408B82789D6DE0010A5EC /* FaceDetectionModel.model in Resources */,
 				869DA750277DA064003E6061 /* MusicEffectsVC.xib in Resources */,
 				8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */,
 				864B3EEA277EEA9E00699B69 /* SoundChangeCell.xib in Resources */,
+				862408B32789D2B60010A5EC /* RosyResources.bundle in Resources */,
 				86B6DF9D278854AF0023A898 /* TipView.xib in Resources */,
 				864B3EEE277EEB0300699B69 /* MixedRingCell.xib in Resources */,
 				8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */,
+				8624088F2789D2B60010A5EC /* TeethWhiteningResources.bundle in Resources */,
 				864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */,
+				862408B92789D6DE0010A5EC /* SegmentationModel.model in Resources */,
 				8677D6C3277C44BE00612058 /* Room.strings in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
 				86BD9ED127869CD600DBE379 /* SettingSecondLevelCell.xib in Resources */,

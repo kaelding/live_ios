@@ -38,8 +38,8 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
          lazy var backMusicArr: [MusicEffectsModel] = {
-        let bgmArray = [["name": ZGLocalizedString("room_sound_page_joyful") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 0, "isSelected": false],
-                            ["name": ZGLocalizedString("room_sound_page_romantic") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": 1, "isSelected": false]]
+        let bgmArray = [["name": ZGLocalizedString("room_sound_page_joyful") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": UInt(0), "isSelected": false],
+                            ["name": ZGLocalizedString("room_sound_page_romantic") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": UInt(1), "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     

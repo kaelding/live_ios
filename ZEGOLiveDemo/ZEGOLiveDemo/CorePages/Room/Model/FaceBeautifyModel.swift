@@ -12,7 +12,7 @@ class FaceBeautifyModel: NSObject {
     var type: FaceBeautifyType = FaceBeautifyType.SkinToneEnhancement
     var value: Int = 0
     var imageName: String = "face_beautify_skin_tone_enhancement"
-    var name: String = "skin tone enhancement"
+    var name: String = ZGLocalizedString("room_beautify_page_skin_tone_enhancement")
     
     init(json: Dictionary<String, Any>) {
         if let type = json["type"] as? FaceBeautifyType {

@@ -80,6 +80,8 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         topLineView.layer.masksToBounds = true
         topLineView.layer.cornerRadius = 2.5
         
+        settingLabel.text = ZGLocalizedString("room_settings_page_settings")
+        
         updateUI()
         
         let tapClick: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
@@ -103,19 +105,19 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         viewType = type
         if type == .nomal {
             containerViewHeight.constant = 564
-            settingDataSource = [["title": "Encoding type" ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
-                                 ["title": "Layered coding" ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": RoomManager.shared.deviceService.layerCoding],
-                                 ["title": "Hardware coding" ,"subTitle": "", "selectionType": SettingSelectionType.hardware, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],
-                                 ["title": "Hardware decoding" ,"subTitle": "", "selectionType": SettingSelectionType.decoding, "switchStatus": RoomManager.shared.deviceService.hardwareDecoding],
-                                 ["title": "Background noise reduction" ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": RoomManager.shared.deviceService.noiseRedution],
-                                 ["title": "Echo cancellation" ,"subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": RoomManager.shared.deviceService.echo],
-                                 ["title": "Mic volume auto-adjustment" ,"subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": RoomManager.shared.deviceService.micVolume],
-                                 ["title": "Resolution settings" ,"subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
-                                 ["title": "Audio bitrate" ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
+            settingDataSource = [["title": ZGLocalizedString("room_settings_page_codec") ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
+                                 ["title": ZGLocalizedString("room_settings_page_layered_coding") ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": RoomManager.shared.deviceService.layerCoding],
+                                 ["title": ZGLocalizedString("room_settings_page_hardware_encoding"), "subTitle": "", "selectionType": SettingSelectionType.hardware, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],
+                                 ["title": ZGLocalizedString("room_settings_page_hardware_decoding"), "subTitle": "", "selectionType": SettingSelectionType.decoding, "switchStatus": RoomManager.shared.deviceService.hardwareDecoding],
+                                 ["title": ZGLocalizedString("room_settings_page_noise_suppression") ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": RoomManager.shared.deviceService.noiseRedution],
+                                 ["title": ZGLocalizedString("room_settings_page_echo_cancellation"), "subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": RoomManager.shared.deviceService.echo],
+                                 ["title": ZGLocalizedString("room_settings_page_mic_volume"), "subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": RoomManager.shared.deviceService.micVolume],
+                                 ["title": ZGLocalizedString("room_settings_page_frame_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+                                 ["title": ZGLocalizedString("room_settings_page_audio_bitrate") ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
         } else if type == .less {
             containerViewHeight.constant = 201
-            settingDataSource = [["title": "Resolution settings" ,"subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
-                                 ["title": "Audio bitrate" ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
+            settingDataSource = [["title": ZGLocalizedString("room_settings_page_frame_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+                                 ["title": ZGLocalizedString("room_settings_page_audio_bitrate") ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
         }
         settingTableView.reloadData()
     }
@@ -154,7 +156,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         } else if RoomManager.shared.deviceService.videoCodeID == .h265 {
             if !ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
                 RoomManager.shared.deviceService.setVideoCodeID(.h264)
-                HUDHelper.showMessage(message: "This device does not support H.265 encoding type")
+                HUDHelper.showMessage(message: ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
             }
         }
     }
@@ -215,7 +217,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             }
             if model.selectionType == .hardware && RoomManager.shared.deviceService.videoCodeID == .h265 && !value {
                 model.switchStatus = true
-                HUDHelper.showMessage(message: "H.265 encoding type does not support software encoding")
+                HUDHelper.showMessage(message: ZGLocalizedString("toast_room_page_settings_h265_error"))
                 settingTableView.reloadData()
                 return
             }

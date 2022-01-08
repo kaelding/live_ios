@@ -105,6 +105,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_beautify_page_teeth_whitening" = "白牙";
 "room_sound_page_audio_enhancement" = "美音";
 "room_sound_page_sound_effects" = "音效";
+"room_sound_page_sound_background" = "背景音";
 "room_sound_page_music_volume" = "音乐音量";
 "room_sound_page_voice_volume" = "人声音量";
 "room_sound_page_voice_changing" = "变声";
@@ -136,3 +137,4 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_end_fail_tip" = "解散房间失败，错误码：%d";
 "dialog_attetion_title" = "";
 "dialog_close" = "";
+"room_settings_page_more" = "更多";

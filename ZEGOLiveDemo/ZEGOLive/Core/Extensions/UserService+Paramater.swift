@@ -15,8 +15,7 @@ extension UserService {
     
     // get request or cancel request to host parameters
     func getRequestOrCancelToHostParameters(_ isRequest: Bool) -> ParametersResult? {
-        guard let hostID = RoomManager.shared.roomService.roomInfo.hostID,
-              let roomID = RoomManager.shared.roomService.roomInfo.roomID,
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID,
               let myUserID = localUserInfo?.userID
         else {
             assert(false, "the hostID or roomID cannot be nil")
@@ -26,7 +25,7 @@ extension UserService {
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
         operation.action.seq += 1
         operation.action.operatorID = myUserID
-        operation.action.targetID = hostID
+        operation.action.targetID = myUserID
         
         if isRequest {
             operation.action.type = .requestToCoHost
@@ -37,7 +36,7 @@ extension UserService {
         }
         
         let config = ZIMRoomAttributesSetConfig()
-        config.isDeleteAfterOwnerLeft = true
+        config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
         
@@ -72,7 +71,7 @@ extension UserService {
         }
         
         let config = ZIMRoomAttributesSetConfig()
-        config.isDeleteAfterOwnerLeft = true
+        config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
         
@@ -121,7 +120,7 @@ extension UserService {
         let attributes = operation.attributes(.seat)
         
         let config = ZIMRoomAttributesSetConfig()
-        config.isDeleteAfterOwnerLeft = true
+        config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
         
@@ -157,7 +156,7 @@ extension UserService {
         let attributes = operation.attributes(.coHost)
         
         let config = ZIMRoomAttributesSetConfig()
-        config.isDeleteAfterOwnerLeft = true
+        config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
         

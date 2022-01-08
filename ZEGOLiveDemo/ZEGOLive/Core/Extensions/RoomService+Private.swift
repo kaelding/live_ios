@@ -11,7 +11,30 @@ import ZegoExpressEngine
 
 extension RoomService {
     
-    func roomAttributesUpdated(_ roomAttributes: [String: String], action: OperationAction) {
+    func roomAttributesUpdated(_ roomAttributes: [String: String]) {
+        // update room info
+        if roomAttributes.keys.contains("roomInfo") {
+            let roomJson = roomAttributes["roomInfo"] ?? ""
+            let roomInfo = ZegoJsonTool.jsonToModel(type: RoomInfo.self, json: roomJson)
+            
+            // if the room info is nil, we should not set self.info = nil
+            // because it can't get room info outside.
+            if let roomInfo = roomInfo {
+                self.roomInfo = roomInfo
+            }
+            delegate?.receiveRoomInfoUpdate(roomInfo)
+        }
+        
+        // update action
+        guard let actionJson = roomAttributes["action"],
+              let action: OperationAction = ZegoJsonTool.jsonToModel(type: OperationAction.self, json: actionJson)
+        else {
+            return
+        }
+        roomAttributesUpdated(roomAttributes, action: action)
+    }
+    
+    private func roomAttributesUpdated(_ roomAttributes: [String: String], action: OperationAction) {
         // if the seq is invalid
         if !operation.isSeqValid(action.seq) {
             resendRoomAttributes(roomAttributes, action: action)
@@ -45,6 +68,7 @@ extension RoomService {
         let isMyselfHost = RoomManager.shared.userService.isMyselfHost
         let seat = self.operation.seatList.filter({ $0.userID == action.targetID }).first
         let targetUser = RoomManager.shared.userService.userList.getObj(action.targetID) ?? UserInfo()
+       
         for delegate in RoomManager.shared.userService.delegates.allObjects {
             guard let delegate = delegate as? UserServiceDelegate else { continue }
             
@@ -83,7 +107,7 @@ extension RoomService {
         }
     }
     
-    func resendRoomAttributes(_ roomAttributes: [String: String], action: OperationAction) {
+    private func resendRoomAttributes(_ roomAttributes: [String: String], action: OperationAction) {
         
         // only the host can resend the room attributes
         if !RoomManager.shared.userService.isMyselfHost { return }
@@ -112,9 +136,9 @@ extension RoomService {
             action.type == .camera ||
             action.type == .mute {
             
-            let seat = operation.seatList.filter { $0.userID == action.operatorID }.first
+            let seat = operation.seatList.filter { $0.userID == action.targetID }.first
             operation.seatList = self.operation.seatList
-            let newSeat = operation.seatList.filter { $0.userID == action.operatorID }.first
+            let newSeat = operation.seatList.filter { $0.userID == action.targetID }.first
             if let seat = seat, let newSeat = newSeat {
                 newSeat.updateModel(seat)
             }
@@ -122,29 +146,29 @@ extension RoomService {
         
         // update the seat list
         if action.type == .takeCoHostSeat {
-            let seat = operation.seatList.filter { $0.userID == action.operatorID }.first
-            operation.seatList = self.operation.seatList.filter { $0.userID != action.operatorID }
+            let seat = operation.seatList.filter { $0.userID == action.targetID }.first
+            operation.seatList = self.operation.seatList.filter { $0.userID != action.targetID }
             if let seat = seat { operation.seatList.append(seat) }
         }
         if action.type == .leaveCoHostSeat {
-            operation.seatList = self.operation.seatList.filter { $0.userID != action.operatorID }
+            operation.seatList = self.operation.seatList.filter { $0.userID != action.targetID }
         }
         
         // update the co-host list
         if action.type == .requestToCoHost {
-            operation.coHostList = self.operation.coHostList.filter { $0 != action.operatorID }
-            operation.coHostList.append(action.operatorID)
+            operation.coHostList = self.operation.coHostList.filter { $0 != action.targetID }
+            operation.coHostList.append(action.targetID)
         }
         if action.type == .cancelRequestCoHost ||
             action.type == .declineToCoHost ||
             action.type == .agreeToCoHost {
-            operation.coHostList = self.operation.coHostList.filter { $0 != action.operatorID }
+            operation.coHostList = self.operation.coHostList.filter { $0 != action.targetID }
         }
         
         let newRoomAttributes = operation.attributes(attributeType)
         
         let config = ZIMRoomAttributesSetConfig()
-        config.isDeleteAfterOwnerLeft = true
+        config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
         ZIMManager.shared.zim?.setRoomAttributes(newRoomAttributes, roomID: roomID, config: config, callback: { error in

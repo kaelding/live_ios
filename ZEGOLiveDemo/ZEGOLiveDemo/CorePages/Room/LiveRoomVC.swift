@@ -191,6 +191,15 @@ class LiveRoomVC: UIViewController {
             messageList.append(model)
             reloadMessageData()
         }
+        
+        // update room attributes
+        if isLiving {
+            RoomManager.shared.roomService.getRoomStatus { result in
+                if result.isSuccess {
+                    self.reloadCoHost()
+                }
+            }
+        }
     }
     
     

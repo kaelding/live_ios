@@ -73,7 +73,7 @@ extension LiveRoomVC : InputTextViewDelegate {
 
 extension LiveRoomVC : MessageServiceDelegate {
     func receiveTextMessage(_ message: TextMessage) {
-        let model = MessageModelBuilder.buildModel(with: getUser(localUserID), message: message.message)
+        let model = MessageModelBuilder.buildModel(with: getUser(message.userID), message: message.message)
         messageList.append(model)
         reloadMessageData()
     }

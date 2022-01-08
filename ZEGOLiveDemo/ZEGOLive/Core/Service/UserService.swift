@@ -43,8 +43,8 @@ extension UserServiceDelegate {
     func roomUserLeave(_ users: [UserInfo]) { }
     func receiveAddCoHostInvitation() { }
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool) { }
-    func receiveToCoHostRequest() { }
-    func receiveCancelToCoHostRequest() { }
+    func receiveToCoHostRequest(_ userInfo: UserInfo) { }
+    func receiveCancelToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveToCoHostRespond() { }
     func coHostChange(_ coHost: CoHostSeatModel?, type: CoHostChangeType) { }
 }

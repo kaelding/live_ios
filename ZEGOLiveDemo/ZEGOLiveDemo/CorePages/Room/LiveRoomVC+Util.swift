@@ -31,6 +31,16 @@ extension LiveRoomVC {
         return RoomManager.shared.roomService.roomInfo.roomID ?? ""
     }
     
+    func getBottomUIType() -> LiveBottomUIType {
+        let role = RoomManager.shared.userService.localUserInfo?.role
+        switch role {
+        case .host: return .host
+        case .coHost: return .coHost
+        case .participant: return .participant
+        default: return .participant
+        }
+    }
+    
     // get local user ID
     var localUserID: String {
         get {

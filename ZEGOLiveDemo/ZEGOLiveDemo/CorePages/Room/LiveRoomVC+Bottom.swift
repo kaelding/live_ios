@@ -25,7 +25,10 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             self.moreSettingView.isHidden = false
                 print("liveBottomView did click button: \(action)")
         case .apply:
-                print("liveBottomView did click button: \(action)")
+            RoomManager.shared.userService.requestToCoHost(callback: nil)
+            _ = TipView.showTipView(.tip, message: ZGLocalizedString("room_apply_to_connect_tip"), autoDismiss: true)
+        case .cancelApply:
+            RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
                 print("liveBottomView did click button: \(action)")
         case .camera:

@@ -64,6 +64,8 @@ extension LiveRoomVC: UserServiceDelegate {
         reloadMessageData()
         participantListView.reloadListView()
         updateTopView()
+        
+        bottomView?.updateUI(type: getBottomUIType())
     }
     
     func roomUserLeave(_ users: [UserInfo]) {

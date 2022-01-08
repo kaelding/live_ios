@@ -88,7 +88,11 @@ class DeviceService: NSObject {
         var expressCodeID: ZegoVideoCodecID = .idDefault
         switch ID {
         case .h264:
-            expressCodeID = .idDefault
+            if layerCoding {
+                expressCodeID = .IDSVC
+            } else {
+                expressCodeID = .idDefault
+            }
         case .h265:
             expressCodeID = .IDH265
         }
@@ -97,7 +101,7 @@ class DeviceService: NSObject {
     
     func setLiveDeviceStatus(_ statusType: SettingSelectionType, enable: Bool) {
         switch statusType {
-        case .encoding:
+        case .encoding, .resolution, .bitrate:
             return
         case .layered:
             layerCoding = enable
@@ -109,15 +113,14 @@ class DeviceService: NSObject {
             hardwareDecoding = enable
         case .noise:
             noiseRedution = enable
+            ZegoExpressEngine.shared().enableANS(enable)
+            ZegoExpressEngine.shared().enableTransientANS(enable)
         case .echo:
             echo = enable
+            ZegoExpressEngine.shared().enableAEC(enable)
         case .volume:
             micVolume = enable
-            return
-        case .resolution:
-            return
-        case .bitrate:
-            return
+            ZegoExpressEngine.shared().enableAGC(enable)
         }
     }
     

@@ -28,9 +28,9 @@ protocol UserServiceDelegate : AnyObject  {
     /// receive add co-host invitation respond
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool)
     /// receive request to co-host request
-    func receiveToCoHostRequest()
+    func receiveToCoHostRequest(_ userInfo: UserInfo)
     /// receive cancel request to co-host
-    func receiveCancelToCoHostRequest()
+    func receiveCancelToCoHostRequest(_ userInfo: UserInfo)
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool)
     

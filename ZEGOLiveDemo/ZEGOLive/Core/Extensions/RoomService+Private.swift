@@ -42,16 +42,17 @@ extension RoomService {
         // delegate to UI
         let myUserID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         let isMyselfUpdate = myUserID == action.targetID
+        let isMyselfHost = RoomManager.shared.userService.isMyselfHost
         let seat = self.operation.seatList.filter({ $0.userID == action.targetID }).first
-        
+        let targetUser = RoomManager.shared.userService.userList.getObj(action.targetID) ?? UserInfo()
         for delegate in RoomManager.shared.userService.delegates.allObjects {
             guard let delegate = delegate as? UserServiceDelegate else { continue }
             
             switch action.type {
             case .requestToCoHost:
-                if isMyselfUpdate { delegate.receiveToCoHostRequest() }
+                if isMyselfHost { delegate.receiveToCoHostRequest(targetUser) }
             case .cancelRequestCoHost:
-                if isMyselfUpdate { delegate.receiveCancelToCoHostRequest() }
+                if isMyselfHost { delegate.receiveCancelToCoHostRequest(targetUser) }
             case .agreeToCoHost:
                 if isMyselfUpdate { delegate.receiveToCoHostRespond(true) }
             case .declineToCoHost:

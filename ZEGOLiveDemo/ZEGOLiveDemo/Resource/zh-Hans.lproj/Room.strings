@@ -24,8 +24,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_list_page_refresh" = "更新中...";
 "toast_room_existed" = "创建房间失败，房间已存在";
 "toast_join_room_fail" = "加入房间失败，错误码：%d";
-"create_page_room_name" = "请填写房间 ID";
-"toast_room_name_error" = "请填写房间名称";
+"create_page_room_name" = "请填写房间名称";
+"create_page_room_start" = "开始直播";
 "toast_create_room_fail" = "创建房间失败，错误码：%d";
 "setting_page_settings" = "设置";
 "setting_page_sdk_version" = "Express SDK 版本号";
@@ -40,11 +40,11 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_page_host" = "主播";
 "room_page_apply_to_connect" = "连麦";
 "room_page_cancel_to_connect" = "取消连麦";
-"room_page_end_connect" = "";
+"room_page_end_connect" = "结束连麦";
 "room_page_mute" = "静音";
 "room_page_unmute" = "取消静音";
 "room_page_prohibit_to_connect" = "抱下麦位";
-"toast_room_prohibitted_connection" = "你已经被主持人抱下麦位";
+"toast_room_prohibited_connection" = "你已经被主持人抱下麦位";
 "toast_room_muted_by_host" = "你已经被主持人静音";
 "toast_room_failed_to_operate" = "操作失败，请重新操作";
 "toast_room_ended_the_connection" = "%@ 已结束连麦";
@@ -61,8 +61,9 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "dialog_room_page_message_connection_request" = "%@ 申请连麦，您是否同意";
 "dialog_room_page_disagree" = "不同意";
 "dialog_room_page_agree" = "同意";
+"toast_room_has_canceled_connection_apply" = "%@ 取消了与你的连麦";
 "toast_room_has_rejected" = "主播拒绝了你的连麦邀请";
-"toast_room_maxinum" = "当前连麦观众已达到最大3人";
+"toast_room_maximum" = "当前连麦观众已达到最大3人";
 "dialog_room_page_mic_cant_open" = "麦克风无法开启";
 "dialog_room_page_mic_permission" = "你还未授权我们使用麦克风";
 "dialog_room_page_go_to_settings" = "去设置";
@@ -87,6 +88,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_settings_page_mic_volume" = "自动调节麦克风音量";
 "room_settings_page_frame_rate" = "分辨率";
 "room_settings_page_audio_bitrate" = "音频码率";
+"toast_room_page_settings_device_not_support_h265" = "";
+"toast_room_page_settings_h265_error" = "";
 "room_beautify_page_face_beautification" = "美颜";
 "room_beautify_page_skin_tone_enhancement" = "美白";
 "room_beautify_page_skin_smoothing" = "磨皮";
@@ -131,3 +134,5 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_has_destroyed" = "房间已被解散";
 "toast_room_leave_fail_tip" = "离开房间失败，错误码：%d";
 "toast_room_end_fail_tip" = "解散房间失败，错误码：%d";
+"dialog_attetion_title" = "";
+"dialog_close" = "";

@@ -155,5 +155,4 @@ class LiveBottomView: UIView {
     @IBAction func moreButtonClick(_ sender: UIButton) {
         delegate?.liveBottomView(self, didClickButtonWith: .more)
     }
-    
 }

@@ -34,8 +34,9 @@ class LiveReadyView: UIView {
             roomTitleTextField.rightViewMode = .always
             
             let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_60")]
-            let attributedStr = NSAttributedString(string: "Please enter the room name", attributes: attributed)
+            let attributedStr = NSAttributedString(string: ZGLocalizedString("create_page_room_name"), attributes: attributed)
             roomTitleTextField.attributedPlaceholder = attributedStr
+            roomTitleTextField.placeholder = ZGLocalizedString("create_page_room_name")
         }
     }
     @IBOutlet weak var startLiveButton: UIButton! {
@@ -51,6 +52,7 @@ class LiveReadyView: UIView {
             layer.frame = startLiveButton.bounds
             startLiveButton.layer.addSublayer(layer)
             startLiveButton.layer.cornerRadius = 22.0
+            startLiveButton.setTitle(ZGLocalizedString(ZGLocalizedString("create_page_room_start")), for: .normal)
         }
     }
     

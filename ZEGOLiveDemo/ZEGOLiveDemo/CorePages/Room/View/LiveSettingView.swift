@@ -27,7 +27,6 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
-    
     weak var delegate: LiveSettingViewDelegate?
     var viewType: LiveSettingViewType = .nomal
     

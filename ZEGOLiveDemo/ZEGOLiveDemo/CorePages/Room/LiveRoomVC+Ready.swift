@@ -17,7 +17,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
             break
         case .cameraFlip:
             isFrontCamera = !isFrontCamera
-            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+            RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
             break
         case .start:
             pressCreateButton()

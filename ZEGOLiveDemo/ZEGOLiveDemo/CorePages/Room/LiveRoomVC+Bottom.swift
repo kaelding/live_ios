@@ -110,9 +110,8 @@ extension LiveRoomVC {
     }
     
     private func share() {
-        let title = "Will share this picture to you."
-        let image = UIImage(named: "room_list_cover_1")! as Any
-        let item: [Any] = [title, image]
+        let url = NSURL(string: "https://global.zegocloud.com/live-join") as Any
+        let item: [Any] = [url]
         let activityVC = UIActivityViewController(activityItems: item, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
         

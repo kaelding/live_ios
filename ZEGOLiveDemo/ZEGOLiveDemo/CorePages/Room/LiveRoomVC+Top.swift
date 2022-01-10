@@ -34,7 +34,7 @@ extension LiveRoomVC : LiveTopViewDelegate {
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         }
         if isMyselfOnSeat {
-            RoomManager.shared.userService.leaveCoHostSeat(callback: nil)
+            RoomManager.shared.userService.leaveSeat(callback: nil)
         }
         
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }

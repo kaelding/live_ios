@@ -124,7 +124,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 return
             }
             
-            RoomManager.shared.userService.takeCoHostSeat { result in
+            RoomManager.shared.userService.takeSeat { result in
                 switch result {
                 case .success:
                     RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
@@ -205,7 +205,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 TipView.showWarn("toast_room_maximum")
                 return
             }
-            RoomManager.shared.userService.takeCoHostSeat { result in
+            RoomManager.shared.userService.takeSeat { result in
             }
         } else {
             TipView.showWarn("toast_room_has_rejected")
@@ -266,7 +266,7 @@ extension LiveRoomVC {
         if !AuthorizedCheck.isCameraAuthorizationDetermined() { return }
         cameraTimer.stop()
         if !AuthorizedCheck.isCameraAuthorized() {
-            RoomManager.shared.userService.cameraOpen(false)
+            RoomManager.shared.userService.cameraOperation(false)
         }
     }
     

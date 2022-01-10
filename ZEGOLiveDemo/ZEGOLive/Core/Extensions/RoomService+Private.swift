@@ -103,9 +103,9 @@ extension RoomService {
                 if isMyselfUpdate {
                     delegate.receiveToCoHostRespond(false)
                 }
-            case .takeCoHostSeat:
+            case .takeSeat:
                 delegate.coHostChange(action.targetID, type: .add)
-            case .leaveCoHostSeat:
+            case .leaveSeat:
                 // coHost leave or host remove coHost
                 if isOperatedSelf {
                     delegate.coHostChange(action.targetID, type: .leave)
@@ -126,7 +126,7 @@ extension RoomService {
         if !isMyselfUpdate { return }
         
         // myself leave the coHost seat(leave or be removed)
-        if action.type == .leaveCoHostSeat {
+        if action.type == .leaveSeat {
             ZegoExpressEngine.shared().stopPublishingStream()
         }
         
@@ -186,12 +186,12 @@ extension RoomService {
         }
         
         // update the seat list
-        if action.type == .takeCoHostSeat {
+        if action.type == .takeSeat {
             let seat = operation.coHost.filter { $0.userID == action.targetID }.first
             operation.coHost = self.operation.coHost.filter { $0.userID != action.targetID }
             if let seat = seat { operation.coHost.append(seat) }
         }
-        if action.type == .leaveCoHostSeat {
+        if action.type == .leaveSeat {
             operation.coHost = self.operation.coHost.filter { $0.userID != action.targetID }
         }
         

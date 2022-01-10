@@ -34,7 +34,6 @@ protocol UserServiceDelegate : AnyObject  {
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo)
     /// receive response to request to co-host
     func receiveToCoHostRespond(_ agree: Bool)
-    
     func coHostChange(_ targetUserID: String, type: CoHostChangeType)
 }
 
@@ -46,7 +45,7 @@ extension UserServiceDelegate {
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool) { }
     func receiveToCoHostRequest(_ userInfo: UserInfo) { }
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) { }
-    func receiveToCoHostRespond() { }
+    func receiveToCoHostRespond(_ agree: Bool) { }
     func coHostChange(_ targetUserID: String, type: CoHostChangeType) { }
 }
 

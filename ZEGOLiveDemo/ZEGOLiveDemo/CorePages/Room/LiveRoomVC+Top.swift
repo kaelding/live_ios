@@ -15,7 +15,16 @@ extension LiveRoomVC : LiveTopViewDelegate {
         case .participant:
             participantListView.isHidden = false
         case .close:
-            leaveRoom()
+            let alert = UIAlertController(title: ZGLocalizedString("room_page_destroy_room"),
+                                          message: ZGLocalizedString("dialog_sure_to_destroy_room"),
+                                          preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_cancel"), style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_ok"), style: .default) { action in
+                self.leaveRoom()
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

@@ -62,6 +62,13 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let a = arc4random_uniform(1000) + 1
+        let userId: String = "Apple\(a)"
+        myUserID = userId
+        myUserName = userId
+        userIDTextField.text = userId
+        
         configUI()
     }
     

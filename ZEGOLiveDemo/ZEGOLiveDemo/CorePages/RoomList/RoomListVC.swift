@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZIM
 
 class RoomListVC: UIViewController {
     
@@ -54,6 +55,7 @@ class RoomListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        RoomManager.shared.userService.addUserServiceDelegate(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,5 +147,18 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 16 * 2 - 13) / 2.0
         return CGSize(width: width, height: width)
+    }
+}
+
+extension RoomListVC : UserServiceDelegate {    
+    func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent) {
+        // logout and show toast when the roomListVC is on the top
+        if self.navigationController?.children.last != self { return }
+        if (state == .disconnected) {
+            let message:String = event == .kickedOut ? ZGLocalizedString("toast_kickout_error") : ZGLocalizedString("toast_disconnect_tips")
+            HUDHelper.showMessage(message: message)
+            RoomManager.shared.userService.logout()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

@@ -280,17 +280,18 @@ extension LiveRoomVC : RoomServiceDelegate {
     func receiveRoomInfoUpdate(_ info: RoomInfo?) {
         
         if info == nil {
-            let alert = UIAlertController(title: ZGLocalizedString("dialog_attetion_title"),
-                                          message: ZGLocalizedString("toast_room_has_destroyed"),
-                                          preferredStyle: .alert)
-            let okAction = UIAlertAction(title: ZGLocalizedString("dialog_close"), style: .default) { action in
-                self.leaveRoom()
-            }
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-            return
+            receiveRoomEnded()
         }
-        
-        
+    }
+    
+    func receiveRoomEnded() {
+        let alert = UIAlertController(title: ZGLocalizedString("dialog_attetion_title"),
+                                      message: ZGLocalizedString("toast_room_has_destroyed"),
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_close"), style: .default) { action in
+            self.leaveRoom()
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

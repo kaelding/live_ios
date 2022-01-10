@@ -41,7 +41,39 @@ extension LiveRoomVC: ParticipantListViewDelegate {
 
 extension LiveRoomVC: UserServiceDelegate {
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent) {
-        
+        if state == .disconnected {
+            HUDHelper.hideNetworkLoading()
+            if event == .loginTimeout {
+                showNetworkAlert()
+            } else {
+                // disconnect of room end
+                var message = ZGLocalizedString("toast_disconnect_tips")
+                if event == .success {
+                    receiveRoomEnded()
+                    return
+                }
+                else if event == .kickedOut {
+                    message = ZGLocalizedString("toast_kickout_error")
+                }
+                TipView.showWarn(message)
+                logout()
+            }
+        } else if state == .reconnecting {
+            HUDHelper.showNetworkLoading(ZGLocalizedString("network_reconnect"))
+        } else if state == .connected {
+            HUDHelper.hideNetworkLoading()
+        }
+                
+        func showNetworkAlert() {
+            let title = ZGLocalizedString("network_connect_failed_title")
+            let message = ZGLocalizedString("network_connect_failed")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: ZGLocalizedString("dialog_confirm"), style: .default) { action in
+                self.logout()
+            }
+            alert.addAction(confirmAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 
@@ -236,5 +268,20 @@ extension LiveRoomVC {
         if !AuthorizedCheck.isCameraAuthorized() {
             RoomManager.shared.userService.cameraOpen(false)
         }
+    }
+    
+    private func logout() {
+        RoomManager.shared.userService.logout()
+        guard let nav = self.navigationController else {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        for vc in nav.children {
+            if vc is LoginVC {
+                self.navigationController?.popToViewController(vc, animated: true)
+                return
+            }
+        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

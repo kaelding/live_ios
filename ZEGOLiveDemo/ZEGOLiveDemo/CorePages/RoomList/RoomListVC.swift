@@ -152,13 +152,29 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
 
 extension RoomListVC : UserServiceDelegate {    
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent) {
-        // logout and show toast when the roomListVC is on the top
-        if self.navigationController?.children.last != self { return }
+        guard let nav = self.navigationController else { return }
+        for vc in nav.children {
+            if vc is LiveRoomVC { return }
+        }
         if (state == .disconnected) {
             let message:String = event == .kickedOut ? ZGLocalizedString("toast_kickout_error") : ZGLocalizedString("toast_disconnect_tips")
-            HUDHelper.showMessage(message: message)
-            RoomManager.shared.userService.logout()
-            self.navigationController?.popViewController(animated: true)
+            TipView.showWarn(message)
+            logout()
         }
+    }
+    
+    private func logout() {
+        RoomManager.shared.userService.logout()
+        guard let nav = self.navigationController else {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        for vc in nav.children {
+            if vc is LoginVC {
+                self.navigationController?.popToViewController(vc, animated: true)
+                return
+            }
+        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

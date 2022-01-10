@@ -110,7 +110,7 @@ extension LiveRoomVC {
     }
     
     private func share() {
-        let url = NSURL(string: "https://global.zegocloud.com/live-join") as Any
+        let url = NSURL(string: "http://192.168.100.210:8081/live-join") as Any
         let item: [Any] = [url]
         let activityVC = UIActivityViewController(activityItems: item, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)

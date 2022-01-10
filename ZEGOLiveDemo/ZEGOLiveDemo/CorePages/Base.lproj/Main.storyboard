@@ -103,6 +103,7 @@
                                 <state key="normal" title="Get more..."/>
                                 <connections>
                                     <action selector="moreButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXJ-3i-FAB"/>
+                                    <segue destination="hwV-1h-FSU" kind="show" identifier="pushToMore" id="AE5-r1-e6H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm8-sO-fxi">
@@ -117,6 +118,7 @@
                                 <state key="normal" title="Contact Us" image="home_qrcode_icon"/>
                                 <connections>
                                     <action selector="contactButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9eD-tf-fj6"/>
+                                    <segue destination="hwV-1h-FSU" kind="show" identifier="pushToContact" id="Jit-YT-OiO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -154,6 +156,47 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-791.304347826087" y="32.8125"/>
+        </scene>
+        <!--ZEGO Live-->
+        <scene sceneID="itP-Ol-0VA">
+            <objects>
+                <viewController id="hwV-1h-FSU" customClass="WebVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PFf-6G-Yxo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ec-3U-9wC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="azB-yR-me5"/>
+                        <color key="backgroundColor" name="1A1726"/>
+                        <constraints>
+                            <constraint firstItem="0Ec-3U-9wC" firstAttribute="top" secondItem="azB-yR-me5" secondAttribute="top" id="Dz8-n4-oJj"/>
+                            <constraint firstItem="azB-yR-me5" firstAttribute="trailing" secondItem="0Ec-3U-9wC" secondAttribute="trailing" id="GbL-Ff-tpx"/>
+                            <constraint firstItem="0Ec-3U-9wC" firstAttribute="leading" secondItem="azB-yR-me5" secondAttribute="leading" id="Hb8-Eg-t4t"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ec-3U-9wC" secondAttribute="bottom" id="jQx-d9-B5b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ZEGO Live" id="c1M-kh-F0y">
+                        <barButtonItem key="leftBarButtonItem" image="nav_back" id="SdG-Sy-JIk">
+                            <connections>
+                                <action selector="backItemClick:" destination="hwV-1h-FSU" id="lLR-E2-KH4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="0Ec-3U-9wC" id="ILE-eO-WsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0k-dn-V1w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-791" y="712"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="gAa-77-wic">
@@ -638,6 +681,9 @@ please create a live room~</string>
             <point key="canvasLocation" x="861" y="745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jit-YT-OiO"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="375" height="667"/>
         <image name="create_flip" width="44" height="44"/>

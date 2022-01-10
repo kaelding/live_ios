@@ -111,6 +111,7 @@
 		8E22443B2788435100B86C52 /* LiveRoomVC+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */; };
 		8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443C2789868900B86C52 /* UserService+Util.swift */; };
 		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
+		8E224441278C61F600B86C52 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E224440278C61F600B86C52 /* WebVC.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -322,6 +323,7 @@
 		8E22443A2788435000B86C52 /* LiveRoomVC+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Util.swift"; sourceTree = "<group>"; };
 		8E22443C2789868900B86C52 /* UserService+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Util.swift"; sourceTree = "<group>"; };
 		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
+		8E224440278C61F600B86C52 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -863,6 +865,7 @@
 				869DA74C277D9D32003E6061 /* MusicEffects */,
 				8E0F63B3277B19620070E750 /* Room */,
 				8EE13F22277ABF8D0038AFCF /* Settings */,
+				8EE13F022774736E0038AFCF /* Home */,
 				8EE13F06277496AC0038AFCF /* Login */,
 				86A8A1FA27796F23002A7658 /* RoomList */,
 				86938AD9278426CB001DD575 /* IM */,
@@ -874,6 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13E9C277452A80038AFCF /* HomeVC.swift */,
+				8E224440278C61F600B86C52 /* WebVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -956,7 +960,6 @@
 			children = (
 				8EE13F27277AEBE10038AFCF /* SettingCellModel.swift */,
 				8EE13F25277AC3190038AFCF /* SettingsVC.swift */,
-				8EE13F022774736E0038AFCF /* Home */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				86B6DF992787E9570023A898 /* MoreSettingModel.swift in Sources */,
 				8EE13EF127745B810038AFCF /* RoomService.swift in Sources */,
 				86BD9ED327869E4F00DBE379 /* LiveSettingSecondLevelModel.swift in Sources */,
+				8E224441278C61F600B86C52 /* WebVC.swift in Sources */,
 				86938B352784772C001DD575 /* AppToken.swift in Sources */,
 				869F6D2827859E7B0018788E /* ParticipantTableViewCell.swift in Sources */,
 			);

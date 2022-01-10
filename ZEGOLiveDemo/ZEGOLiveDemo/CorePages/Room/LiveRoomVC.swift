@@ -187,6 +187,12 @@ class LiveRoomVC: UIViewController {
         return textView
     }()
     
+    let micTimer: ZegoTimer = ZegoTimer(500)
+    let cameraTimer: ZegoTimer = ZegoTimer(500)
+    
+    deinit {
+        
+    }
     
     // MARK: - life cycle
     override func viewDidLoad() {
@@ -209,12 +215,8 @@ class LiveRoomVC: UIViewController {
         
         // update room attributes
         if isLiving {
-            RoomManager.shared.roomService.getRoomStatus { result in
-                if result.isSuccess {
-                    self.reloadCoHost()
-                    self.updateBottomView()
-                }
-            }
+            self.reloadCoHost()
+            self.updateBottomView()
         }
     }
     

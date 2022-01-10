@@ -269,9 +269,14 @@ class UserService: NSObject {
         // publish stream
         guard let myUserID = localUserInfo?.userID else { return }
         let streamID = String.getStreamID(myUserID, roomID: parameters.1)
-        ZegoExpressEngine.shared().startPublishingStream(streamID)
         
-        setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
+        setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
+            if result.isSuccess {
+                ZegoExpressEngine.shared().startPublishingStream(streamID)
+            }
+            guard let callback = callback else { return }
+            callback(result)
+        }
     }
     
     
@@ -323,10 +328,21 @@ class UserService: NSObject {
             return
         }
         
-        setRoomAttributes(parameters.0, parameters.1, parameters.2, nil)
-        
-        // open mic
-        ZegoExpressEngine.shared().muteMicrophone(!open)
+        // modify the mic before request
+        guard let seatModel = RoomManager.shared.roomService.operation.coHost.filter({ $0.userID == localUserInfo?.userID }).first else {
+            return
+        }
+        seatModel.mic = open
+        requestSeq += 1
+        setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
+            if result.isSuccess {
+                // open mic
+                RoomManager.shared.deviceService.muteMicrophone(!open)
+            } else {
+                seatModel.mic = !open
+                requestSeq -= 1
+            }
+        }
     }
     
     /// camera operation
@@ -336,10 +352,21 @@ class UserService: NSObject {
             return
         }
         
-        setRoomAttributes(parameters.0, parameters.1, parameters.2, nil)
-        
-        // open camera
-        ZegoExpressEngine.shared().enableCamera(open)
+        // modify the mic before request
+        guard let seatModel = RoomManager.shared.roomService.operation.coHost.filter({ $0.userID == localUserInfo?.userID }).first else {
+            return
+        }
+        seatModel.camera = open
+        requestSeq += 1
+        setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
+            if result.isSuccess {
+                // open camera
+                RoomManager.shared.deviceService.enableCamera(open)
+            } else {
+                seatModel.camera = !open
+                requestSeq -= 1
+            }
+        }
     }
 }
 

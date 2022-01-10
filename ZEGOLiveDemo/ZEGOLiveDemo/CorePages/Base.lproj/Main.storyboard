@@ -496,7 +496,7 @@ please create a live room~</string>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jwf-Fl-Asv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="1A1726"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="dib-rc-O4S" secondAttribute="bottom" id="6IT-Qp-M5v"/>
                             <constraint firstItem="Jwf-Fl-Asv" firstAttribute="trailing" secondItem="Zci-IS-InW" secondAttribute="trailing" constant="89" id="6Qu-ei-Ilu"/>

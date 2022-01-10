@@ -29,6 +29,14 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     }
     
     func pressCreateButton() {
+        if !AuthorizedCheck.isCameraAuthorized() {
+            AuthorizedCheck.showCameraUnauthorizedAlert(self)
+            return
+        }
+        if !AuthorizedCheck.isMicrophoneAuthorized() {
+            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+            return
+        }
         guard let name = self.readyView?.roomTitleTextField.text else { return }
         createRoomWithRoomName(roomName: name)
      }

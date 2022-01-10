@@ -155,7 +155,9 @@ extension RoomService {
         
         let operation = OperationCommand()
         operation.action = action
-        operation.action.seq += 1
+        operation.coHost = self.operation.coHost
+        operation.requestCoHost = self.operation.requestCoHost
+        operation.addSeq()
         
         var attributeType: OperationAttributeType = []
         // update seat list from json

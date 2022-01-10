@@ -79,8 +79,8 @@ class AuthorizedCheck: NSObject {
     }
     
     static func showMicrophoneUnauthorizedAlert(_ viewController: UIViewController) {
-        let title: String = ZGLocalizedString("room_page_mic_cant_open")
-        let message: String = ZGLocalizedString("room_page_grant_mic_permission")
+        let title: String = ZGLocalizedString("dialog_room_page_mic_cant_open")
+        let message: String = ZGLocalizedString("dialog_room_page_mic_permission")
         showAlert(title, message, viewController) {
             openAppSettings()
         }
@@ -88,8 +88,8 @@ class AuthorizedCheck: NSObject {
     
     static func showCameraUnauthorizedAlert(_ viewController: UIViewController) {
         // TODO: - need add localized string
-        let title: String = "Cannot use Camera！"
-        let message: String = "Please enable camera access in the system settings!"
+        let title: String = ZGLocalizedString("dialog_room_page_title_cannot_use_camera")
+        let message: String = ZGLocalizedString("dialog_room_page_massage_cannot_use_camera")
         showAlert(title, message, viewController) {
             openAppSettings()
         }
@@ -110,8 +110,8 @@ class AuthorizedCheck: NSObject {
                                   okCompletion: @escaping () -> Void) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("room_page_cancel"), style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: ZGLocalizedString("room_page_go_to_settings"), style: .default) { action in
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_cancel"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_go_to_settings"), style: .default) { action in
             okCompletion()
         }
         alert.addAction(cancelAction)

@@ -22,8 +22,8 @@ enum LiveBottomAction {
     case apply
     case cancelApply
     case flip
-    case camera
-    case mic
+    case camera(_ open: Bool)
+    case mic(_ open: Bool)
     case end
 }
 
@@ -110,6 +110,14 @@ class LiveBottomView: UIView {
         self.moreButton.isHidden = type != .host
     }
     
+    func updateMicStatus(_ open: Bool) {
+        micButton.isSelected = !open
+    }
+    
+    func updateCameraStatus(_ open: Bool) {
+        cameraButton.isSelected = !open
+    }
+    
     func resetApplyStatus() {
         applyButton.isSelected = false
     }
@@ -129,12 +137,12 @@ class LiveBottomView: UIView {
     
     @IBAction func cameraButtonClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.liveBottomView(self, didClickButtonWith: .camera)
+        delegate?.liveBottomView(self, didClickButtonWith: .camera(!sender.isSelected))
     }
     
     @IBAction func micButtonClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.liveBottomView(self, didClickButtonWith: .mic)
+        delegate?.liveBottomView(self, didClickButtonWith: .mic(!sender.isSelected))
     }
     
     @IBAction func endButtonClick(_ sender: UIButton) {

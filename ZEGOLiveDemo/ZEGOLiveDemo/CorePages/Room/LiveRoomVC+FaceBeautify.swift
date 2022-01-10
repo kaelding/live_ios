@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZegoExpressEngine
 
 extension LiveRoomVC: FaceBeautifyViewDelegate {
     func configFaceBeautify() {

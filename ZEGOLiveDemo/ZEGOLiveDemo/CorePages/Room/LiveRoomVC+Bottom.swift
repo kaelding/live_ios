@@ -34,7 +34,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
             isFrontCamera = !isFrontCamera
-            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+            RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
         case .camera:
             guard let coHost = localCoHost else { break }
             RoomManager.shared.userService.cameraOpen(!coHost.camera)

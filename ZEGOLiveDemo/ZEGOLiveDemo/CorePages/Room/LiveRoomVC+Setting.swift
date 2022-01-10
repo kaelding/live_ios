@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZegoExpressEngine
 
 extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, MoreSettingViewDelegate {
     
@@ -66,7 +65,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
         switch type {
         case .flip:
             isFrontCamera = !isFrontCamera
-            ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
+            RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
         case .camera:
             guard let coHost = localCoHost else { break }
             RoomManager.shared.userService.cameraOpen(!coHost.camera)

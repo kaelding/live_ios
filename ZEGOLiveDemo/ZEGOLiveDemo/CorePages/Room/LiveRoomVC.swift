@@ -231,15 +231,6 @@ class LiveRoomVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide(node:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func updatePreview() {
-        if RoomManager.shared.roomService.roomInfo.roomID != nil { return }
-        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
-        let canvas = ZegoCanvas(view: streamView)
-        canvas.viewMode = .aspectFill
-        ZegoExpressEngine.shared().enableCamera(true)
-        ZegoExpressEngine.shared().startPreview(canvas)
-    }
-    
     func configUI() {
         self.view.addSubview(inputTextView)
         navigationController?.navigationBar.isHidden = true

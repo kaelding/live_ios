@@ -34,17 +34,7 @@ extension LiveRoomVC {
     func getHost() -> UserInfo? {
         return getUser(getHostID())
     }
-    
-    func getBottomUIType() -> LiveBottomUIType {
-        let role = RoomManager.shared.userService.localUserInfo?.role
-        switch role {
-        case .host: return .host
-        case .coHost: return .coHost
-        case .participant: return .participant
-        default: return .participant
-        }
-    }
-    
+        
     // if the user on the co-host seat
     func isUserOnSeat(_ userID: String?) -> Bool {
         return RoomManager.shared.userService.isUserOnSeat(userID)

@@ -101,20 +101,11 @@ class DeviceService: NSObject {
     
     func setVideoCodeID(_ ID: RTCVideoCode) {
         videoCodeID = ID
-        var expressCodeID: ZegoVideoCodecID = .idDefault
         switch ID {
         case .h264:
-            if layerCoding {
-                expressCodeID = .IDSVC
-            } else {
-                expressCodeID = .idDefault
-            }
             setLiveDeviceStatus(.hardware, enable: true)
         case .h265:
-            if !ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
-                expressCodeID = .idDefault
-            } else {
-                expressCodeID = .IDH265
+            if ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
                 setLiveDeviceStatus(.hardware, enable: true)
             }
         }

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+var requestSeq: Int = 0
+
 struct OperationAttributeType : OptionSet {
     let rawValue: Int
     static let coHost = OperationAttributeType(rawValue: 1)
@@ -29,7 +31,13 @@ enum OperationActionType : Int, Codable {
 }
 
 struct OperationAction : Codable {
-    var seq: Int = 0
+    var seq: Int = 0 {
+        didSet {
+            if seq > requestSeq {
+                requestSeq = seq
+            }
+        }
+    }
     var type: OperationActionType?
     var targetID: String = ""
     var operatorID: String = ""
@@ -51,6 +59,14 @@ class OperationCommand : NSObject, Codable {
         case coHost = "co_host"
         case requestCoHost = "request_co_host"
         case action = "action"
+    }
+    
+    func addSeq() {
+        if requestSeq > action.seq {
+            action.seq = requestSeq + 1
+        } else {
+            action.seq += 1
+        }
     }
     
     func json() -> String? {
@@ -88,12 +104,30 @@ class OperationCommand : NSObject, Codable {
     func updateSeatList(_ json: String) {
         guard let arr = ZegoJsonTool.jsonToArray(json) else { return }
         var list: [CoHostModel] = []
+        let targetCoHost = coHost.filter({ $0.userID == action.targetID }).first
+        var updateCoHost: CoHostModel?
         for seatDict in arr {
             guard let seatDict = seatDict as? [String: Any] else { return }
             guard let seat = ZegoJsonTool.dictionaryToModel(type: CoHostModel.self, dict: seatDict) else { return }
             list.append(seat)
+            if seat.userID == action.targetID {
+                updateCoHost = seat
+            }
         }
-        self.coHost = list
+        // if the action type is .camera, .mic, .mute, only update the this value
+        if let updateCoHost = updateCoHost {
+            if action.type == .camera {
+                targetCoHost?.camera = updateCoHost.camera
+            } else if action.type == .mic {
+                targetCoHost?.mic = updateCoHost.mic
+            } else if action.type == .mute {
+                targetCoHost?.isMuted = updateCoHost.isMuted
+            } else {
+                self.coHost = list
+            }
+        } else {
+            self.coHost = list
+        }
     }
     
     func updateRequestCoHostList(_ json: String) {

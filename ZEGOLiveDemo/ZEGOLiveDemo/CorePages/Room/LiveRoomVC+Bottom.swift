@@ -23,26 +23,41 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .more:
             self.moreSettingView.isHidden = false
         case .apply:
-            if applicationHasMicAndCameraAccess() {
-                RoomManager.shared.userService.requestToCoHost(callback: nil)
-                TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
-            } else {
-                bottomView.resetApplyStatus()
-            }
+            RoomManager.shared.userService.requestToCoHost(callback: nil)
+            TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
         case .cancelApply:
             TipView.dismiss()
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
         case .flip:
             isFrontCamera = !isFrontCamera
             RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
-        case .camera:
-            guard let coHost = localCoHost else { break }
+        case .camera(let isOpen):
+            // determined but not authorized
+            if !AuthorizedCheck.isCameraAuthorized() {
+                AuthorizedCheck.showCameraUnauthorizedAlert(self)
+                bottomView.updateCameraStatus(!isOpen)
+                return
+            }
+            guard let coHost = localCoHost else {
+                bottomView.updateCameraStatus(!isOpen)
+                return
+            }
             RoomManager.shared.userService.cameraOpen(!coHost.camera)
-        case .mic:
-            guard let coHost = localCoHost else { break }
+        case .mic(let isOpen):
+            // determined but not authorized
+            if !AuthorizedCheck.isMicrophoneAuthorized() {
+                AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+                bottomView.updateMicStatus(!isOpen)
+                return
+            }
+            guard let coHost = localCoHost else {
+                bottomView.updateMicStatus(!isOpen)
+                return
+            }
             if coHost.isMuted {
+                bottomView.updateMicStatus(!isOpen)
                 TipView.showWarn(ZGLocalizedString("toast_room_muted_by_host"))
-                break
+                return
             }
             RoomManager.shared.userService.micOperation(!coHost.mic)
         case .end:
@@ -59,32 +74,22 @@ extension LiveRoomVC : LiveBottomViewDelegate {
 extension LiveRoomVC {
     
     func updateBottomView() {
-        bottomView?.updateUI(type: getBottomUIType())
-    }
-    
-    private func applicationHasMicAndCameraAccess() -> Bool {
-        // not determined
-        if !AuthorizedCheck.isCameraAuthorizationDetermined(){
-            AuthorizedCheck.takeCameraAuthorityStatus(completion: nil)
-            return false
+        let role = RoomManager.shared.userService.localUserInfo?.role
+        var type: LiveBottomUIType = .participant
+        switch role {
+        case .host: type = .host
+        case .coHost: type = .coHost
+        case .participant: type = .participant
+        default: type = .participant
         }
-        // determined but not authorized
-        if !AuthorizedCheck.isCameraAuthorized() {
-            AuthorizedCheck.showCameraUnauthorizedAlert(self)
-            return false
+        bottomView?.updateUI(type: type)
+        guard let localCoHost = localCoHost else {
+            bottomView?.updateMicStatus(false)
+            bottomView?.updateCameraStatus(false)
+            return
         }
-        
-        // not determined
-        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined(){
-            AuthorizedCheck.takeMicPhoneAuthorityStatus(completion: nil)
-            return false
-        }
-        // determined but not authorized
-        if !AuthorizedCheck.isMicrophoneAuthorized() {
-            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
-            return false
-        }
-        return true
+        bottomView?.updateMicStatus(localCoHost.mic)
+        bottomView?.updateCameraStatus(localCoHost.camera)
     }
     
     private func endCoHost() {

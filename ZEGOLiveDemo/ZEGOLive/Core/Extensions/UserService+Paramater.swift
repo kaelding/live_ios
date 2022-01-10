@@ -24,7 +24,7 @@ extension UserService {
         }
         
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
-        operation.action.seq += 1
+        operation.addSeq()
         operation.action.operatorID = myUserID
         operation.action.targetID = targetUserID
         
@@ -58,7 +58,7 @@ extension UserService {
         }
         
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
-        operation.action.seq += 1
+        operation.addSeq()
         operation.action.operatorID = myUserID
         operation.action.targetID = targetUserID
         
@@ -95,7 +95,7 @@ extension UserService {
         }
         
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
-        operation.action.seq += 1
+        operation.addSeq()
         operation.action.operatorID = myUserID
         operation.action.targetID = targetUserID
         
@@ -140,7 +140,7 @@ extension UserService {
         }
         
         let operation = RoomManager.shared.roomService.operation.copy() as! OperationCommand
-        operation.action.seq += 1
+        operation.addSeq()
         operation.action.operatorID = myUserID
         operation.action.targetID = userID
         

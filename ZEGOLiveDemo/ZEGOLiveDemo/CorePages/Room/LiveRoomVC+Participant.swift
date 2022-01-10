@@ -174,9 +174,6 @@ extension LiveRoomVC: UserServiceDelegate {
                 return
             }
             RoomManager.shared.userService.takeCoHostSeat { result in
-                if result.isSuccess {
-                    self.updateBottomView()
-                }
             }
         } else {
             TipView.showWarn("toast_room_has_rejected")
@@ -189,6 +186,11 @@ extension LiveRoomVC: UserServiceDelegate {
         updateBottomView()
         updateHostBackgroundView()
         participantListView.reloadListView()
+        
+        // localUser take seat success
+        if targetUserID == localUserID && type == .add {
+            startMonitorCameraAndMicAuthority()
+        }
         
         // be removed by host
         if type == .remove && isUserMyself(targetUserID) {
@@ -204,6 +206,35 @@ extension LiveRoomVC: UserServiceDelegate {
         guard let coHost = getCoHost(targetUserID) else { return }
         if coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
             TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
+        }
+    }
+}
+
+extension LiveRoomVC {
+    private func startMonitorCameraAndMicAuthority() {
+        micTimer.setEventHandler { [unowned self] in
+            self.onMicAuthorizationTimerTriggered()
+        }
+        cameraTimer.setEventHandler { [unowned self] in
+            self.onCameraAuthorizationTimerTriggered()
+        }
+        micTimer.start()
+        cameraTimer.start()
+    }
+    
+    private func onMicAuthorizationTimerTriggered() {
+        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined() { return }
+        micTimer.stop()
+        if !AuthorizedCheck.isMicrophoneAuthorized() {
+            RoomManager.shared.userService.micOperation(false)
+        }
+    }
+    
+    private func onCameraAuthorizationTimerTriggered() {
+        if !AuthorizedCheck.isCameraAuthorizationDetermined() { return }
+        cameraTimer.stop()
+        if !AuthorizedCheck.isCameraAuthorized() {
+            RoomManager.shared.userService.cameraOpen(false)
         }
     }
 }

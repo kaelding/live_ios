@@ -7,12 +7,20 @@
 
 import UIKit
 
+#if canImport(Firebase)
+import Firebase
+#endif
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        #if canImport(Firebase)
+        FirebaseApp.configure()
+        #endif
         
         RoomManager.shared.initWithAppID(appID: AppCenter.appID(), appSign: AppCenter.appSign()) { result in
             if result.isFailure {

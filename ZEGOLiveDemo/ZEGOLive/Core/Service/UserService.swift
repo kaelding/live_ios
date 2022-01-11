@@ -272,6 +272,8 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
             if result.isSuccess {
                 ZegoExpressEngine.shared().startPublishingStream(streamID)
+                ZegoExpressEngine.shared().enableCamera(true)
+                ZegoExpressEngine.shared().muteMicrophone(false)
             }
             guard let callback = callback else { return }
             callback(result)

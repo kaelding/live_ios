@@ -97,6 +97,11 @@ extension LiveRoomVC: UserServiceDelegate {
         participantListView.reloadListView()
         updateTopView()
         updateBottomView()
+        
+        // if it is host enter the room, host's camera and mic should be on.
+        if !isMyselfHost {
+            updateHostBackgroundView()
+        }
     }
     
     func roomUserLeave(_ users: [UserInfo]) {

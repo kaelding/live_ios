@@ -461,7 +461,7 @@ extension UserService : ZIMEventHandler {
                     delegate.receiveAddCoHostInvitation()
                 } else {
                     guard let accept = command.content?.accept else { continue }
-                    if let user = self.userList.getObj(command.targetUserIDs.first ?? "") {
+                    if let user = self.userList.getObj(fromUserID) {
                         delegate.receiveAddCoHostRespond(user, accept: accept)
                     }
                 }

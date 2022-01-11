@@ -20,13 +20,11 @@ extension LiveRoomVC: ParticipantListViewDelegate {
             switch result {
             case .success:
                 self.participantListView.inviteMaskView.isHidden = true
-                self.participantListView.isHidden = true
                 self.participantListView.reloadListView()
-                TipView.showTip(ZGLocalizedString("room_page_invitation_has_sent"))
                 self.restoreInvitedUserStatus(userInfo)
                 break
-            case .failure(let error):
-                TipView.showWarn(String(error.code))
+            case .failure(_):
+                TipView.showWarn(ZGLocalizedString("toast_user_list_page_connected_failed"))
                 break
             }
         })

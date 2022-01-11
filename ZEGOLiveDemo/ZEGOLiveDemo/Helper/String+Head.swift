@@ -52,9 +52,10 @@ extension String {
             "room_list_cover_3",
             "room_list_cover_4",
             "room_list_cover_5",
+            "room_list_cover_6",
         ]
         
-        let n = (Int(String(hash)) ?? 0) % 5
+        let n = (Int(String(hash)) ?? 0) % 6
         return coverImageArray[n]
     }
     

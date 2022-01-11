@@ -7,6 +7,7 @@
 
 import Foundation
 import ZIM
+import ZegoExpressEngine
 
 extension LiveRoomVC: ParticipantListViewDelegate {
     func invitedUserAddCoHost(userInfo: UserInfo) {
@@ -226,6 +227,12 @@ extension LiveRoomVC: UserServiceDelegate {
         // localUser take seat success
         if targetUserID == localUserID && type == .add {
             startMonitorCameraAndMicAuthority()
+        }
+        
+        // if local user leave the seat, it must stop preview
+        // if not, when use the same view to play stream, the view will show the preview image
+        if targetUserID == localUserID && (type == .leave || type == .remove) {
+            ZegoExpressEngine.shared().stopPreview()
         }
         
         // be removed by host

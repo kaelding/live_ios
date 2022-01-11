@@ -10,6 +10,10 @@ import ZIM
 
 extension LiveRoomVC: ParticipantListViewDelegate {
     func invitedUserAddCoHost(userInfo: UserInfo) {
+        if RoomManager.shared.userService.coHostList.count >= 4 {
+            TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+            return
+        }
         guard let userID = userInfo.userID else { return }
         RoomManager.shared.userService.addCoHost(userID, callback: { result in
             switch result {

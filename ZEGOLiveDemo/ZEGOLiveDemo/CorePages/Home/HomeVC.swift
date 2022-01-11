@@ -63,6 +63,8 @@ extension HomeVC {
             vc.urlStr = "http://192.168.100.210:8081/live-join"
         } else if segue.identifier == "pushToContact" {
             vc.urlStr = "http://192.168.100.210:8081/contact"
+        } else if segue.identifier == "pushToSignup" {
+            vc.urlStr = "https://www.zegocloud.com/account/signup"
         }
     }
 }

@@ -89,6 +89,7 @@
                                 <state key="normal" title="Sign Up" image="home_login_icon"/>
                                 <connections>
                                     <action selector="signUpButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chT-Ag-wgl"/>
+                                    <segue destination="hwV-1h-FSU" kind="show" identifier="pushToSignup" id="wpm-X2-vy8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-vi-UXi">
@@ -682,7 +683,7 @@ please create a live room~</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jit-YT-OiO"/>
+        <segue reference="wpm-X2-vy8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="375" height="667"/>

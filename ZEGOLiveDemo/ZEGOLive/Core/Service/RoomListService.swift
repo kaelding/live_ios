@@ -59,7 +59,7 @@ class RoomListService: NSObject {
         RequestManager.shared.joinRoomRequest(request: request) { requestStatus in
             guard let callback = callback else { return }
             callback(.success(()))
-            self.timer.setEventHandler {
+            self.timer.setEventHandler { [unowned self] in
                 self.heartBeatRequest()
             }
             self.timer.start()
@@ -74,14 +74,29 @@ class RoomListService: NSObject {
         request.roomID = roomID
         request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         RequestManager.shared.leaveRoomRequest(request: request) { requestStatus in
+            self.timer.stop()
             guard let callback = callback else { return }
             callback(.success(()))
-            self.timer.stop()
         } failure: { requestStatus in
+            self.timer.stop()
             guard let callback = callback else { return }
             callback(.failure(.failed))
-            self.timer.stop()
         }
+    }
+    
+    func endServerRoom(_ roomID: String, callback: RoomCallback?) {
+        var request = EndRoomRequest()
+        request.roomID = roomID
+        RequestManager.shared.endRoomRequest(request: request) { status in
+            self.timer.stop()
+            guard let callback = callback else { return }
+            callback(.success(()))
+        } failure: { status in
+            self.timer.stop()
+            guard let callback = callback else { return }
+            callback(.failure(.failed))
+        }
+
     }
     
     // MARK: private method

@@ -103,10 +103,12 @@ class RoomService: NSObject {
             if error.code != .ZIMErrorCodeSuccess {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
+            if RoomManager.shared.userService.localUserInfo?.role == .host {
+                RoomManager.shared.roomListService.endServerRoom(roomID, callback: nil)
+            } else {
+                RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
+            }
             RoomManager.shared.logoutRtcRoom()
-            RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
-            
-
             guard let callback = callback else { return }
             callback(result)
         })

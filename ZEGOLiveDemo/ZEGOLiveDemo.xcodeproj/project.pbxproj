@@ -857,6 +857,7 @@
 			children = (
 				8EE13EEC27745B810038AFCF /* DictionaryArray.swift */,
 				8EE13EED27745B810038AFCF /* ZegoJsonTool.swift */,
+				86938AEB2784772C001DD575 /* ZegoTimer.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -901,7 +902,6 @@
 				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
-				86938AEB2784772C001DD575 /* ZegoTimer.swift */,
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
 				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
 				8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */,

@@ -22,8 +22,8 @@ enum OperationActionType : Int, Codable {
     case mic = 100
     case camera = 101
     case mute = 102
-    case takeCoHostSeat = 103
-    case leaveCoHostSeat = 104
+    case takeSeat = 103
+    case leaveSeat = 104
     case requestToCoHost = 200
     case cancelRequestCoHost = 201
     case declineToCoHost = 202
@@ -115,13 +115,14 @@ class OperationCommand : NSObject, Codable {
             }
         }
         // if the action type is .camera, .mic, .mute, only update the this value
-        if let updateCoHost = updateCoHost {
+        if let updateCoHost = updateCoHost,
+           let targetCoHost = targetCoHost {
             if action.type == .camera {
-                targetCoHost?.camera = updateCoHost.camera
+                targetCoHost.camera = updateCoHost.camera
             } else if action.type == .mic {
-                targetCoHost?.mic = updateCoHost.mic
+                targetCoHost.mic = updateCoHost.mic
             } else if action.type == .mute {
-                targetCoHost?.isMuted = updateCoHost.isMuted
+                targetCoHost.isMuted = updateCoHost.isMuted
             } else {
                 self.coHost = list
             }

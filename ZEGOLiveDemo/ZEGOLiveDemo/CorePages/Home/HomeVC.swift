@@ -57,6 +57,13 @@ class HomeVC: UIViewController {
 
 extension HomeVC {
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? WebVC else { return }
+        if segue.identifier == "pushToMore" {
+            vc.urlStr = "http://192.168.100.210:8081/live-join"
+        } else if segue.identifier == "pushToContact" {
+            vc.urlStr = "http://192.168.100.210:8081/contact"
+        }
+    }
 }
 

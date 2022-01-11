@@ -42,7 +42,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
                 bottomView.updateCameraStatus(!isOpen)
                 return
             }
-            RoomManager.shared.userService.cameraOpen(!coHost.camera)
+            RoomManager.shared.userService.cameraOperation(!coHost.camera)
         case .mic(let isOpen):
             // determined but not authorized
             if !AuthorizedCheck.isMicrophoneAuthorized() {
@@ -98,7 +98,7 @@ extension LiveRoomVC {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_cancel"), style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_ok"), style: .default) { action in
-            RoomManager.shared.userService.leaveCoHostSeat { result in
+            RoomManager.shared.userService.leaveSeat { result in
                 if result.isFailure {
                     TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
                 }
@@ -110,9 +110,8 @@ extension LiveRoomVC {
     }
     
     private func share() {
-        let title = "Will share this picture to you."
-        let image = UIImage(named: "room_list_cover_1")! as Any
-        let item: [Any] = [title, image]
+        let url = NSURL(string: "http://192.168.100.210:8081/live-join") as Any
+        let item: [Any] = [url]
         let activityVC = UIActivityViewController(activityItems: item, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
         

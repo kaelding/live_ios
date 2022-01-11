@@ -68,7 +68,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
             RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
         case .camera:
             guard let coHost = localCoHost else { break }
-            RoomManager.shared.userService.cameraOpen(!coHost.camera)
+            RoomManager.shared.userService.cameraOperation(!coHost.camera)
         case .mic:
             guard let coHost = localCoHost else { break }
             RoomManager.shared.userService.micOperation(!coHost.mic)

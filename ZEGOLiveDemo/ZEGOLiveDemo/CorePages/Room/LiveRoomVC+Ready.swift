@@ -88,7 +88,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
                 self.joinServerRoom()
                 self.updateStartView()
                 self.updateTopView()
-                RoomManager.shared.userService.takeCoHostSeat { result in
+                RoomManager.shared.userService.takeSeat { result in
                     
                 }
                 break

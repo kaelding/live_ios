@@ -63,12 +63,12 @@ extension UserService {
         operation.action.targetID = targetUserID
         
         if isTake {
-            operation.action.type = .takeCoHostSeat
+            operation.action.type = .takeSeat
             let seat: CoHostModel = CoHostModel()
             seat.userID = targetUserID
             operation.coHost.append(seat)
         } else {
-            operation.action.type = .leaveCoHostSeat
+            operation.action.type = .leaveSeat
             operation.coHost = operation.coHost.filter { $0.userID != targetUserID }
         }
         

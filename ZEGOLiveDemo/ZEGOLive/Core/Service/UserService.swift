@@ -259,7 +259,7 @@ class UserService: NSObject {
     }
     
     /// take to co-host seat
-    func takeCoHostSeat(callback: RoomCallback?) {
+    func takeSeat(callback: RoomCallback?) {
         guard let parameters = getTakeOrLeaveSeatParameters(localUserInfo?.userID, isTake: true) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -280,7 +280,7 @@ class UserService: NSObject {
     
     
     /// leave co-host seat
-    func leaveCoHostSeat(callback: RoomCallback?) {
+    func leaveSeat(callback: RoomCallback?) {
         removeUserFromSeat(localUserInfo?.userID, callback: callback)
     }
     
@@ -345,7 +345,7 @@ class UserService: NSObject {
     }
     
     /// camera operation
-    func cameraOpen(_ open: Bool) {
+    func cameraOperation(_ open: Bool) {
         
         guard let parameters = getSeatChangeParameters(localUserInfo?.userID, enable: open, flag: 1) else {
             return

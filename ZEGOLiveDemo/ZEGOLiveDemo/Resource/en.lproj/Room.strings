@@ -153,3 +153,7 @@ please create a live room~";
 "room_more_setting" = "Settings";
 "dialog_invition_title" = "Invitation";
 "dialog_invition_descrip" = "The host has invited you to connect.";
+"setting_page_version" = "APP Version";
+"setting_page_terms_of_service" = "Terms of service";
+"setting_page_privacy_policy" = "Privacy Policy";
+"setting_page_effect_sdk_version" = "Effects SDK Version";

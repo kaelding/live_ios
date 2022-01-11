@@ -161,7 +161,7 @@
         <!--ZEGO Live-->
         <scene sceneID="itP-Ol-0VA">
             <objects>
-                <viewController id="hwV-1h-FSU" customClass="WebVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebVC" id="hwV-1h-FSU" customClass="WebVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PFf-6G-Yxo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

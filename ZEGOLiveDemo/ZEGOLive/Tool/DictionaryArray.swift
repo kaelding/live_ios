@@ -54,4 +54,13 @@ class DictionaryArray<KEY, VALUE> where KEY : Hashable, VALUE : NSObject {
             return obj
         }
     }
+    
+    
+    func contains(_ key: KEY?) -> Bool {
+        guard let key = key else {
+            return false
+        }
+
+        return dict.keys.contains(key)
+    }
 }

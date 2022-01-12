@@ -24,8 +24,6 @@ class UserInfo: NSObject, Codable {
     var role: UserRole = .participant
     
     // MARK: - local property
-    /// user blurred avatar
-    var blurredAvatar: String?
     /// has request to co-host
     var hasRequestedCoHost: Bool = false
     /// has add co-hosts

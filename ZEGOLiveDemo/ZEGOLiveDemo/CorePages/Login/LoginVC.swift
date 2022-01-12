@@ -20,7 +20,7 @@ class LoginVC: UIViewController {
             userIDTextField.rightViewMode = .always
             userIDTextField.layer.cornerRadius = 24.5
             let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_40")]
-            userIDTextField.attributedPlaceholder = NSAttributedString(string: "User ID",
+            userIDTextField.attributedPlaceholder = NSAttributedString(string: ZGLocalizedString("login_page_user_id"),
                                                                        attributes: attributed)
         }
     }
@@ -34,13 +34,14 @@ class LoginVC: UIViewController {
             userNameTextField.rightViewMode = .always
             userNameTextField.layer.cornerRadius = 24.5
             let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_40")]
-            userNameTextField.attributedPlaceholder = NSAttributedString(string: "User Name",
+            userNameTextField.attributedPlaceholder = NSAttributedString(string: ZGLocalizedString("login_page_user_name"),
                                                                          attributes: attributed)
         }
     }
     @IBOutlet weak var loginButton: UIButton! {
         didSet {
             loginButton.layer.cornerRadius = 24.5
+            loginButton.setTitle(ZGLocalizedString("login_page_login"), for: .normal)
             let layer = CAGradientLayer()
             layer.startPoint = CGPoint(x: 0, y: 0)
             layer.endPoint = CGPoint(x: 1, y: 0)

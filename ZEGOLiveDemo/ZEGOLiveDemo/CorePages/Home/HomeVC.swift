@@ -11,12 +11,17 @@ class HomeVC: UIViewController {
     
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.text = ZGLocalizedString("welcome_page_live_description")
+        }
+    }
     
     @IBOutlet weak var moreButton: UIButton! {
         didSet {
             moreButton.layer.cornerRadius = 8.0
             moreButton.clipsToBounds = true
+            moreButton.setTitle(ZGLocalizedString("welcome_page_get_more"), for: .normal)
         }
     }
     
@@ -24,6 +29,7 @@ class HomeVC: UIViewController {
         didSet {
             signUpButton.layer.cornerRadius = 8.0
             signUpButton.clipsToBounds = true
+            signUpButton.setTitle(ZGLocalizedString("welcome_page_sign_up"), for: .normal)
         }
     }
     
@@ -31,6 +37,7 @@ class HomeVC: UIViewController {
         didSet {
             contactButton.layer.cornerRadius = 8.0
             contactButton.clipsToBounds = true
+            contactButton.setTitle(ZGLocalizedString("welcome_page_contact_us"), for: .normal)
         }
     }
     

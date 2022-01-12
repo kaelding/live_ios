@@ -216,7 +216,7 @@ extension LiveRoomVC: UserServiceDelegate {
             RoomManager.shared.userService.takeSeat { result in
             }
         } else {
-            TipView.showWarn("toast_room_has_rejected")
+            TipView.showWarn(ZGLocalizedString("toast_room_has_rejected"))
         }
         bottomView?.resetApplyStatus()
     }

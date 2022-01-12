@@ -50,7 +50,7 @@ extension LiveRoomVC : CoHostCellDelegate {
     func moreButtonClick(_ cell: CoHostCell) {
         guard let model = cell.model else { return }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let muteTitle = model.isMuted ? "Unmute" : "Mute"
+        let muteTitle = model.isMuted ? ZGLocalizedString("room_page_unmute") : ZGLocalizedString("room_page_mute")
         let muteAction = UIAlertAction(title: muteTitle, style: .default) { action in
             RoomManager.shared.userService.muteUser(!model.isMuted, userID: model.userID) { result in
                 if result.isFailure {
@@ -58,14 +58,14 @@ extension LiveRoomVC : CoHostCellDelegate {
                 }
             }
         }
-        let prohibitAction = UIAlertAction(title: "Prohibit to connect", style: .default) { action in
+        let prohibitAction = UIAlertAction(title: ZGLocalizedString("room_page_prohibit_to_connect"), style: .default) { action in
             RoomManager.shared.userService.removeUserFromSeat(model.userID) { result in
                 if result.isFailure {
                     TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
                 }
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_cancel"), style: .cancel, handler: nil)
         alert.addAction(muteAction)
         alert.addAction(prohibitAction)
         alert.addAction(cancelAction)

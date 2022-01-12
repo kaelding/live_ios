@@ -16,7 +16,11 @@ class InputTextView: UIView,UITextFieldDelegate {
     weak var delegate: InputTextViewDelegate?
     
     @IBOutlet weak var inputTextView: UITextField!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton! {
+        didSet {
+            sendButton.setTitle(ZGLocalizedString("room_page_send_message"), for: .normal)
+        }
+    }
     
     override class func awakeFromNib() {
         super.awakeFromNib()

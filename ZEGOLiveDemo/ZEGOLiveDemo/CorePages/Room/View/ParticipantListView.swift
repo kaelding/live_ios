@@ -33,6 +33,11 @@ class ParticipantListView: UIView {
         }
     }
     
+    @IBOutlet weak var onlineLabel: UILabel! {
+        didSet {
+            onlineLabel.text = ZGLocalizedString("room_online_name") + " ·"
+        }
+    }
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var paticipantTableView: UITableView! {
         didSet {

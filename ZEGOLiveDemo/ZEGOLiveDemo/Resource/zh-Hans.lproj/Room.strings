@@ -15,7 +15,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_user_id_error" = "User ID 应为数字或英文";
 "toast_login_fail" = "登录失败，错误码：%d";
 "toast_kickout_error" = "该帐号已在其他设备登录，你已被踢出";
-"welcome_page_live_description" = "Online video interaction，support reverb/voice change/beauty and other multiple effects";
+"welcome_page_live_description" = "在线视频互动，支持混响/变声/美颜等多种效果";
 "welcome_page_get_more" = "更多";
 "welcome_page_sign_up" = "注册";
 "welcome_page_contact_us" = "联系我们";
@@ -31,7 +31,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "setting_page_sdk_version" = "Express SDK 版本号";
 "setting_page_zim_sdk_version" = "ZIM SDK 版本号";
 "setting_page_effect_sdk_version" = "Effect SDK 版本号";
-"setting_page__version" = "应用版本号";
+"setting_page_version" = "应用版本号";
 "setting_page_upload_log" = "上传日志";
 "toast_upload_log_success" = "日志上传成功";
 "toast_upload_log_fail" = "日志上传失败，错误码：%d";
@@ -69,6 +69,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "dialog_room_page_go_to_settings" = "去设置";
 "dialog_room_page_title_cannot_use_camera" = "摄像头无法开启";
 "dialog_room_page_massage_cannot_use_camera" = "你还未授权我们使用摄像头";
+"toast_room_page_mic_permission_error" = "连麦失败，请开启麦克风权限.";
+"toast_room_page_camera_permission_error" = "连麦失败，请开启摄像头权限.";
 "user_list_page_invited" = "邀请中";
 "user_list_page_conneted" = "连麦中";
 "user_list_page_host" = "主播";
@@ -143,17 +145,8 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_has_destroyed" = "房间已被解散";
 "toast_room_leave_fail_tip" = "离开房间失败，错误码：%d";
 "toast_room_end_fail_tip" = "解散房间失败，错误码：%d";
-"dialog_attetion_title" = "";
-"dialog_close" = "关闭";
-"room_settings_page_more" = "更多";
-"room_settings_page_more" = "More";
-"room_more_flip" = "翻转";
-"room_more_mic" = "麦克风";
-"room_more_camera" = "摄像头";
-"room_more_setting" = "设置";
-"dialog_invition_title" = "邀请";
-"dialog_invition_descrip" = "主持人邀请你连麦";
-"setting_page_version" = "App 版本号";
+"dialog_attetion_title" = "注意";
+"dialog_close" = "结束";
 "setting_page_terms_of_service" = "服务条款";
 "setting_page_privacy_policy" = "隐私政策";
-"setting_page_effect_sdk_version" = "Effect SDK 版本号";
+"room_online_name" = "在线";

@@ -54,7 +54,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     func createRoomWithRoomName(roomName: String) -> Void {
         var message:String = ""
         if roomName.count == 0 {
-            message = ZGLocalizedString("toast_room_name_error")
+            message = ZGLocalizedString("create_page_room_name")
         }
         if message.count > 0 {
             TipView.showWarn(message)

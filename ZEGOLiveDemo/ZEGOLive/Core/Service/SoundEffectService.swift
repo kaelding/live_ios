@@ -80,7 +80,7 @@ class SoundEffectService: NSObject {
         ZegoExpressEngine.shared().setReverbPreset(type)
     }
     
-    func resert() {
+    func reset() {
         currentMusicIndex = 0
         musicVolume = 50
         voiceVolume = 50

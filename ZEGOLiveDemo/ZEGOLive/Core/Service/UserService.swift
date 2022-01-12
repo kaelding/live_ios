@@ -260,6 +260,13 @@ class UserService: NSObject {
     
     /// take to co-host seat
     func takeSeat(callback: RoomCallback?) {
+        
+        if coHostList.compactMap({ $0.userID }).contains(localUserInfo?.userID) {
+            guard let callback = callback else { return }
+            callback(.failure(.alreadyOnSeat))
+            return
+        }
+        
         guard let parameters = getTakeOrLeaveSeatParameters(localUserInfo?.userID, isTake: true) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))

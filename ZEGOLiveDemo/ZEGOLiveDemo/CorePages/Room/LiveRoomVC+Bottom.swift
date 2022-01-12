@@ -17,18 +17,13 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .share:
             share()
         case .beauty:
-            self.faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
+            faceBeautifyView.isHidden = !self.faceBeautifyView.isHidden
         case .soundEffect:
-            self.musicEffectsVC.view.isHidden = false
+            musicEffectsVC.view.isHidden = false
         case .more:
-            self.moreSettingView.isHidden = false
+            moreSettingView.isHidden = false
         case .apply:
-            if applicationHasMicAndCameraAccess() {
-                RoomManager.shared.userService.requestToCoHost(callback: nil)
-                TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
-            } else {
-                bottomView.resetApplyStatus()
-            }
+            applyCoHost()
         case .cancelApply:
             TipView.dismiss()
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
@@ -76,6 +71,20 @@ extension LiveRoomVC : LiveBottomViewDelegate {
 }
 
 extension LiveRoomVC {
+    
+    private func applyCoHost() {
+        if applicationHasMicAndCameraAccess() {
+            if RoomManager.shared.userService.coHostList.count >= 4 {
+                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+                bottomView?.resetApplyStatus()
+                return
+            }
+            RoomManager.shared.userService.requestToCoHost(callback: nil)
+            TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
+        } else {
+            bottomView?.resetApplyStatus()
+        }
+    }
     
     private func applicationHasMicAndCameraAccess() -> Bool {
         var ret = true

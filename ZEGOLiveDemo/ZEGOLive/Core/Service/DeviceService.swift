@@ -160,7 +160,7 @@ class DeviceService: NSObject {
         setLiveDeviceStatus(.volume, enable: micVolume)
     }
     
-    func resert() {
+    func reset() {
         videoPreset = .p720
         audioBitrate = .b48
         videoCodeID = .h264

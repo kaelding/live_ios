@@ -277,15 +277,17 @@ extension LiveRoomVC {
         micCameraTimer.stop()
         
         // if have mic and camera access, just take seat.
+        if RoomManager.shared.userService.coHostList.compactMap({ $0.userID }).contains(localUserID) {
+            // already on seat
+            return
+        }
         RoomManager.shared.userService.takeSeat { result in
             switch result {
             case .success:
                 RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
                 break
-            case .failure(let error):
+            case .failure(_):
                 RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
-                let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
-                TipView.showWarn(message)
             }
         }
     }

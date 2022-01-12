@@ -207,6 +207,10 @@ extension LiveRoomVC: UserServiceDelegate {
         if coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
             TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
         }
+        // unmute by host, then open the mic.
+        if !coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
+            RoomManager.shared.userService.micOperation(true)
+        }
     }
 }
 

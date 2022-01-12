@@ -113,6 +113,7 @@
 		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
 		8E224441278C61F600B86C52 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E224440278C61F600B86C52 /* WebVC.swift */; };
 		8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */; };
+		8E9F2C24278EDA0F00EE11CE /* CoHostTaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -326,6 +327,7 @@
 		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
 		8E224440278C61F600B86C52 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostTaskQueue.swift; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -925,6 +927,7 @@
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
+				8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				86938B3E2784772C001DD575 /* ZegoCrypto.cpp in Sources */,
 				8EE13EDA27745B1C0038AFCF /* AppCenter.swift in Sources */,
 				86B6DF9B2788549B0023A898 /* TipView.swift in Sources */,
+				8E9F2C24278EDA0F00EE11CE /* CoHostTaskQueue.swift in Sources */,
 				86B6DF912787E4FD0023A898 /* MoreSettingView.swift in Sources */,
 				86938AC7277D60BA001DD575 /* EffectsLicense.swift in Sources */,
 				869F6D2D2785A3710018788E /* String+Head.swift in Sources */,

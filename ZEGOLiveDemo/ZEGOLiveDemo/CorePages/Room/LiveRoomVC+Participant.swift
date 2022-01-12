@@ -152,38 +152,7 @@ extension LiveRoomVC: UserServiceDelegate {
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {
-        guard let name = userInfo.userName else { return }
-        guard let userID = userInfo.userID else { return }
-        let title = ZGLocalizedString("dialog_room_page_title_connection_request")
-        let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
-        let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
-            RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
-                switch result {
-                case .success:
-                    break
-                case .failure(_):
-                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
-                    break
-                }
-            }
-        }
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
-            
-            RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
-                switch result {
-                case .success:
-                    break
-                case .failure(_):
-                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
-                }
-            }
-        }
-        
-        inviteAlter.addAction(cancelAction)
-        inviteAlter.addAction(okAction)
-        self.present(inviteAlter, animated: true, completion: nil)
+        coHostTask.addTask(hostReceiveCoHostRequest, user: userInfo)
     }
     /// receive cancel request to co-host
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) {
@@ -290,6 +259,42 @@ extension LiveRoomVC {
                 RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
             }
         }
+    }
+    
+    private func hostReceiveCoHostRequest(_ userInfo: UserInfo) {
+        guard let name = userInfo.userName else { return }
+        guard let userID = userInfo.userID else { return }
+        let title = ZGLocalizedString("dialog_room_page_title_connection_request")
+        let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
+        let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
+            self.coHostTask.finish()
+            RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
+                switch result {
+                case .success:
+                    break
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                    break
+                }
+            }
+        }
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
+            self.coHostTask.finish()
+            RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
+                switch result {
+                case .success:
+                    break
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                }
+            }
+        }
+        
+        inviteAlter.addAction(cancelAction)
+        inviteAlter.addAction(okAction)
+        self.present(inviteAlter, animated: true, completion: nil)
     }
     
     private func logout() {

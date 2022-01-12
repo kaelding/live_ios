@@ -36,6 +36,7 @@ class LoginVC: UIViewController {
             let attributed: [NSAttributedString.Key: Any] = [.foregroundColor: ZegoColor("FFFFFF_40")]
             userNameTextField.attributedPlaceholder = NSAttributedString(string: ZGLocalizedString("login_page_user_name"),
                                                                          attributes: attributed)
+            userNameTextField.delegate = self
         }
     }
     @IBOutlet weak var loginButton: UIButton! {
@@ -101,9 +102,9 @@ class LoginVC: UIViewController {
     
     @IBAction func userNameTextFieldDidChanged(_ sender: UITextField) {
         var userName = sender.text! as String
-        if userName.count > 32 {
+        if userName.count > 16 {
             let startIndex = userName.index(userName.startIndex, offsetBy: 0)
-            let index = userName.index(userName.startIndex, offsetBy: 32)
+            let index = userName.index(userName.startIndex, offsetBy: 16)
             userName = String(userName[startIndex...index])
             sender.text = userName
         }
@@ -155,5 +156,15 @@ class LoginVC: UIViewController {
     func getKeyWindow() -> UIWindow {
         let window: UIWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).last!
         return window
+    }
+}
+
+extension LoginVC : UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let proposeLength = (textField.text?.lengthOfBytes(using: .utf8))! - range.length + string.lengthOfBytes(using: .utf8)
+        if proposeLength > 32 {
+            return false
+        }
+        return true
     }
 }

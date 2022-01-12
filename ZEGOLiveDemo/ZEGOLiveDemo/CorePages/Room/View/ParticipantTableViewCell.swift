@@ -66,7 +66,7 @@ class ParticipantTableViewCell: UITableViewCell {
             break
         case .coHost:
             roleLabel.isHidden = false
-            roleLabel.text =  ZGLocalizedString("user_list_page_co_host")
+            roleLabel.text =  ZGLocalizedString("user_list_page_conneted")
             moreButton.isHidden = true
             userInfo.hasInvited = false
             break

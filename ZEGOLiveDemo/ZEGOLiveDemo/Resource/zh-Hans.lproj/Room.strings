@@ -153,3 +153,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_more_setting" = "设置";
 "dialog_invition_title" = "邀请";
 "dialog_invition_descrip" = "主持人邀请你连麦";
+"setting_page_version" = "App 版本号";
+"setting_page_terms_of_service" = "服务条款";
+"setting_page_privacy_policy" = "隐私政策";
+"setting_page_effect_sdk_version" = "Effect SDK 版本号";

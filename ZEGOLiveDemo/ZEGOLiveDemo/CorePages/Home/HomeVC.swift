@@ -60,9 +60,11 @@ extension HomeVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let vc = segue.destination as? WebVC else { return }
         if segue.identifier == "pushToMore" {
-            vc.urlStr = "http://192.168.100.210:8081/live-join"
+            vc.urlStr = "https://www.zegocloud.com/"
         } else if segue.identifier == "pushToContact" {
             vc.urlStr = "http://192.168.100.210:8081/contact"
+        } else if segue.identifier == "pushToSignup" {
+            vc.urlStr = "https://www.zegocloud.com/account/signup"
         }
     }
 }

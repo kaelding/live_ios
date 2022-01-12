@@ -8,14 +8,16 @@
 import UIKit
 import ZIM
 import ZegoExpressEngine
+import ZegoEffects
 
 class SettingsVC: UITableViewController {
     
-    var dataSource: [[SettingCellModel]] {
-        return [[configModel(type: .express), configModel(type: .zim)],
+    lazy var dataSource: [[SettingCellModel]] = {
+        return [[configModel(type: .express), configModel(type: .zim), configModel(type: .effect), configModel(type: .app)],
+                [configModel(type: .terms), configModel(type: .privacy)],
                 [configModel(type: .shareLog)],
                 [configModel(type: .logout)]];
-    }
+    }()
     
     
     override func viewDidLoad() {
@@ -26,26 +28,28 @@ class SettingsVC: UITableViewController {
     
     func configModel(type:SettingCellType) -> SettingCellModel {
         let model : SettingCellModel = SettingCellModel()
+        model.type = type
         switch type {
         case .express:
-            let version : String = ZegoExpressEngine.getVersion().components(separatedBy: "_")[0]
-            model.title = "Express SDK Version"
-            model.subTitle = "v\(version)"
-            model.type = type
-            break
+            model.title = ZGLocalizedString("setting_page_sdk_version")
+            model.subTitle = ZegoExpressEngine.getVersion()
         case .zim:
-            model.title = "ZIM SDK Version"
-            model.subTitle = "v\(ZIM.getVersion())"
-            model.type = type
-            break
+            model.title = ZGLocalizedString("setting_page_zim_sdk_version")
+            model.subTitle = ZIM.getVersion()
         case .shareLog:
-            model.title = "Upload Log"
-            model.type = type
-            break
+            model.title = ZGLocalizedString("setting_page_upload_log")
         case .logout:
-            model.title = "Log out"
-            model.type = type
-            break
+            model.title = ZGLocalizedString("setting_page_logout")
+        case .app:
+            model.title = ZGLocalizedString("setting_page_version")
+            model.subTitle = getAppVersion()
+        case .terms:
+            model.title = ZGLocalizedString("setting_page_terms_of_service")
+        case .privacy:
+            model.title = ZGLocalizedString("setting_page_privacy_policy")
+        case .effect:
+            model.title = ZGLocalizedString("setting_page_effect_sdk_version")
+            model.subTitle = ZegoEffects.getVersion()
         }
         return model
     }
@@ -57,19 +61,19 @@ class SettingsVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return dataSource.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 { return 2 }
-        return 1
+        let arr = dataSource[section]
+        return arr.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource[indexPath.section][indexPath.row]
         var cell: UITableViewCell
-        if indexPath.section == 2 {
+        if model.type == .logout {
             cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell2", for: indexPath)
             if let label = cell.contentView.subviews.first as? UILabel {
                 label.text = model.title
@@ -90,10 +94,10 @@ class SettingsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 || section == 1 {
-            return 12.0
-        } else {
+        if section == 3 {
             return 40.0
+        } else {
+            return 12.0
         }
     }
     
@@ -120,6 +124,25 @@ class SettingsVC: UITableViewController {
                     break
                 }
             };
+        } else if model.type == .terms {
+            junmpToWeb("https://www.zegocloud.com/policy?index=1")
+        } else if model.type == .privacy {
+            junmpToWeb("https://www.zegocloud.com/policy?index=0")
         }
+    }
+}
+
+extension SettingsVC {
+    private func getAppVersion() -> String {
+        let bundle = Bundle.main
+        let localVersion = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        let build = bundle.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        let version = (localVersion ?? "") + "." + (build ?? "")
+        return version
+    }
+    private func junmpToWeb(_ urlStr: String) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WebVC") as! WebVC
+        vc.urlStr = urlStr
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

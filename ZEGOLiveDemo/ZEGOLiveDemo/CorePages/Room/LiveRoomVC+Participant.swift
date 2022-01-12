@@ -7,21 +7,24 @@
 
 import Foundation
 import ZIM
+import ZegoExpressEngine
 
 extension LiveRoomVC: ParticipantListViewDelegate {
     func invitedUserAddCoHost(userInfo: UserInfo) {
+        if RoomManager.shared.userService.coHostList.count >= 4 {
+            TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+            return
+        }
         guard let userID = userInfo.userID else { return }
         RoomManager.shared.userService.addCoHost(userID, callback: { result in
             switch result {
             case .success:
                 self.participantListView.inviteMaskView.isHidden = true
-                self.participantListView.isHidden = true
                 self.participantListView.reloadListView()
-                TipView.showTip(ZGLocalizedString("room_page_invitation_has_sent"))
                 self.restoreInvitedUserStatus(userInfo)
                 break
-            case .failure(let error):
-                TipView.showWarn(String(error.code))
+            case .failure(_):
+                TipView.showWarn(ZGLocalizedString("toast_user_list_page_connected_failed"))
                 break
             }
         })
@@ -94,6 +97,11 @@ extension LiveRoomVC: UserServiceDelegate {
         participantListView.reloadListView()
         updateTopView()
         updateBottomView()
+        
+        // if it is host enter the room, host's camera and mic should be on.
+        if !isMyselfHost {
+            updateHostBackgroundView()
+        }
     }
     
     func roomUserLeave(_ users: [UserInfo]) {
@@ -222,6 +230,12 @@ extension LiveRoomVC: UserServiceDelegate {
         // localUser take seat success
         if targetUserID == localUserID && type == .add {
             startMonitorCameraAndMicAuthority()
+        }
+        
+        // if local user leave the seat, it must stop preview
+        // if not, when use the same view to play stream, the view will show the preview image
+        if targetUserID == localUserID && (type == .leave || type == .remove) {
+            ZegoExpressEngine.shared().stopPreview()
         }
         
         // be removed by host

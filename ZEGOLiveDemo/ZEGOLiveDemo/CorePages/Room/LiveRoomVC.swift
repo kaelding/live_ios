@@ -206,6 +206,7 @@ class LiveRoomVC: UIViewController {
         configUI()
         configVideoStream()
         configFaceBeautify()
+        updateHostBackgroundView()
         
         if let myself = RoomManager.shared.userService.localUserInfo {
             let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
@@ -259,6 +260,7 @@ class LiveRoomVC: UIViewController {
     }
     
     func updateHostBackgroundView() {
+        if !isLiving { return }
         let hostID = getHostID()
         guard let coHost = getCoHost(hostID) else {
             self.backgroundView.isHidden = false

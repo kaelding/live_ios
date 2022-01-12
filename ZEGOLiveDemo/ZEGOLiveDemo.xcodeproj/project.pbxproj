@@ -112,6 +112,7 @@
 		8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443C2789868900B86C52 /* UserService+Util.swift */; };
 		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
 		8E224441278C61F600B86C52 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E224440278C61F600B86C52 /* WebVC.swift */; };
+		8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
 		8EA92347277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */; };
@@ -324,6 +325,7 @@
 		8E22443C2789868900B86C52 /* UserService+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Util.swift"; sourceTree = "<group>"; };
 		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
 		8E224440278C61F600B86C52 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
+		8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
 		8EA92346277C4BDB00D0BC2C /* LiveRoomVC+Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRoomVC+Bottom.swift"; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 				8EE13EA1277452AA0038AFCF /* Assets.xcassets */,
 				8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */,
 				8EE13EA6277452AA0038AFCF /* Info.plist */,
+				8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */,
 			);
 			path = ZEGOLiveDemo;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 			children = (
 				8EE13EEC27745B810038AFCF /* DictionaryArray.swift */,
 				8EE13EED27745B810038AFCF /* ZegoJsonTool.swift */,
+				86938AEB2784772C001DD575 /* ZegoTimer.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -898,7 +902,6 @@
 				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
-				86938AEB2784772C001DD575 /* ZegoTimer.swift */,
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
 				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
 				8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */,
@@ -1047,6 +1050,7 @@
 				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
 				86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */,
 				86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */,
+				8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */,
 				86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,
@@ -1390,7 +1394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
@@ -1410,7 +1414,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = im.zego.liveDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = im.zego.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";
@@ -1428,7 +1432,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
@@ -1448,7 +1452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = im.zego.liveDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = im.zego.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";

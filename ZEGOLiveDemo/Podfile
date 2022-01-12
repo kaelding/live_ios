@@ -8,5 +8,7 @@ target 'ZEGOLiveDemo' do
   # Pods for ZEGOLiveDemo
   pod 'ZIM'
   pod 'ZegoExpressEngine'
+  
+  pod 'Firebase/Crashlytics'
 
 end

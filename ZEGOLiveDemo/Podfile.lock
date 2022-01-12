@@ -1,22 +1,83 @@
 PODS:
+  - Firebase/CoreOnly (8.10.0):
+    - FirebaseCore (= 8.10.0)
+  - Firebase/Crashlytics (8.10.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.10.0)
+  - FirebaseCore (8.10.0):
+    - FirebaseCoreDiagnostics (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/Logger (~> 7.6)
+  - FirebaseCoreDiagnostics (8.10.0):
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/Logger (~> 7.6)
+    - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.10.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.6)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseInstallations (8.10.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/UserDefaults (~> 7.6)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleDataTransport (9.1.2):
+    - GoogleUtilities/Environment (~> 7.2)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/Environment (7.7.0):
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/Logger (7.7.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/UserDefaults (7.7.0):
+    - GoogleUtilities/Logger
+  - nanopb (2.30908.0):
+    - nanopb/decode (= 2.30908.0)
+    - nanopb/encode (= 2.30908.0)
+  - nanopb/decode (2.30908.0)
+  - nanopb/encode (2.30908.0)
+  - PromisesObjC (2.0.0)
   - ZegoExpressEngine (2.15.0):
     - ZegoExpressEngine/Video (= 2.15.0)
   - ZegoExpressEngine/Video (2.15.0)
   - ZIM (1.3.1)
 
 DEPENDENCIES:
+  - Firebase/Crashlytics
   - ZegoExpressEngine
   - ZIM
 
 SPEC REPOS:
   trunk:
+    - Firebase
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - GoogleDataTransport
+    - GoogleUtilities
+    - nanopb
+    - PromisesObjC
     - ZegoExpressEngine
     - ZIM
 
 SPEC CHECKSUMS:
+  Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
+  FirebaseCore: 04186597c095da37d90ff9fd3e53bc61a1ff2440
+  FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
+  FirebaseCrashlytics: 3b7f17cdf5bf1ae6ad5956696a6c26edeb39cca7
+  FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
+  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ZegoExpressEngine: b3f8f173c5af47ee53caf29c6d62660118b63b97
   ZIM: b32bc4160e652509a879999a427ac2041f4988f0
 
-PODFILE CHECKSUM: 9afb40fb7eb03af49597ce9b63e4d62ec99a302c
+PODFILE CHECKSUM: 2f17e2926238715c82f996ea03ffc05d747f9d08
 
 COCOAPODS: 1.11.2

@@ -272,6 +272,8 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
             if result.isSuccess {
                 ZegoExpressEngine.shared().startPublishingStream(streamID)
+                ZegoExpressEngine.shared().enableCamera(true)
+                ZegoExpressEngine.shared().muteMicrophone(false)
             }
             guard let callback = callback else { return }
             callback(result)
@@ -459,7 +461,7 @@ extension UserService : ZIMEventHandler {
                     delegate.receiveAddCoHostInvitation()
                 } else {
                     guard let accept = command.content?.accept else { continue }
-                    if let user = self.userList.getObj(command.targetUserIDs.first ?? "") {
+                    if let user = self.userList.getObj(fromUserID) {
                         delegate.receiveAddCoHostRespond(user, accept: accept)
                     }
                 }

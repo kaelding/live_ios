@@ -12,6 +12,10 @@ enum SettingCellType {
     case zim
     case shareLog
     case logout
+    case effect
+    case app
+    case terms
+    case privacy
 }
 
 class SettingCellModel: NSObject {

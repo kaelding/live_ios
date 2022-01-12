@@ -187,8 +187,7 @@ class LiveRoomVC: UIViewController {
         return textView
     }()
     
-    let micTimer: ZegoTimer = ZegoTimer(500)
-    let cameraTimer: ZegoTimer = ZegoTimer(500)
+    let micCameraTimer: ZegoTimer = ZegoTimer(500)
     
     deinit {
         

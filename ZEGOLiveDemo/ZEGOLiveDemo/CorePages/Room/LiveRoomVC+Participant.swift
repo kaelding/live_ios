@@ -132,17 +132,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 return
             }
             
-            RoomManager.shared.userService.takeSeat { result in
-                switch result {
-                case .success:
-                    RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
-                    break
-                case .failure(let error):
-                    RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
-                    let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
-                    TipView.showWarn(message)
-                }
-            }
+            self.startMonitorCameraAndMicAuthority()
         }
         
         inviteAlter.addAction(cancelAction)
@@ -226,12 +216,7 @@ extension LiveRoomVC: UserServiceDelegate {
         updateBottomView()
         updateHostBackgroundView()
         participantListView.reloadListView()
-        
-        // localUser take seat success
-        if targetUserID == localUserID && type == .add {
-            startMonitorCameraAndMicAuthority()
-        }
-        
+                
         // if local user leave the seat, it must stop preview
         // if not, when use the same view to play stream, the view will show the preview image
         if targetUserID == localUserID && (type == .leave || type == .remove) {
@@ -258,29 +243,50 @@ extension LiveRoomVC: UserServiceDelegate {
 
 extension LiveRoomVC {
     private func startMonitorCameraAndMicAuthority() {
-        micTimer.setEventHandler { [unowned self] in
-            self.onMicAuthorizationTimerTriggered()
+        micCameraTimer.setEventHandler { [unowned self] in
+            self.onMicCameraAuthorizationTimerTriggered()
         }
-        cameraTimer.setEventHandler { [unowned self] in
-            self.onCameraAuthorizationTimerTriggered()
-        }
-        micTimer.start()
-        cameraTimer.start()
+        micCameraTimer.start()
     }
     
-    private func onMicAuthorizationTimerTriggered() {
-        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined() { return }
-        micTimer.stop()
+    private func onMicCameraAuthorizationTimerTriggered() {
+        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined() {
+            AuthorizedCheck.takeMicPhoneAuthorityStatus(completion: nil)
+            return
+        }
+        if !AuthorizedCheck.isCameraAuthorizationDetermined() {
+            AuthorizedCheck.takeCameraAuthorityStatus(completion: nil)
+            return
+        }
+        
+        // if do not have mic access
         if !AuthorizedCheck.isMicrophoneAuthorized() {
-            RoomManager.shared.userService.micOperation(false)
+            micCameraTimer.stop()
+            RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+            return
         }
-    }
-    
-    private func onCameraAuthorizationTimerTriggered() {
-        if !AuthorizedCheck.isCameraAuthorizationDetermined() { return }
-        cameraTimer.stop()
+        
+        // if do not have camera access
         if !AuthorizedCheck.isCameraAuthorized() {
-            RoomManager.shared.userService.cameraOperation(false)
+            micCameraTimer.stop()
+            RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+            AuthorizedCheck.showCameraUnauthorizedAlert(self)
+            return
+        }
+        micCameraTimer.stop()
+        
+        // if have mic and camera access, just take seat.
+        RoomManager.shared.userService.takeSeat { result in
+            switch result {
+            case .success:
+                RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
+                break
+            case .failure(let error):
+                RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+                let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
+                TipView.showWarn(message)
+            }
         }
     }
     

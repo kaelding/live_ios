@@ -79,7 +79,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_user_list_page_connected_failed" = "Failed to co-host. Please try agian.";
 "toast_user_list_page_rejected_invitation" = "%@ has declined your invitation. ";
 "user_list_page_participants_num" = "Participants (%d)";
-"user_list_page_invite_to_speak" = "Make co-hosts";
+"user_list_page_invite_to_speak" = "Make co-host";
 "user_list_page_owner" = "Host";
 "dialog_invition_title" = "Invitation";
 "dialog_invition_descrip" = "The host has invited you to co-host.";

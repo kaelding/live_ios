@@ -23,8 +23,12 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .more:
             self.moreSettingView.isHidden = false
         case .apply:
-            RoomManager.shared.userService.requestToCoHost(callback: nil)
-            TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
+            if applicationHasMicAndCameraAccess() {
+                RoomManager.shared.userService.requestToCoHost(callback: nil)
+                TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
+            } else {
+                bottomView.resetApplyStatus()
+            }
         case .cancelApply:
             TipView.dismiss()
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
@@ -72,6 +76,35 @@ extension LiveRoomVC : LiveBottomViewDelegate {
 }
 
 extension LiveRoomVC {
+    
+    private func applicationHasMicAndCameraAccess() -> Bool {
+        var ret = true
+        // not determined
+        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined(){
+            AuthorizedCheck.takeMicPhoneAuthorityStatus(completion: nil)
+            ret = false
+        }
+        
+        // not determined
+        if !AuthorizedCheck.isCameraAuthorizationDetermined() {
+            AuthorizedCheck.takeCameraAuthorityStatus(completion: nil)
+            ret = false
+        }
+        if ret == false { return ret }
+        
+        // determined but not authorized
+        if !AuthorizedCheck.isCameraAuthorized() {
+            AuthorizedCheck.showCameraUnauthorizedAlert(self)
+            return false
+        }
+        
+        // determined but not authorized
+        if !AuthorizedCheck.isMicrophoneAuthorized() {
+            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+            return false
+        }
+        return true
+    }
     
     func updateBottomView() {
         let role = RoomManager.shared.userService.localUserInfo?.role

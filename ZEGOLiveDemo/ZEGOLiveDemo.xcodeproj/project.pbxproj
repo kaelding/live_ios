@@ -466,6 +466,7 @@
 		86938AED2784772C001DD575 /* Token */ = {
 			isa = PBXGroup;
 			children = (
+				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938AEE2784772C001DD575 /* ZegoToken.mm */,
 				86938AEF2784772C001DD575 /* ZegoToken.h */,
 				86938AF02784772C001DD575 /* TokenGenerator */,
@@ -767,6 +768,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8E9F2C20278ED8A200EE11CE /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */,
+				869F6D2C2785A3700018788E /* String+Head.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		8E9F2C22278ED93600EE11CE /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
+				8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */,
+				8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */,
+				86B6DF9A2788549B0023A898 /* TipView.swift */,
+				86B6DF9C278854AF0023A898 /* TipView.xib */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 		8EE13E8C277452A80038AFCF = {
 			isa = PBXGroup;
 			children = (
@@ -789,15 +811,16 @@
 		8EE13E97277452A80038AFCF /* ZEGOLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
-				862408482789D2B60010A5EC /* EffectResources */,
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
-				86B6DF9E278971720023A898 /* MediaResources */,
-				8EE13F0C27756D4D0038AFCF /* Helper */,
+				8E9F2C20278ED8A200EE11CE /* Extentions */,
 				8EE13ED427745B1C0038AFCF /* AppCenter */,
+				8EE13F0C27756D4D0038AFCF /* Helper */,
+				862408482789D2B60010A5EC /* EffectResources */,
+				86B6DF9E278971720023A898 /* MediaResources */,
 				8EE13F012774735E0038AFCF /* CorePages */,
+				8677D6BF277C44BE00612058 /* Resource */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
 				8EE13E9A277452A80038AFCF /* SceneDelegate.swift */,
-				8677D6BF277C44BE00612058 /* Resource */,
 				8EE13F2B277AFBDC0038AFCF /* ZEGOLiveDemo-Bridging-Header.h */,
 				8EE13EA1277452AA0038AFCF /* Assets.xcassets */,
 				8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */,
@@ -897,18 +920,11 @@
 		8EE13F0C27756D4D0038AFCF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8E9F2C22278ED93600EE11CE /* HUD */,
 				86938AED2784772C001DD575 /* Token */,
-				869F6D2C2785A3700018788E /* String+Head.swift */,
-				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938B342784772C001DD575 /* AuthorizedCheck.swift */,
 				86938AEC2784772C001DD575 /* StringTool.swift */,
 				8EE13F0D27756D5F0038AFCF /* ZegoColor.swift */,
-				8EE13F2D277AFBDD0038AFCF /* HUDHelper.swift */,
-				8EE13F2C277AFBDC0038AFCF /* MBProgressHUD.h */,
-				8EE13F2E277AFBDD0038AFCF /* MBProgressHUD.m */,
-				86B6DF9A2788549B0023A898 /* TipView.swift */,
-				86B6DF9C278854AF0023A898 /* TipView.xib */,
-				8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";

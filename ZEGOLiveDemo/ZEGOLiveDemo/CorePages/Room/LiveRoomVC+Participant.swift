@@ -50,22 +50,15 @@ extension LiveRoomVC: ParticipantListViewDelegate {
                 dataSource.append(host)
             }
             
-            if isMyselfOnSeat && !isMyselfHost {
-                if let localUser = localUser {
-                    dataSource.append(localUser)
-                }
+            if let localUser = localUser {
+                if localUser.role != .host { dataSource.append(localUser) }
             }
             
             let coHost = RoomManager.shared.userService.userList.allObjects().filter {
-                $0.role == .coHost && $0.role != .host && $0.userID != localUserID
+                $0.role == .coHost && $0.userID != localUserID
             }
             dataSource.append(contentsOf: coHost)
             
-            if !isMyselfOnSeat && !isMyselfHost {
-                if let localUser = localUser {
-                    dataSource.append(localUser)
-                }
-            }
             
             let participants = RoomManager.shared.userService.userList.allObjects().filter {
                 $0.role == .participant && $0.userID != localUserID

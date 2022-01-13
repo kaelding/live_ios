@@ -33,7 +33,7 @@ extension LiveRoomVC: ParticipantListViewDelegate {
     // MARK: private method
     func restoreInvitedUserStatus(_ userInfo: UserInfo) {
         guard let userID = userInfo.userID else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60000) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
             
             if let userInfo = RoomManager.shared.userService.userList.getObj(userID) {
                 userInfo.hasInvited = false

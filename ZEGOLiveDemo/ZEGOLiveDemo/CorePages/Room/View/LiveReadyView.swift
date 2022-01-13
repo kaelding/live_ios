@@ -25,6 +25,7 @@ class LiveReadyView: UIView {
     
     @IBOutlet weak var roomTitleTextField: UITextField! {
         didSet {
+            roomTitleTextField.delegate = self
             roomTitleTextField.layer.cornerRadius = 30.0
             let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 33, height: 60))
             let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 33, height: 60))
@@ -91,4 +92,14 @@ class LiveReadyView: UIView {
         delegate?.liveReadyView(self, didClickButtonWith: .cameraFlip)
     }
     
+}
+
+extension LiveReadyView : UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let proposeLength = (textField.text?.lengthOfBytes(using: .utf8))! - range.length + string.lengthOfBytes(using: .utf8)
+        if proposeLength > 32 {
+            return false
+        }
+        return true
+    }
 }

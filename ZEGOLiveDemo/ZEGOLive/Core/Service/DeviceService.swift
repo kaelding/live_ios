@@ -105,9 +105,8 @@ class DeviceService: NSObject {
         case .h264:
             setLiveDeviceStatus(.hardwareEncoding, enable: true)
         case .h265:
-            if ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
-                setLiveDeviceStatus(.hardwareEncoding, enable: true)
-            }
+            setLiveDeviceStatus(.layered, enable: false)
+            setLiveDeviceStatus(.hardwareEncoding, enable: true)
         }
     }
     

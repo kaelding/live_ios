@@ -30,14 +30,14 @@ class SettingSwitchCell: SettingBaseCell {
         switchButton.isOn = model.switchStatus
         if model.selectionType == .layered {
             if RoomManager.shared.deviceService.videoCodeID == .h265 {
-                switchButton.isUserInteractionEnabled = false
+                switchButton.isEnabled = false
                 titleLabel.textColor = ZegoColor("FFFFFF_50")
             } else {
-                switchButton.isUserInteractionEnabled = true
+                switchButton.isEnabled = true
                 titleLabel.textColor = ZegoColor("FFFFFF")
             }
         } else {
-            switchButton.isUserInteractionEnabled = true
+            switchButton.isEnabled = true
             titleLabel.textColor = ZegoColor("FFFFFF")
         }
     }

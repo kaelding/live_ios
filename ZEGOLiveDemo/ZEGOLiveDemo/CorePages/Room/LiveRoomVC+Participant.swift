@@ -160,6 +160,7 @@ extension LiveRoomVC: UserServiceDelegate {
         let message = String(format: ZGLocalizedString("toast_room_has_canceled_connection_apply"), name)
         TipView.showTip(message)
         
+        coHostTask.finish()
         if self.presentedViewController != nil {
             self.dismiss(animated: true, completion: nil)
         }
@@ -266,8 +267,11 @@ extension LiveRoomVC {
     }
     
     private func hostReceiveCoHostRequest(_ userInfo: UserInfo) {
-        guard let name = userInfo.userName else { return }
-        guard let userID = userInfo.userID else { return }
+        guard let name = userInfo.userName,
+              let userID = userInfo.userID else {
+            self.coHostTask.finish()
+            return
+        }
         let title = ZGLocalizedString("dialog_room_page_title_connection_request")
         let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
         let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)

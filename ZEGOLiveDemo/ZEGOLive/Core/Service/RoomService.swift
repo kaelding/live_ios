@@ -164,8 +164,9 @@ extension RoomService: ZIMEventHandler {
         if state == .connected && event == .success {
             guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
             ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
-                if error.code != .ZIMErrorCodeSuccess { return }
-                if dict.count == 0 {
+                let hostLeft = error.code == .ZIMErrorCodeSuccess && !dict.keys.contains("room_info")
+                let roomNotExisted = error.code == .ZIMErrorCodeRoomNotExist
+                if dict.count == 0 || hostLeft || roomNotExisted {
                     self.delegate?.receiveRoomInfoUpdate(nil)
                 }
             })

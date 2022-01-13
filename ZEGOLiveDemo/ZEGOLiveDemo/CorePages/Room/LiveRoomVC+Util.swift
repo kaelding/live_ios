@@ -75,6 +75,11 @@ extension LiveRoomVC {
         RoomManager.shared.userService.localUserInfo?.userID ?? ""
     }
     
+    // get local user
+    var localUser: UserInfo? {
+        getUser(localUserID)
+    }
+    
     var isMyselfHost: Bool {
         RoomManager.shared.userService.isMyselfHost
     }

@@ -65,6 +65,10 @@ extension RoomService {
         let coHostUserIDs = self.operation.coHost.compactMap { $0.userID }
         for user in RoomManager.shared.userService.userList.allObjects() {
             if user.role == .host { continue }
+            if user.userID == roomInfo.hostID {
+                user.role = .host
+                continue
+            }
             guard let userID = user.userID else {
                 user.role = .participant
                 continue

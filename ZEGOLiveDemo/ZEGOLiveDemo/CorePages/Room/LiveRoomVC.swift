@@ -219,6 +219,7 @@ class LiveRoomVC: UIViewController {
         if isLiving {
             self.reloadCoHost()
             self.updateBottomView()
+            self.reloadParticipantListView()
         }
     }
     

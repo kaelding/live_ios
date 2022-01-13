@@ -57,8 +57,11 @@ class ParticipantListView: UIView {
     }
     var inviteUserInfo: UserInfo?
     
-    func reloadListView() {
-        self.numLabel.text = String(RoomManager.shared.userService.userList.count)
+    var dataSource: [UserInfo] = []
+    
+    func reloadListView(_ dataSource: [UserInfo]) {
+        self.dataSource = dataSource
+        self.numLabel.text = String(dataSource.count)
         paticipantTableView.reloadData()
     }
 
@@ -123,7 +126,7 @@ extension ParticipantListView: ParticipantTableViewCellDelegate {
 
 extension ParticipantListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RoomManager.shared.userService.userList.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,8 +135,8 @@ extension ParticipantListView: UITableViewDelegate, UITableViewDataSource {
             cell = ParticipantTableViewCell(style: .default, reuseIdentifier: "ParticipantTableViewCell")
         }
         cell?.delegate = self
-        if indexPath.row < RoomManager.shared.userService.userList.count {
-            let roomUser = RoomManager.shared.userService.userList.allObjects()[indexPath.row]
+        if indexPath.row < dataSource.count {
+            let roomUser = dataSource[indexPath.row]
             let isHost = RoomManager.shared.userService.localUserInfo?.userID == RoomManager.shared.roomService.roomInfo.hostID
             cell?.setRoomUser(user: roomUser, isHost: isHost)
         }

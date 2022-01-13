@@ -55,8 +55,9 @@ class ParticipantTableViewCell: UITableViewCell {
         switch userInfo.role {
         case .participant:
             moreButton.isHidden = !selfIsHost || userInfo.hasInvited
-            roleLabel.isHidden = !moreButton.isHidden
+            roleLabel.isHidden = true
             if userInfo.hasInvited {
+                roleLabel.isHidden = false
                 roleLabel.text = ZGLocalizedString("user_list_page_invited");
             }
             if userInfo.userID == RoomManager.shared.userService.localUserInfo?.userID ?? "" {

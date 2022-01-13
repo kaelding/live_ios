@@ -408,7 +408,6 @@ extension UserService : ZIMEventHandler {
         for zimUser in memberList {
             let role: UserRole = zimUser.userID == RoomManager.shared.roomService.roomInfo.hostID ? .host : .participant
             var user = UserInfo(zimUser.userID, zimUser.userName, role)
-            addUsers.append(user)
             guard let userID = user.userID else { continue }
             // if user in the user list
             if !userList.contains(userID) {
@@ -416,6 +415,10 @@ extension UserService : ZIMEventHandler {
             } else {
                 user = userList.getObj(userID)!
             }
+            if user.role != .host && coHostList.compactMap({ $0.userID}).contains(userID) {
+                user.role = .coHost
+            }
+            addUsers.append(user)
             if localUserInfo?.userID == userID {
                 localUserInfo = user
             }

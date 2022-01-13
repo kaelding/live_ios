@@ -20,7 +20,7 @@ extension LiveRoomVC: ParticipantListViewDelegate {
             switch result {
             case .success:
                 self.participantListView.inviteMaskView.isHidden = true
-                self.participantListView.reloadListView()
+                self.reloadParticipantListView()
                 self.restoreInvitedUserStatus(userInfo)
                 break
             case .failure(_):
@@ -39,6 +39,42 @@ extension LiveRoomVC: ParticipantListViewDelegate {
                 userInfo.hasInvited = false
             }
         }
+    }
+    
+    func reloadParticipantListView() {
+        
+        func getDataSource() -> [UserInfo] {
+            
+            var dataSource = [UserInfo]()
+            if let host = getHost() {
+                dataSource.append(host)
+            }
+            
+            if isMyselfOnSeat && !isMyselfHost {
+                if let localUser = localUser {
+                    dataSource.append(localUser)
+                }
+            }
+            
+            let coHost = RoomManager.shared.userService.userList.allObjects().filter {
+                $0.role == .coHost && $0.role != .host && $0.userID != localUserID
+            }
+            dataSource.append(contentsOf: coHost)
+            
+            if !isMyselfOnSeat && !isMyselfHost {
+                if let localUser = localUser {
+                    dataSource.append(localUser)
+                }
+            }
+            
+            let participants = RoomManager.shared.userService.userList.allObjects().filter {
+                $0.role == .participant && $0.userID != localUserID
+            }
+            dataSource.append(contentsOf: participants)
+            
+            return dataSource
+        }
+        participantListView.reloadListView(getDataSource())
     }
 }
 
@@ -94,7 +130,7 @@ extension LiveRoomVC: UserServiceDelegate {
         messageList.append(contentsOf: tempList)
         
         reloadMessageData()
-        participantListView.reloadListView()
+        reloadParticipantListView()
         updateTopView()
         updateBottomView()
         
@@ -113,7 +149,7 @@ extension LiveRoomVC: UserServiceDelegate {
         }
         
         reloadMessageData()
-        participantListView.reloadListView()
+        reloadParticipantListView()
         updateTopView()
     }
     
@@ -148,7 +184,7 @@ extension LiveRoomVC: UserServiceDelegate {
             let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
             TipView.showWarn(message)
         }
-        participantListView.reloadListView()
+        reloadParticipantListView()
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {
@@ -185,7 +221,7 @@ extension LiveRoomVC: UserServiceDelegate {
         reloadCoHost()
         updateBottomView()
         updateHostBackgroundView()
-        participantListView.reloadListView()
+        reloadParticipantListView()
                 
         // if local user leave the seat, it must stop preview
         // if not, when use the same view to play stream, the view will show the preview image

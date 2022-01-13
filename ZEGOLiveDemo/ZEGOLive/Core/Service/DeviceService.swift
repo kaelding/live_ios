@@ -103,12 +103,16 @@ class DeviceService: NSObject {
         videoCodeID = ID
         switch ID {
         case .h264:
-            setLiveDeviceStatus(.hardware, enable: true)
+            setLiveDeviceStatus(.hardwareEncoding, enable: true)
         case .h265:
-            if ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265) {
-                setLiveDeviceStatus(.hardware, enable: true)
-            }
+            setLiveDeviceStatus(.layered, enable: false)
+            setLiveDeviceStatus(.hardwareEncoding, enable: true)
         }
+    }
+    
+    func isVideoEncoderSupportedH265() -> Bool {
+        ZegoExpressEngine.shared().enableHardwareEncoder(true)
+        return ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265)
     }
     
     func setLiveDeviceStatus(_ statusType: SettingSelectionType, enable: Bool) {
@@ -117,10 +121,11 @@ class DeviceService: NSObject {
             return
         case .layered:
             layerCoding = enable
-        case .hardware:
+            setVideoPreset(videoPreset)
+        case .hardwareEncoding:
             ZegoExpressEngine.shared().enableHardwareEncoder(enable)
             hardwareCoding = enable
-        case .decoding:
+        case .hardwareDecoding:
             ZegoExpressEngine.shared().enableHardwareDecoder(enable)
             hardwareDecoding = enable
         case .noise:
@@ -153,14 +158,14 @@ class DeviceService: NSObject {
         setVideoPreset(videoPreset)
         setAudioBitrate(audioBitrate)
         setLiveDeviceStatus(.layered, enable: layerCoding)
-        setLiveDeviceStatus(.hardware, enable: hardwareCoding)
-        setLiveDeviceStatus(.decoding, enable: hardwareDecoding)
+        setLiveDeviceStatus(.hardwareEncoding, enable: hardwareCoding)
+        setLiveDeviceStatus(.hardwareDecoding, enable: hardwareDecoding)
         setLiveDeviceStatus(.noise, enable: noiseRedution)
         setLiveDeviceStatus(.echo, enable: echo)
         setLiveDeviceStatus(.volume, enable: micVolume)
     }
     
-    func resert() {
+    func reset() {
         videoPreset = .p720
         audioBitrate = .b48
         videoCodeID = .h264

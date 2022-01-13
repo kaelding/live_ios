@@ -56,6 +56,10 @@ class ParticipantTableViewCell: UITableViewCell {
         case .participant:
             moreButton.isHidden = !selfIsHost || userInfo.hasInvited
             roleLabel.isHidden = true
+            if userInfo.hasInvited {
+                roleLabel.isHidden = false
+                roleLabel.text = ZGLocalizedString("user_list_page_invited");
+            }
             if userInfo.userID == RoomManager.shared.userService.localUserInfo?.userID ?? "" {
                 roleLabel.isHidden = false
                 roleLabel.text = ZGLocalizedString("user_list_page_me")
@@ -63,16 +67,14 @@ class ParticipantTableViewCell: UITableViewCell {
             break
         case .coHost:
             roleLabel.isHidden = false
-            roleLabel.text =  ZGLocalizedString("user_list_page_co_host")
+            roleLabel.text =  ZGLocalizedString("user_list_page_conneted")
+            moreButton.isHidden = true
+            userInfo.hasInvited = false
             break
         case .host:
             roleLabel.isHidden = false
             roleLabel.text = ZGLocalizedString("room_page_host");
             break
-        }
-        if userInfo.hasInvited {
-            roleLabel.isHidden = false
-            roleLabel.text = ZGLocalizedString("user_list_page_invited");
         }
     }
     

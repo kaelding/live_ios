@@ -20,7 +20,7 @@ extension LiveRoomVC: ParticipantListViewDelegate {
             switch result {
             case .success:
                 self.participantListView.inviteMaskView.isHidden = true
-                self.participantListView.reloadListView()
+                self.reloadParticipantListView()
                 self.restoreInvitedUserStatus(userInfo)
                 break
             case .failure(_):
@@ -39,6 +39,42 @@ extension LiveRoomVC: ParticipantListViewDelegate {
                 userInfo.hasInvited = false
             }
         }
+    }
+    
+    func reloadParticipantListView() {
+        
+        func getDataSource() -> [UserInfo] {
+            
+            var dataSource = [UserInfo]()
+            if let host = getHost() {
+                dataSource.append(host)
+            }
+            
+            if isMyselfOnSeat && !isMyselfHost {
+                if let localUser = localUser {
+                    dataSource.append(localUser)
+                }
+            }
+            
+            let coHost = RoomManager.shared.userService.userList.allObjects().filter {
+                $0.role == .coHost && $0.role != .host && $0.userID != localUserID
+            }
+            dataSource.append(contentsOf: coHost)
+            
+            if !isMyselfOnSeat && !isMyselfHost {
+                if let localUser = localUser {
+                    dataSource.append(localUser)
+                }
+            }
+            
+            let participants = RoomManager.shared.userService.userList.allObjects().filter {
+                $0.role == .participant && $0.userID != localUserID
+            }
+            dataSource.append(contentsOf: participants)
+            
+            return dataSource
+        }
+        participantListView.reloadListView(getDataSource())
     }
 }
 
@@ -94,7 +130,7 @@ extension LiveRoomVC: UserServiceDelegate {
         messageList.append(contentsOf: tempList)
         
         reloadMessageData()
-        participantListView.reloadListView()
+        reloadParticipantListView()
         updateTopView()
         updateBottomView()
         
@@ -113,7 +149,7 @@ extension LiveRoomVC: UserServiceDelegate {
         }
         
         reloadMessageData()
-        participantListView.reloadListView()
+        reloadParticipantListView()
         updateTopView()
     }
     
@@ -132,17 +168,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 return
             }
             
-            RoomManager.shared.userService.takeSeat { result in
-                switch result {
-                case .success:
-                    RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
-                    break
-                case .failure(let error):
-                    RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
-                    let message = String(format: ZGLocalizedString("toast_to_be_a_speaker_seat_fail"), error.code)
-                    TipView.showWarn(message)
-                }
-            }
+            self.startMonitorCameraAndMicAuthority()
         }
         
         inviteAlter.addAction(cancelAction)
@@ -158,42 +184,11 @@ extension LiveRoomVC: UserServiceDelegate {
             let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
             TipView.showWarn(message)
         }
-        participantListView.reloadListView()
+        reloadParticipantListView()
     }
     /// receive request to co-host request
     func receiveToCoHostRequest(_ userInfo: UserInfo) {
-        guard let name = userInfo.userName else { return }
-        guard let userID = userInfo.userID else { return }
-        let title = ZGLocalizedString("dialog_room_page_title_connection_request")
-        let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
-        let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
-            RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
-                switch result {
-                case .success:
-                    break
-                case .failure(_):
-                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
-                    break
-                }
-            }
-        }
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
-            
-            RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
-                switch result {
-                case .success:
-                    break
-                case .failure(_):
-                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
-                }
-            }
-        }
-        
-        inviteAlter.addAction(cancelAction)
-        inviteAlter.addAction(okAction)
-        self.present(inviteAlter, animated: true, completion: nil)
+        coHostTask.addTask(hostReceiveCoHostRequest, user: userInfo)
     }
     /// receive cancel request to co-host
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo) {
@@ -201,6 +196,7 @@ extension LiveRoomVC: UserServiceDelegate {
         let message = String(format: ZGLocalizedString("toast_room_has_canceled_connection_apply"), name)
         TipView.showTip(message)
         
+        coHostTask.finish()
         if self.presentedViewController != nil {
             self.dismiss(animated: true, completion: nil)
         }
@@ -225,13 +221,8 @@ extension LiveRoomVC: UserServiceDelegate {
         reloadCoHost()
         updateBottomView()
         updateHostBackgroundView()
-        participantListView.reloadListView()
-        
-        // localUser take seat success
-        if targetUserID == localUserID && type == .add {
-            startMonitorCameraAndMicAuthority()
-        }
-        
+        reloadParticipantListView()
+                
         // if local user leave the seat, it must stop preview
         // if not, when use the same view to play stream, the view will show the preview image
         if targetUserID == localUserID && (type == .leave || type == .remove) {
@@ -253,35 +244,101 @@ extension LiveRoomVC: UserServiceDelegate {
         if coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
             TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
         }
+        // unmute by host, then open the mic.
+        if !coHost.isMuted && type == .mute && isUserMyself(coHost.userID) {
+            RoomManager.shared.userService.micOperation(true)
+        }
     }
 }
 
 extension LiveRoomVC {
     private func startMonitorCameraAndMicAuthority() {
-        micTimer.setEventHandler { [unowned self] in
-            self.onMicAuthorizationTimerTriggered()
+        micCameraTimer.setEventHandler { [unowned self] in
+            self.onMicCameraAuthorizationTimerTriggered()
         }
-        cameraTimer.setEventHandler { [unowned self] in
-            self.onCameraAuthorizationTimerTriggered()
-        }
-        micTimer.start()
-        cameraTimer.start()
+        micCameraTimer.start()
     }
     
-    private func onMicAuthorizationTimerTriggered() {
-        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined() { return }
-        micTimer.stop()
+    private func onMicCameraAuthorizationTimerTriggered() {
+        if !AuthorizedCheck.isMicrophoneAuthorizationDetermined() {
+            AuthorizedCheck.takeMicPhoneAuthorityStatus(completion: nil)
+            return
+        }
+        if !AuthorizedCheck.isCameraAuthorizationDetermined() {
+            AuthorizedCheck.takeCameraAuthorityStatus(completion: nil)
+            return
+        }
+        
+        // if do not have mic access
         if !AuthorizedCheck.isMicrophoneAuthorized() {
-            RoomManager.shared.userService.micOperation(false)
+            micCameraTimer.stop()
+            RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+            AuthorizedCheck.showMicrophoneUnauthorizedAlert(self)
+            return
+        }
+        
+        // if do not have camera access
+        if !AuthorizedCheck.isCameraAuthorized() {
+            micCameraTimer.stop()
+            RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+            AuthorizedCheck.showCameraUnauthorizedAlert(self)
+            return
+        }
+        micCameraTimer.stop()
+        
+        // if have mic and camera access, just take seat.
+        if RoomManager.shared.userService.coHostList.compactMap({ $0.userID }).contains(localUserID) {
+            // already on seat
+            return
+        }
+        RoomManager.shared.userService.takeSeat { result in
+            switch result {
+            case .success:
+                RoomManager.shared.userService.respondCoHostInvitation(true, callback: nil)
+                break
+            case .failure(_):
+                RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
+            }
         }
     }
     
-    private func onCameraAuthorizationTimerTriggered() {
-        if !AuthorizedCheck.isCameraAuthorizationDetermined() { return }
-        cameraTimer.stop()
-        if !AuthorizedCheck.isCameraAuthorized() {
-            RoomManager.shared.userService.cameraOperation(false)
+    private func hostReceiveCoHostRequest(_ userInfo: UserInfo) {
+        guard let name = userInfo.userName,
+              let userID = userInfo.userID else {
+            self.coHostTask.finish()
+            return
         }
+        let title = ZGLocalizedString("dialog_room_page_title_connection_request")
+        let message = String(format: ZGLocalizedString("dialog_room_page_message_connection_request"), name)
+        let inviteAlter = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
+            self.coHostTask.finish()
+            RoomManager.shared.userService.respondCoHostRequest(false, userID) { result in
+                switch result {
+                case .success:
+                    break
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                    break
+                }
+            }
+        }
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
+            self.coHostTask.finish()
+            RoomManager.shared.userService.respondCoHostRequest(true, userID) { result in
+                switch result {
+                case .success:
+                    break
+                case .failure(_):
+                    TipView.showWarn(ZGLocalizedString("toast_room_failed_to_operate"))
+                }
+            }
+        }
+        
+        inviteAlter.addAction(cancelAction)
+        inviteAlter.addAction(okAction)
+        self.present(inviteAlter, animated: true, completion: nil)
     }
     
     private func logout() {

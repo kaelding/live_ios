@@ -65,7 +65,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
             titleLabel.text = ZGLocalizedString("room_settings_page_audio_bitrate")
             dataSource = audioDataSource
         case .encoding:
-            titleLabel.text = ZGLocalizedString("room_settings_page_layered_coding")
+            titleLabel.text = ZGLocalizedString("room_settings_page_codec")
             dataSource = encodDataSource
         }
         tableView.reloadData()
@@ -146,6 +146,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
             }
             index += 1
         }
+        
         tableView.reloadData()
     }
     
@@ -159,6 +160,13 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
             RoomManager.shared.deviceService.setAudioBitrate(type)
         case .encoding:
             let type: RTCVideoCode = RTCVideoCode(rawValue: model.type) ?? .h264
+            if type == .h265 && !RoomManager.shared.deviceService.isVideoEncoderSupportedH265() {
+                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
+                model.isSelected = false
+                guard let h264Model = dataSource.first else { return }
+                h264Model.isSelected = true
+                return
+            }
             RoomManager.shared.deviceService.setVideoCodeID(type)
         }
     }

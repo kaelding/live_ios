@@ -48,7 +48,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_muted_by_host" = "You have been muted.";
 "toast_room_failed_to_operate" = "Operation failed. Please try again.";
 "toast_room_ended_the_connection" = "%@ has ended the co-host.";
-"toast_room_title_ended_the_connection" = "Co-host has ended.";
+"toast_room_title_ended_the_connection" = "Note";
 "dialog_room_message_ended_the_connection" = "Are you sure to end the co-host?";
 "dialog_room_page_cancel" = "Cancel";
 "dialog_room_page_ok" = "OK";
@@ -79,7 +79,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_user_list_page_connected_failed" = "Failed to co-host. Please try agian.";
 "toast_user_list_page_rejected_invitation" = "%@ has declined your invitation. ";
 "user_list_page_participants_num" = "Participants (%d)";
-"user_list_page_invite_to_speak" = "Make co-hosts";
+"user_list_page_invite_to_speak" = "Make co-host";
 "user_list_page_owner" = "Host";
 "dialog_invition_title" = "Invitation";
 "dialog_invition_descrip" = "The host has invited you to co-host.";

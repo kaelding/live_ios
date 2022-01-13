@@ -36,7 +36,8 @@ extension LiveRoomVC : LiveTopViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func leaveRoom() {
+    func leaveRoom(_ dismissViewController: Bool = true) {
+        TipView.dismiss()
         // cancel request to cohost and leave co host when leave room.
         if isMyselfInRequestList {
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
@@ -45,12 +46,12 @@ extension LiveRoomVC : LiveTopViewDelegate {
             RoomManager.shared.userService.leaveSeat(callback: nil)
         }
         
-        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
-        RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         RoomManager.shared.roomService.leaveRoom(callback: nil)
-        self.navigationController?.popViewController(animated: true)
-        RoomManager.shared.deviceService.resert()
-        RoomManager.shared.soundService.resert()
+        RoomManager.shared.deviceService.reset()
+        RoomManager.shared.soundService.reset()
+        if dismissViewController {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
         
     func updateTopView() {

@@ -187,8 +187,9 @@ class LiveRoomVC: UIViewController {
         return textView
     }()
     
-    let micTimer: ZegoTimer = ZegoTimer(500)
-    let cameraTimer: ZegoTimer = ZegoTimer(500)
+    let micCameraTimer: ZegoTimer = ZegoTimer(500)
+    
+    let coHostTask: CoHostTaskQueue = CoHostTaskQueue()
     
     deinit {
         
@@ -218,6 +219,7 @@ class LiveRoomVC: UIViewController {
         if isLiving {
             self.reloadCoHost()
             self.updateBottomView()
+            self.reloadParticipantListView()
         }
     }
     
@@ -287,11 +289,12 @@ extension LiveRoomVC : RoomServiceDelegate {
     }
     
     func receiveRoomEnded() {
+        leaveRoom(false)
         let alert = UIAlertController(title: ZGLocalizedString("dialog_attetion_title"),
                                       message: ZGLocalizedString("toast_room_has_destroyed"),
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: ZGLocalizedString("dialog_close"), style: .default) { action in
-            self.leaveRoom()
+            self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)

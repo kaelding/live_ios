@@ -34,7 +34,7 @@ class TipView: UIView {
     
     static func showTipView(_ type: TipViewType, message: String, autoDismiss: Bool = true) {
         let tipView: TipView = UINib(nibName: "TipView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TipView
-        let y = getKeyWindow().safeAreaInsets.top
+        let y = KeyWindow().safeAreaInsets.top
         tipView.frame = CGRect.init(x: 0, y: y, width: UIScreen.main.bounds.size.width, height: 70)
         tipView.autoDismiss = autoDismiss
         switch type {
@@ -59,7 +59,7 @@ class TipView: UIView {
     }
     
     private func show()  {
-        getKeyWindow().addSubview(self)
+        KeyWindow().addSubview(self)
         if autoDismiss {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 TipView.dismiss()

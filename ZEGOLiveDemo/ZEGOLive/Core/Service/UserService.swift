@@ -260,6 +260,13 @@ class UserService: NSObject {
     
     /// take to co-host seat
     func takeSeat(callback: RoomCallback?) {
+        
+        if coHostList.compactMap({ $0.userID }).contains(localUserInfo?.userID) {
+            guard let callback = callback else { return }
+            callback(.failure(.alreadyOnSeat))
+            return
+        }
+        
         guard let parameters = getTakeOrLeaveSeatParameters(localUserInfo?.userID, isTake: true) else {
             guard let callback = callback else { return }
             callback(.failure(.failed))
@@ -400,10 +407,18 @@ extension UserService : ZIMEventHandler {
         var addUsers: [UserInfo] = []
         for zimUser in memberList {
             let role: UserRole = zimUser.userID == RoomManager.shared.roomService.roomInfo.hostID ? .host : .participant
-            let user = UserInfo(zimUser.userID, zimUser.userName, role)
-            addUsers.append(user)
+            var user = UserInfo(zimUser.userID, zimUser.userName, role)
             guard let userID = user.userID else { continue }
-            userList.addObj(userID, user)
+            // if user in the user list
+            if !userList.contains(userID) {
+                userList.addObj(userID, user)
+            } else {
+                user = userList.getObj(userID)!
+            }
+            if user.role != .host && coHostList.compactMap({ $0.userID}).contains(userID) {
+                user.role = .coHost
+            }
+            addUsers.append(user)
             if localUserInfo?.userID == userID {
                 localUserInfo = user
             }

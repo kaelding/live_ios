@@ -37,9 +37,9 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
             }
         case .layered:
             return
-        case .hardware:
+        case .hardwareEncoding:
             return
-        case .decoding:
+        case .hardwareDecoding:
             return
         case .noise:
             return

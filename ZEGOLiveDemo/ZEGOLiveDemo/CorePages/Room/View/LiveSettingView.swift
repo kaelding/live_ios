@@ -107,8 +107,8 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             containerViewHeight.constant = 564
             settingDataSource = [["title": ZGLocalizedString("room_settings_page_codec") ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
                                  ["title": ZGLocalizedString("room_settings_page_layered_coding") ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": RoomManager.shared.deviceService.layerCoding],
-                                 ["title": ZGLocalizedString("room_settings_page_hardware_encoding"), "subTitle": "", "selectionType": SettingSelectionType.hardware, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],
-                                 ["title": ZGLocalizedString("room_settings_page_hardware_decoding"), "subTitle": "", "selectionType": SettingSelectionType.decoding, "switchStatus": RoomManager.shared.deviceService.hardwareDecoding],
+                                 ["title": ZGLocalizedString("room_settings_page_hardware_encoding"), "subTitle": "", "selectionType": SettingSelectionType.hardwareEncoding, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],
+                                 ["title": ZGLocalizedString("room_settings_page_hardware_decoding"), "subTitle": "", "selectionType": SettingSelectionType.hardwareDecoding, "switchStatus": RoomManager.shared.deviceService.hardwareDecoding],
                                  ["title": ZGLocalizedString("room_settings_page_noise_suppression") ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": RoomManager.shared.deviceService.noiseRedution],
                                  ["title": ZGLocalizedString("room_settings_page_echo_cancellation"), "subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": RoomManager.shared.deviceService.echo],
                                  ["title": ZGLocalizedString("room_settings_page_mic_volume"), "subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": RoomManager.shared.deviceService.micVolume],
@@ -129,9 +129,9 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
                 model.subTitle = RoomManager.shared.deviceService.videoCodeID == .h264 ? "H.264":"H.265"
             case .layered:
                 model.switchStatus = RoomManager.shared.deviceService.layerCoding
-            case .hardware:
+            case .hardwareEncoding:
                 model.switchStatus = RoomManager.shared.deviceService.hardwareCoding
-            case .decoding:
+            case .hardwareDecoding:
                 model.switchStatus = RoomManager.shared.deviceService.hardwareDecoding
             case .noise:
                 model.switchStatus = RoomManager.shared.deviceService.noiseRedution
@@ -176,7 +176,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         
         let model: LiveSettingModel = settingDataSource[indexPath.row]
         switch model.selectionType {
-            case .noise, .echo, .volume, .layered, .hardware, .decoding:
+            case .noise, .echo, .volume, .layered, .hardwareEncoding, .hardwareDecoding:
                 let cell: SettingSwitchCell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell") as! SettingSwitchCell
                 cell.updateCell(model)
                 cell.delegate = self
@@ -201,9 +201,9 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             delegate?.settingViewDidSelected(model, type: viewType)
         case .layered:
             break
-        case .hardware:
+        case .hardwareEncoding:
             break
-        case .decoding:
+        case .hardwareDecoding:
             break
         }
     }
@@ -215,7 +215,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             if model.selectionType == .layered && RoomManager.shared.deviceService.videoCodeID == .h265{
                 return
             }
-            if model.selectionType == .hardware && RoomManager.shared.deviceService.videoCodeID == .h265 && !value {
+            if model.selectionType == .hardwareEncoding && RoomManager.shared.deviceService.videoCodeID == .h265 && !value {
                 model.switchStatus = true
                 TipView.showWarn(ZGLocalizedString("toast_room_page_settings_h265_error"))
                 settingTableView.reloadData()
@@ -224,7 +224,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             switch model.selectionType {
             case .encoding, .resolution, .bitrate:
                 delegate?.settingViewDidSelected(model, type: viewType)
-            case .layered, .hardware, .decoding, .noise, .echo, .volume:
+            case .layered, .hardwareEncoding, .hardwareDecoding, .noise, .echo, .volume:
                 RoomManager.shared.deviceService.setLiveDeviceStatus(model.selectionType, enable: value)
                 model.switchStatus = value
             }

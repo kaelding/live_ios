@@ -199,11 +199,11 @@ extension LiveRoomVC: UserServiceDelegate {
         TipView.dismiss()
         if agree {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn("toast_room_maximum")
+                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+                bottomView?.resetApplyStatus()
                 return
             }
-            RoomManager.shared.userService.takeSeat { result in
-            }
+            RoomManager.shared.userService.takeSeat(callback: nil)
         } else {
             TipView.showWarn(ZGLocalizedString("toast_room_has_rejected"))
         }

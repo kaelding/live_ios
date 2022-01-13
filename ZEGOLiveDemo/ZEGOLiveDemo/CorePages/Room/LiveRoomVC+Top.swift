@@ -46,8 +46,6 @@ extension LiveRoomVC : LiveTopViewDelegate {
             RoomManager.shared.userService.leaveSeat(callback: nil)
         }
         
-        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
-        RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         RoomManager.shared.roomService.leaveRoom(callback: nil)
         RoomManager.shared.deviceService.reset()
         RoomManager.shared.soundService.reset()

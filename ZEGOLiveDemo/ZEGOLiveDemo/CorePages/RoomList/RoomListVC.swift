@@ -85,6 +85,11 @@ class RoomListVC: UIViewController {
         vc.isLiving = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // reset the device data before create room.
+        RoomManager.shared.deviceService.reset()
+    }
 }
 
 extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

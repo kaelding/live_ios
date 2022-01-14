@@ -54,6 +54,7 @@ class LiveReadyView: UIView {
             startLiveButton.layer.addSublayer(layer)
             startLiveButton.layer.cornerRadius = 22.0
             startLiveButton.setTitle(ZGLocalizedString(ZGLocalizedString("create_page_room_start")), for: .normal)
+            startLiveButton.alpha = 0.5
         }
     }
     
@@ -70,6 +71,7 @@ class LiveReadyView: UIView {
     @IBAction func roomTitleTextFieldDidChanged(_ sender: UITextField) {
         guard let text = sender.text else { return }
         roomTitle = text
+        startLiveButton.alpha = text.count > 0 ? 1.0 : 0.5
     }
     
     @IBAction func startLiveButtonClick(_ sender: UIButton) {

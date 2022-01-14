@@ -155,14 +155,15 @@ extension LiveRoomVC: UserServiceDelegate {
         let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
             RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
         }
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default)
+        { [weak self] action in
             
             if RoomManager.shared.userService.coHostList.count > 4 {
                 TipView.showWarn(ZGLocalizedString("room_page_no_more_seat_available"))
                 return
             }
             
-            self.startMonitorCameraAndMicAuthority()
+            self?.startMonitorCameraAndMicAuthority()
         }
         
         inviteAlter.addAction(cancelAction)
@@ -247,8 +248,8 @@ extension LiveRoomVC: UserServiceDelegate {
 
 extension LiveRoomVC {
     private func startMonitorCameraAndMicAuthority() {
-        micCameraTimer.setEventHandler { [unowned self] in
-            self.onMicCameraAuthorizationTimerTriggered()
+        micCameraTimer.setEventHandler { [weak self] in
+            self?.onMicCameraAuthorizationTimerTriggered()
         }
         micCameraTimer.start()
     }

@@ -57,8 +57,8 @@ class RoomListService: NSObject {
         request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""
         
         RequestManager.shared.joinRoomRequest(request: request) { requestStatus in
-            self.timer.setEventHandler { [unowned self] in
-                self.heartBeatRequest()
+            self.timer.setEventHandler { [weak self] in
+                self?.heartBeatRequest()
             }
             self.timer.start()
             guard let callback = callback else { return }

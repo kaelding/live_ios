@@ -55,7 +55,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             }
             if coHost.isMuted {
                 bottomView.updateMicStatus(!isOpen)
-                TipView.showWarn(ZGLocalizedString("toast_room_muted_by_host"))
+                TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
                 return
             }
             RoomManager.shared.userService.micOperation(!coHost.mic)
@@ -75,7 +75,7 @@ extension LiveRoomVC {
     private func applyCoHost() {
         if applicationHasMicAndCameraAccess() {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+                TipView.showTip(ZGLocalizedString("toast_room_maximum"))
                 bottomView?.resetApplyStatus()
                 return
             }

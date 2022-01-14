@@ -12,7 +12,7 @@ import ZegoExpressEngine
 extension LiveRoomVC: ParticipantListViewDelegate {
     func invitedUserAddCoHost(userInfo: UserInfo) {
         if RoomManager.shared.userService.coHostList.count >= 4 {
-            TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+            TipView.showTip(ZGLocalizedString("toast_room_maximum"))
             return
         }
         guard let userID = userInfo.userID else { return }
@@ -201,13 +201,13 @@ extension LiveRoomVC: UserServiceDelegate {
         TipView.dismiss()
         if agree {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+                TipView.showTip(ZGLocalizedString("toast_room_maximum"))
                 bottomView?.resetApplyStatus()
                 return
             }
             RoomManager.shared.userService.takeSeat(callback: nil)
         } else {
-            TipView.showWarn(ZGLocalizedString("toast_room_has_rejected"))
+            TipView.showTip(ZGLocalizedString("toast_room_has_rejected"))
         }
         bottomView?.resetApplyStatus()
     }
@@ -231,7 +231,7 @@ extension LiveRoomVC: UserServiceDelegate {
         
         if isMyselfHost && type == .leave && !isUserMyself(targetUserID) {
             if let user = getUser(targetUserID) {
-                TipView.showWarn(String(format: ZGLocalizedString("toast_room_ended_the_connection"), user.userName ?? ""))
+                TipView.showTip(String(format: ZGLocalizedString("toast_room_ended_the_connection"), user.userName ?? ""))
             }
         }
         

@@ -110,11 +110,11 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
                                  ["title": ZGLocalizedString("room_settings_page_noise_suppression") ,"subTitle": "", "selectionType": SettingSelectionType.noise, "switchStatus": RoomManager.shared.deviceService.noiseRedution],
                                  ["title": ZGLocalizedString("room_settings_page_echo_cancellation"), "subTitle": "", "selectionType": SettingSelectionType.echo, "switchStatus": RoomManager.shared.deviceService.echo],
                                  ["title": ZGLocalizedString("room_settings_page_mic_volume"), "subTitle": "", "selectionType": SettingSelectionType.volume, "switchStatus": RoomManager.shared.deviceService.micVolume],
-                                 ["title": ZGLocalizedString("room_settings_page_frame_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+                                 ["title": ZGLocalizedString("room_settings_page_resolution_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
                                  ["title": ZGLocalizedString("room_settings_page_audio_bitrate") ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
         } else if type == .less {
             containerViewHeight.constant = 201
-            settingDataSource = [["title": ZGLocalizedString("room_settings_page_frame_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
+            settingDataSource = [["title": ZGLocalizedString("room_settings_page_resolution_rate"), "subTitle": "1080x1920", "selectionType": SettingSelectionType.resolution, "switchStatus": false],
                                  ["title": ZGLocalizedString("room_settings_page_audio_bitrate") ,"subTitle": "48kbps", "selectionType": SettingSelectionType.bitrate, "switchStatus": false]].map{ LiveSettingModel(json: $0) }
         }
         settingTableView.reloadData()

@@ -173,7 +173,7 @@ extension RoomService {
         // update coHost list from json
         if let coHostJson = roomAttributes["request_co_host"] {
             operation.updateRequestCoHostList(coHostJson)
-            attributeType.insert(.coHost)
+            attributeType.insert(.requestCoHost)
         }
         
         // update the operator's seat info to local seat list

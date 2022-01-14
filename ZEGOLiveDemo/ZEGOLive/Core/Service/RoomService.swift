@@ -174,6 +174,9 @@ extension RoomService: ZIMEventHandler {
                 if hostLeft || roomNotExisted {
                     self.delegate?.receiveRoomInfoUpdate(nil)
                 }
+                if error.code == .ZIMErrorCodeSuccess {
+                    self.roomAttributesUpdated(dict)
+                }
             })
         } else if state == .disconnected {
 //            delegate?.receiveRoomInfoUpdate(nil)

@@ -37,6 +37,7 @@ extension LiveRoomVC: ParticipantListViewDelegate {
             
             if let userInfo = RoomManager.shared.userService.userList.getObj(userID) {
                 userInfo.hasInvited = false
+                self.reloadParticipantListView()
             }
         }
     }

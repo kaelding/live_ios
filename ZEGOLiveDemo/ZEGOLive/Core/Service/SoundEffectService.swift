@@ -86,6 +86,8 @@ class SoundEffectService: NSObject {
         voiceVolume = 50
         setCurrentBGMVolume(Int(musicVolume))
         setVoiceVolume(Int(voiceVolume))
+        setVoiceChangeType(.none)
+        setReverbPreset(.none)
         stopBGM()
     }
 

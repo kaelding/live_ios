@@ -216,7 +216,8 @@ extension FaceBeautifyView: UICollectionViewDelegateFlowLayout, UICollectionView
             selectedFaceBeautifyModel = self.faceShapeRetouchArray[indexPath.row]
         }
         self.slider.isHidden = false
-        if selectedFaceBeautifyModel?.type == .ChinLengthening {
+        if selectedFaceBeautifyModel?.type == .ChinLengthening ||
+            selectedFaceBeautifyModel?.type == .MouthShapeAdjustment {
             self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: -100, max: 100)
         } else {
             self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: 0, max: 100)

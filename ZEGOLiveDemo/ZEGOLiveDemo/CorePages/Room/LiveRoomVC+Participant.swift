@@ -158,7 +158,7 @@ extension LiveRoomVC: UserServiceDelegate {
         let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default)
         { [weak self] action in
             
-            if RoomManager.shared.userService.coHostList.count > 4 {
+            if RoomManager.shared.userService.coHostList.count >= 4 {
                 TipView.showWarn(ZGLocalizedString("room_page_no_more_seat_available"))
                 return
             }

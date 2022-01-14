@@ -187,10 +187,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-tt-rgd">
-                                                    <rect key="frame" x="0.0" y="33.5" width="339" height="67.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-tt-rgd">
+                                                    <rect key="frame" x="0.0" y="33.5" width="414" height="67.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="67.5" id="2u0-M0-mZa"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tVw-IF-FwY">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -206,6 +208,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="SBu-Xz-wQs" firstAttribute="leading" secondItem="P55-Zv-tzO" secondAttribute="leading" constant="18" id="2X9-7r-gAo"/>
+                                                <constraint firstAttribute="trailing" secondItem="RH4-tt-rgd" secondAttribute="trailing" id="4IK-pl-cjy"/>
+                                                <constraint firstItem="RH4-tt-rgd" firstAttribute="leading" secondItem="P55-Zv-tzO" secondAttribute="leading" id="Fzf-5M-SrV"/>
+                                                <constraint firstAttribute="bottom" secondItem="RH4-tt-rgd" secondAttribute="bottom" id="JpV-0y-mzP"/>
                                                 <constraint firstItem="SBu-Xz-wQs" firstAttribute="top" secondItem="P55-Zv-tzO" secondAttribute="top" id="RMk-1w-A3v"/>
                                                 <constraint firstAttribute="height" constant="101" id="XTG-2r-Bqe"/>
                                             </constraints>
@@ -222,10 +227,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="102" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2nv-b5-dpV">
-                                                    <rect key="frame" x="0.0" y="33.5" width="339" height="67.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="102" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2nv-b5-dpV">
+                                                    <rect key="frame" x="0.0" y="33.5" width="414" height="67.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="67.5" id="y8O-Cs-s1T"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QdE-DE-v4G">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -241,8 +248,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="Q4n-Tv-hdu" firstAttribute="top" secondItem="hkT-4C-YKv" secondAttribute="top" id="1m5-0p-oYP"/>
+                                                <constraint firstItem="2nv-b5-dpV" firstAttribute="leading" secondItem="hkT-4C-YKv" secondAttribute="leading" id="1zH-pP-cGU"/>
                                                 <constraint firstItem="Q4n-Tv-hdu" firstAttribute="leading" secondItem="hkT-4C-YKv" secondAttribute="leading" constant="18" id="NwR-jk-lGa"/>
                                                 <constraint firstAttribute="height" constant="101" id="OHj-ij-cTa"/>
+                                                <constraint firstAttribute="bottom" secondItem="2nv-b5-dpV" secondAttribute="bottom" id="jfz-68-Bzp"/>
+                                                <constraint firstAttribute="trailing" secondItem="2nv-b5-dpV" secondAttribute="trailing" id="pq6-Iq-T6L"/>
                                             </constraints>
                                         </view>
                                     </subviews>

@@ -79,6 +79,12 @@ class RoomListVC: UIViewController {
         }
     }
     
+    
+    @IBAction func backItemClick(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+        RoomManager.shared.userService.logout()
+    }
+    
     // MARK: private method
     func joinLiveRoom() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LiveRoomVC") as! LiveRoomVC

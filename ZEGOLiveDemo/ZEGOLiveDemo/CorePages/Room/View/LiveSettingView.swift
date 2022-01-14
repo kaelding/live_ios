@@ -43,11 +43,9 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     }()
     
     lazy var bitrateDic: [RTCAudioBitrate:String] = {
-        let dic: [RTCAudioBitrate:String] = [RTCAudioBitrate.b16:"16kbps",
-                                             RTCAudioBitrate.b48:"48kbps",
-                                             RTCAudioBitrate.b56:"56kbps",
-                                             RTCAudioBitrate.b128:"128kbps",
-                                             RTCAudioBitrate.b192:"192kbps"]
+        let dic: [RTCAudioBitrate:String] = [RTCAudioBitrate.b48 : "48kbps",
+                                             RTCAudioBitrate.b96 : "56kbps",
+                                             RTCAudioBitrate.b128:"128kbps"]
         return dic
     }()
     

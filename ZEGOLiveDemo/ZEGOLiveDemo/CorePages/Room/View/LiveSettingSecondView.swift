@@ -33,11 +33,10 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     }()
     
     lazy var audioDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "16Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b16), "type": RTCAudioBitrate.b16.rawValue],
+        let data = [
                     ["title": "48Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b48), "type": RTCAudioBitrate.b48.rawValue],
-                    ["title": "56kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b56), "type": RTCAudioBitrate.b56.rawValue],
-                    ["title": "128kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b128), "type": RTCAudioBitrate.b128.rawValue],
-                    ["title": "192kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b192), "type": RTCAudioBitrate.b192.rawValue]]
+                    ["title": "96kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b96), "type": RTCAudioBitrate.b96.rawValue],
+                    ["title": "128kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b128), "type": RTCAudioBitrate.b128.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     

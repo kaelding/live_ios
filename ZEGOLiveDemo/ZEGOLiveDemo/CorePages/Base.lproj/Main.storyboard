@@ -420,7 +420,11 @@ please create a live room~</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nM8-fJ-Fmh">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="nav_back" id="JCW-72-46r"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="nav_back" id="JCW-72-46r">
+                            <connections>
+                                <action selector="backItemClick:" destination="SSm-r5-k9p" id="f4h-0R-shj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="create_settings" id="KS1-0J-NPm">
                             <connections>
                                 <segue destination="QTf-vx-h0B" kind="show" id="QZy-XQ-nTi"/>

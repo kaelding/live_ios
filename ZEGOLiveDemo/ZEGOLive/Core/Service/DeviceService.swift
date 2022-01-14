@@ -19,11 +19,9 @@ enum RTCVideoPreset: Int {
 }
 
 enum RTCAudioBitrate: Int {
-    case b16
     case b48
-    case b56
+    case b96
     case b128
-    case b192
 }
 
 enum RTCVideoCode: Int {
@@ -82,20 +80,16 @@ class DeviceService: NSObject {
     
     func setAudioBitrate(_ bitrate: RTCAudioBitrate) {
         audioBitrate = bitrate
-        var expressAudioPreset: ZegoAudioConfigPreset = .standardQuality
+        let audioConfig: ZegoAudioConfig = ZegoAudioConfig()
+        audioConfig.bitrate = 48
         switch bitrate {
-        case .b16:
-            expressAudioPreset = .basicQuality
         case .b48:
-            expressAudioPreset = .standardQuality
-        case .b56:
-            expressAudioPreset = .standardQualityStereo
+            audioConfig.bitrate = 48
+        case .b96:
+            audioConfig.bitrate = 96
         case .b128:
-            expressAudioPreset = .highQuality
-        case .b192:
-            expressAudioPreset = .highQualityStereo
+            audioConfig.bitrate = 128
         }
-        let audioConfig: ZegoAudioConfig = ZegoAudioConfig.init(preset: expressAudioPreset)
         ZegoExpressEngine.shared().setAudioConfig(audioConfig)
     }
     

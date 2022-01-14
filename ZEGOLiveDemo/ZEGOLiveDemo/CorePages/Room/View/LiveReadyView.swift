@@ -96,8 +96,8 @@ class LiveReadyView: UIView {
 
 extension LiveReadyView : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let proposeLength = (textField.text?.lengthOfBytes(using: .utf8))! - range.length + string.lengthOfBytes(using: .utf8)
-        if proposeLength > 32 {
+        let proposeLength = textField.text!.count - range.length + string.count
+        if proposeLength > 16 {
             return false
         }
         return true

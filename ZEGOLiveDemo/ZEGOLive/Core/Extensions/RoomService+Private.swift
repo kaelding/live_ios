@@ -86,6 +86,12 @@ extension RoomService {
         let isMyselfHost = RoomManager.shared.userService.isMyselfHost
         let isOperatedSelf = action.targetID == action.operatorID
         let targetUser = RoomManager.shared.userService.userList.getObj(action.targetID) ?? UserInfo()
+        
+        // if myself not on seat, just stop publish stream.
+        let isMyselfOnSeat = operation.coHost.compactMap({ $0.userID }).contains(myUserID)
+        if !isMyselfOnSeat {
+            ZegoExpressEngine.shared().stopPublishingStream()
+        }
        
         for delegate in RoomManager.shared.userService.delegates.allObjects {
             guard let delegate = delegate as? UserServiceDelegate else { continue }
@@ -108,7 +114,7 @@ extension RoomService {
                     delegate.receiveToCoHostRespond(false)
                 }
             case .takeSeat:
-                delegate.coHostChange(action.targetID, type: .add)
+                delegate.coHostChange(action.targetID, type: .take)
             case .leaveSeat:
                 // coHost leave or host remove coHost
                 if isOperatedSelf {

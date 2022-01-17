@@ -110,7 +110,7 @@ class OperationCommand : NSObject, Codable {
             guard let seatDict = seatDict as? [String: Any] else { return }
             guard let seat = ZegoJsonTool.dictionaryToModel(type: CoHostModel.self, dict: seatDict) else { return }
             if list.compactMap({ $0.userID }).contains(seat.userID) { continue }
-            if list.count >= 4 { break }
+            if list.count >= MAX_SEAT_COUNT { break }
             list.append(seat)
             if seat.userID == action.targetID {
                 updateCoHost = seat

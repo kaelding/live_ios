@@ -10,7 +10,7 @@ import ZIM
 import ZegoExpressEngine
 
 enum CoHostChangeType {
-    case add
+    case take
     case leave
     case remove
     case mic

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="The studio created by baby" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiU-Ts-4wl">
-                    <rect key="frame" x="50" y="149" width="314" height="60"/>
+                    <rect key="frame" x="50" y="193" width="314" height="60"/>
                     <color key="backgroundColor" name="000000_40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="WVK-wh-kGU"/>
@@ -81,10 +81,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hha-nd-4S2">
-                    <rect key="frame" x="362" y="52.5" width="36" height="36"/>
+                    <rect key="frame" x="358" y="50.5" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="36" id="dDF-4Y-gP1"/>
-                        <constraint firstAttribute="height" constant="36" id="s27-Ch-11f"/>
+                        <constraint firstAttribute="width" constant="40" id="dDF-4Y-gP1"/>
+                        <constraint firstAttribute="height" constant="40" id="s27-Ch-11f"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="create_flip"/>
@@ -97,7 +97,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Cjg-1J-CF0" firstAttribute="centerY" secondItem="JJR-mG-fhC" secondAttribute="centerY" id="4fb-ry-fWm"/>
-                <constraint firstItem="oiU-Ts-4wl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="149" id="9vA-ql-afb"/>
+                <constraint firstItem="oiU-Ts-4wl" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="149" id="9vA-ql-afb"/>
                 <constraint firstItem="JJR-mG-fhC" firstAttribute="leading" secondItem="NVg-Hc-0VG" secondAttribute="trailing" constant="34" id="HZ2-cY-5d5"/>
                 <constraint firstItem="8te-Bu-wtp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="4" id="M6p-nM-ENU"/>
                 <constraint firstAttribute="bottom" secondItem="JJR-mG-fhC" secondAttribute="bottom" constant="49" id="M7y-NC-mKf"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="Cjg-1J-CF0" firstAttribute="leading" secondItem="JJR-mG-fhC" secondAttribute="trailing" constant="34" id="Xa8-1V-tGe"/>
                 <constraint firstItem="8te-Bu-wtp" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="6.5" id="ZHR-7c-CLA"/>
                 <constraint firstItem="JJR-mG-fhC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="c4F-UV-5AB"/>
-                <constraint firstItem="hha-nd-4S2" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="8.5" id="zA0-CC-s0T"/>
+                <constraint firstItem="hha-nd-4S2" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="6.5" id="zA0-CC-s0T"/>
             </constraints>
             <connections>
                 <outlet property="beautyButton" destination="NVg-Hc-0VG" id="gM3-0Y-peN"/>
@@ -122,7 +122,7 @@
     <resources>
         <image name="bottom_beauty" width="36" height="36"/>
         <image name="create_flip" width="44" height="44"/>
-        <image name="create_settings" width="44" height="44"/>
+        <image name="create_settings" width="36" height="36"/>
         <image name="nav_back" width="20" height="20"/>
         <namedColor name="000000_40">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>

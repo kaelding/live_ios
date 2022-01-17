@@ -84,7 +84,7 @@ class SettingsVC: UITableViewController {
             cell.detailTextLabel?.text = model.subTitle
         }
         
-        if model.type == .express {
+        if model.type == .express || model.type == .zim || model.type == .terms {
             let lineView = UIView(frame: CGRect(x: 0, y: 53.5, width: view.bounds.size.width, height: 0.5))
             lineView.backgroundColor = ZegoColor("#1A1726")
             cell.contentView.addSubview(lineView)

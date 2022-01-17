@@ -101,6 +101,8 @@ class LoginVC: UIViewController {
         if userNameTextField.text?.count == 0 {
             myUserName = myUserID
         }
+        let buttonColor = myUserID.count > 0 ? UIColor.white : ZegoColor("FFFFFF_40")
+        loginButton.setTitleColor(buttonColor, for: .normal)
     }
     
     @IBAction func userNameTextFieldDidChanged(_ sender: UITextField) {

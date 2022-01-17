@@ -237,7 +237,6 @@
                                 <color key="backgroundColor" name="FFFFFF_9"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="9eY-bj-PuY"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="Trx-8t-5hK"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
@@ -255,7 +254,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Log in">
-                                    <color key="titleColor" name="000000_40"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButtonClick:" destination="m4y-W7-AcP" eventType="touchUpInside" id="JIc-cp-wef"/>
@@ -301,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="32.8125"/>
         </scene>
-        <!--Room ListVC-->
+        <!--ZEGO Live-->
         <scene sceneID="cis-hG-UA4">
             <objects>
                 <viewController storyboardIdentifier="RoomListVC" id="SSm-r5-k9p" customClass="RoomListVC" customModule="ZEGOLiveDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -389,10 +388,11 @@ please create a live room~</string>
                                 <color key="backgroundColor" name="510DF1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Woh-mJ-zan"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="gtw-fh-ncC"/>
+                                    <constraint firstAttribute="width" constant="170" id="gtw-fh-ncC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="  Create Live" image="room_list_create">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -419,7 +419,7 @@ please create a live room~</string>
                             <constraint firstAttribute="bottom" secondItem="PW4-Fu-PFV" secondAttribute="bottom" id="ogj-lr-y9v"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nM8-fJ-Fmh">
+                    <navigationItem key="navigationItem" title="ZEGO Live" id="nM8-fJ-Fmh">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="nav_back" id="JCW-72-46r">
                             <connections>
                                 <action selector="backItemClick:" destination="SSm-r5-k9p" id="f4h-0R-shj"/>
@@ -636,7 +636,7 @@ please create a live room~</string>
                                     </subviews>
                                     <color key="backgroundColor" name="FFFFFF_4"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="FFFFFF_4"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsCell2" id="X3n-mt-Jgb">
                                 <rect key="frame" x="0.0" y="103.5" width="414" height="54"/>
@@ -660,7 +660,7 @@ please create a live room~</string>
                                         <constraint firstItem="FU5-se-yfd" firstAttribute="leading" secondItem="CmO-GG-QdW" secondAttribute="leadingMargin" id="vhz-qW-zVr"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="FFFFFF_4"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -692,7 +692,7 @@ please create a live room~</string>
     <resources>
         <image name="background" width="375" height="667"/>
         <image name="create_flip" width="44" height="44"/>
-        <image name="create_settings" width="44" height="44"/>
+        <image name="create_settings" width="36" height="36"/>
         <image name="home_live_card" width="345" height="140"/>
         <image name="home_login_icon" width="12.5" height="12"/>
         <image name="home_qrcode_icon" width="12" height="12"/>
@@ -701,9 +701,6 @@ please create a live room~</string>
         <image name="room_list_create" width="12" height="12"/>
         <image name="room_list_people" width="12" height="12"/>
         <image name="seat_3_icon" width="54" height="54"/>
-        <namedColor name="000000_40">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="1A1726">
             <color red="0.10199999809265137" green="0.090000003576278687" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -159,7 +159,7 @@ extension LiveRoomVC: UserServiceDelegate {
         { [weak self] action in
             
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn(ZGLocalizedString("room_page_no_more_seat_available"))
+                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
                 return
             }
             

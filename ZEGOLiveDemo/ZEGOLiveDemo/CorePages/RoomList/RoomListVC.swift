@@ -43,6 +43,9 @@ class RoomListVC: UIViewController {
             let endColor = ZegoColor("510DF1")
             layer.colors = [startColor.cgColor, endColor.cgColor]
             layer.frame = creatButton.bounds
+            // need call this method to load imageView, then inser sublayer
+            // or this sublayer will above the imageView's layer
+            _ = creatButton.imageView
             creatButton.layer.insertSublayer(layer, at: 0)
         }
     }

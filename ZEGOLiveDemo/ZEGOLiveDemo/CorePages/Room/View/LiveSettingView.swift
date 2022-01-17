@@ -88,21 +88,17 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        clipRoundCorners()
-    }
-    
-    func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = roundView.bounds
-        maskLayer.path = maskPath.cgPath
-        roundView.layer.mask = maskLayer
+        if viewType == .nomal {
+            containerViewHeight.constant = 385 + self.safeAreaInsets.bottom
+        } else {
+            containerViewHeight.constant = 206 + self.safeAreaInsets.bottom
+        }
     }
     
     func setViewType(_ type: LiveSettingViewType)  {
         viewType = type
         if type == .nomal {
-            containerViewHeight.constant = 564
+            containerViewHeight.constant = 385
             settingDataSource = [["title": ZGLocalizedString("room_settings_page_codec") ,"subTitle": "H.264", "selectionType": SettingSelectionType.encoding, "switchStatus": false],
                                  ["title": ZGLocalizedString("room_settings_page_layered_coding") ,"subTitle": "", "selectionType": SettingSelectionType.layered, "switchStatus": RoomManager.shared.deviceService.layerCoding],
                                  ["title": ZGLocalizedString("room_settings_page_hardware_encoding"), "subTitle": "", "selectionType": SettingSelectionType.hardwareEncoding, "switchStatus": RoomManager.shared.deviceService.hardwareCoding],

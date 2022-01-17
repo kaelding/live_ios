@@ -13,15 +13,7 @@ protocol ParticipantListViewDelegate: AnyObject {
 
 class ParticipantListView: UIView {
     weak var delegate: ParticipantListViewDelegate?
-    @IBOutlet weak var backgroudView: UIView! {
-        didSet {
-            let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: backgroudView.bounds.size.width, height: backgroudView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-            let maskLayer: CAShapeLayer = CAShapeLayer()
-            maskLayer.frame = backgroudView.bounds
-            maskLayer.path = maskPath.cgPath
-            backgroudView.layer.mask = maskLayer
-        }
-    }
+    @IBOutlet weak var backgroudView: UIView!
     
     @IBOutlet weak var lineView: UIView! {
         didSet {
@@ -151,6 +143,6 @@ extension ParticipantListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54.0
+        return 70.0
     }
 }

@@ -15,6 +15,11 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var backGroundLabel: UILabel!
     @IBOutlet weak var bgmCollection: UICollectionView!
+    @IBOutlet weak var lineView: UIView! {
+        didSet {
+            lineView.layer.cornerRadius = 2.5
+        }
+    }
     
     @IBOutlet weak var musicVLabel: UILabel!
     @IBOutlet weak var musicVValueLabel: UILabel!
@@ -84,15 +89,7 @@ class MusicEffectsVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        clipRoundCorners()
-    }
-    
-    func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = roundView.bounds
-        maskLayer.path = maskPath.cgPath
-        roundView.layer.mask = maskLayer
+        
     }
     
     @objc func tapClick() -> Void {

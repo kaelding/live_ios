@@ -28,8 +28,8 @@ class ZegoSlider: UIView {
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.value = 50
-        slider.minimumTrackTintColor = ZegoColor("000000_30")
-        slider.maximumTrackTintColor = ZegoColor("000000")
+        slider.minimumTrackTintColor = UIColor.white
+        slider.maximumTrackTintColor = ZegoColor("000000_20")
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         return slider
     }()

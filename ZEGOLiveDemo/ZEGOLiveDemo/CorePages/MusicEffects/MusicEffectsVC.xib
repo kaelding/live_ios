@@ -16,6 +16,7 @@
                 <outlet property="bottomScrollView" destination="1wY-3a-usz" id="oGB-5g-1MU"/>
                 <outlet property="containerView" destination="DQm-US-F0B" id="Ow4-NB-maT"/>
                 <outlet property="containerViewHeight" destination="fRS-xs-62k" id="kWP-It-VQn"/>
+                <outlet property="lineView" destination="rXt-De-LPq" id="ucn-8y-ga3"/>
                 <outlet property="mainTitleLabel" destination="MiV-gb-MAr" id="0WL-tV-XSd"/>
                 <outlet property="mixedRindCollection" destination="2nv-b5-dpV" id="bKf-oS-vYe"/>
                 <outlet property="mixedRingLabel" destination="Q4n-Tv-hdu" id="vFO-m0-m8a"/>
@@ -40,7 +41,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-UL-7V0">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-UL-7V0" customClass="EffectBackgroundView" customModule="ZEGOLiveDemo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="511" width="414" height="385"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXt-De-LPq">
@@ -49,7 +50,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="4hv-C2-byh"/>
                                 <constraint firstAttribute="width" constant="40" id="DBl-cY-54L"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="PUu-m3-Xuq"/>
                                 <constraint firstAttribute="height" constant="5" id="dHV-pl-3JP"/>
                             </constraints>
                         </view>

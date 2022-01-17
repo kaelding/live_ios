@@ -40,7 +40,7 @@
                         </connections>
                     </switch>
                 </subviews>
-                <color key="backgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kAw-7G-gWD" secondAttribute="trailing" constant="20" id="FPF-MM-Mfa"/>
                     <constraint firstItem="kAw-7G-gWD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FSl-88-wGS"/>

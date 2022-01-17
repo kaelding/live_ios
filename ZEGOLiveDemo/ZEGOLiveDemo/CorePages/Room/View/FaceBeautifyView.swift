@@ -19,12 +19,11 @@ protocol FaceBeautifyViewDelegate : AnyObject {
 class FaceBeautifyView: UIView {
     weak var delegate: FaceBeautifyViewDelegate?
     
-    @IBOutlet weak var backgroudView: UIView! {
+    @IBOutlet weak var backgroudView: UIView!
+    
+    @IBOutlet weak var lineView: UIView! {
         didSet {
-            let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: backgroudView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-            let maskLayer: CAShapeLayer = CAShapeLayer()
-            maskLayer.path = maskPath.cgPath
-            backgroudView.layer.mask = maskLayer
+            lineView.layer.cornerRadius = 2.5
         }
     }
     
@@ -59,6 +58,8 @@ class FaceBeautifyView: UIView {
         addSubview(slider)
         return slider
     }()
+    
+    @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
     
     private var _faceBeatificationArray: [FaceBeautifyModel] {
         let beatifyArray = [["type": FaceBeautifyType.SkinToneEnhancement ,"value": 50, "imageName": "face_beautify_skin_tone_enhancement", "name": "room_beautify_page_skin_tone_enhancement"],
@@ -111,6 +112,7 @@ class FaceBeautifyView: UIView {
         let h = 76.0
         let y = bounds.size.height - backgroudView.bounds.size.height - h
         slider.frame = CGRect(x: x, y: y, width: w, height: h)
+        backgroundHeight.constant = 183.5 + self.safeAreaInsets.bottom
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -100,15 +100,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        clipRoundCorners()
-    }
-    
-    func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = roundView.bounds
-        maskLayer.path = maskPath.cgPath
-        roundView.layer.mask = maskLayer
+        
     }
     
     @objc func tapClick() -> Void {

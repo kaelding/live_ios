@@ -17,6 +17,11 @@ class CoHostTaskQueue : NSObject {
     private var isExecuting: Bool = false
     
     func addTask(_ task: @escaping coHostTask, user: UserInfo) {
+        if parameters.count > 0 {
+            if let lastTaskUser = parameters.last {
+                if lastTaskUser.userID == user.userID { return }
+            }
+        }
         tasks.append(task)
         parameters.append(user)
         if !isExecuting {
@@ -26,6 +31,10 @@ class CoHostTaskQueue : NSObject {
         
     func finish() {
         isExecuting = false
+        if tasks.count == 0 { return }
+        if parameters.count == 0 { return }
+        tasks.remove(at: 0)
+        parameters.remove(at: 0)
         DispatchQueue.main.async {
             self.execute()
         }
@@ -35,8 +44,6 @@ class CoHostTaskQueue : NSObject {
         guard let task = tasks.first else { return }
         guard let user = parameters.first else { return }
         isExecuting = true
-        tasks.remove(at: 0)
-        parameters.remove(at: 0)
         DispatchQueue.main.async {
             task(user)
         }

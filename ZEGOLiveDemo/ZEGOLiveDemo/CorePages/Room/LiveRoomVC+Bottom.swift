@@ -25,8 +25,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .apply:
             applyCoHost()
         case .cancelApply:
-            TipView.dismiss()
-            RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
+            cancelApplyCoHost()
         case .flip:
             isFrontCamera = !isFrontCamera
             RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
@@ -84,6 +83,11 @@ extension LiveRoomVC {
         } else {
             bottomView?.resetApplyStatus()
         }
+    }
+    
+    private func cancelApplyCoHost() {
+        TipView.dismiss()
+        RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
     }
     
     private func applicationHasMicAndCameraAccess() -> Bool {

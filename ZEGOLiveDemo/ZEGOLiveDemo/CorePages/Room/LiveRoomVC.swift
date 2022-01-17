@@ -234,6 +234,12 @@ class LiveRoomVC: UIViewController {
         if self.presentedViewController != nil {
             self.dismiss(animated: true, completion: nil)
         }
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -188,6 +188,7 @@ class LiveRoomVC: UIViewController {
     }()
     
     let micCameraTimer: ZegoTimer = ZegoTimer(500)
+    let requestTimer: ZegoTimer = ZegoTimer(30 * 1000, startNow: false)
     
     let coHostTask: CoHostTaskQueue = CoHostTaskQueue()
     

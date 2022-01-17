@@ -80,14 +80,25 @@ extension LiveRoomVC {
             }
             RoomManager.shared.userService.requestToCoHost(callback: nil)
             TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
+            addRequestCoHostTimer()
+            
         } else {
             bottomView?.resetApplyStatus()
         }
     }
     
     private func cancelApplyCoHost() {
+        requestTimer.stop()
         TipView.dismiss()
         RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
+    }
+    
+    private func addRequestCoHostTimer() {
+        requestTimer.setEventHandler { [weak self] in
+            self?.cancelApplyCoHost()
+            self?.bottomView?.resetApplyStatus()
+        }
+        requestTimer.start()
     }
     
     private func applicationHasMicAndCameraAccess() -> Bool {

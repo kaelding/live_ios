@@ -17,14 +17,21 @@ class ZegoTimer : NSObject {
     
     private var isSuspend: Bool = true
     
-    init(_ interval: Int) {
+    private var startNow: Bool = true
+    
+    init(_ interval: Int, startNow: Bool = true) {
         if interval > 0 {
             self.interval = interval
+            self.startNow = startNow
         }
     }
     
     func setEventHandler(handler: eventHandler?) {
-        timer.schedule(deadline: .now(), repeating: .milliseconds(self.interval))
+        var dispatchTime: DispatchTime = .now()
+        if !startNow {
+            dispatchTime = .now() + .milliseconds(self.interval)
+        }
+        timer.schedule(deadline: dispatchTime, repeating: .milliseconds(self.interval))
         timer.setEventHandler {
             guard let handler = handler else {
                 return

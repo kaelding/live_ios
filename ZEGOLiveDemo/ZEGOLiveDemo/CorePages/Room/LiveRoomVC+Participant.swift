@@ -210,6 +210,7 @@ extension LiveRoomVC: UserServiceDelegate {
             TipView.showTip(ZGLocalizedString("toast_room_has_rejected"))
         }
         bottomView?.resetApplyStatus()
+        requestTimer.stop()
     }
     
     func coHostChange(_ targetUserID: String, type: CoHostChangeType) {

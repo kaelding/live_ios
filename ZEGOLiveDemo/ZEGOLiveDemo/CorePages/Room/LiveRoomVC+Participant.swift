@@ -225,7 +225,7 @@ extension LiveRoomVC: UserServiceDelegate {
         // if local user leave the seat, it must stop preview
         // if not, when use the same view to play stream, the view will show the preview image
         if targetUserID == localUserID && (type == .leave || type == .remove) {
-            ZegoExpressEngine.shared().stopPreview()
+            RoomManager.shared.deviceService.stopPlayStream(targetUserID)
         }
         
         // be removed by host

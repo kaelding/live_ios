@@ -267,18 +267,12 @@ class LiveRoomVC: UIViewController {
      
     func configVideoStream() {
         if !isLiving {
-            startPreview()
+            RoomManager.shared.deviceService.playVideoStream(localUserID, view: streamView)
+            RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
+            RoomManager.shared.deviceService.enableCamera(true)
         }
     }
-    
-    func startPreview() {
-        ZegoExpressEngine.shared().useFrontCamera(isFrontCamera)
-        let canvas = ZegoCanvas(view: streamView)
-        canvas.viewMode = .aspectFill
-        ZegoExpressEngine.shared().enableCamera(true)
-        ZegoExpressEngine.shared().startPreview(canvas)
-    }
-    
+        
     func updateHostBackgroundView() {
         if !isLiving { return }
         let hostID = getHostID()

@@ -169,6 +169,16 @@ class DeviceService: NSObject {
         }
     }
     
+    func stopPlayStream(_ userID: String) {
+        if RoomManager.shared.userService.localUserInfo?.userID == userID {
+            ZegoExpressEngine.shared().stopPreview()
+        } else {
+            guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+            let streamID = String.getStreamID(userID, roomID: roomID)
+            ZegoExpressEngine.shared().stopPlayingStream(streamID)
+        }
+    }
+    
     func isVideoEncoderSupportedH265() -> Bool {
         ZegoExpressEngine.shared().enableHardwareEncoder(true)
         return ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265)

@@ -158,13 +158,13 @@ class DeviceService: NSObject {
     }
     
     func playVideoStream(_ userID: String, view: UIView) {
-        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
-        let streamID = String.getStreamID(userID, roomID: roomID)
         let canvas = ZegoCanvas(view: view)
         canvas.viewMode = .aspectFill
         if RoomManager.shared.userService.localUserInfo?.userID == userID {
             ZegoExpressEngine.shared().startPreview(canvas)
         } else {
+            guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+            let streamID = String.getStreamID(userID, roomID: roomID)
             ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
         }
     }

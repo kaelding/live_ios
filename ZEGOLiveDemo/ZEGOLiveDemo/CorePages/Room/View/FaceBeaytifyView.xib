@@ -40,10 +40,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-M6-11V">
-                            <rect key="frame" x="182" y="25.5" width="130" height="22.5"/>
+                            <rect key="frame" x="182" y="25.5" width="132" height="22.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22.5" id="PnN-Tc-Que"/>
-                                <constraint firstAttribute="width" constant="130" id="YGd-ut-EgK"/>
+                                <constraint firstAttribute="width" constant="132" id="YGd-ut-EgK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

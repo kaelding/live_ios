@@ -183,7 +183,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
         case .encoding:
             let type: ZegoVideoCode = ZegoVideoCode(rawValue: model.type) ?? .h264
             if type == .h265 && !RoomManager.shared.deviceService.isVideoEncoderSupportedH265() {
-                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
+                TipView.showTip(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
                 model.isSelected = false
                 guard let h264Model = dataSource.first else { return }
                 h264Model.isSelected = true

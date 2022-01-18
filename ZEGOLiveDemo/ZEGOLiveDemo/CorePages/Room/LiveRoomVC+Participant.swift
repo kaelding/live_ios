@@ -89,7 +89,7 @@ extension LiveRoomVC: UserServiceDelegate {
                 else if event == .kickedOut {
                     message = ZGLocalizedString("toast_kickout_error")
                 }
-                TipView.showWarn(message)
+                TipView.showTip(message)
                 logout()
             }
         } else if state == .reconnecting {
@@ -104,7 +104,7 @@ extension LiveRoomVC: UserServiceDelegate {
             let title = ZGLocalizedString("network_connect_failed_title")
             let message = ZGLocalizedString("network_connect_failed")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: ZGLocalizedString("dialog_confirm"), style: .default) { action in
+            let confirmAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_ok"), style: .default) { action in
                 self.logout()
             }
             alert.addAction(confirmAction)
@@ -180,7 +180,7 @@ extension LiveRoomVC: UserServiceDelegate {
         
         if accept == false {
             let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
-            TipView.showWarn(message)
+            TipView.showTip(message)
         }
         reloadParticipantListView()
     }

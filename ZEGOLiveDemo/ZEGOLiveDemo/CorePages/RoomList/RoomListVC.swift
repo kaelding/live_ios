@@ -171,8 +171,8 @@ extension RoomListVC : UserServiceDelegate {
             if vc is LiveRoomVC { return }
         }
         if (state == .disconnected) {
-            let message:String = event == .kickedOut ? ZGLocalizedString("toast_kickout_error") : ZGLocalizedString("toast_disconnect_tips")
-            TipView.showWarn(message)
+            let message: String = event == .kickedOut ? ZGLocalizedString("toast_kickout_error") : ZGLocalizedString("toast_disconnect_tips")
+            TipView.showTip(message)
             logout()
         }
     }

@@ -62,10 +62,21 @@ class FaceBeautifyView: UIView {
     @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
     
     private var _faceBeatificationArray: [FaceBeautifyModel] {
-        let beatifyArray = [["type": FaceBeautifyType.SkinToneEnhancement ,"value": 50, "imageName": "face_beautify_skin_tone_enhancement", "name": "room_beautify_page_skin_tone_enhancement"],
-                            ["type": FaceBeautifyType.SkinSmoothing ,"value": 50, "imageName": "face_beautify_skin_smoothing", "name": "room_beautify_page_skin_smoothing"],
-                            ["type": FaceBeautifyType.ImageSharpening ,"value": 50, "imageName": "face_beautify_image_sharpening", "name": "room_beautify_page_image_sharpening"],
-                            ["type": FaceBeautifyType.CheekBlusher ,"value": 5, "imageName": "face_beautify_cheek_blusher", "name": "room_beautify_page_cheek_blusher"]]
+        let beatifyArray = [["type": FaceBeautifyType.SkinToneEnhancement,
+                             "value": 50, "imageName": "face_beautify_skin_tone_enhancement",
+                             "name": "room_beautify_page_skin_tone_enhancement"],
+                            
+                            ["type": FaceBeautifyType.SkinSmoothing, "value": 50,
+                             "imageName": "face_beautify_skin_smoothing",
+                             "name": "room_beautify_page_skin_smoothing"],
+                            
+                            ["type": FaceBeautifyType.ImageSharpening,
+                             "value": 50, "imageName": "face_beautify_image_sharpening",
+                             "name": "room_beautify_page_image_sharpening"],
+                            
+                            ["type": FaceBeautifyType.CheekBlusher,
+                             "value": 5, "imageName": "face_beautify_cheek_blusher",
+                             "name": "room_beautify_page_cheek_blusher"]]
         return beatifyArray.map{ FaceBeautifyModel(json: $0) }
     }
     lazy var faceBeatificationArray: [FaceBeautifyModel] = {
@@ -73,13 +84,34 @@ class FaceBeautifyView: UIView {
     }()
     
     private var _faceShapeRetouchArray: [FaceBeautifyModel] {
-        let beatifyArray = [["type": FaceBeautifyType.EyesEnlarging ,"value": 50, "imageName": "face_beautify_eyes_enlarging", "name": "room_beautify_page_eyes_enlarging"],
-                            ["type": FaceBeautifyType.FaceSliming ,"value": 50, "imageName": "face_beautify_face_sliming", "name": "room_beautify_page_face_sliming"],
-                            ["type": FaceBeautifyType.MouthShapeAdjustment ,"value": 0, "imageName": "face_beautify_mouth_shape_adjustment", "name": "room_beautify_page_mouth_shape_adjustment"],
-                            ["type": FaceBeautifyType.EyesBrightening ,"value": 50, "imageName": "face_beautify_eyes_brightening", "name": "room_beautify_page_eyes_brightening"],
-                            ["type": FaceBeautifyType.NoseSliming ,"value": 50, "imageName": "face_beautify_nose_sliming", "name": "room_beautify_page_nose_sliming"],
-                            ["type": FaceBeautifyType.TeethWhitening ,"value": 50, "imageName": "face_beautify_teeth_whitening", "name": "room_beautify_page_teeth_whitening"],
-                            ["type": FaceBeautifyType.ChinLengthening ,"value": 0, "imageName": "face_beautify_chin_lengthening", "name": "room_beautify_page_chin_lengthening"]]
+        let beatifyArray = [["type": FaceBeautifyType.EyesEnlarging, "value": 50,
+                             "imageName": "face_beautify_eyes_enlarging",
+                             "name": "room_beautify_page_eyes_enlarging"],
+                            
+                            ["type": FaceBeautifyType.FaceSliming,
+                             "value": 50, "imageName": "face_beautify_face_sliming",
+                             "name": "room_beautify_page_face_sliming"],
+                            
+                            ["type": FaceBeautifyType.MouthShapeAdjustment,
+                             "value": 0, "imageName": "face_beautify_mouth_shape_adjustment",
+                             "name": "room_beautify_page_mouth_shape_adjustment"],
+                            
+                            ["type": FaceBeautifyType.EyesBrightening, "value": 50,
+                             "imageName": "face_beautify_eyes_brightening",
+                             "name": "room_beautify_page_eyes_brightening"],
+                            
+                            ["type": FaceBeautifyType.NoseSliming, "value": 50,
+                             "imageName": "face_beautify_nose_sliming",
+                             "name": "room_beautify_page_nose_sliming"],
+                            
+                            ["type": FaceBeautifyType.TeethWhitening, "value": 50,
+                             "imageName": "face_beautify_teeth_whitening",
+                             "name": "room_beautify_page_teeth_whitening"],
+                            
+                            ["type": FaceBeautifyType.ChinLengthening, "value": 0,
+                             "imageName": "face_beautify_chin_lengthening",
+                             "name": "room_beautify_page_chin_lengthening"]]
+        
         return beatifyArray.map{ FaceBeautifyModel(json: $0) }
     }
     lazy var faceShapeRetouchArray: [FaceBeautifyModel] = {
@@ -239,10 +271,27 @@ extension FaceBeautifyView: UICollectionViewDelegateFlowLayout, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 17.5, bottom: 0, right: 17.5)
+        return UIEdgeInsets(top: 0, left: 14.0, bottom: 0, right: 14.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 68)
+        
+        var arr = faceBeatificationArray
+        if selectedType == .faceShapeRetouch {
+            arr = self.faceShapeRetouchArray
+        }
+        let model = arr[indexPath.row]
+        
+        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.systemFont(ofSize: 12, weight: .medium)]
+        let size = ZGLocalizedString(model.name).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 16.5),
+                                                              options: .usesLineFragmentOrigin,
+                                                              attributes: attribute,
+                                                              context: nil).size
+        var w = size.width + 10.0
+        
+        if w < 80.0 {
+            w = 80.0
+        }
+        return CGSize(width: w, height: 68)
     }
 }

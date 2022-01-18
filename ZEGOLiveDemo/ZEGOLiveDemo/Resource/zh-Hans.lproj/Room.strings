@@ -78,7 +78,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "user_list_page_me" = "我";
 "toast_user_list_page_connected_failed" = "连麦失败，请重试";
 "toast_user_list_page_rejected_invitation" = "%@ 已拒绝您的邀请";
-"user_list_page_participants_num" = "用户列表（%d）";
+"user_list_page_participants_num" = "用户列表 · %d";
 "user_list_page_invite_to_speak" = "邀请上麦";
 "user_list_page_owner" = "主播";
 "dialog_invition_title" = "邀请";

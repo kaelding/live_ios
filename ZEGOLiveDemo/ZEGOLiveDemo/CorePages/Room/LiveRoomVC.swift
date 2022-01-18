@@ -188,6 +188,7 @@ class LiveRoomVC: UIViewController {
     }()
     
     let micCameraTimer: ZegoTimer = ZegoTimer(500)
+    let requestTimer: ZegoTimer = ZegoTimer(30 * 1000, startNow: false)
     
     let coHostTask: CoHostTaskQueue = CoHostTaskQueue()
     
@@ -223,6 +224,23 @@ class LiveRoomVC: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.presentedViewController != nil {
+            self.dismiss(animated: true, completion: nil)
+        }
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

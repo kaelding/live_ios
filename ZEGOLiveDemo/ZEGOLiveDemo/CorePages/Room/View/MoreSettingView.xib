@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-CP-Spm">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-CP-Spm" customClass="EffectBackgroundView" customModule="ZEGOLiveDemo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="726" width="414" height="170"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmL-zg-mT4">
@@ -56,7 +56,6 @@
                         <constraint firstAttribute="bottom" secondItem="p4S-Tr-c5U" secondAttribute="bottom" id="7ON-6D-CdL"/>
                         <constraint firstItem="KmL-zg-mT4" firstAttribute="centerX" secondItem="6kf-CP-Spm" secondAttribute="centerX" id="AuD-NF-bCB"/>
                         <constraint firstItem="p4S-Tr-c5U" firstAttribute="top" secondItem="WcY-Iz-ObY" secondAttribute="bottom" id="Pwo-fw-Lhk"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="QVk-74-eHa"/>
                         <constraint firstItem="KmL-zg-mT4" firstAttribute="top" secondItem="6kf-CP-Spm" secondAttribute="top" constant="7" id="Qpb-xh-iVB"/>
                         <constraint firstItem="p4S-Tr-c5U" firstAttribute="leading" secondItem="6kf-CP-Spm" secondAttribute="leading" id="WTX-FA-PBb"/>
                         <constraint firstItem="WcY-Iz-ObY" firstAttribute="leading" secondItem="6kf-CP-Spm" secondAttribute="leading" constant="16" id="hes-Jl-vIf"/>
@@ -79,6 +78,7 @@
             </constraints>
             <connections>
                 <outlet property="backGroundView" destination="XjQ-cG-Bq5" id="yrw-3u-WfN"/>
+                <outlet property="backgroundHeight" destination="rK7-Qt-TGA" id="pak-UR-ppS"/>
                 <outlet property="containerView" destination="6kf-CP-Spm" id="tGf-ux-peL"/>
                 <outlet property="iconCollectionView" destination="p4S-Tr-c5U" id="1hT-ZJ-TAy"/>
                 <outlet property="titleLabel" destination="WcY-Iz-ObY" id="o9V-OE-4NN"/>

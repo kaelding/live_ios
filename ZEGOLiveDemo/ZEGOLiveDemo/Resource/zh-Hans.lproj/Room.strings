@@ -91,7 +91,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_settings_page_noise_suppression" = "背景降噪";
 "room_settings_page_echo_cancellation" = "回声消除";
 "room_settings_page_mic_volume" = "自动调节麦克风音量";
-"room_settings_page_frame_rate" = "分辨率";
+"room_settings_page_video_resolution" = "分辨率";
 "room_settings_page_audio_bitrate" = "音频码率";
 "room_settings_page_more" = "更多";
 "toast_room_page_settings_device_not_support_h265" = "设备不支持 H.265 编码类型";

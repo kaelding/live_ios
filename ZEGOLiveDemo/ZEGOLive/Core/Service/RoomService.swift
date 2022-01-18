@@ -97,12 +97,12 @@ class RoomService: NSObject {
             callback(.failure(.failed))
             return
         }
-        RoomManager.shared.logoutRtcRoom()
         if RoomManager.shared.userService.localUserInfo?.role == .host {
             RoomManager.shared.roomListService.endServerRoom(roomID, callback: nil)
         } else {
             RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         }
+        RoomManager.shared.logoutRtcRoom()
         ZIMManager.shared.zim?.leaveRoom(roomID, callback: { error in
             var result: ZegoResult = .success(())
             if error.code != .ZIMErrorCodeSuccess {
@@ -159,16 +159,27 @@ extension RoomService {
 extension RoomService: ZIMEventHandler {
     
     func zim(_ zim: ZIM, connectionStateChanged state: ZIMConnectionState, event: ZIMConnectionEvent, extendedData: [AnyHashable : Any]) {
+        
+    }
+    
+    func zim(_ zim: ZIM, roomStateChanged state: ZIMRoomState, event: ZIMRoomEvent, extendedData: [AnyHashable : Any], roomID: String) {
+        
         // if host reconneted
         if state == .connected && event == .success {
-            guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+            let newInRoom = roomInfo.hostID == nil
+            if newInRoom { return }
             ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
                 let hostLeft = error.code == .ZIMErrorCodeSuccess && !dict.keys.contains("room_info")
                 let roomNotExisted = error.code == .ZIMErrorCodeRoomNotExist
-                if dict.count == 0 || hostLeft || roomNotExisted {
+                if hostLeft || roomNotExisted {
                     self.delegate?.receiveRoomInfoUpdate(nil)
                 }
+                if error.code == .ZIMErrorCodeSuccess {
+                    self.roomAttributesUpdated(dict)
+                }
             })
+        } else if state == .disconnected {
+//            delegate?.receiveRoomInfoUpdate(nil)
         }
     }
     

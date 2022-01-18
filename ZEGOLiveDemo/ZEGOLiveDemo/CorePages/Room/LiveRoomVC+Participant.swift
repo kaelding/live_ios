@@ -12,7 +12,7 @@ import ZegoExpressEngine
 extension LiveRoomVC: ParticipantListViewDelegate {
     func invitedUserAddCoHost(userInfo: UserInfo) {
         if RoomManager.shared.userService.coHostList.count >= 4 {
-            TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+            TipView.showTip(ZGLocalizedString("toast_room_maximum"))
             return
         }
         guard let userID = userInfo.userID else { return }
@@ -33,10 +33,11 @@ extension LiveRoomVC: ParticipantListViewDelegate {
     // MARK: private method
     func restoreInvitedUserStatus(_ userInfo: UserInfo) {
         guard let userID = userInfo.userID else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60000) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
             
             if let userInfo = RoomManager.shared.userService.userList.getObj(userID) {
                 userInfo.hasInvited = false
+                self.reloadParticipantListView()
             }
         }
     }
@@ -50,22 +51,15 @@ extension LiveRoomVC: ParticipantListViewDelegate {
                 dataSource.append(host)
             }
             
-            if isMyselfOnSeat && !isMyselfHost {
-                if let localUser = localUser {
-                    dataSource.append(localUser)
-                }
+            if let localUser = localUser {
+                if localUser.role != .host { dataSource.append(localUser) }
             }
             
             let coHost = RoomManager.shared.userService.userList.allObjects().filter {
-                $0.role == .coHost && $0.role != .host && $0.userID != localUserID
+                $0.role == .coHost && $0.userID != localUserID
             }
             dataSource.append(contentsOf: coHost)
             
-            if !isMyselfOnSeat && !isMyselfHost {
-                if let localUser = localUser {
-                    dataSource.append(localUser)
-                }
-            }
             
             let participants = RoomManager.shared.userService.userList.allObjects().filter {
                 $0.role == .participant && $0.userID != localUserID
@@ -161,14 +155,15 @@ extension LiveRoomVC: UserServiceDelegate {
         let cancelAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_disagree"), style: .cancel) { action in
             RoomManager.shared.userService.respondCoHostInvitation(false, callback: nil)
         }
-        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default) { action in
+        let okAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_agree"), style: .default)
+        { [weak self] action in
             
-            if RoomManager.shared.userService.coHostList.count > 4 {
-                TipView.showWarn(ZGLocalizedString("room_page_no_more_seat_available"))
+            if RoomManager.shared.userService.coHostList.count >= 4 {
+                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
                 return
             }
             
-            self.startMonitorCameraAndMicAuthority()
+            self?.startMonitorCameraAndMicAuthority()
         }
         
         inviteAlter.addAction(cancelAction)
@@ -206,15 +201,16 @@ extension LiveRoomVC: UserServiceDelegate {
         TipView.dismiss()
         if agree {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn("toast_room_maximum")
+                TipView.showTip(ZGLocalizedString("toast_room_maximum"))
+                bottomView?.resetApplyStatus()
                 return
             }
-            RoomManager.shared.userService.takeSeat { result in
-            }
+            RoomManager.shared.userService.takeSeat(callback: nil)
         } else {
-            TipView.showWarn(ZGLocalizedString("toast_room_has_rejected"))
+            TipView.showTip(ZGLocalizedString("toast_room_has_rejected"))
         }
         bottomView?.resetApplyStatus()
+        requestTimer.stop()
     }
     
     func coHostChange(_ targetUserID: String, type: CoHostChangeType) {
@@ -236,7 +232,7 @@ extension LiveRoomVC: UserServiceDelegate {
         
         if isMyselfHost && type == .leave && !isUserMyself(targetUserID) {
             if let user = getUser(targetUserID) {
-                TipView.showWarn(String(format: ZGLocalizedString("toast_room_ended_the_connection"), user.userName ?? ""))
+                TipView.showTip(String(format: ZGLocalizedString("toast_room_ended_the_connection"), user.userName ?? ""))
             }
         }
         
@@ -253,8 +249,8 @@ extension LiveRoomVC: UserServiceDelegate {
 
 extension LiveRoomVC {
     private func startMonitorCameraAndMicAuthority() {
-        micCameraTimer.setEventHandler { [unowned self] in
-            self.onMicCameraAuthorizationTimerTriggered()
+        micCameraTimer.setEventHandler { [weak self] in
+            self?.onMicCameraAuthorizationTimerTriggered()
         }
         micCameraTimer.start()
     }

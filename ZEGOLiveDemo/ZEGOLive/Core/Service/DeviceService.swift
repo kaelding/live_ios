@@ -9,7 +9,7 @@ import UIKit
 import ZegoExpressEngine
 
 
-enum RTCVideoPreset: Int {
+enum ZegoVideoResolution: Int {
     case p1080
     case p720
     case p540
@@ -18,30 +18,43 @@ enum RTCVideoPreset: Int {
     case p180
 }
 
-enum RTCAudioBitrate: Int {
+enum ZegoAudioBitrate: Int {
     case b16
     case b48
     case b56
+    case b96
     case b128
     case b192
 }
 
-enum RTCVideoCode: Int {
+enum ZegoVideoCode: Int {
     case h264
     case h265
 }
 
+enum ZegoDevicesType {
+    case encoding
+    case layeredCoding
+    case hardwareEncoder
+    case hardwareDecoder
+    case noiseSuppression
+    case echoCancellation
+    case volumeAdjustment
+    case videoResolution
+    case bitrate
+}
+
 class DeviceService: NSObject {
 
-    var videoPreset: RTCVideoPreset = .p720
-    var audioBitrate: RTCAudioBitrate = .b48
-    var videoCodeID: RTCVideoCode = .h264
-    var layerCoding: Bool = false
+    var videoResolution: ZegoVideoResolution = .p720
+    var bitrate: ZegoAudioBitrate = .b48
+    var codec: ZegoVideoCode = .h264
+    var layeredCoding: Bool = false
     var hardwareCoding: Bool = true
     var hardwareDecoding: Bool = false
-    var noiseRedution: Bool = false
-    var echo: Bool = false
-    var micVolume: Bool = false
+    var noiseSliming: Bool = false
+    var echoCancellation: Bool = false
+    var volumeAdjustment: Bool = false
     
     override init() {
         super.init()
@@ -49,10 +62,10 @@ class DeviceService: NSObject {
     }
     
     
-    func setVideoPreset(_ preset: RTCVideoPreset) {
-        videoPreset = preset
+    func setVideoResolution(_ resolution: ZegoVideoResolution) {
+        videoResolution = resolution
         var expressVideoPreset: ZegoVideoConfigPreset = .preset720P
-        switch preset {
+        switch resolution {
         case .p1080:
             expressVideoPreset = .preset1080P
         case .p720:
@@ -67,9 +80,9 @@ class DeviceService: NSObject {
             expressVideoPreset = .preset180P
         }
         let videoConfig: ZegoVideoConfig = ZegoVideoConfig.init(preset: expressVideoPreset)
-        switch videoCodeID {
+        switch codec {
         case .h264:
-            if layerCoding {
+            if layeredCoding {
                 videoConfig.codecID = .IDSVC
             } else {
                 videoConfig.codecID = .idDefault
@@ -80,63 +93,54 @@ class DeviceService: NSObject {
         ZegoExpressEngine.shared().setVideoConfig(videoConfig)
     }
     
-    func setAudioBitrate(_ bitrate: RTCAudioBitrate) {
-        audioBitrate = bitrate
-        var expressAudioPreset: ZegoAudioConfigPreset = .standardQuality
+    func setAudioBitrate(_ bitrate: ZegoAudioBitrate) {
+        self.bitrate = bitrate
+        let audioConfig: ZegoAudioConfig = ZegoAudioConfig()
+        audioConfig.bitrate = 48
         switch bitrate {
-        case .b16:
-            expressAudioPreset = .basicQuality
-        case .b48:
-            expressAudioPreset = .standardQuality
-        case .b56:
-            expressAudioPreset = .standardQualityStereo
-        case .b128:
-            expressAudioPreset = .highQuality
-        case .b192:
-            expressAudioPreset = .highQualityStereo
+        case .b16: audioConfig.bitrate = 16
+        case .b48: audioConfig.bitrate = 48
+        case .b56: audioConfig.bitrate = 56
+        case .b96: audioConfig.bitrate = 96
+        case .b128: audioConfig.bitrate = 128
+        case .b192: audioConfig.bitrate = 192
         }
-        let audioConfig: ZegoAudioConfig = ZegoAudioConfig.init(preset: expressAudioPreset)
         ZegoExpressEngine.shared().setAudioConfig(audioConfig)
     }
     
-    func setVideoCodeID(_ ID: RTCVideoCode) {
-        videoCodeID = ID
-        switch ID {
+    func setVideoCodec(_ codec: ZegoVideoCode) {
+        self.codec = codec
+        switch codec {
         case .h264:
-            setLiveDeviceStatus(.hardwareEncoding, enable: true)
+            setDeviceStatus(.hardwareEncoder, enable: true)
         case .h265:
-            setLiveDeviceStatus(.layered, enable: false)
-            setLiveDeviceStatus(.hardwareEncoding, enable: true)
+            setDeviceStatus(.layeredCoding, enable: false)
+            setDeviceStatus(.hardwareEncoder, enable: true)
         }
     }
     
-    func isVideoEncoderSupportedH265() -> Bool {
-        ZegoExpressEngine.shared().enableHardwareEncoder(true)
-        return ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265)
-    }
-    
-    func setLiveDeviceStatus(_ statusType: SettingSelectionType, enable: Bool) {
-        switch statusType {
-        case .encoding, .resolution, .bitrate:
+    func setDeviceStatus(_ type: ZegoDevicesType, enable: Bool) {
+        switch type {
+        case .encoding, .videoResolution, .bitrate:
             return
-        case .layered:
-            layerCoding = enable
-            setVideoPreset(videoPreset)
-        case .hardwareEncoding:
+        case .layeredCoding:
+            layeredCoding = enable
+            setVideoResolution(videoResolution)
+        case .hardwareEncoder:
             ZegoExpressEngine.shared().enableHardwareEncoder(enable)
             hardwareCoding = enable
-        case .hardwareDecoding:
+        case .hardwareDecoder:
             ZegoExpressEngine.shared().enableHardwareDecoder(enable)
             hardwareDecoding = enable
-        case .noise:
-            noiseRedution = enable
+        case .noiseSuppression:
+            noiseSliming = enable
             ZegoExpressEngine.shared().enableANS(enable)
             ZegoExpressEngine.shared().enableTransientANS(enable)
-        case .echo:
-            echo = enable
+        case .echoCancellation:
+            echoCancellation = enable
             ZegoExpressEngine.shared().enableAEC(enable)
-        case .volume:
-            micVolume = enable
+        case .volumeAdjustment:
+            volumeAdjustment = enable
             ZegoExpressEngine.shared().enableAGC(enable)
         }
     }
@@ -145,36 +149,53 @@ class DeviceService: NSObject {
         ZegoExpressEngine.shared().enableCamera(enable)
     }
     
-    func muteMicrophone(_ mute: Bool) {
+    func muteMic(_ mute: Bool) {
         ZegoExpressEngine.shared().muteMicrophone(mute)
     }
     
-    func useFrontCamera(_ enable: Bool) {
-        ZegoExpressEngine.shared().useFrontCamera(enable)
+    func useFrontCamera(_ isFront: Bool) {
+        ZegoExpressEngine.shared().useFrontCamera(isFront)
+    }
+    
+    func playVideoStream(_ userID: String, view: UIView) {
+        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else { return }
+        let streamID = String.getStreamID(userID, roomID: roomID)
+        let canvas = ZegoCanvas(view: view)
+        canvas.viewMode = .aspectFill
+        if RoomManager.shared.userService.localUserInfo?.userID == userID {
+            ZegoExpressEngine.shared().startPreview(canvas)
+        } else {
+            ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
+        }
+    }
+    
+    func isVideoEncoderSupportedH265() -> Bool {
+        ZegoExpressEngine.shared().enableHardwareEncoder(true)
+        return ZegoExpressEngine.shared().isVideoEncoderSupported(.IDH265)
     }
     
     func setNomalConfigValue() {
-        setVideoCodeID(videoCodeID)
-        setVideoPreset(videoPreset)
-        setAudioBitrate(audioBitrate)
-        setLiveDeviceStatus(.layered, enable: layerCoding)
-        setLiveDeviceStatus(.hardwareEncoding, enable: hardwareCoding)
-        setLiveDeviceStatus(.hardwareDecoding, enable: hardwareDecoding)
-        setLiveDeviceStatus(.noise, enable: noiseRedution)
-        setLiveDeviceStatus(.echo, enable: echo)
-        setLiveDeviceStatus(.volume, enable: micVolume)
+        setVideoCodec(codec)
+        setVideoResolution(videoResolution)
+        setAudioBitrate(bitrate)
+        setDeviceStatus(.layeredCoding, enable: layeredCoding)
+        setDeviceStatus(.hardwareEncoder, enable: hardwareCoding)
+        setDeviceStatus(.hardwareDecoder, enable: hardwareDecoding)
+        setDeviceStatus(.noiseSuppression, enable: noiseSliming)
+        setDeviceStatus(.echoCancellation, enable: echoCancellation)
+        setDeviceStatus(.volumeAdjustment, enable: volumeAdjustment)
     }
     
     func reset() {
-        videoPreset = .p720
-        audioBitrate = .b48
-        videoCodeID = .h264
-        layerCoding = false
+        videoResolution = .p720
+        bitrate = .b48
+        codec = .h264
+        layeredCoding = false
         hardwareCoding = true
         hardwareDecoding = false
-        noiseRedution = false
-        echo = false
-        micVolume = false
+        noiseSliming = false
+        echoCancellation = false
+        volumeAdjustment = false
         setNomalConfigValue()
     }
     

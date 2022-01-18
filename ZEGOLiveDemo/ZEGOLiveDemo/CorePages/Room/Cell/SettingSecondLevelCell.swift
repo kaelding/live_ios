@@ -31,6 +31,7 @@ class SettingSecondLevelCell: UITableViewCell {
         titleLabel.text = model.title
         titleLabel.textColor = model.isSelected ? UIColor.white : ZegoColor("CCCCCC")
         selectedButton.isHidden = !model.isSelected
+        backgroundColor = model.isSelected ? ZegoColor("D8D8D8_10") : UIColor.clear
     }
     
 }

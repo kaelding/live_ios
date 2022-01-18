@@ -19,12 +19,11 @@ protocol FaceBeautifyViewDelegate : AnyObject {
 class FaceBeautifyView: UIView {
     weak var delegate: FaceBeautifyViewDelegate?
     
-    @IBOutlet weak var backgroudView: UIView! {
+    @IBOutlet weak var backgroudView: UIView!
+    
+    @IBOutlet weak var lineView: UIView! {
         didSet {
-            let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: backgroudView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-            let maskLayer: CAShapeLayer = CAShapeLayer()
-            maskLayer.path = maskPath.cgPath
-            backgroudView.layer.mask = maskLayer
+            lineView.layer.cornerRadius = 2.5
         }
     }
     
@@ -60,6 +59,8 @@ class FaceBeautifyView: UIView {
         return slider
     }()
     
+    @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
+    
     private var _faceBeatificationArray: [FaceBeautifyModel] {
         let beatifyArray = [["type": FaceBeautifyType.SkinToneEnhancement ,"value": 50, "imageName": "face_beautify_skin_tone_enhancement", "name": "room_beautify_page_skin_tone_enhancement"],
                             ["type": FaceBeautifyType.SkinSmoothing ,"value": 50, "imageName": "face_beautify_skin_smoothing", "name": "room_beautify_page_skin_smoothing"],
@@ -77,8 +78,8 @@ class FaceBeautifyView: UIView {
                             ["type": FaceBeautifyType.MouthShapeAdjustment ,"value": 0, "imageName": "face_beautify_mouth_shape_adjustment", "name": "room_beautify_page_mouth_shape_adjustment"],
                             ["type": FaceBeautifyType.EyesBrightening ,"value": 50, "imageName": "face_beautify_eyes_brightening", "name": "room_beautify_page_eyes_brightening"],
                             ["type": FaceBeautifyType.NoseSliming ,"value": 50, "imageName": "face_beautify_nose_sliming", "name": "room_beautify_page_nose_sliming"],
-                            ["type": FaceBeautifyType.TeethWhitening ,"value": 50, "imageName": "face_beautify_teeth_whitening", "name": "room_beautify_page_chin_lengthening"],
-                            ["type": FaceBeautifyType.ChinLengthening ,"value": 0, "imageName": "face_beautify_chin_lengthening", "name": "room_beautify_page_teeth_whitening"]]
+                            ["type": FaceBeautifyType.TeethWhitening ,"value": 50, "imageName": "face_beautify_teeth_whitening", "name": "room_beautify_page_teeth_whitening"],
+                            ["type": FaceBeautifyType.ChinLengthening ,"value": 0, "imageName": "face_beautify_chin_lengthening", "name": "room_beautify_page_chin_lengthening"]]
         return beatifyArray.map{ FaceBeautifyModel(json: $0) }
     }
     lazy var faceShapeRetouchArray: [FaceBeautifyModel] = {
@@ -111,10 +112,16 @@ class FaceBeautifyView: UIView {
         let h = 76.0
         let y = bounds.size.height - backgroudView.bounds.size.height - h
         slider.frame = CGRect(x: x, y: y, width: w, height: h)
+        backgroundHeight.constant = 183.5 + self.safeAreaInsets.bottom
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else { return }
+        let point = touch.location(in: backgroudView)
+        let point2 = touch.location(in: slider)
+        if backgroudView.point(inside: point, with: event) { return }
+        if slider.point(inside: point2, with: event) { return }
         self.isHidden = true
     }
     
@@ -211,7 +218,12 @@ extension FaceBeautifyView: UICollectionViewDelegateFlowLayout, UICollectionView
             selectedFaceBeautifyModel = self.faceShapeRetouchArray[indexPath.row]
         }
         self.slider.isHidden = false
-        self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: 0, max: 100)
+        if selectedFaceBeautifyModel?.type == .ChinLengthening ||
+            selectedFaceBeautifyModel?.type == .MouthShapeAdjustment {
+            self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: -100, max: 100)
+        } else {
+            self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: 0, max: 100)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

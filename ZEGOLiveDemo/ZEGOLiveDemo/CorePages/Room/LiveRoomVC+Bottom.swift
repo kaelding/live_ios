@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZegoExpressEngine
 
 extension LiveRoomVC : LiveBottomViewDelegate {
     
@@ -25,8 +24,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
         case .apply:
             applyCoHost()
         case .cancelApply:
-            TipView.dismiss()
-            RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
+            cancelApplyCoHost()
         case .flip:
             isFrontCamera = !isFrontCamera
             RoomManager.shared.deviceService.useFrontCamera(isFrontCamera)
@@ -55,7 +53,7 @@ extension LiveRoomVC : LiveBottomViewDelegate {
             }
             if coHost.isMuted {
                 bottomView.updateMicStatus(!isOpen)
-                TipView.showWarn(ZGLocalizedString("toast_room_muted_by_host"))
+                TipView.showTip(ZGLocalizedString("toast_room_muted_by_host"))
                 return
             }
             RoomManager.shared.userService.micOperation(!coHost.mic)
@@ -75,15 +73,31 @@ extension LiveRoomVC {
     private func applyCoHost() {
         if applicationHasMicAndCameraAccess() {
             if RoomManager.shared.userService.coHostList.count >= 4 {
-                TipView.showWarn(ZGLocalizedString("toast_room_maximum"))
+                TipView.showTip(ZGLocalizedString("toast_room_maximum"))
                 bottomView?.resetApplyStatus()
                 return
             }
             RoomManager.shared.userService.requestToCoHost(callback: nil)
             TipView.showTip(ZGLocalizedString("toast_room_applied_connection"), autoDismiss: false)
+            addRequestCoHostTimer()
+            
         } else {
             bottomView?.resetApplyStatus()
         }
+    }
+    
+    private func cancelApplyCoHost() {
+        requestTimer.stop()
+        TipView.dismiss()
+        RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)
+    }
+    
+    private func addRequestCoHostTimer() {
+        requestTimer.setEventHandler { [weak self] in
+            self?.cancelApplyCoHost()
+            self?.bottomView?.resetApplyStatus()
+        }
+        requestTimer.start()
     }
     
     private func applicationHasMicAndCameraAccess() -> Bool {

@@ -93,18 +93,23 @@ class LoginVC: UIViewController {
         var userId : String = sender.text! as String
         if userId.count > 20 {
             let startIndex = userId.index(userId.startIndex, offsetBy: 0)
-            let index = userId.index(userId.startIndex, offsetBy: 20)
+            let index = userId.index(userId.startIndex, offsetBy: 19)
             userId = String(userId[startIndex...index])
             sender.text = userId;
         }
         myUserID = userId;
+        if userNameTextField.text?.count == 0 {
+            myUserName = myUserID
+        }
+        let buttonColor = myUserID.count > 0 ? UIColor.white : ZegoColor("FFFFFF_40")
+        loginButton.setTitleColor(buttonColor, for: .normal)
     }
     
     @IBAction func userNameTextFieldDidChanged(_ sender: UITextField) {
         var userName = sender.text! as String
         if userName.count > 16 {
             let startIndex = userName.index(userName.startIndex, offsetBy: 0)
-            let index = userName.index(userName.startIndex, offsetBy: 16)
+            let index = userName.index(userName.startIndex, offsetBy: 15)
             userName = String(userName[startIndex...index])
             sender.text = userName
         }

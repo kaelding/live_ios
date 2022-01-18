@@ -13,6 +13,7 @@ class MusicEffectsModel: NSObject {
     var imageName: String?
     var selectedImageName: String?
     var selectedType: UInt = 0
+    var path: String?
     var isSelected: Bool = false
     
     init(json: Dictionary<String, Any>) {
@@ -31,6 +32,10 @@ class MusicEffectsModel: NSObject {
         
         if let isSelected = json["isSelected"] as? Bool {
             self.isSelected = isSelected
+        }
+        
+        if let path = json["path"] as? String {
+            self.path = path
         }
     }
 

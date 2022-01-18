@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNJ-wz-qRn">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNJ-wz-qRn" customClass="EffectBackgroundView" customModule="ZEGOLiveDemo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="332" width="414" height="564"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-fN-qvl">
@@ -41,10 +42,10 @@
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-AH-2AQ">
                             <rect key="frame" x="0.0" y="58" width="414" height="506"/>
-                            <color key="sectionIndexBackgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="111014_90"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="564" id="1xt-on-e3n"/>
                         <constraint firstItem="aqe-fN-qvl" firstAttribute="top" secondItem="uNJ-wz-qRn" secondAttribute="top" constant="7" id="SJx-lZ-9HA"/>
@@ -80,4 +81,9 @@
             <point key="canvasLocation" x="44.927536231884062" y="-24.776785714285712"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="111014_90">
+            <color red="0.067000001668930054" green="0.063000001013278961" blue="0.078000001609325409" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

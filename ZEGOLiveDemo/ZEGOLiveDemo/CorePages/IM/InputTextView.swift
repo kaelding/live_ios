@@ -11,19 +11,26 @@ protocol InputTextViewDelegate: AnyObject {
     func inputTextViewDidClickSend(_ message: String?)
 }
 
-class InputTextView: UIView,UITextFieldDelegate {
+class InputTextView: UIView, UITextFieldDelegate {
 
     weak var delegate: InputTextViewDelegate?
     
     @IBOutlet weak var inputTextView: UITextField!
     @IBOutlet weak var sendButton: UIButton! {
         didSet {
-            sendButton.setTitle(ZGLocalizedString("room_page_send_message"), for: .normal)
+            sendButton.isEnabled = false
         }
     }
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let w = UIScreen.main.bounds.width
+        let h = UIScreen.main.bounds.height
+        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: w, height: h), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 12, height: 12))
+        let maskLayer: CAShapeLayer = CAShapeLayer()
+        maskLayer.path = maskPath.cgPath
+        layer.mask = maskLayer
     }
     
     public func textViewBecomeFirstResponse() -> Void {
@@ -39,12 +46,7 @@ class InputTextView: UIView,UITextFieldDelegate {
         }
         sender.text = textStr
         
-        if textStr.count > 0 {
-            sendButton.backgroundColor = UIColor.init(red: 0/255.0, green: 85/255.0, blue: 255/255.0, alpha: 1.0)
-        } else {
-            sendButton.backgroundColor = UIColor.init(red: 0/255.0, green: 85/255.0, blue: 255/255.0, alpha: 0.3)
-        }
-        
+        sendButton.isEnabled = textStr.count > 0
     }
     
     @IBAction func sendButtonClick(_ sender: UIButton) {
@@ -54,7 +56,7 @@ class InputTextView: UIView,UITextFieldDelegate {
             }
             inputTextView.endEditing(true)
             inputTextView.text = ""
-            sendButton.backgroundColor = UIColor.init(red: 0/255.0, green: 85/255.0, blue: 255/255.0, alpha: 0.3)
+            sendButton.isEnabled = false
         }
     }
 

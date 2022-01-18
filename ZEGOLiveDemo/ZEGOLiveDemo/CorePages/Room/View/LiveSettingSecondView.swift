@@ -27,27 +27,57 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var roundView: UIView!
     
     lazy var encodDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "H.264" ,"isSelected": (RoomManager.shared.deviceService.videoCodeID == .h264), "type": RTCVideoCode.h264.rawValue],
-                    ["title": "H.265" ,"isSelected": (RoomManager.shared.deviceService.videoCodeID == .h265), "type": RTCVideoCode.h265.rawValue]]
+        let data = [["title": "H.264",
+                     "isSelected": (RoomManager.shared.deviceService.codec == .h264),
+                     "type": ZegoVideoCode.h264.rawValue],
+                    
+                    ["title": "H.265",
+                     "isSelected": (RoomManager.shared.deviceService.codec == .h265),
+                     "type": ZegoVideoCode.h265.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
     lazy var audioDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "16Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b16), "type": RTCAudioBitrate.b16.rawValue],
-                    ["title": "48Kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b48), "type": RTCAudioBitrate.b48.rawValue],
-                    ["title": "56kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b56), "type": RTCAudioBitrate.b56.rawValue],
-                    ["title": "128kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b128), "type": RTCAudioBitrate.b128.rawValue],
-                    ["title": "192kbps" ,"isSelected": (RoomManager.shared.deviceService.audioBitrate == .b192), "type": RTCAudioBitrate.b192.rawValue]]
+        let data = [
+                    ["title": "48Kbps",
+                     "isSelected": (RoomManager.shared.deviceService.bitrate == .b48),
+                     "type": ZegoAudioBitrate.b48.rawValue],
+                    
+                    ["title": "96kbps",
+                     "isSelected": (RoomManager.shared.deviceService.bitrate == .b96),
+                     "type": ZegoAudioBitrate.b96.rawValue],
+                    
+                    ["title": "128kbps",
+                     "isSelected": (RoomManager.shared.deviceService.bitrate == .b128),
+                     "type": ZegoAudioBitrate.b128.rawValue]]
+        
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
     lazy var videoDataSource: [LiveSettingSecondLevelModel] = {
-        let data = [["title": "1920x1080" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p1080), "type": RTCVideoPreset.p1080.rawValue],
-                    ["title": "720x1280" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p720), "type": RTCVideoPreset.p720.rawValue],
-                    ["title": "540x960" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p540), "type": RTCVideoPreset.p540.rawValue],
-                    ["title": "360x640" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p360), "type": RTCVideoPreset.p360.rawValue],
-                    ["title": "270x480" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p270), "type": RTCVideoPreset.p270.rawValue],
-                    ["title": "180x320" ,"isSelected": (RoomManager.shared.deviceService.videoPreset == .p180), "type": RTCVideoPreset.p180.rawValue]]
+        let data = [["title": "1920x1080",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p1080),
+                     "type": ZegoVideoResolution.p1080.rawValue],
+                    
+                    ["title": "720x1280",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p720),
+                     "type": ZegoVideoResolution.p720.rawValue],
+                    
+                    ["title": "540x960",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p540),
+                     "type": ZegoVideoResolution.p540.rawValue],
+                    
+                    ["title": "360x640",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p360),
+                     "type": ZegoVideoResolution.p360.rawValue],
+                    
+                    ["title": "270x480",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p270),
+                     "type": ZegoVideoResolution.p270.rawValue],
+                    
+                    ["title": "180x320",
+                     "isSelected": (RoomManager.shared.deviceService.videoResolution == .p180),
+                     "type": ZegoVideoResolution.p180.rawValue]]
         return data.map{ LiveSettingSecondLevelModel(json: $0) }
     }()
     
@@ -59,7 +89,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
         viewType = type
         switch type {
         case .resolution:
-            titleLabel.text = ZGLocalizedString("room_settings_page_frame_rate")
+            titleLabel.text = ZGLocalizedString("room_settings_page_video_resolution")
             dataSource = videoDataSource
         case .audio:
             titleLabel.text = ZGLocalizedString("room_settings_page_audio_bitrate")
@@ -101,15 +131,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        clipRoundCorners()
-    }
-    
-    func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: roundView.bounds.size.width, height: roundView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = roundView.bounds
-        maskLayer.path = maskPath.cgPath
-        roundView.layer.mask = maskLayer
+        
     }
     
     @objc func tapClick() -> Void {
@@ -153,13 +175,13 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
     func setDeviceExpressConfig(_ model: LiveSettingSecondLevelModel) -> Void {
         switch viewType {
         case .resolution:
-            let type: RTCVideoPreset = RTCVideoPreset(rawValue: model.type) ?? .p1080
-            RoomManager.shared.deviceService.setVideoPreset(type)
+            let type: ZegoVideoResolution = ZegoVideoResolution(rawValue: model.type) ?? .p1080
+            RoomManager.shared.deviceService.setVideoResolution(type)
         case .audio:
-            let type: RTCAudioBitrate = RTCAudioBitrate(rawValue: model.type) ?? .b48
+            let type: ZegoAudioBitrate = ZegoAudioBitrate(rawValue: model.type) ?? .b48
             RoomManager.shared.deviceService.setAudioBitrate(type)
         case .encoding:
-            let type: RTCVideoCode = RTCVideoCode(rawValue: model.type) ?? .h264
+            let type: ZegoVideoCode = ZegoVideoCode(rawValue: model.type) ?? .h264
             if type == .h265 && !RoomManager.shared.deviceService.isVideoEncoderSupportedH265() {
                 TipView.showWarn(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
                 model.isSelected = false
@@ -167,7 +189,7 @@ class LiveSettingSecondView: UIView, UITableViewDelegate, UITableViewDataSource 
                 h264Model.isSelected = true
                 return
             }
-            RoomManager.shared.deviceService.setVideoCodeID(type)
+            RoomManager.shared.deviceService.setVideoCodec(type)
         }
     }
     

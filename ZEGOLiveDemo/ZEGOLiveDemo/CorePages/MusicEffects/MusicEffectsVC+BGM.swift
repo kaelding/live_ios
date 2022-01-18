@@ -63,9 +63,9 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
         case .bgm:
             size = CGSize.init(width: 105, height: 85)
         case .sound:
-            size = CGSize.init(width: 44, height: 67.5)
+            size = CGSize.init(width: 68, height: 67.5)
         case .mix:
-            size = CGSize.init(width: 44, height: 67.5)
+            size = CGSize.init(width: 68, height: 67.5)
         }
         return size
     }
@@ -77,11 +77,19 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
         case .bgm:
             space = 12
         case .sound:
-            space = 24
+            space = 0
         case .mix:
-            space = 24
+            space = 0
         }
         return space
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let type: MusicEffectsType = MusicEffectsType(rawValue: collectionView.tag) ?? .bgm
+        if type == .sound || type == .mix {
+            return UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
+        }
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -97,7 +105,11 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
             for model in self.backMusicArr {
                 if index == newIndex {
                     model.isSelected = !model.isSelected
-                    RoomManager.shared.soundService.setBGM(Int(model.selectedType), stop: !model.isSelected)
+                    if !model.isSelected {
+                        RoomManager.shared.soundService.stopBGM()
+                    } else {
+                        RoomManager.shared.soundService.loadBGM(withFilePath: model.path)
+                    }
                 } else {
                     model.isSelected = false
                 }

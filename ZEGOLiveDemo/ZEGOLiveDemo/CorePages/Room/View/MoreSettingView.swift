@@ -28,6 +28,7 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconCollectionView: UICollectionView!
+    @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
     
     lazy var dataSource: [MoreSettingModel] = {
         let data = [["title": ZGLocalizedString("room_more_flip") ,"imageName": "bottombar_flip", "type": selectedType.flip, "isSelected": false],
@@ -64,16 +65,9 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        clipRoundCorners()
+        backgroundHeight.constant = 170 + self.safeAreaInsets.bottom
     }
-    
-    func clipRoundCorners() -> Void {
-        let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = containerView.bounds
-        maskLayer.path = maskPath.cgPath
-        containerView.layer.mask = maskLayer
-    }
+
     
     @objc func tapClick() -> Void {
         self.isHidden = true

@@ -38,6 +38,7 @@ extension LiveRoomVC : LiveTopViewDelegate {
     
     func leaveRoom(_ dismissViewController: Bool = true) {
         TipView.dismiss()
+        HUDHelper.hideNetworkLoading()
         // cancel request to cohost and leave co host when leave room.
         if isMyselfInRequestList {
             RoomManager.shared.userService.cancelRequestToCoHost(callback: nil)

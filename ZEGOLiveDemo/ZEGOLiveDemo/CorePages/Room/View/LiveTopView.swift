@@ -34,7 +34,7 @@ class LiveTopView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var participantButton: UIButton! {
         didSet {
-            participantButton.layer.cornerRadius = 17.0
+            participantButton.layer.cornerRadius = 14.0
         }
     }
     @IBOutlet weak var closeButton: UIButton! {

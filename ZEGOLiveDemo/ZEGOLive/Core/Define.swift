@@ -23,6 +23,8 @@ typealias RoomListCallback = (Result<[RoomInfo], ZegoError>) -> Void
 /// create room callback
 typealias CreateRoomCallback = (Result<RoomInfo, ZegoError>) -> Void
 
+/// max seat count (contains host)
+let MAX_SEAT_COUNT: Int = 4
 
 enum ZegoError: Error {
         

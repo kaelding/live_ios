@@ -9,19 +9,20 @@ import UIKit
 
 class FaceBeautifyColletionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var iconImage: UIImageView! {
+    @IBOutlet weak var iconBackView: UIView! {
         didSet {
-            iconImage.layer.cornerRadius = 22
-            iconImage.layer.borderColor = ZegoColor("A653FF").cgColor
-            iconImage.layer.borderWidth = 0
+            iconBackView.layer.cornerRadius = 22
+            iconBackView.layer.borderColor = ZegoColor("A653FF").cgColor
+            iconBackView.layer.borderWidth = 0
         }
     }
+    @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     var faceBeautifyModel: FaceBeautifyModel?
     override var isSelected: Bool {
         willSet {
-            iconImage.layer.borderWidth = newValue ? 2 : 0
+            iconBackView.layer.borderWidth = newValue ? 2 : 0
         }
     }
     

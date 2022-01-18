@@ -13,19 +13,7 @@ protocol ParticipantListViewDelegate: AnyObject {
 
 class ParticipantListView: UIView {
     weak var delegate: ParticipantListViewDelegate?
-    @IBOutlet weak var backgroudView: UIView! {
-        didSet {
-            let maskPath: UIBezierPath = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: backgroudView.bounds.size.width, height: backgroudView.bounds.size.height), byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize.init(width: 16, height: 16))
-            let maskLayer: CAShapeLayer = CAShapeLayer()
-            maskLayer.frame = backgroudView.bounds
-            maskLayer.path = maskPath.cgPath
-            backgroudView.layer.mask = maskLayer
-            
-            
-            let bottomMaskTap:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(bottomMaskTapClick))
-            self.addGestureRecognizer(bottomMaskTap)
-        }
-    }
+    @IBOutlet weak var backgroudView: UIView!
     
     @IBOutlet weak var lineView: UIView! {
         didSet {
@@ -55,16 +43,7 @@ class ParticipantListView: UIView {
             inviteMaskView.addGestureRecognizer(inviteMaskTap)
         }
     }
-    var inviteUserInfo: UserInfo?
     
-    var dataSource: [UserInfo] = []
-    
-    func reloadListView(_ dataSource: [UserInfo]) {
-        self.dataSource = dataSource
-        self.numLabel.text = String(dataSource.count)
-        paticipantTableView.reloadData()
-    }
-
     @IBOutlet weak var inviteButton: UIButton! {
         didSet {
             inviteButton.layer.cornerRadius = 24.5
@@ -78,7 +57,27 @@ class ParticipantListView: UIView {
             layer.colors = [startColor.cgColor, endColor.cgColor]
             layer.frame = inviteButton.bounds
             inviteButton.layer.insertSublayer(layer, at: 0)
+            inviteButton.setTitle(ZGLocalizedString("user_list_page_invite_to_speak"), for: .normal)
         }
+    }
+    
+    var inviteUserInfo: UserInfo?
+    
+    var dataSource: [UserInfo] = []
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        guard let touch = touches.first else { return }
+        let point = touch.location(in: backgroudView)
+        if backgroudView.point(inside: point, with: event) { return }
+        self.isHidden = true
+    }
+    
+    func reloadListView(_ dataSource: [UserInfo]) {
+        self.dataSource = dataSource
+        self.numLabel.text = String(dataSource.count)
+        paticipantTableView.reloadData()
     }
     
     override init(frame: CGRect) {
@@ -87,10 +86,6 @@ class ParticipantListView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    @objc func bottomMaskTapClick() {
-        self.isHidden = true
     }
     
     @objc func inviteMaskTapClick() {
@@ -148,6 +143,6 @@ extension ParticipantListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54.0
+        return 70.0
     }
 }

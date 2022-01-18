@@ -10,8 +10,8 @@ import ZegoExpressEngine
 
 class SoundEffectService: NSObject {
     
-    var currentMusicIndex: Int = 0
-    var musicVolume: Int32 = 50
+    var currentBgmPath: String = ""
+    var BGMVolume: Int32 = 50
     var voiceVolume: Int32 = 50
     
     lazy var player: ZegoMediaPlayer? = {
@@ -24,36 +24,39 @@ class SoundEffectService: NSObject {
         return mediaPlayer
     }()
     
-    func destoryPlayer() -> Void {
+    private func destoryPlayer() {
         if let player = player {
             ZegoExpressEngine.shared().destroy(player)
         }
     }
-    
-    func setBGM(_ value: Int, stop: Bool) -> Void {
-        if stop {
-            stopBGM()
-        } else {
-            if player?.currentState == .playing {
-                if currentMusicIndex != value {
-                    player?.stop()
-                    loadMusicResource(value)
+        
+    func loadBGM(withFilePath path: String?) {
+        func loadResoruce(_ path: String) {
+            player?.loadResource(path, callback: { error in
+                if error == 0 {
+                    self.currentBgmPath = path
+                    self.startBGM()
                 }
-            } else {
-                loadMusicResource(value)
+            })
+        }
+        
+        guard let path = path else {
+            return
+        }
+        if player?.currentState == .playing {
+            if currentBgmPath != path {
+                stopBGM()
+                loadResoruce(path)
             }
+        } else {
+            loadResoruce(path)
         }
     }
     
-    func loadMusicResource(_ value: Int) -> Void {
-        let urlPath:String = String(format:"liveshow-backgroundMusic_%d", value)
-        let path: String = Bundle.main.url(forResource: urlPath, withExtension: "mp3")?.absoluteString ?? ""
-        player?.loadResource(path, callback: { code in
-            if code == 0 {
-                self.currentMusicIndex = value
-                self.player?.start()
-            }
-        })
+    func startBGM() {
+        if player?.currentState != .playing {
+            player?.start()
+        }
     }
     
     func stopBGM() -> Void {
@@ -62,30 +65,32 @@ class SoundEffectService: NSObject {
         }
     }
     
-    func setCurrentBGMVolume(_ volume: Int) -> Void {
-        musicVolume = Int32(volume)
+    func setBGMVolume(_ volume: Int) {
+        BGMVolume = Int32(volume)
         player?.setVolume(Int32(volume))
     }
     
-    func setVoiceVolume(_ volume: Int) -> Void {
+    func setVoiceVolume(_ volume: Int) {
         voiceVolume = Int32(volume)
         ZegoExpressEngine.shared().setCaptureVolume(Int32(volume) * 2)
     }
     
-    func setVoiceChangeType(_ type: ZegoVoiceChangerPreset) -> Void {
+    func setVoiceChangeType(_ type: ZegoVoiceChangerPreset) {
         ZegoExpressEngine.shared().setVoiceChangerPreset(type)
     }
     
-    func setReverbPreset(_ type: ZegoReverbPreset) -> Void {
+    func setReverbPreset(_ type: ZegoReverbPreset) {
         ZegoExpressEngine.shared().setReverbPreset(type)
     }
     
     func reset() {
-        currentMusicIndex = 0
-        musicVolume = 50
+        currentBgmPath = ""
+        BGMVolume = 50
         voiceVolume = 50
-        setCurrentBGMVolume(Int(musicVolume))
+        setBGMVolume(Int(BGMVolume))
         setVoiceVolume(Int(voiceVolume))
+        setVoiceChangeType(.none)
+        setReverbPreset(.none)
         stopBGM()
     }
 

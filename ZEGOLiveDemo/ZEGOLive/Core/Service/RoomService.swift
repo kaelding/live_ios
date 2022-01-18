@@ -91,16 +91,19 @@ class RoomService: NSObject {
     /// Leave the chat room
     func leaveRoom(callback: RoomCallback?) {
 
+        let roomID = self.roomInfo.roomID
+        let role = RoomManager.shared.userService.localUserInfo?.role
+        
         // if call the leave room api, just logout rtc room
         RoomManager.shared.logoutRtcRoom()
         
-        guard let roomID = self.roomInfo.roomID else {
+        guard let roomID = roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
         }
-        if RoomManager.shared.userService.localUserInfo?.role == .host {
+        if role == .host {
             RoomManager.shared.roomListService.endServerRoom(roomID, callback: nil)
         } else {
             RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)

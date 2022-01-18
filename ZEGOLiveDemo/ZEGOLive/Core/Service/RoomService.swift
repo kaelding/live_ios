@@ -168,6 +168,8 @@ extension RoomService: ZIMEventHandler {
         if state == .connected && event == .success {
             let newInRoom = roomInfo.hostID == nil
             if newInRoom { return }
+            // when reconnected must send a heart beat request.
+            RoomManager.shared.roomListService.heartBeatRequest()
             ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
                 let hostLeft = error.code == .ZIMErrorCodeSuccess && !dict.keys.contains("room_info")
                 let roomNotExisted = error.code == .ZIMErrorCodeRoomNotExist

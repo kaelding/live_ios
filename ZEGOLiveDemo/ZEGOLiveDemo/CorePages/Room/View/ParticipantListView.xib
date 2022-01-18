@@ -74,6 +74,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" name="000000_30"/>
                     <constraints>
                         <constraint firstItem="WnX-5b-QlN" firstAttribute="leading" secondItem="Ovd-9t-nP3" secondAttribute="leading" constant="30" id="4AB-Hc-sXa"/>
                         <constraint firstAttribute="trailing" secondItem="WnX-5b-QlN" secondAttribute="trailing" constant="30" id="DQl-Nk-UJw"/>
@@ -103,6 +104,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="000000_30">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="111014_90">
             <color red="0.067000001668930054" green="0.063000001013278961" blue="0.078000001609325409" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

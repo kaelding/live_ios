@@ -109,7 +109,7 @@ class FaceBeautifyView: UIView {
         
         let w = bounds.size.width - 67.5 * 2
         let x = 67.5
-        let h = 76.0
+        let h = 81.0
         let y = bounds.size.height - backgroudView.bounds.size.height - h
         slider.frame = CGRect(x: x, y: y, width: w, height: h)
         backgroundHeight.constant = 183.5 + self.safeAreaInsets.bottom

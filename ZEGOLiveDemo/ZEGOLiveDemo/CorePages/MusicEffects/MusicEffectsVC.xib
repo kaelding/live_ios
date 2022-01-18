@@ -44,7 +44,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-UL-7V0" customClass="EffectBackgroundView" customModule="ZEGOLiveDemo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="511" width="414" height="385"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXt-De-LPq">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXt-De-LPq" userLabel="lineView">
                             <rect key="frame" x="187" y="7" width="40" height="5"/>
                             <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -54,7 +54,7 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wY-3a-usz">
-                            <rect key="frame" x="0.0" y="46" width="414" height="339"/>
+                            <rect key="frame" x="0.0" y="58" width="414" height="327"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQm-US-F0B">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="339"/>
@@ -74,7 +74,7 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YgD-dZ-aGb">
                                                     <rect key="frame" x="0.0" y="33.5" width="378" height="85"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="obM-Xt-buK">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="obM-Xt-buK">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -193,7 +193,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="67.5" id="2u0-M0-mZa"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tVw-IF-FwY">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tVw-IF-FwY">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -233,7 +233,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="67.5" id="y8O-Cs-s1T"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QdE-DE-v4G">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QdE-DE-v4G">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -283,9 +283,9 @@
                             </constraints>
                         </scrollView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiV-gb-MAr">
-                            <rect key="frame" x="16" y="3" width="103" height="43"/>
+                            <rect key="frame" x="16" y="25.5" width="103" height="22.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="43" id="J6Y-qd-QCw"/>
+                                <constraint firstAttribute="height" constant="22.5" id="J6Y-qd-QCw"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -295,12 +295,12 @@
                     <color key="backgroundColor" red="0.066666666666666666" green="0.062745098039215685" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="385" id="68C-X9-mgY"/>
-                        <constraint firstItem="1wY-3a-usz" firstAttribute="top" secondItem="MiV-gb-MAr" secondAttribute="bottom" id="Kas-dF-bEs"/>
+                        <constraint firstItem="1wY-3a-usz" firstAttribute="top" secondItem="MiV-gb-MAr" secondAttribute="bottom" constant="10" id="Kas-dF-bEs"/>
                         <constraint firstItem="rXt-De-LPq" firstAttribute="centerX" secondItem="q9a-UL-7V0" secondAttribute="centerX" id="WEF-Tq-EdI"/>
                         <constraint firstItem="1wY-3a-usz" firstAttribute="leading" secondItem="q9a-UL-7V0" secondAttribute="leading" id="YWc-wX-zlZ"/>
                         <constraint firstItem="rXt-De-LPq" firstAttribute="top" secondItem="q9a-UL-7V0" secondAttribute="top" constant="7" id="iO5-TR-bcL"/>
                         <constraint firstAttribute="bottom" secondItem="1wY-3a-usz" secondAttribute="bottom" id="kL7-wC-ojW"/>
-                        <constraint firstItem="MiV-gb-MAr" firstAttribute="top" secondItem="q9a-UL-7V0" secondAttribute="top" constant="3" id="pIZ-Tp-KLI"/>
+                        <constraint firstItem="MiV-gb-MAr" firstAttribute="top" secondItem="q9a-UL-7V0" secondAttribute="top" constant="25.5" id="pIZ-Tp-KLI"/>
                         <constraint firstAttribute="trailing" secondItem="1wY-3a-usz" secondAttribute="trailing" id="pyv-Sa-sZ7"/>
                         <constraint firstItem="MiV-gb-MAr" firstAttribute="leading" secondItem="q9a-UL-7V0" secondAttribute="leading" constant="16" id="sCL-Te-Bop"/>
                     </constraints>

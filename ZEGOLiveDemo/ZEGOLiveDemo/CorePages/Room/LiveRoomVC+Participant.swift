@@ -75,7 +75,8 @@ extension LiveRoomVC: ParticipantListViewDelegate {
 extension LiveRoomVC: UserServiceDelegate {
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent) {
         if state == .disconnected {
-            HUDHelper.hideNetworkLoading()
+            TipView.dismiss()
+            self.view.isUserInteractionEnabled = true
             if event == .loginTimeout {
                 showNetworkAlert()
             } else {
@@ -92,11 +93,13 @@ extension LiveRoomVC: UserServiceDelegate {
                 logout()
             }
         } else if state == .reconnecting {
-            HUDHelper.showNetworkLoading(ZGLocalizedString("network_reconnect"))
+            TipView.showWarn(ZGLocalizedString("network_reconnect"), autoDismiss: false)
+            self.view.isUserInteractionEnabled = false
         } else if state == .connected {
-            HUDHelper.hideNetworkLoading()
+            TipView.dismiss()
+            self.view.isUserInteractionEnabled = true
         }
-                
+        
         func showNetworkAlert() {
             let title = ZGLocalizedString("network_connect_failed_title")
             let message = ZGLocalizedString("network_connect_failed")

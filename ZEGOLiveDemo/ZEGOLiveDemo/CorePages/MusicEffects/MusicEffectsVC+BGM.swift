@@ -105,7 +105,11 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
             for model in self.backMusicArr {
                 if index == newIndex {
                     model.isSelected = !model.isSelected
-                    RoomManager.shared.soundService.setBGM(Int(model.selectedType), stop: !model.isSelected)
+                    if !model.isSelected {
+                        RoomManager.shared.soundService.stopBGM()
+                    } else {
+                        RoomManager.shared.soundService.loadBGM(withFilePath: model.path)
+                    }
                 } else {
                     model.isSelected = false
                 }

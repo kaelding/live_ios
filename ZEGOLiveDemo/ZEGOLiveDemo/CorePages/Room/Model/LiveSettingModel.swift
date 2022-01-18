@@ -7,23 +7,11 @@
 
 import UIKit
 
-enum SettingSelectionType {
-    case encoding
-    case layered
-    case hardwareEncoding
-    case hardwareDecoding
-    case noise
-    case echo
-    case volume
-    case resolution
-    case bitrate
-}
-
 class LiveSettingModel: NSObject {
     
     var title:String?
     var subTitle:String?
-    var selectionType: SettingSelectionType = .noise
+    var selectionType: ZegoDevicesType = .noiseSuppression
     var switchStatus: Bool = false
     
     init(json: Dictionary<String, Any>) {
@@ -33,7 +21,7 @@ class LiveSettingModel: NSObject {
         if let subTitle = json["subTitle"] as? String {
             self.subTitle = subTitle
         }
-        if let selectionType = json["selectionType"] as? SettingSelectionType {
+        if let selectionType = json["selectionType"] as? ZegoDevicesType {
             self.selectionType = selectionType
         }
         if let switchStatus = json["switchStatus"] as? Bool {

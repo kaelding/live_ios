@@ -41,9 +41,23 @@ class MusicEffectsVC: UIViewController {
     @IBOutlet weak var bottomScrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
-         lazy var backMusicArr: [MusicEffectsModel] = {
-        let bgmArray = [["name": ZGLocalizedString("room_sound_page_joyful") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": UInt(0), "isSelected": false],
-                            ["name": ZGLocalizedString("room_sound_page_romantic") ,"imageName": "liveShow_backMusic", "selectedImageName": "liveShow_backMusic_selected", "selectedType": UInt(1), "isSelected": false]]
+    
+    lazy var backMusicArr: [MusicEffectsModel] = {
+        let path1 = Bundle.main.url(forResource: "liveshow-backgroundMusic_0",
+                                    withExtension: "mp3")?.absoluteString ?? ""
+        let path2 = Bundle.main.url(forResource: "liveshow-backgroundMusic_1",
+                                    withExtension: "mp3")?.absoluteString ?? ""
+        
+        let bgmArray = [["name": ZGLocalizedString("room_sound_page_joyful"),
+                         "imageName": "liveShow_backMusic",
+                         "selectedImageName": "liveShow_backMusic_selected",
+                         "path": path1,
+                         "isSelected": false],
+                        ["name": ZGLocalizedString("room_sound_page_romantic"),
+                             "imageName": "liveShow_backMusic",
+                             "selectedImageName": "liveShow_backMusic_selected",
+                             "path": path2,
+                             "isSelected": false]]
         return bgmArray.map{ MusicEffectsModel(json: $0) }
     }()
     
@@ -76,9 +90,9 @@ class MusicEffectsVC: UIViewController {
         mixedRingLabel.text = ZGLocalizedString("room_sound_page_reverb")
         
         registerCell()
-        musicVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"
-        voiceVValueLabel.text = "\(RoomManager.shared.soundService.musicVolume)"
-        musicVSlider.value = Float(RoomManager.shared.soundService.musicVolume) * 0.01
+        musicVValueLabel.text = "\(RoomManager.shared.soundService.BGMVolume)"
+        voiceVValueLabel.text = "\(RoomManager.shared.soundService.BGMVolume)"
+        musicVSlider.value = Float(RoomManager.shared.soundService.BGMVolume) * 0.01
         musicVSlider.value = Float(RoomManager.shared.soundService.voiceVolume) * 0.01
         musicVSlider.addTarget(self, action: #selector(musicVSSliderValueChanged(_:for:)), for: .valueChanged)
         voiceVSlider.addTarget(self, action: #selector(voiceVSliderValueChanged(_:for:)), for: .valueChanged)
@@ -123,7 +137,7 @@ class MusicEffectsVC: UIViewController {
             print("end Draging")
             if let value = slider?.value {
                 let showValue: Int = Int(value * 100)
-                RoomManager.shared.soundService.setCurrentBGMVolume(showValue)
+                RoomManager.shared.soundService.setBGMVolume(showValue)
             }
         default:
             break

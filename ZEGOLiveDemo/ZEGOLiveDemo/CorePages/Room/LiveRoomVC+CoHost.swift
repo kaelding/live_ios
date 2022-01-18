@@ -24,7 +24,7 @@ extension LiveRoomVC :
         cell.moreButton.isHidden = getUser(localUserID)?.role != .host
         cell.model = model
         cell.delegate = self
-        startPlaying(model.userID, streamView: cell.streamView)
+        RoomManager.shared.deviceService.playVideoStream(model.userID, view: cell.streamView)
         return cell
     }
     
@@ -78,25 +78,14 @@ extension LiveRoomVC {
         
         if let hostSeat = RoomManager.shared.userService.coHostList.filter({ $0.userID ==  getHostID()}).first {
             if !isMyselfHost {
-                startPlaying(hostSeat.userID, streamView: streamView)
+                RoomManager.shared.deviceService.playVideoStream(hostSeat.userID, view: streamView)
             }
         }
         setCoHostList()
         updateCollectionViewConstraint()
         coHostCollectionView.reloadData()
     }
-    
-    private func startPlaying(_ userID: String?, streamView: UIView) {
-        let streamID = String.getStreamID(userID, roomID: getRoomID())
-        let canvas = ZegoCanvas(view: streamView)
-        canvas.viewMode = .aspectFill
-        if isUserMyself(userID) {
-            ZegoExpressEngine.shared().startPreview(canvas)
-        } else {
-            ZegoExpressEngine.shared().startPlayingStream(streamID, canvas: canvas)
-        }
-    }
-    
+        
     private func setCoHostList() {
         let mySeat = RoomManager.shared.userService.coHostList.filter({
             $0.userID == localUserID && $0.userID != getHostID()

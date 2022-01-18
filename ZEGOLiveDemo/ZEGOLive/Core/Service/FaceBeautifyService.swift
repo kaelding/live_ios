@@ -68,7 +68,7 @@ class FaceBeautifyService: NSObject {
         }
     }
     
-    public func setBeautifyValue(value: Int32, type: FaceBeautifyType) {
+    public func setBeautifyValue(_ value: Int32, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:
             self.skinToneEnhancementParam.intensity = value

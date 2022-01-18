@@ -345,7 +345,7 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2) { result in
             if result.isSuccess {
                 // open mic
-                RoomManager.shared.deviceService.muteMicrophone(!open)
+                RoomManager.shared.deviceService.muteMic(!open)
             } else {
                 seatModel.mic = !open
                 requestSeq -= 1

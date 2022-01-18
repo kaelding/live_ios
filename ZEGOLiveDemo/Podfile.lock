@@ -44,7 +44,7 @@ PODS:
   - ZegoExpressEngine (2.15.0):
     - ZegoExpressEngine/Video (= 2.15.0)
   - ZegoExpressEngine/Video (2.15.0)
-  - ZIM (1.3.1)
+  - ZIM (1.3.2)
 
 DEPENDENCIES:
   - Firebase/Crashlytics
@@ -76,7 +76,7 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ZegoExpressEngine: b3f8f173c5af47ee53caf29c6d62660118b63b97
-  ZIM: b32bc4160e652509a879999a427ac2041f4988f0
+  ZIM: b9d7a56e13c0bd88c777ba701e13db7759a8b3f8
 
 PODFILE CHECKSUM: 2f17e2926238715c82f996ea03ffc05d747f9d08
 

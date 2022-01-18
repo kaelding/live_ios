@@ -11,7 +11,7 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
     
     func settingViewDidSelected(_ model: LiveSettingModel, type: LiveSettingViewType) {
         switch model.selectionType {
-        case .resolution:
+        case .videoResolution:
             if type == .nomal {
                 self.liveSettingView?.isHidden = true
                 self.resolutionView?.isHidden = false
@@ -35,17 +35,17 @@ extension LiveRoomVC: LiveSettingViewDelegate, LiveSettingSecondViewDelegate, Mo
                 self.LivingSettingView?.isHidden = true
                 self.encodingView?.isHidden = false
             }
-        case .layered:
+        case .layeredCoding:
             return
-        case .hardwareEncoding:
+        case .hardwareEncoder:
             return
-        case .hardwareDecoding:
+        case .hardwareDecoder:
             return
-        case .noise:
+        case .noiseSuppression:
             return
-        case .echo:
+        case .echoCancellation:
             return
-        case .volume:
+        case .volumeAdjustment:
             return
         }
     }

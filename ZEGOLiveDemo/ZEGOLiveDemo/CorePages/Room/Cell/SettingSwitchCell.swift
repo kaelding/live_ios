@@ -28,8 +28,8 @@ class SettingSwitchCell: SettingBaseCell {
         cellModel = model
         titleLabel.text = model.title
         switchButton.isOn = model.switchStatus
-        if model.selectionType == .layered {
-            if RoomManager.shared.deviceService.videoCodeID == .h265 {
+        if model.selectionType == .layeredCoding {
+            if RoomManager.shared.deviceService.codec == .h265 {
                 switchButton.isEnabled = false
                 titleLabel.textColor = ZegoColor("FFFFFF_50")
             } else {

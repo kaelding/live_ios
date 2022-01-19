@@ -69,8 +69,8 @@ extension MusicEffectsVC : UICollectionViewDelegate,UICollectionViewDataSource,U
         }
         return size
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         var space: CGFloat = 0
         let type: MusicEffectsType = MusicEffectsType(rawValue: collectionView.tag) ?? .bgm
         switch type {

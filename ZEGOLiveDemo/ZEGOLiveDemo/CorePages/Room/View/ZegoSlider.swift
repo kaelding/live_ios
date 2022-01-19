@@ -31,6 +31,7 @@ class ZegoSlider: UIView {
         slider.minimumTrackTintColor = UIColor.white
         slider.maximumTrackTintColor = ZegoColor("000000_20")
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        slider.setThumbImage(UIImage(named: "slider_thumb"), for: .normal)
         return slider
     }()
     
@@ -60,7 +61,7 @@ class ZegoSlider: UIView {
         indicatorImgView.frame = CGRect(x: 0, y: 0, width: 36, height: 30.5)
         label.frame = CGRect(x: 0, y: 1.0, width: 36, height: 21)
         label.center = CGPoint(x: indicatorImgView.center.x, y: label.center.y)
-        slider.frame = CGRect(x: 0, y: 50.5, width: self.bounds.width, height: 16.0)
+        slider.frame = CGRect(x: 0, y: 46.0, width: self.bounds.width, height: 16.0)
     }
     
     // MARK: - action
@@ -83,7 +84,7 @@ class ZegoSlider: UIView {
     }
     
     func updateIndicatorView(_ value: Int) {
-        let x: Float = -1.0 + Float((self.bounds.size.width - 31.0)) / (slider.maximumValue - slider.minimumValue) * (Float(value) - slider.minimumValue)
+        let x: Float = -10.0 + Float((self.bounds.size.width - 16.0)) / (slider.maximumValue - slider.minimumValue) * (Float(value) - slider.minimumValue)
         indicatorImgView.frame = CGRect(x: Double(x), y: 0, width: 36, height: 30.5)
     }
 }

@@ -90,19 +90,24 @@ class RoomService: NSObject {
     
     /// Leave the chat room
     func leaveRoom(callback: RoomCallback?) {
+
+        let roomID = self.roomInfo.roomID
+        let role = RoomManager.shared.userService.localUserInfo?.role
+        
         // if call the leave room api, just logout rtc room
-        guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
+        RoomManager.shared.logoutRtcRoom()
+        
+        guard let roomID = roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
             callback(.failure(.failed))
             return
         }
-        if RoomManager.shared.userService.localUserInfo?.role == .host {
+        if role == .host {
             RoomManager.shared.roomListService.endServerRoom(roomID, callback: nil)
         } else {
             RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         }
-        RoomManager.shared.logoutRtcRoom()
         ZIMManager.shared.zim?.leaveRoom(roomID, callback: { error in
             var result: ZegoResult = .success(())
             if error.code != .ZIMErrorCodeSuccess {
@@ -168,6 +173,8 @@ extension RoomService: ZIMEventHandler {
         if state == .connected && event == .success {
             let newInRoom = roomInfo.hostID == nil
             if newInRoom { return }
+            // when reconnected must send a heart beat request.
+            RoomManager.shared.roomListService.heartBeatRequest()
             ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
                 let hostLeft = error.code == .ZIMErrorCodeSuccess && !dict.keys.contains("room_info")
                 let roomNotExisted = error.code == .ZIMErrorCodeRoomNotExist

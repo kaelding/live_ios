@@ -63,7 +63,7 @@
                         <constraint firstAttribute="width" constant="44" id="TLc-Ho-1Lb"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="create_settings"/>
+                    <state key="normal" image="bottom_settings"/>
                     <connections>
                         <action selector="settingButtonClick:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="iFC-x1-tmr"/>
                     </connections>
@@ -120,9 +120,9 @@
         </view>
     </objects>
     <resources>
-        <image name="bottom_beauty" width="36" height="36"/>
+        <image name="bottom_beauty" width="88" height="88"/>
+        <image name="bottom_settings" width="88" height="88"/>
         <image name="create_flip" width="44" height="44"/>
-        <image name="create_settings" width="36" height="36"/>
         <image name="nav_back" width="20" height="20"/>
         <namedColor name="000000_40">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>

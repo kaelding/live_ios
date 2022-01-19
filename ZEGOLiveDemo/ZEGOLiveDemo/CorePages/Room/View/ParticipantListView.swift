@@ -21,12 +21,7 @@ class ParticipantListView: UIView {
         }
     }
     
-    @IBOutlet weak var onlineLabel: UILabel! {
-        didSet {
-            onlineLabel.text = ZGLocalizedString("room_online_name") + " ·"
-        }
-    }
-    @IBOutlet weak var numLabel: UILabel!
+    @IBOutlet weak var onlineLabel: UILabel!
     @IBOutlet weak var paticipantTableView: UITableView! {
         didSet {
             paticipantTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -76,7 +71,7 @@ class ParticipantListView: UIView {
     
     func reloadListView(_ dataSource: [UserInfo]) {
         self.dataSource = dataSource
-        self.numLabel.text = String(dataSource.count)
+        self.onlineLabel.text = String(format: ZGLocalizedString("user_list_page_participants_num"), dataSource.count)
         paticipantTableView.reloadData()
     }
     
@@ -91,19 +86,7 @@ class ParticipantListView: UIView {
     @objc func inviteMaskTapClick() {
         self.inviteMaskView.isHidden = true
     }
-    
-    func updatePaticipantNum() {
-        RoomManager.shared.userService.getOnlineRoomUsersNum { result in
-            switch result {
-            case .success(let count):
-                self.numLabel.text = String(count)
-                break
-            case .failure:
-                break
-            }
-        }
-    }
-    
+        
     // MARK: -action
     @IBAction func pressInviteButton(_ sender: UIButton) {
         guard let inviteUserInfo = inviteUserInfo else { return }

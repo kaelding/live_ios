@@ -75,7 +75,8 @@ extension LiveRoomVC: ParticipantListViewDelegate {
 extension LiveRoomVC: UserServiceDelegate {
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent) {
         if state == .disconnected {
-            HUDHelper.hideNetworkLoading()
+            TipView.dismiss()
+            self.view.isUserInteractionEnabled = true
             if event == .loginTimeout {
                 showNetworkAlert()
             } else {
@@ -88,20 +89,22 @@ extension LiveRoomVC: UserServiceDelegate {
                 else if event == .kickedOut {
                     message = ZGLocalizedString("toast_kickout_error")
                 }
-                TipView.showWarn(message)
+                TipView.showTip(message)
                 logout()
             }
         } else if state == .reconnecting {
-            HUDHelper.showNetworkLoading(ZGLocalizedString("network_reconnect"))
+            TipView.showWarn(ZGLocalizedString("network_reconnect"), autoDismiss: false)
+            self.view.isUserInteractionEnabled = false
         } else if state == .connected {
-            HUDHelper.hideNetworkLoading()
+            TipView.dismiss()
+            self.view.isUserInteractionEnabled = true
         }
-                
+        
         func showNetworkAlert() {
             let title = ZGLocalizedString("network_connect_failed_title")
             let message = ZGLocalizedString("network_connect_failed")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: ZGLocalizedString("dialog_confirm"), style: .default) { action in
+            let confirmAction = UIAlertAction(title: ZGLocalizedString("dialog_room_page_ok"), style: .default) { action in
                 self.logout()
             }
             alert.addAction(confirmAction)
@@ -177,7 +180,7 @@ extension LiveRoomVC: UserServiceDelegate {
         
         if accept == false {
             let message = String(format: ZGLocalizedString("toast_user_list_page_rejected_invitation"), user.userName ?? "")
-            TipView.showWarn(message)
+            TipView.showTip(message)
         }
         reloadParticipantListView()
     }
@@ -222,7 +225,7 @@ extension LiveRoomVC: UserServiceDelegate {
         // if local user leave the seat, it must stop preview
         // if not, when use the same view to play stream, the view will show the preview image
         if targetUserID == localUserID && (type == .leave || type == .remove) {
-            ZegoExpressEngine.shared().stopPreview()
+            RoomManager.shared.deviceService.stopPlayStream(targetUserID)
         }
         
         // be removed by host

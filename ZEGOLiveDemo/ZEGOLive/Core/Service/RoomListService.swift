@@ -11,7 +11,7 @@ import ZegoExpressEngine
 class RoomListService: NSObject {
     
     var roomList = Array<RoomInfo>()
-    let timer = ZegoTimer(30000)
+    let timer = ZegoTimer(15 * 1000)
     
     // MARK: - Public
     func getRoomList(_ fromRoomID: String?, callback: RoomListCallback?) {
@@ -100,7 +100,7 @@ class RoomListService: NSObject {
     }
     
     // MARK: private method
-    private func heartBeatRequest() {
+    func heartBeatRequest() {
         var request = HeartBeatRequest()
         request.roomID = RoomManager.shared.roomService.roomInfo.roomID ?? ""
         request.userID = RoomManager.shared.userService.localUserInfo?.userID ?? ""

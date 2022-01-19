@@ -130,7 +130,7 @@ class LoginVC: UIViewController {
         }
         
         if errMsg.count > 0 {
-            TipView.showWarn(errMsg)
+            TipView.showTip(errMsg)
             return
         }
                 

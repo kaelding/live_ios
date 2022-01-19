@@ -113,6 +113,7 @@
 		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
 		8E224441278C61F600B86C52 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E224440278C61F600B86C52 /* WebVC.swift */; };
 		8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */; };
+		8E6022572796A5A500062765 /* EffectBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6022562796A5A500062765 /* EffectBackgroundView.swift */; };
 		8E9F2C24278EDA0F00EE11CE /* CoHostTaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
 		8EA92341277C06D000D0BC2C /* LiveReadyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */; };
@@ -327,6 +328,7 @@
 		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
 		8E224440278C61F600B86C52 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8E6022562796A5A500062765 /* EffectBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectBackgroundView.swift; sourceTree = "<group>"; };
 		8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostTaskQueue.swift; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
 		8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveReadyView.xib; sourceTree = "<group>"; };
@@ -716,6 +718,12 @@
 				86BD9ECF27869CD600DBE379 /* SettingSecondLevelCell.xib */,
 				86B6DF942787E8280023A898 /* MoreCollectionViewCell.swift */,
 				86B6DF952787E8280023A898 /* MoreCollectionViewCell.xib */,
+				86938AD0277DA9AC001DD575 /* FaceBeautifyColletionViewCell.swift */,
+				86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */,
+				869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */,
+				869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */,
+				8E22442F2786A13500B86C52 /* CoHostCell.swift */,
+				8E2244332786A17500B86C52 /* CoHostCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -723,8 +731,8 @@
 		8E0F63B3277B19620070E750 /* Room */ = {
 			isa = PBXGroup;
 			children = (
-				86BD9EB627854A6500DBE379 /* Cell */,
 				86938AD6277DD8A9001DD575 /* Model */,
+				86BD9EB627854A6500DBE379 /* Cell */,
 				8E0F63B6277B3DD00070E750 /* View */,
 				8E0F63B4277B19770070E750 /* LiveRoomVC.swift */,
 				8EA9234E277C656C00D0BC2C /* LiveRoomVC+Ready.swift */,
@@ -743,6 +751,7 @@
 		8E0F63B6277B3DD00070E750 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E6022562796A5A500062765 /* EffectBackgroundView.swift */,
 				8E2244272785B9FB00B86C52 /* ZegoSlider.swift */,
 				8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */,
 				8EA9233F277C06D000D0BC2C /* LiveReadyView.xib */,
@@ -752,18 +761,12 @@
 				8EA9234A277C53AF00D0BC2C /* LiveTopView.xib */,
 				86938ACC277DA10F001DD575 /* FaceBeautifyView.swift */,
 				86938ACE277DA122001DD575 /* FaceBeaytifyView.xib */,
-				86938AD0277DA9AC001DD575 /* FaceBeautifyColletionViewCell.swift */,
-				86938AD2277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib */,
 				86BD9EB2278542C500DBE379 /* LiveSettingView.swift */,
 				86BD9EB4278542F800DBE379 /* LiveSettingView.xib */,
 				86BD9ECA278698DB00DBE379 /* LiveSettingSecondView.swift */,
 				86BD9ECC2786990200DBE379 /* LiveSettingSecondView.xib */,
 				869F6D2327859B360018788E /* ParticipantListView.swift */,
 				869F6D2527859B560018788E /* ParticipantListView.xib */,
-				869F6D2727859E7B0018788E /* ParticipantTableViewCell.swift */,
-				869F6D2927859EC10018788E /* ParticipantTableViewCell.xib */,
-				8E22442F2786A13500B86C52 /* CoHostCell.swift */,
-				8E2244332786A17500B86C52 /* CoHostCell.xib */,
 				86B6DF902787E4FD0023A898 /* MoreSettingView.swift */,
 				86B6DF922787E5190023A898 /* MoreSettingView.xib */,
 			);
@@ -1195,6 +1198,7 @@
 				86938B3A2784772C001DD575 /* ZegoRTCServerAssistant.cpp in Sources */,
 				86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */,
 				86938AE0278426CC001DD575 /* InputTextView.swift in Sources */,
+				8E6022572796A5A500062765 /* EffectBackgroundView.swift in Sources */,
 				8EE13F122775A5030038AFCF /* OperationCommand.swift in Sources */,
 				86A8A21C2779EA21002A7658 /* EndRoomRequest.swift in Sources */,
 				8EA9234D277C655300D0BC2C /* LiveRoomVC+Top.swift in Sources */,
@@ -1414,7 +1418,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
@@ -1452,7 +1456,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = B82BHJ5H89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;

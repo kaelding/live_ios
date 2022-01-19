@@ -69,7 +69,7 @@ extension HomeVC {
         if segue.identifier == "pushToMore" {
             vc.urlStr = "https://www.zegocloud.com/"
         } else if segue.identifier == "pushToContact" {
-            vc.urlStr = "http://192.168.100.210:8081/contact"
+            vc.urlStr = "https://global.zegocloud.com/contact"
         } else if segue.identifier == "pushToSignup" {
             vc.urlStr = "https://www.zegocloud.com/account/signup"
         }

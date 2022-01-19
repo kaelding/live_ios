@@ -183,7 +183,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
         } else if RoomManager.shared.deviceService.codec == .h265 {
             if !RoomManager.shared.deviceService.isVideoEncoderSupportedH265() {
                 RoomManager.shared.deviceService.setVideoCodec(.h264)
-                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
+                TipView.showTip(ZGLocalizedString("toast_room_page_settings_device_not_support_h265"))
             }
         }
     }
@@ -244,7 +244,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             }
             if model.selectionType == .hardwareEncoder && RoomManager.shared.deviceService.codec == .h265 && !value {
                 model.switchStatus = true
-                TipView.showWarn(ZGLocalizedString("toast_room_page_settings_h265_error"))
+                TipView.showTip(ZGLocalizedString("toast_room_page_settings_h265_error"))
                 settingTableView.reloadData()
                 return
             }

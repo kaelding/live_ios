@@ -32,12 +32,6 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzK-O7-tVf">
-                            <rect key="frame" x="74" y="25.5" width="11" height="20"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jxx-YU-KDN">
                             <rect key="frame" x="0.0" y="69" width="414" height="316"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,9 +41,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Jxx-YU-KDN" secondAttribute="bottom" id="1Aj-rc-JUa"/>
                         <constraint firstItem="1ee-6A-ooj" firstAttribute="top" secondItem="dca-XT-jNu" secondAttribute="top" constant="25.5" id="1YT-0W-c1A"/>
-                        <constraint firstItem="AzK-O7-tVf" firstAttribute="top" secondItem="dca-XT-jNu" secondAttribute="top" constant="25.5" id="B8a-0O-9bF"/>
                         <constraint firstItem="1ee-6A-ooj" firstAttribute="leading" secondItem="dca-XT-jNu" secondAttribute="leading" constant="16" id="Bmu-dH-Pmb"/>
-                        <constraint firstItem="AzK-O7-tVf" firstAttribute="leading" secondItem="1ee-6A-ooj" secondAttribute="trailing" id="C0z-rV-SK8"/>
                         <constraint firstItem="RYY-Ek-DjU" firstAttribute="top" secondItem="dca-XT-jNu" secondAttribute="top" constant="7" id="HHW-Od-5Uo"/>
                         <constraint firstAttribute="height" constant="385" id="N4C-c6-jD9"/>
                         <constraint firstAttribute="trailing" secondItem="Jxx-YU-KDN" secondAttribute="trailing" id="bgg-U3-BnB"/>
@@ -74,6 +66,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" name="000000_30"/>
                     <constraints>
                         <constraint firstItem="WnX-5b-QlN" firstAttribute="leading" secondItem="Ovd-9t-nP3" secondAttribute="leading" constant="30" id="4AB-Hc-sXa"/>
                         <constraint firstAttribute="trailing" secondItem="WnX-5b-QlN" secondAttribute="trailing" constant="30" id="DQl-Nk-UJw"/>
@@ -95,7 +88,6 @@
                 <outlet property="inviteButton" destination="WnX-5b-QlN" id="FM8-wd-zA4"/>
                 <outlet property="inviteMaskView" destination="Ovd-9t-nP3" id="NYM-DZ-PCw"/>
                 <outlet property="lineView" destination="RYY-Ek-DjU" id="AD7-MF-M7Y"/>
-                <outlet property="numLabel" destination="AzK-O7-tVf" id="yCq-4x-Ll2"/>
                 <outlet property="onlineLabel" destination="1ee-6A-ooj" id="9SK-3a-KKB"/>
                 <outlet property="paticipantTableView" destination="Jxx-YU-KDN" id="QwF-9X-zf0"/>
             </connections>
@@ -103,6 +95,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="000000_30">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="111014_90">
             <color red="0.067000001668930054" green="0.063000001013278961" blue="0.078000001609325409" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

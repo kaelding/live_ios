@@ -78,7 +78,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "user_list_page_me" = "Me";
 "toast_user_list_page_connected_failed" = "Failed to co-host. Please try agian.";
 "toast_user_list_page_rejected_invitation" = "%@ has declined your invitation. ";
-"user_list_page_participants_num" = "Participants (%d)";
+"user_list_page_participants_num" = "Participants · %d";
 "user_list_page_invite_to_speak" = "Make co-host";
 "user_list_page_owner" = "Host";
 "dialog_invition_title" = "Invitation";
@@ -95,7 +95,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_settings_page_audio_bitrate" = "Audio bitrate";
 "room_settings_page_more" = "More";
 "toast_room_page_settings_device_not_support_h265" = "This device does not support H.265 encoding type";
-"toast_room_page_settings_h265_error" = "H.265 encoding type does not support software encoding. ";
+"toast_room_page_settings_h265_error" = "H.265 does not support software encoding. ";
 "room_more_flip" = "Flip";
 "room_more_mic" = "Mic";
 "room_more_camera" = "Camera";
@@ -147,6 +147,6 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "toast_room_end_fail_tip" = "Failed to end the room. Error code: %d.";
 "dialog_attetion_title" = "Note";
 "dialog_close" = "Close";
-"setting_page_terms_of_service" = "Terms of service";
+"setting_page_terms_of_service" = "Terms of Use";
 "setting_page_privacy_policy" = "Privacy Policy";
 "room_online_name" = "Online";

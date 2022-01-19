@@ -31,10 +31,21 @@ class MoreSettingView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
     
     lazy var dataSource: [MoreSettingModel] = {
-        let data = [["title": ZGLocalizedString("room_more_flip") ,"imageName": "bottombar_flip", "type": selectedType.flip, "isSelected": false],
-                    ["title": ZGLocalizedString("room_more_camera") ,"imageName": "bottombar_cam_on", "type": selectedType.camera, "isSelected": false],
-                    ["title": ZGLocalizedString("room_more_mic") ,"imageName": "bottombar_mic_on", "type": selectedType.mute, "isSelected": false],
-                    ["title": ZGLocalizedString("room_more_setting") ,"imageName": "bottombar_more", "type": selectedType.setting, "isSelected": false]]
+        let data = [["title": ZGLocalizedString("room_more_flip"),
+                     "imageName": "bottombar_flip",
+                     "type": selectedType.flip, "isSelected": false],
+                    
+                    ["title": ZGLocalizedString("room_more_camera"),
+                     "imageName": "bottombar_cam_on",
+                     "type": selectedType.camera, "isSelected": false],
+                    
+                    ["title": ZGLocalizedString("room_more_mic"),
+                     "imageName": "bottombar_mic_on",
+                     "type": selectedType.mute, "isSelected": false],
+                    
+                    ["title": ZGLocalizedString("room_more_setting"),
+                     "imageName": "create_settings",
+                     "type": selectedType.setting, "isSelected": false]]
         return data.map{ MoreSettingModel(json: $0) }
     }()
     

@@ -68,7 +68,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom_mic_off" translatesAutoresizingMaskIntoConstraints="NO" id="KX4-Hb-CPo">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_mic" translatesAutoresizingMaskIntoConstraints="NO" id="KX4-Hb-CPo">
                         <rect key="frame" x="79" y="107" width="10" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="10" id="TZc-Tm-JE3"/>
@@ -108,9 +108,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bottom_mic_off" width="36" height="36"/>
         <image name="bottom_more" width="36" height="36"/>
         <image name="liveShow_KTV" width="100" height="100"/>
+        <image name="video_mic" width="20" height="20"/>
         <namedColor name="000000_60">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

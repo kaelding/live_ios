@@ -213,9 +213,9 @@ extension FaceBeautifyView {
 }
 
 extension FaceBeautifyView : ZegoSliderDelegate {
-    func slider(_ slider: ZegoSlider, valueDidChange value: Float) {
+    func slider(_ slider: ZegoSlider, valueDidChange value: Int) {
         guard let selectedModel = selectedFaceBeautifyModel else { return }
-        selectedModel.value = Int(value)
+        selectedModel.value = value
         delegate?.beautifyValueChange(selectedModel)
     }
 }
@@ -271,27 +271,10 @@ extension FaceBeautifyView: UICollectionViewDelegateFlowLayout, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 14.0, bottom: 0, right: 14.0)
+        return UIEdgeInsets(top: 0, left: 11.0, bottom: 0, right: 11.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var arr = faceBeatificationArray
-        if selectedType == .faceShapeRetouch {
-            arr = self.faceShapeRetouchArray
-        }
-        let model = arr[indexPath.row]
-        
-        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.systemFont(ofSize: 12, weight: .medium)]
-        let size = ZGLocalizedString(model.name).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 16.5),
-                                                              options: .usesLineFragmentOrigin,
-                                                              attributes: attribute,
-                                                              context: nil).size
-        var w = size.width + 10.0
-        
-        if w < 80.0 {
-            w = 80.0
-        }
-        return CGSize(width: w, height: 68)
+        return CGSize(width: 85, height: 68)
     }
 }

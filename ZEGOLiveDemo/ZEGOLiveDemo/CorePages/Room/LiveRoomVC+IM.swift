@@ -49,6 +49,14 @@ extension LiveRoomVC {
         }
         messageHeightConstraint.constant = height
     }
+    
+    func addLocalJoinMessage() {
+        if let myself = RoomManager.shared.userService.localUserInfo {
+            let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
+            messageList.append(model)
+            reloadMessageData()
+        }
+    }
 
 }
 

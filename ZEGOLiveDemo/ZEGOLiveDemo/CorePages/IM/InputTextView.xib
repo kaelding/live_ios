@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-EB-fe0">
-                    <rect key="frame" x="18" y="7.5" width="464" height="40"/>
+                    <rect key="frame" x="0.0" y="7.5" width="482" height="40"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1s-IJ-f1n">
-                            <rect key="frame" x="18" y="0.0" width="441" height="40"/>
+                            <rect key="frame" x="15" y="0.0" width="462" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" name="FFFFFF_80"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -33,7 +33,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="h1s-IJ-f1n" firstAttribute="top" secondItem="cBm-EB-fe0" secondAttribute="top" id="3aM-Hn-XWs"/>
-                        <constraint firstItem="h1s-IJ-f1n" firstAttribute="leading" secondItem="cBm-EB-fe0" secondAttribute="leading" constant="18" id="AUx-8F-iZ8"/>
+                        <constraint firstItem="h1s-IJ-f1n" firstAttribute="leading" secondItem="cBm-EB-fe0" secondAttribute="leading" constant="15" id="AUx-8F-iZ8"/>
                         <constraint firstAttribute="bottom" secondItem="h1s-IJ-f1n" secondAttribute="bottom" id="cO2-Z6-5Uc"/>
                         <constraint firstAttribute="trailing" secondItem="h1s-IJ-f1n" secondAttribute="trailing" constant="5" id="iHy-sp-1ye"/>
                         <constraint firstAttribute="height" constant="40" id="vKB-zE-bf8"/>
@@ -67,13 +67,13 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="6iB-XJ-g2l"/>
-            <color key="backgroundColor" name="000000_75"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="e3k-ar-17S" firstAttribute="leading" secondItem="cBm-EB-fe0" secondAttribute="trailing" constant="11" id="ARh-OD-cPj"/>
                 <constraint firstItem="e3k-ar-17S" firstAttribute="centerY" secondItem="gQs-2g-09d" secondAttribute="centerY" id="BMe-mh-36c"/>
                 <constraint firstItem="6iB-XJ-g2l" firstAttribute="trailing" secondItem="e3k-ar-17S" secondAttribute="trailing" constant="18" id="kZJ-eC-SuO"/>
                 <constraint firstItem="cBm-EB-fe0" firstAttribute="centerY" secondItem="gQs-2g-09d" secondAttribute="centerY" id="ksf-nB-pPp"/>
-                <constraint firstItem="cBm-EB-fe0" firstAttribute="leading" secondItem="6iB-XJ-g2l" secondAttribute="leading" constant="18" id="pa4-M1-hde"/>
+                <constraint firstItem="cBm-EB-fe0" firstAttribute="leading" secondItem="6iB-XJ-g2l" secondAttribute="leading" id="pa4-M1-hde"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -86,9 +86,6 @@
     <resources>
         <image name="message_send_button" width="29" height="29"/>
         <image name="message_send_button_disabled" width="29" height="29"/>
-        <namedColor name="000000_75">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="FFFFFF_80">
             <color red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

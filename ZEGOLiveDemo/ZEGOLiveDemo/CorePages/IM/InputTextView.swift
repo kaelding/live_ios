@@ -22,8 +22,17 @@ class InputTextView: UIView, UITextFieldDelegate {
         }
     }
     
+    lazy var effectView: UIVisualEffectView = {
+        let effect = UIBlurEffect(style: .regular)
+        let effectView = UIVisualEffectView(effect: effect)
+        effectView.contentView.backgroundColor = ZegoColor("111014_90")
+        return effectView
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        insertSubview(effectView, at: 0)
         
         let w = UIScreen.main.bounds.width
         let h = UIScreen.main.bounds.height
@@ -31,6 +40,11 @@ class InputTextView: UIView, UITextFieldDelegate {
         let maskLayer: CAShapeLayer = CAShapeLayer()
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        effectView.frame = bounds
     }
     
     public func textViewBecomeFirstResponse() -> Void {

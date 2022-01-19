@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ZegoSliderDelegate: AnyObject {
-    func slider(_ slider: ZegoSlider, valueDidChange value: Float)
+    func slider(_ slider: ZegoSlider, valueDidChange value: Int)
 }
 
 class ZegoSlider: UIView {
@@ -61,14 +61,15 @@ class ZegoSlider: UIView {
         indicatorImgView.frame = CGRect(x: 0, y: 0, width: 36, height: 30.5)
         label.frame = CGRect(x: 0, y: 1.0, width: 36, height: 21)
         label.center = CGPoint(x: indicatorImgView.center.x, y: label.center.y)
-        slider.frame = CGRect(x: 0, y: 46.0, width: self.bounds.width, height: 16.0)
+        slider.frame = CGRect(x: 0, y: 45.0, width: self.bounds.width, height: 16.0)
     }
     
     // MARK: - action
     @objc func sliderValueDidChange(_ slider: UISlider?) {
-        let value = slider?.value ?? 0
-        label.text = String(Int(value))
-        updateIndicatorView(Int(value))
+        let value = Int(slider?.value ?? 0)
+        slider?.value = Float(value)
+        label.text = String(value)
+        updateIndicatorView(value)
         delegate?.slider(self, valueDidChange: value)
     }
     

@@ -37,7 +37,7 @@ class RoomService: NSObject {
             callback(.failure(.paramInvalid))
             return
         }
-        
+        RoomManager.shared.resetRoomData()
         let parameters = getCreateRoomParameters(roomID, roomName)
         ZIMManager.shared.zim?.createRoom(parameters.0, config: parameters.1, callback: { fullRoomInfo, error in
             
@@ -64,6 +64,7 @@ class RoomService: NSObject {
     /// Join a chat room
     /// You need to enter a generated `rtc token`
     func joinRoom(_ roomID: String, _ token: String, callback: RoomCallback?) {
+        RoomManager.shared.resetRoomData()
         ZIMManager.shared.zim?.joinRoom(roomID, callback: { fullRoomInfo, error in
             if error.code != .ZIMErrorCodeSuccess {
                 guard let callback = callback else { return }

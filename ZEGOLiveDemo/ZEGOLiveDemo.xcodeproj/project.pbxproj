@@ -85,7 +85,6 @@
 		86B6DF9D278854AF0023A898 /* TipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9C278854AF0023A898 /* TipView.xib */; };
 		86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */; };
 		86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */; };
-		86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */; };
 		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
 		86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB02784428A00DBE379 /* SoundEffectService.swift */; };
 		86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB2278542C500DBE379 /* LiveSettingView.swift */; };
@@ -300,7 +299,6 @@
 		86B6DF9C278854AF0023A898 /* TipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipView.xib; sourceTree = "<group>"; };
 		86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_1.mp3"; sourceTree = "<group>"; };
 		86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_0.mp3"; sourceTree = "<group>"; };
-		86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_2.mp3"; sourceTree = "<group>"; };
 		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
 		86BD9EB02784428A00DBE379 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
 		86BD9EB2278542C500DBE379 /* LiveSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingView.swift; sourceTree = "<group>"; };
@@ -701,7 +699,6 @@
 			children = (
 				86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */,
 				86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */,
-				86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */,
 			);
 			path = MediaResources;
 			sourceTree = SOURCE_ROOT;
@@ -1071,7 +1068,6 @@
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
 				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
 				86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */,
-				86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */,
 				8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */,
 				86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,

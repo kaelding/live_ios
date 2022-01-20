@@ -14,6 +14,7 @@ class RoomListService: NSObject {
     let timer = ZegoTimer(15 * 1000)
     
     // MARK: - Public
+    // get room list
     func getRoomList(_ fromRoomID: String?, callback: RoomListCallback?) {
         var request = RoomListRequest()
         if let roomID = fromRoomID {

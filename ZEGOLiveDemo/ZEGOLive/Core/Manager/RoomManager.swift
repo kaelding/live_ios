@@ -128,7 +128,10 @@ extension RoomManager {
         
     func logoutRtcRoom(_ containsUserService: Bool = false) {
         ZegoExpressEngine.shared().logoutRoom()
-        
+        resetRoomData()
+    }
+    
+    func resetRoomData(_ containsUserService: Bool = false) {
         if containsUserService {
             userService = UserService()
             roomListService = RoomListService()

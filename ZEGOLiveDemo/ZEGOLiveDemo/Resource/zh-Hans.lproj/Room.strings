@@ -40,7 +40,7 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "room_page_host" = "主播";
 "room_page_apply_to_connect" = "连麦";
 "room_page_cancel_to_connect" = "取消连麦";
-"room_page_end_connect" = "结束连麦";
+"room_page_end_connect" = "结束";
 "room_page_mute" = "静音";
 "room_page_unmute" = "取消静音";
 "room_page_prohibit_to_connect" = "抱下麦位";

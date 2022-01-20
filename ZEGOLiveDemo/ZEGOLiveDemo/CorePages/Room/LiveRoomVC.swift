@@ -199,9 +199,7 @@ class LiveRoomVC: UIViewController {
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        RoomManager.shared.messageService.delegate = self
-        RoomManager.shared.roomService.delegate = self
-        RoomManager.shared.userService.addUserServiceDelegate(self)
+        addDelegates()
         addObserver()
 
         // Do any additional setup after loading the view.
@@ -209,18 +207,13 @@ class LiveRoomVC: UIViewController {
         configVideoStream()
         configFaceBeautify()
         updateHostBackgroundView()
-        
-        if let myself = RoomManager.shared.userService.localUserInfo {
-            let model: MessageModel = MessageModelBuilder.buildJoinMessageModel(user: myself)
-            messageList.append(model)
-            reloadMessageData()
-        }
-        
+                
         // update room attributes
         if isLiving {
-            self.reloadCoHost()
-            self.updateBottomView()
-            self.reloadParticipantListView()
+            addLocalJoinMessage()
+            reloadCoHost()
+            updateBottomView()
+            reloadParticipantListView()
         }
     }
     
@@ -252,6 +245,12 @@ class LiveRoomVC: UIViewController {
     func addObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow(node:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide(node:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func addDelegates() {
+        RoomManager.shared.messageService.delegate = self
+        RoomManager.shared.roomService.delegate = self
+        RoomManager.shared.userService.addUserServiceDelegate(self)
     }
     
     func configUI() {

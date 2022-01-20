@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="The studio created by baby" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiU-Ts-4wl">
-                    <rect key="frame" x="50" y="193" width="314" height="60"/>
+                    <rect key="frame" x="50" y="237" width="314" height="60"/>
                     <color key="backgroundColor" name="000000_40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="WVK-wh-kGU"/>
@@ -97,7 +97,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Cjg-1J-CF0" firstAttribute="centerY" secondItem="JJR-mG-fhC" secondAttribute="centerY" id="4fb-ry-fWm"/>
-                <constraint firstItem="oiU-Ts-4wl" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="149" id="9vA-ql-afb"/>
+                <constraint firstItem="oiU-Ts-4wl" firstAttribute="top" secondItem="UYc-JR-W3o" secondAttribute="top" constant="193" id="9vA-ql-afb"/>
                 <constraint firstItem="JJR-mG-fhC" firstAttribute="leading" secondItem="NVg-Hc-0VG" secondAttribute="trailing" constant="34" id="HZ2-cY-5d5"/>
                 <constraint firstItem="8te-Bu-wtp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="4" id="M6p-nM-ENU"/>
                 <constraint firstAttribute="bottom" secondItem="JJR-mG-fhC" secondAttribute="bottom" constant="49" id="M7y-NC-mKf"/>

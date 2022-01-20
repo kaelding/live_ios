@@ -63,6 +63,7 @@ class LiveBottomView: UIView {
     @IBOutlet weak var endButton: UIButton! {
         didSet {
             endButton.layer.cornerRadius = 18.0
+            endButton.setTitle(ZGLocalizedString("room_page_end_connect"), for: .normal)
         }
     }
     @IBOutlet weak var applyButton: UIButton! {

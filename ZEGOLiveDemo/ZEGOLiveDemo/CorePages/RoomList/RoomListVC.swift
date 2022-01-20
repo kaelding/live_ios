@@ -73,7 +73,6 @@ class RoomListVC: UIViewController {
             switch result {
             case .success(_):
                 self.emptyLabel.isHidden = self.roomInfoList.count > 0
-                self.emptyLabel.isHidden = self.roomInfoList.count > 0
                 self.roomListCollectionView.reloadData()
             case .failure(_):
                 break

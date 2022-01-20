@@ -80,12 +80,14 @@ extension LiveRoomVC : LiveReadyViewDelegate {
         let rtcToken = AppToken.getRtcToken(withRoomID: roomID) ?? ""
         RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { [self] result in
             HUDHelper.hideNetworkLoading()
+            self.addDelegates()
             switch result {
             case .success():
                 self.isLiving = true
                 self.joinServerRoom()
                 self.updateStartView()
                 self.updateTopView()
+                self.addLocalJoinMessage()
                 RoomManager.shared.userService.takeSeat { result in
                     
                 }

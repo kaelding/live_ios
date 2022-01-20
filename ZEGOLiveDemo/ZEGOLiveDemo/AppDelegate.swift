@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        #if canImport(Firebase)
+        #if !DEBUG && canImport(Firebase)
         FirebaseApp.configure()
         #endif
         

@@ -32,6 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         };
         
+        let faceDetectionModelPath = Bundle.main.path(forResource: "FaceDetectionModel", ofType: "model") ?? ""
+        let segmentationModelPath = Bundle.main.path(forResource: "SegmentationModel", ofType: "model") ?? ""
+        let whitenBundlePath = Bundle.main.path(forResource: "FaceWhiteningResources", ofType: "bundle") ?? ""
+        let commonBundlePath = Bundle.main.path(forResource: "CommonResources", ofType: "bundle") ?? ""
+        let rosyBundlePath = Bundle.main.path(forResource: "RosyResources", ofType: "bundle") ?? ""
+        let teethWhiteningBundlePath = Bundle.main.path(forResource: "TeethWhiteningResources", ofType: "bundle") ?? ""
+        
+        let resourceInfoList: [String] = [faceDetectionModelPath, segmentationModelPath, whitenBundlePath, commonBundlePath, rosyBundlePath, teethWhiteningBundlePath]
+        RoomManager.shared.beautifyService.setResources(resourceInfoList)
+        
         return true
     }
 

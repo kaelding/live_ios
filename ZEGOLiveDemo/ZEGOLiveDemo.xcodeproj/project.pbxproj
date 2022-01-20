@@ -773,13 +773,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8E9F2C20278ED8A200EE11CE /* Extentions */ = {
+		8E9F2C20278ED8A200EE11CE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */,
 				869F6D2C2785A3700018788E /* String+Head.swift */,
 			);
-			path = Extentions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8E9F2C22278ED93600EE11CE /* HUD */ = {
@@ -817,11 +817,11 @@
 			isa = PBXGroup;
 			children = (
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
-				8E9F2C20278ED8A200EE11CE /* Extentions */,
-				8EE13ED427745B1C0038AFCF /* AppCenter */,
-				8EE13F0C27756D4D0038AFCF /* Helper */,
 				862408482789D2B60010A5EC /* EffectResources */,
 				86B6DF9E278971720023A898 /* MediaResources */,
+				8E9F2C20278ED8A200EE11CE /* Extensions */,
+				8EE13ED427745B1C0038AFCF /* AppCenter */,
+				8EE13F0C27756D4D0038AFCF /* Helper */,
 				8EE13F012774735E0038AFCF /* CorePages */,
 				8677D6BF277C44BE00612058 /* Resource */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,

@@ -52,16 +52,7 @@ class RoomManager: NSObject {
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
         
         EffectsLicense.shared.getLicense(appID, appSign: appSign)
-        
-        let faceDetectionModelPath = Bundle.main.path(forResource: "FaceDetectionModel", ofType: "model") ?? ""
-        let segmentationModelPath = Bundle.main.path(forResource: "SegmentationModel", ofType: "model") ?? ""
-        let whitenBundlePath = Bundle.main.path(forResource: "FaceWhiteningResources", ofType: "bundle") ?? ""
-        let commonBundlePath = Bundle.main.path(forResource: "CommonResources", ofType: "bundle") ?? ""
-        let rosyBundlePath = Bundle.main.path(forResource: "RosyResources", ofType: "bundle") ?? ""
-        let teethWhiteningBundlePath = Bundle.main.path(forResource: "TeethWhiteningResources", ofType: "bundle") ?? ""
-        let pathArray: Array<String> = [faceDetectionModelPath, segmentationModelPath, whitenBundlePath, commonBundlePath, rosyBundlePath, teethWhiteningBundlePath]
-        ZegoEffects.setResources(pathArray)
-        
+                
         let processConfig = ZegoCustomVideoProcessConfig()
         processConfig.bufferType = .cvPixelBuffer
         ZegoExpressEngine.shared().enableCustomVideoProcessing(true, config: processConfig)

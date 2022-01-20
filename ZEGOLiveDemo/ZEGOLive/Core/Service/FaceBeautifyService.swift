@@ -40,6 +40,9 @@ class FaceBeautifyService: NSObject {
     let chinLengtheningParam = ZegoEffectsLongChinParam()
     let teethWhiteningParam = ZegoEffectsTeethWhiteningParam()
     
+    public func setResources(_ resourceInfoList: [String]) {
+        ZegoEffects.setResources(resourceInfoList)
+    }
     
     public func enableBeautify(_ enable: Bool, type: FaceBeautifyType) {
         switch type {

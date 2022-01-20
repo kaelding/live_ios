@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MixedRingCell" customModule="ZEGOLiveDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="96" height="73"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bM9-hI-Pay">
+                        <rect key="frame" x="26" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="73G-6e-0eG"/>
+                            <constraint firstAttribute="height" constant="44" id="TzW-ya-hC0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgS-zE-KRf">
+                        <rect key="frame" x="32.5" y="51" width="31" height="16.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16.5" id="2cN-WU-X2D"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <color key="textColor" red="0.65098039220000004" green="0.32549019610000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="bM9-hI-Pay" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="76B-AE-ijQ"/>
+                <constraint firstItem="pgS-zE-KRf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VIs-mN-sJr"/>
+                <constraint firstItem="bM9-hI-Pay" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="W7X-H8-joj"/>
+                <constraint firstItem="pgS-zE-KRf" firstAttribute="top" secondItem="bM9-hI-Pay" secondAttribute="bottom" constant="7" id="dzo-S5-IQN"/>
+            </constraints>
+            <size key="customSize" width="96" height="73"/>
+            <connections>
+                <outlet property="mixedImageView" destination="bM9-hI-Pay" id="eQ5-lF-pDa"/>
+                <outlet property="mixedNameLabel" destination="pgS-zE-KRf" id="eYz-6J-Z6g"/>
+            </connections>
+            <point key="canvasLocation" x="168.11594202898553" y="108.14732142857143"/>
+        </collectionViewCell>
+    </objects>
+</document>

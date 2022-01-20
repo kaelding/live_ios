@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xto-cw-HJh" customClass="FaceBeautifyView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="846" height="599"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfx-J2-T7U" customClass="EffectBackgroundView" customModule="ZEGOLiveDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="415.5" width="846" height="183.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVx-jd-CWf">
+                            <rect key="frame" x="403" y="7" width="40" height="5"/>
+                            <color key="backgroundColor" name="3B3B3B"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="3Bv-c6-res"/>
+                                <constraint firstAttribute="width" constant="40" id="OvV-Hv-hSW"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-W9-pgs">
+                            <rect key="frame" x="16" y="25.5" width="150" height="22.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22.5" id="512-3u-vdp"/>
+                                <constraint firstAttribute="width" constant="150" id="UBx-zr-FUM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Face beautification"/>
+                            <connections>
+                                <action selector="pressBeautyButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="b2W-aS-XdB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-M6-11V">
+                            <rect key="frame" x="182" y="25.5" width="132" height="22.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22.5" id="PnN-Tc-Que"/>
+                                <constraint firstAttribute="width" constant="132" id="YGd-ut-EgK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Face shape retouch"/>
+                            <connections>
+                                <action selector="pressReshapeButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="Zon-4b-Y7i"/>
+                            </connections>
+                        </button>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gfU-t8-5L5">
+                            <rect key="frame" x="0.0" y="80" width="846" height="67"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="67" id="zIW-17-luD"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rae-Tm-TBv">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvg-qe-qVx">
+                            <rect key="frame" x="808" y="29.5" width="19" height="22"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="face_beautify_reset"/>
+                            <connections>
+                                <action selector="pressResetButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="Ref-ze-DNy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="111014_90"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gfU-t8-5L5" secondAttribute="trailing" id="A6c-9a-IRE"/>
+                        <constraint firstItem="nMS-M6-11V" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="AaG-fA-EDz"/>
+                        <constraint firstItem="dXp-W9-pgs" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="DKp-93-F1D"/>
+                        <constraint firstAttribute="trailing" secondItem="vvg-qe-qVx" secondAttribute="trailing" constant="19" id="Ek4-gs-Gvi"/>
+                        <constraint firstItem="gfU-t8-5L5" firstAttribute="top" secondItem="dXp-W9-pgs" secondAttribute="bottom" constant="32" id="FmI-jh-I4h"/>
+                        <constraint firstItem="vvg-qe-qVx" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="29.5" id="MRI-Jv-2OT"/>
+                        <constraint firstItem="vVx-jd-CWf" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="7" id="YEI-43-ZjE"/>
+                        <constraint firstItem="gfU-t8-5L5" firstAttribute="leading" secondItem="qfx-J2-T7U" secondAttribute="leading" id="ZrT-gb-Tw1"/>
+                        <constraint firstItem="vVx-jd-CWf" firstAttribute="centerX" secondItem="qfx-J2-T7U" secondAttribute="centerX" id="bNx-fz-7ux"/>
+                        <constraint firstAttribute="height" constant="183.5" id="nh6-lV-d5N"/>
+                        <constraint firstItem="nMS-M6-11V" firstAttribute="leading" secondItem="dXp-W9-pgs" secondAttribute="trailing" constant="16" id="rVy-gz-3PQ"/>
+                        <constraint firstItem="dXp-W9-pgs" firstAttribute="leading" secondItem="qfx-J2-T7U" secondAttribute="leading" constant="16" id="xev-XM-yxb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="u7U-1D-KBG"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qfx-J2-T7U" firstAttribute="bottom" secondItem="xto-cw-HJh" secondAttribute="bottom" id="Tdb-xj-nVz"/>
+                <constraint firstItem="qfx-J2-T7U" firstAttribute="leading" secondItem="u7U-1D-KBG" secondAttribute="leading" id="Vag-dv-60g"/>
+                <constraint firstItem="u7U-1D-KBG" firstAttribute="trailing" secondItem="qfx-J2-T7U" secondAttribute="trailing" id="rIP-p4-H7Z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroudView" destination="qfx-J2-T7U" id="LO1-Ke-9qd"/>
+                <outlet property="backgroundHeight" destination="nh6-lV-d5N" id="hx3-5q-qZN"/>
+                <outlet property="beautifyCollectionView" destination="gfU-t8-5L5" id="Qhy-aN-heh"/>
+                <outlet property="beautyButton" destination="dXp-W9-pgs" id="DSU-0s-3Q4"/>
+                <outlet property="lineView" destination="vVx-jd-CWf" id="Ugh-vB-bKJ"/>
+                <outlet property="reshapeButton" destination="nMS-M6-11V" id="kbT-n0-zSr"/>
+            </connections>
+            <point key="canvasLocation" x="230.43478260869566" y="256.13839285714283"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="face_beautify_reset" width="19" height="19"/>
+        <namedColor name="111014_90">
+            <color red="0.067000001668930054" green="0.063000001013278961" blue="0.078000001609325409" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="3B3B3B">
+            <color red="0.23100000619888306" green="0.23100000619888306" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

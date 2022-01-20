@@ -10,7 +10,19 @@ import ZIM
 import ZegoExpressEngine
 import ZegoEffects
 
+
+/// Class ZEGO Live business logic management
+///
+/// Description: This class contains the ZEGO Live business logic, manages the service instances of different modules, and also distributing the data delivered by the SDK.
 class RoomManager: NSObject {
+    
+    /// Get the ZegoRoomManager singleton instance
+    ///
+    /// Description: This method can be used to get the ZegoRoomManager singleton instance.
+    ///
+    /// Call this method at: Any time
+    ///
+    /// @return ZegoRoomManager singleton instance
     static let shared = RoomManager()
     
     // MARK: - Private
@@ -29,14 +41,31 @@ class RoomManager: NSObject {
     }
     
     // MARK: - Public
+    
+    /// The room information management instance, contains the room information, room status and other business logic.
     var roomService: RoomService
+    /// The user information management instance, contains the in-room user information management, logged-in user information and other business logic.
     var userService: UserService
+    /// The message management instance, contains the IM messages management logic.
     var messageService: MessageService
+    /// The room management instance, contains the business logic of get room list, create a room, join a room, and more.
     var roomListService: RoomListService
+    /// The face beautify management instance, contains the enabling/disabling logic and parameter setting logic of the face beautification and face shape retouch feature.
     var beautifyService: FaceBeautifyService
+    /// The sound effects management instance, contains the sound effects business logic.
     var soundService: SoundEffectService
+    /// The device management instance, contains the video capturing, rendering, related parameters, stream playing, and other bunsiness logic.
     var deviceService: DeviceService
     
+    
+    /// Initialize the SDK
+    ///
+    /// Description: This method can be used to initialize the ZIM SDK and the Express-audio SDK.
+    ///
+    /// Call this method at: Before you log in. We recommend you call this method when the application starts.
+    ///
+    /// @param appID refers to the project ID. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com/
+    /// @param appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
     func initWithAppID(appID: UInt32, appSign: String, callback: RoomCallback?) {
         if appSign.count == 0 {
             guard let callback = callback else { return }
@@ -52,16 +81,7 @@ class RoomManager: NSObject {
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
         
         EffectsLicense.shared.getLicense(appID, appSign: appSign)
-        
-        let faceDetectionModelPath = Bundle.main.path(forResource: "FaceDetectionModel", ofType: "model") ?? ""
-        let segmentationModelPath = Bundle.main.path(forResource: "SegmentationModel", ofType: "model") ?? ""
-        let whitenBundlePath = Bundle.main.path(forResource: "FaceWhiteningResources", ofType: "bundle") ?? ""
-        let commonBundlePath = Bundle.main.path(forResource: "CommonResources", ofType: "bundle") ?? ""
-        let rosyBundlePath = Bundle.main.path(forResource: "RosyResources", ofType: "bundle") ?? ""
-        let teethWhiteningBundlePath = Bundle.main.path(forResource: "TeethWhiteningResources", ofType: "bundle") ?? ""
-        let pathArray: Array<String> = [faceDetectionModelPath, segmentationModelPath, whitenBundlePath, commonBundlePath, rosyBundlePath, teethWhiteningBundlePath]
-        ZegoEffects.setResources(pathArray)
-        
+                
         let processConfig = ZegoCustomVideoProcessConfig()
         processConfig.bufferType = .cvPixelBuffer
         ZegoExpressEngine.shared().enableCustomVideoProcessing(true, config: processConfig)
@@ -77,12 +97,26 @@ class RoomManager: NSObject {
         callback(result)
     }
     
+    
+    /// The method to deinitialize the SDK
+    ///
+    /// Description: This method can be used to deinitialize the SDK and release the resources it occupies.
+    ///
+    /// Call this method at: When the SDK is no longer be used. We recommend you call this method when the application exits.
     func uninit() {
         logoutRtcRoom(true)
         ZIMManager.shared.destoryZIM()
         ZegoExpressEngine.destroy(nil)
     }
     
+    /// Upload local logs to the ZEGOCLOUD server
+    ///
+    /// Description: You can call this method to upload the local logs to the ZEGOCLOUD Server for troubleshooting when exception occurs.
+    ///
+    /// Call this method at: When exceptions occur.
+    ///
+    /// @param fileName refers to the name of the file you upload. We recommend you name the file in the format of "appid_platform_timestamp".
+    /// @param completion refers to the callback that be triggered when the logs are upload successfully or failed to upload logs.
     func uploadLog(callback: RoomCallback?) {
         ZIMManager.shared.zim?.uploadLog({ errorCode in
             if errorCode.code == .ZIMErrorCodeSuccess {

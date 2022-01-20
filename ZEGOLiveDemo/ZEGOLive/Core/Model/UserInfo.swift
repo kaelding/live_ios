@@ -8,25 +8,32 @@
 import Foundation
 
 enum UserRole: Codable {
+    /// Participant
     case participant
+    /// co-host
     case coHost
+    /// Host
     case host
 }
 
+
+/// Class user information
+///
+/// Description: This class contains the user related information.
 class UserInfo: NSObject, Codable {
-    /// user ID
+    /// User ID, refers to the user unique ID, can only contains numbers and letters.
     var userID: String?
     
-    /// user name
+    /// User name, cannot be null.
     var userName: String?
     
-    /// user role
+    /// User role
     var role: UserRole = .participant
     
     // MARK: - local property
-    /// has request to co-host
+    /// Indicates whether the user has taken a co-host seat.
     var hasRequestedCoHost: Bool = false
-    /// has add co-hosts
+    /// Indicates whether the user has requested to co-host.
     var hasInvited: Bool = false
     
     override init() {

@@ -7,6 +7,10 @@
 
 import Foundation
 
+
+/// Class IM message
+///
+/// Description: This class contains the IM message related information.
 class TextMessage: NSObject {
     
     var userID: String = ""

@@ -9,6 +9,4 @@ target 'ZEGOLiveDemo' do
   pod 'ZIM'
   pod 'ZegoExpressEngine'
   
-  pod 'Firebase/Crashlytics'
-
 end

@@ -8,22 +8,51 @@
 import UIKit
 import ZegoEffects
 
+
+/// Class face beautify
+///
+/// Description: This class contains the face beautification, face shape retouch feature related information.
 enum FaceBeautifyType {
+    /// Skin tone enhancement
     case SkinToneEnhancement
+    
+    /// Skin smoothing
     case SkinSmoothing
+    
+    /// Image sharpening
     case ImageSharpening
+    
+    /// Cheek blusher
     case CheekBlusher
+    
+    /// Eyes enlarging
     case EyesEnlarging
+    
+    /// Face sliming
     case FaceSliming
+    
+    /// Mouth shape adjustment
     case MouthShapeAdjustment
+    
+    /// Eyes brightening
     case EyesBrightening
+    
+    /// Nose sliming
     case NoseSliming
+    
+    /// Chin lengthening
     case ChinLengthening
+    
+    /// Teeth whitening
     case TeethWhitening
 }
 
+/// Class face beautify management
+///
+/// Description: This class contains the enabling/disabling logic, and the parameter setting logic of the face beautify feature.
 class FaceBeautifyService: NSObject {
     
+    /// Class ZegoEffects SDK instances
     lazy var effects: ZegoEffects = {
         return ZegoEffects.create(EffectsLicense.shared.license)
     }()
@@ -40,7 +69,21 @@ class FaceBeautifyService: NSObject {
     let chinLengtheningParam = ZegoEffectsLongChinParam()
     let teethWhiteningParam = ZegoEffectsTeethWhiteningParam()
     
+    /// Set  Effects resource path
+    /// Contact technical support to download the resources that ZegoEffects SDK required, and put the resources you get into your project.
+    /// Call this method at: After initializing the SDK
+    public func setResources(_ resourceInfoList: [String]) {
+        ZegoEffects.setResources(resourceInfoList)
+    }
     
+    /// Enable the face beautify feature (include the face beautification and face shape retouch).
+    ///
+    /// Description: When this method gets called, the captured video streams will be processed before publishing to the remote users.
+    ///
+    /// Call this method at: When joining a room
+    ///
+    /// @param enable determines whether to enable or disable the the face beautify feature.  true: enable.  false: disable.
+    /// @param type refers to the specific face beautify type that has been enabled
     public func enableBeautify(_ enable: Bool, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:
@@ -68,6 +111,15 @@ class FaceBeautifyService: NSObject {
         }
     }
     
+    
+    /// Set the intensity of the specific face beautify feature
+    ///
+    /// Description: After the face beautify feature is enabled, you can specify the parameters to set the intensity of the specific feature as needed.
+    ///
+    /// Call this method at: After enabling the face beautify feature.
+    ///
+    /// @param enable determines whether to enable or disable the the face beautify feature.  true: enable.  false: disable.
+    /// @param type refers to the specific face beautify type that has been enabled 
     public func setBeautifyValue(_ value: Int32, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:

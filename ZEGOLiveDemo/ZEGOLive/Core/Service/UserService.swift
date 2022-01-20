@@ -18,22 +18,68 @@ enum CoHostChangeType {
     case mute
 }
 
+/// The delegate related to the user status callbacks
+///
+/// Description: Callbacks that be triggered when in-room user status change.
 protocol UserServiceDelegate : AnyObject  {
+    
+    /// Callbacks related to the user connection status
+    ///
+    /// Description: This callback will be triggered when user gets disconnected due to network error, or gets offline due to the operations in other clients.
+    ///
+    /// @param state refers to the current connection state.
+    /// @param event refers to the the event that causes the connection status changes.
     func connectionStateChanged(_ state: ZIMConnectionState, _ event: ZIMConnectionEvent)
-    /// receive user join room
+    
+    /// Callback for new user joins the room
+    ///
+    /// Description: This callback will be triggered when a new user joins the room, and all users in the room will receive a notification. The in-room user list data will be updated automatically.
+    ///
+    /// @param userList refers to the latest new-comer user list. Existing users are not included.
     func roomUserJoin(_ users: [UserInfo])
-    /// reveive user leave room
+    
+    /// Callback for existing user leaves the room
+    ///
+    /// Description: This callback will be triggered when an existing user leaves the room, and all users in the room will receive a notification. The in-room user list data will be updated automatically.
+    ///
+    /// @param userList refers to the list of users who left the room.
     func roomUserLeave(_ users: [UserInfo])
-    /// receive custom command: invitation
+    
+    /// Callback for receive a co-host invitation
+    ///
+    /// Description: This callback will be triggered when a participant in the room was invited to co-host by the host.
     func receiveAddCoHostInvitation()
-    /// receive add co-host invitation respond
+    
+    /// Callback for receive the response of a co-host invitation
+    ///
+    /// Description: This callback will be triggered when the host receives the participant's response of the co-host invitation.
+    ///
+    /// @param accept indicates whether the invited participant accept or decline the invitation.
     func receiveAddCoHostRespond(_ userInfo: UserInfo, accept: Bool)
-    /// receive request to co-host request
+    
+    /// Callback for receive a co-host request
+    ///
+    /// Description: This callback will be triggered when the host receive a co-host request sent by a participant in the room.
     func receiveToCoHostRequest(_ userInfo: UserInfo)
-    /// receive cancel request to co-host
+    
+    /// Callback for a co-host request has been canceled
+    ///
+    /// Description: This callback will be triggered and the host will receive a notification through this callback when a participant cancel his co-host request.
     func receiveCancelToCoHostRequest(_ userInfo: UserInfo)
-    /// receive response to request to co-host
+    
+    /// Callback for receive the response of a co-host request
+    ///
+    /// Description: This callback will be triggered and the participant who requested to co-host will receive a notification through this callback when the host responds to the co-host request.
+    ///
+    /// @param agree determines whether to accept or decline the co-host request.
     func receiveToCoHostRespond(_ agree: Bool)
+    
+    /// Callback for co-host status changes
+    ///
+    /// Description: This callback will be triggered and all participants will receive a notification through this callback when the status of a co-host changes.
+    ///
+    /// @param targetUserID refers to the ID of the participant whose status has changed.
+    /// @param type refers to the change type.
     func coHostChange(_ targetUserID: String, type: CoHostChangeType)
 }
 
@@ -49,14 +95,26 @@ extension UserServiceDelegate {
     func coHostChange(_ targetUserID: String, type: CoHostChangeType) { }
 }
 
+
+/// Class user information management
+///
+/// Description: This class contains the user information management logic, such as the logic of log in, log out, get the logged-in user info, get the in-room user list, and add co-hosts, etc.
 class UserService: NSObject {
     // MARK: - Public
+    /// The delegate related to user status
     let delegates = NSHashTable<AnyObject>.weakObjects()
+    
+    /// The local logged-in user information.
     var localUserInfo: UserInfo?
+    
+    /// In-room user list, can be used when displaying the user list in the room.
     var userList = DictionaryArray<String, UserInfo>()
+    
+    /// Co-host list, can be used when display the co-host list in the room.
     var coHostList: [CoHostModel] {
         RoomManager.shared.roomService.operation.coHost
     }
+    
     var requestCoHostList: [String] {
         RoomManager.shared.roomService.operation.requestCoHost
     }
@@ -74,7 +132,15 @@ class UserService: NSObject {
         self.delegates.add(delegate)
     }
     
-    /// user login with user info and `ZIM token`
+    /// User to log in
+    ///
+    /// Description: Call this method with user ID and username to log in to the ZEGO Live service.
+    ///
+    /// Call this method at: After the SDK initialization
+    ///
+    /// @param userInfo refers to the user information. You only need to enter the user ID and username.
+    /// @param token refers to the authentication token. To get this, refer to the documentation: https://docs.zegocloud.com/article/11648
+    /// @param callback refers to the callback for log in.
     func login(_ user: UserInfo, _ token: String, callback: RoomCallback?) {
         
         guard let userID = user.userID else {
@@ -106,14 +172,24 @@ class UserService: NSObject {
         })
     }
     
-    /// user logout
+    /// User to log out
+    ///
+    /// Description: This method can be used to log out from the current user account.
+    ///
+    /// Call this method at: After the user login
     func logout() {
         ZIMManager.shared.zim?.logout()
         RoomManager.shared.logoutRtcRoom(true)
     }
         
-    /// get the number of chat rooms available online
-    func getOnlineRoomUsersNum(callback: OnlineRoomUsersCountCallback?) {
+    /// Get the total number of in-room users
+    ///
+    /// Description: This method can be called to get the total number of the in-room users.
+    ///
+    /// Call this method at: After joining a room
+    ///
+    /// @param callback refers to the callback for get the total number of in-room users.
+    func getOnlineRoomUsersNum(callback: OnlineRoomUsersNumCallback?) {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
@@ -133,8 +209,15 @@ class UserService: NSObject {
         })
     }
     
-    /// get users of target page.
-    func getOnlineRoomUsers(_ nextFlag: String?, callback: OnlineRoomUsersCallback?) {
+    /// Get the in-room user list
+    ///
+    /// Description: This method can be called to get the in-room user list.
+    ///
+    /// Call this method at:  After joining the room
+    ///
+    /// @param nextFlag: Passing a null value, shows the 100 users who joined the room recently by default. Passing in a specific flag, shows the 100 users who joined before that user.
+    /// @param callback refers to the callback for get the in-room user list.
+    func getOnlineRoomUsers(_ nextFlag: String?, callback: OnlineRoomUserListCallback?) {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
             assert(false, "room ID can't be nil")
             guard let callback = callback else { return }
@@ -163,7 +246,15 @@ class UserService: NSObject {
         })
     }
     
-    /// send an invitation message to add co-host
+    /// Make co-hosts
+    ///
+    /// Description: This method can be called to invite an existing participant to co-host, the invited participant will receive a invitation.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param userID refers to the ID of the user that you want to invite to be a co-host.
+    ///
+    /// @param callback refers to the callback for make a co-host.
     func addCoHost(_ userID: String, callback: RoomCallback?) {
         let invitation = CustomCommand(.invitation)
         invitation.targetUserIDs.append(userID)
@@ -190,7 +281,15 @@ class UserService: NSObject {
         })
     }
     
-    /// respond to the co-host invitation
+    /// Respond to the co-host invitation
+    ///
+    /// Description: This method can be used to accept or decline the co-host invitation sent by the host.
+    ///
+    /// Call this method at: After joining a room
+    ///
+    /// @param accept: Pass true or false to accept or decline the invitation.
+    ///
+    /// @param callback refers to the callback for respond to the co-host invitation.
     func respondCoHostInvitation(_ accept: Bool, callback: RoomCallback?) {
         guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
         guard let hostID = RoomManager.shared.roomService.roomInfo.hostID else {
@@ -224,7 +323,13 @@ class UserService: NSObject {
         })
     }
     
-    /// the participant request to host to be a co-host
+    /// Request to co-host
+    ///
+    /// Description: This method can be used to send a co-host request to the host.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param callback refers to the callback for request to co-host.
     func requestToCoHost(callback: RoomCallback?) {
         guard let parameters = getRequestOrCancelToHostParameters(localUserInfo?.userID, isRequest: true) else {
             guard let callback = callback else { return }
@@ -234,9 +339,17 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
+    /// Cancel the co-host request
+    ///
+    /// Description: This method can be used when a participant wants to cancel the co-host request.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param callback refers to the callback for cancel the co-host request.
     func cancelRequestToCoHost(callback: RoomCallback?) {
         cancelRequestToCoHost(localUserInfo?.userID, callback: callback)
     }
+    
     // private method, host can use this method to cancel request
     private func cancelRequestToCoHost(_ userID: String?, callback: RoomCallback?) {
         guard let parameters = getRequestOrCancelToHostParameters(userID, isRequest: false) else {
@@ -247,7 +360,13 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
-    /// the host respond to the participant
+    /// Respond to the co-host request
+    ///
+    /// Description: This method can be called when the host responds to the co-host request sent by participants. The participants can call the takeSeat to be a co-host when the co-host request has been accept.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param callback refers to the callback for respond to the co-host request.
     func respondCoHostRequest(_ agree: Bool, _ userID: String, callback: RoomCallback?) {
         // remove user ID from coHost
         guard let parameters = getRespondCoHostParameters(agree, userID: userID) else {
@@ -258,7 +377,13 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
-    /// take to co-host seat
+    /// Take a co-host seat
+    ///
+    /// Description: This method can be used to take a co-host seat. All participants in the room receive a notification when this gets called. And the number of co-hosts changes, the streams of the participant who just take the seat will be played.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param callback refers to the callback for take a co-host seat.
     func takeSeat(callback: RoomCallback?) {
         
         if coHostList.compactMap({ $0.userID }).contains(localUserInfo?.userID) {
@@ -288,7 +413,13 @@ class UserService: NSObject {
     }
     
     
-    /// leave co-host seat
+    /// Leave a co-host seat
+    ///
+    /// Description: This method can be used to leave the current seat. All participants in the room receive a notification when this gets called, and the UI shows a notification, the streams of the participant who just left the seat will not be played.
+    ///
+    /// Call this method at: After joining a room
+    ///
+    /// @param callback refers to the callback for leave a co-host seat.
     func leaveSeat(callback: RoomCallback?) {
         removeUserFromSeat(localUserInfo?.userID, callback: callback)
     }
@@ -302,7 +433,15 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
         
-    /// prohibit turning on the mic
+    /// Mute co-hosts
+    ///
+    /// Description: This method can be used to mute or unmute a co-host. Once a co-host is muted by the host, he can only speak again until the host's next unmute operation.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param isMute determines whether to mute or unmute a co-host.  true: mute. false: unmute.
+    /// @param userID refers to the ID of the co-host that the host want to mute.
+    /// @param callback refers to the callback for mute a co-host.
     func muteUser(_ isMuted: Bool, userID: String, callback: RoomCallback?) {
         guard let hostID = RoomManager.shared.roomService.roomInfo.hostID,
               let myUserID = localUserInfo?.userID
@@ -329,7 +468,14 @@ class UserService: NSObject {
         setRoomAttributes(parameters.0, parameters.1, parameters.2, callback)
     }
     
-    /// mic operation
+    /// Microphone related operations
+    ///
+    /// Description: This method can be used to turn on/off the microphone. The audio streams will be published to remote users when the microphone is on, and the audio stream publishing stops when the microphone is off. This method will failed to be called when you have been muted.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param open determines whether to turn on or turn off the microphone. true: turn on. false: turn off.
+    /// @param callback refers to the callback for turn on or turn off the microphone.
     func micOperation(_ open: Bool) {
         
         guard let parameters = getSeatChangeParameters(localUserInfo?.userID, enable: open, flag: 0) else {
@@ -353,7 +499,14 @@ class UserService: NSObject {
         }
     }
     
-    /// camera operation
+    /// Camera related operations
+    ///
+    /// Description: This method can be used to turn on/off the camera. The video streams will be published to remote users, and the video stream publishing stops when the camera is turned off.
+    ///
+    /// Call this method at:  After joining a room
+    ///
+    /// @param open determines whether to turn on or turn off the camera. true: turn on. false: turn off.
+    /// @param callback refers to the callback for turn on or turn off the camera.
     func cameraOperation(_ open: Bool) {
         
         guard let parameters = getSeatChangeParameters(localUserInfo?.userID, enable: open, flag: 1) else {

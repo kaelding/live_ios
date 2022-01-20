@@ -7,11 +7,22 @@
 
 import Foundation
 
+
+/// Class co-host seat status information
+///
+/// Description: This class contains the co-host seat status information.
 class CoHostModel : NSObject, Codable {
     
+    /// User ID
     var userID: String = ""
+    
+    /// Indicates whether the user has been muted. Once the participant has been muted, the participant can only keep camera on and send text messages to chat.
     var isMuted: Bool = false
+    
+    /// Indicates the microphone status.
     var mic: Bool = true
+    
+    /// Indicates the camera status.
     var camera: Bool = true
     
     enum CodingKeys: String, CodingKey {

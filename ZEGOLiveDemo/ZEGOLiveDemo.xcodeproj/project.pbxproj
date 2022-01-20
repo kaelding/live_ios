@@ -85,7 +85,6 @@
 		86B6DF9D278854AF0023A898 /* TipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9C278854AF0023A898 /* TipView.xib */; };
 		86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */; };
 		86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */; };
-		86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */; };
 		86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */; };
 		86BD9EB12784428A00DBE379 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB02784428A00DBE379 /* SoundEffectService.swift */; };
 		86BD9EB3278542C500DBE379 /* LiveSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9EB2278542C500DBE379 /* LiveSettingView.swift */; };
@@ -112,7 +111,6 @@
 		8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443C2789868900B86C52 /* UserService+Util.swift */; };
 		8E22443F2789CAE900B86C52 /* UIImage+Zego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */; };
 		8E224441278C61F600B86C52 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E224440278C61F600B86C52 /* WebVC.swift */; };
-		8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */; };
 		8E6022572796A5A500062765 /* EffectBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6022562796A5A500062765 /* EffectBackgroundView.swift */; };
 		8E9F2C24278EDA0F00EE11CE /* CoHostTaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */; };
 		8EA92340277C06D000D0BC2C /* LiveReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */; };
@@ -300,7 +298,6 @@
 		86B6DF9C278854AF0023A898 /* TipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipView.xib; sourceTree = "<group>"; };
 		86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_1.mp3"; sourceTree = "<group>"; };
 		86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_0.mp3"; sourceTree = "<group>"; };
-		86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "liveshow-backgroundMusic_2.mp3"; sourceTree = "<group>"; };
 		86BD9EAE27841D2C00DBE379 /* MusicEffectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEffectsModel.swift; sourceTree = "<group>"; };
 		86BD9EB02784428A00DBE379 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
 		86BD9EB2278542C500DBE379 /* LiveSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingView.swift; sourceTree = "<group>"; };
@@ -327,7 +324,6 @@
 		8E22443C2789868900B86C52 /* UserService+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Util.swift"; sourceTree = "<group>"; };
 		8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Zego.swift"; sourceTree = "<group>"; };
 		8E224440278C61F600B86C52 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
-		8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8E6022562796A5A500062765 /* EffectBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectBackgroundView.swift; sourceTree = "<group>"; };
 		8E9F2C23278EDA0F00EE11CE /* CoHostTaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoHostTaskQueue.swift; sourceTree = "<group>"; };
 		8EA9233E277C06D000D0BC2C /* LiveReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveReadyView.swift; sourceTree = "<group>"; };
@@ -701,7 +697,6 @@
 			children = (
 				86B6DFA0278971720023A898 /* liveshow-backgroundMusic_0.mp3 */,
 				86B6DF9F278971720023A898 /* liveshow-backgroundMusic_1.mp3 */,
-				86B6DFA1278971720023A898 /* liveshow-backgroundMusic_2.mp3 */,
 			);
 			path = MediaResources;
 			sourceTree = SOURCE_ROOT;
@@ -773,13 +768,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8E9F2C20278ED8A200EE11CE /* Extentions */ = {
+		8E9F2C20278ED8A200EE11CE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8E22443E2789CAE900B86C52 /* UIImage+Zego.swift */,
 				869F6D2C2785A3700018788E /* String+Head.swift */,
 			);
-			path = Extentions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8E9F2C22278ED93600EE11CE /* HUD */ = {
@@ -817,11 +812,11 @@
 			isa = PBXGroup;
 			children = (
 				8EE13F29277AEC450038AFCF /* AppDefine.swift */,
-				8E9F2C20278ED8A200EE11CE /* Extentions */,
-				8EE13ED427745B1C0038AFCF /* AppCenter */,
-				8EE13F0C27756D4D0038AFCF /* Helper */,
 				862408482789D2B60010A5EC /* EffectResources */,
 				86B6DF9E278971720023A898 /* MediaResources */,
+				8E9F2C20278ED8A200EE11CE /* Extensions */,
+				8EE13ED427745B1C0038AFCF /* AppCenter */,
+				8EE13F0C27756D4D0038AFCF /* Helper */,
 				8EE13F012774735E0038AFCF /* CorePages */,
 				8677D6BF277C44BE00612058 /* Resource */,
 				8EE13E98277452A80038AFCF /* AppDelegate.swift */,
@@ -830,7 +825,6 @@
 				8EE13EA1277452AA0038AFCF /* Assets.xcassets */,
 				8EE13EA3277452AA0038AFCF /* LaunchScreen.storyboard */,
 				8EE13EA6277452AA0038AFCF /* Info.plist */,
-				8E224444278D7FCE00B86C52 /* GoogleService-Info.plist */,
 			);
 			path = ZEGOLiveDemo;
 			sourceTree = "<group>";
@@ -1071,8 +1065,6 @@
 				86938AD3277DA9B8001DD575 /* FaceBeautifyColletionViewCell.xib in Resources */,
 				8E2244352786C97800B86C52 /* CoHostCell.xib in Resources */,
 				86B6DFA3278971720023A898 /* liveshow-backgroundMusic_0.mp3 in Resources */,
-				86B6DFA4278971720023A898 /* liveshow-backgroundMusic_2.mp3 in Resources */,
-				8E224445278D7FCF00B86C52 /* GoogleService-Info.plist in Resources */,
 				86B6DFA2278971720023A898 /* liveshow-backgroundMusic_1.mp3 in Resources */,
 				869F6D2627859B560018788E /* ParticipantListView.xib in Resources */,
 				869F6D2A27859EC10018788E /* ParticipantTableViewCell.xib in Resources */,

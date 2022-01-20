@@ -8,19 +8,63 @@
 import Foundation
 
 typealias ZegoResult = Result<Void, ZegoError>
-/// common room callback
+
+/// Callback methods
+///
+/// Description: When the called method is asynchronous processing, If you are making and processing asynchronous calls,
+/// the following callbacks will be triggered when a method has finished its execution and returns the execution result.
+///
+/// @param error refers to the operation status code.
+///            0: Operation successful.
+///            100xxxx: The Express SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/5547
+///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/13791
 typealias RoomCallback = (ZegoResult) -> Void
 
-/// online room users count callback
-typealias OnlineRoomUsersCountCallback = (Result<UInt32, ZegoError>) -> Void
 
-/// online room users callback
-typealias OnlineRoomUsersCallback = (Result<[UserInfo], ZegoError>) -> Void
+/// Callback for get the user list
+///
+/// Description: This callback will be triggered when the method call that get the user list has finished its execution.
+///
+/// @param error refers to the operation status code.
+///            0: Operation successful.
+///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/13791
+///
+/// @param userList refers to the in-room user list.
+typealias OnlineRoomUsersNumCallback = (Result<UInt32, ZegoError>) -> Void
 
-/// room list callback
+
+/// Callback for get the user list
+///
+/// Description: This callback will be triggered when the method call that get the user list has finished its execution.
+///
+/// @param error refers to the operation status code.
+///            0: Operation successful.
+///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/13791
+///
+/// @param userList refers to the in-room user list.
+typealias OnlineRoomUserListCallback = (Result<[UserInfo], ZegoError>) -> Void
+
+
+/// Callback for get the room list
+///
+/// Description: This callback will be triggered when the method call that get the room list has finished its execution.
+///
+/// @param error refers to the operation status code.
+///            0: Operation successful.
+///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://doc-zh.zego.im/article/11605
+///
+/// @param roomList refers to the room list.
 typealias RoomListCallback = (Result<[RoomInfo], ZegoError>) -> Void
 
-/// create room callback
+
+/// Callback for create a room
+///
+/// Description: This callback will be triggered when the method call that create a room has finished its execution.
+///
+/// @param error refers to the operation status code.
+///            0: Operation successful.
+///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation.  [iOS]: https://doc-zh.zego.im/article/11605
+/// @param roomInfo refers to the room information.
 typealias CreateRoomCallback = (Result<RoomInfo, ZegoError>) -> Void
 
 /// max seat count (contains host)

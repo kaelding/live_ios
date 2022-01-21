@@ -68,23 +68,23 @@ Directory path:
 {your_project_root_path}/live_ios/ZEGOLiveDemo/ZEGOLive
 ```
 
-```
+```tex
 .
 ├── Core
-│   ├── Define.swift											  --- Common definitions and error codes of ZEGOLive.
-│   ├── Extensions												  --- Service related extensions 
+│   ├── Define.swift                     --- Common definitions and error codes of ZEGOLive.
+│   ├── Extensions                       --- Service related extensions 
 │   ├── Manager
-│   │   ├── RoomManager.swift						    --- Room related instances that used to initialize the SDK, and provide the capabilities for service implementation.
-│   │   └── ZIMManager.swift        			  --- The ZIM instances for the SDK use.
-│   ├── Model														    --- Models, such as UserInfo, RoomInfo, and more.
+│   │   ├── RoomManager.swift            --- Room related instances that used to initialize the SDK, and provide the capabilities for service implementation.
+│   │   └── ZIMManager.swift             --- The ZIM instances for the SDK use.
+│   ├── Model                            --- Models, such as UserInfo, RoomInfo, and more.
 │   └── Service										
-│       ├── DeviceService.swift							--- Streaming and device related service, such as stream publishing, playing and configure audio and video settings.
-│       ├── FaceBeautifyService.swift			  --- Face beautify service
-│       ├── MessageService.swift						--- Real-time messaging service
-│       ├── RoomListService.swift						--- Business server related sercice, such as room list updates, in-room heartbeat and more.
-│       ├── RoomService.swift							  --- Room related service, such as join/leave a room, update room information, and more.
-│       ├── SoundEffectService.swift			  --- Sound effects service
-│       └── UserService.swift								--- User related service, such as take/leave a seat, turn on/off the microphone/camera, make co-host, and more.
+│       ├── DeviceService.swift          --- Streaming and device related service, such as stream publishing, playing and configure audio and video settings.
+│       ├── FaceBeautifyService.swift    --- Face beautify service
+│       ├── MessageService.swift         --- Real-time messaging service
+│       ├── RoomListService.swift        --- Business server related sercice, such as room list updates, in-room heartbeat and more.
+│       ├── RoomService.swift            --- Room related service, such as join/leave a room, update room information, and more.
+│       ├── SoundEffectService.swift     --- Sound effects service
+│       └── UserService.swift            --- User related service, such as take/leave a seat, turn on/off the microphone/camera, make co-host, and more.
 ├── Network
 ├── Request
 └── Tool
@@ -102,21 +102,21 @@ Directory path:
 {your_project_root_path}/live_ios/ZEGOLiveDemo/ZEGOLiveDemo
 ```
 
-```
+```tex
 .
-├── AppCenter													   		--- AppID, AppSign,ServerSecret and more
-├── Assets.xcassets													--- Images, colors, and more resources
-├── CorePages														 		--- UI and business logic of core features 
-│   ├── Home														  	--- Homepage
-│   ├── IM																	--- Instant messaging (IM)
-│   ├── Login														  	--- Login
-│   ├── MusicEffects												--- Sound effects
-│   ├── Room														 		--- Live room related
-│   ├── RoomList												  	--- Room list 
-│   ├── Settings														--- The Settings page
-├── Extensions															--- Class extensions
-├── Helper															  	--- Utilities
-├── Resource														  	--- Resource files, including language file and more
+├── AppCenter           --- AppID, AppSign,ServerSecret and more
+├── Assets.xcassets     --- Images, colors, and more resources
+├── CorePages           --- UI and business logic of core features 
+│   ├── Home            --- Homepage
+│   ├── IM              --- Instant messaging (IM)
+│   ├── Login           --- Login
+│   ├── MusicEffects    --- Sound effects
+│   ├── Room            --- Live room related
+│   ├── RoomList        --- Room list 
+│   ├── Settings        --- The Settings page
+├── Extensions          --- Class extensions
+├── Helper              --- Utilities
+├── Resource            --- Resource files, including language file and more
 ```
 
 

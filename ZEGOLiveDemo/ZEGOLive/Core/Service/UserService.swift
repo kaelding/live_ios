@@ -215,7 +215,7 @@ class UserService: NSObject {
     ///
     /// Call this method at:  After joining the room
     ///
-    /// @param nextFlag: Passing a null value, shows the 100 users who joined the room recently by default. Passing in a specific flag, shows the 100 users who joined before that user.
+    /// @param nextFlag: Passing a null value to nextFlag will get the 100 people who recently joined the room. Passing in the nextFlag value returned from the last query retrieves the list of users since the last query.
     /// @param callback refers to the callback for get the in-room user list.
     func getOnlineRoomUsers(_ nextFlag: String?, callback: OnlineRoomUserListCallback?) {
         guard let roomID = RoomManager.shared.roomService.roomInfo.roomID else {
@@ -242,7 +242,8 @@ class UserService: NSObject {
                 users.append(user)
             }
             guard let callback = callback else { return }
-            callback(.success(users))
+            let ret = UserListResult(users: users, nextFlag: nextFlag)
+            callback(.success(ret))
         })
     }
     

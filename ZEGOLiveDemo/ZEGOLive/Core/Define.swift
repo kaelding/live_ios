@@ -21,18 +21,25 @@ typealias ZegoResult = Result<Void, ZegoError>
 typealias RoomCallback = (ZegoResult) -> Void
 
 
-/// Callback for get the user list
+/// Get the total number of in-room users
 ///
-/// Description: This callback will be triggered when the method call that get the user list has finished its execution.
+/// Description: This method can be called to get the total number of the in-room users.
 ///
-/// @param error refers to the operation status code.
-///            0: Operation successful.
-///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/13791
+/// Call this method at: After joining a room
 ///
-/// @param userList refers to the in-room user list.
+/// @param callback refers to the callback for get the total number of in-room users.
 typealias OnlineRoomUsersNumCallback = (Result<UInt32, ZegoError>) -> Void
 
 
+struct UserListResult {
+    /// user list
+    var users: [UserInfo] = []
+    
+    /// nextFlag can be used to query the flags of the next page's user list.
+    /// Passing this parameter when calling the `getOnlineRoomUsers` will continue the query from where it was last queried.
+    var nextFlag: String = ""
+}
+
 /// Callback for get the user list
 ///
 /// Description: This callback will be triggered when the method call that get the user list has finished its execution.
@@ -41,8 +48,8 @@ typealias OnlineRoomUsersNumCallback = (Result<UInt32, ZegoError>) -> Void
 ///            0: Operation successful.
 ///            600xxxx: The ZIM SDK error code. For details, refer to the error code documentation. [iOS]: https://docs.zegocloud.com/article/13791
 ///
-/// @param userList refers to the in-room user list.
-typealias OnlineRoomUserListCallback = (Result<[UserInfo], ZegoError>) -> Void
+/// @param userList refers to the in-room user list and nextFlag
+typealias OnlineRoomUserListCallback = (Result<UserListResult, ZegoError>) -> Void
 
 
 /// Callback for get the room list

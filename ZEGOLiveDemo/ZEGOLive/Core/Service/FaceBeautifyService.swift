@@ -118,8 +118,8 @@ class FaceBeautifyService: NSObject {
     ///
     /// Call this method at: After enabling the face beautify feature.
     ///
-    /// @param enable determines whether to enable or disable the the face beautify feature.  true: enable.  false: disable.
-    /// @param type refers to the specific face beautify type that has been enabled 
+    /// @param value: refers to the range value of the specific face beautification feature or face shape retouch feature.
+    /// @param type: refers to the specific face beautification feature or face shape retouch feature.
     public func setBeautifyValue(_ value: Int32, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:

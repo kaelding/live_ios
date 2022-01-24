@@ -50,11 +50,13 @@ class HomeVC: UIViewController {
     // MARK: - Action
     
     @IBAction func moreButtonClick(_ sender: UIButton) {
-        
+        guard let url = URL(string: "https://www.zegocloud.com/") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func signUpButtonClick(_ sender: UIButton) {
-        
+        guard let url = URL(string: "https://www.zegocloud.com/account/signup") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func contactButtonClick(_ sender: UIButton) {

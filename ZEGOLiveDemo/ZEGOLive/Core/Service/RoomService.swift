@@ -107,11 +107,11 @@ class RoomService: NSObject {
                 return
             }
             RoomManager.shared.roomService.roomInfo.roomID = fullRoomInfo.baseInfo.roomID
+            RoomManager.shared.loginRtcRoom(with: token)
             RoomManager.shared.roomService.getRoomStatus { result in
                 guard let callback = callback else { return }
                 switch result {
                 case .success():
-                    RoomManager.shared.loginRtcRoom(with: roomID)
                     callback(.success(()))
                 case .failure(let error):
                     callback(.failure(error))

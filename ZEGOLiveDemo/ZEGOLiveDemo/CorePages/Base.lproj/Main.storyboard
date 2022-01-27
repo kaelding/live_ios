@@ -89,7 +89,6 @@
                                 <state key="normal" title="Sign Up" image="home_login_icon"/>
                                 <connections>
                                     <action selector="signUpButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chT-Ag-wgl"/>
-                                    <segue destination="hwV-1h-FSU" kind="show" identifier="pushToSignup" id="wpm-X2-vy8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-vi-UXi">
@@ -104,7 +103,6 @@
                                 <state key="normal" title="Get more..."/>
                                 <connections>
                                     <action selector="moreButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXJ-3i-FAB"/>
-                                    <segue destination="hwV-1h-FSU" kind="show" identifier="pushToMore" id="AE5-r1-e6H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm8-sO-fxi">
@@ -686,9 +684,6 @@ please create a live room~</string>
             <point key="canvasLocation" x="861" y="745"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wpm-X2-vy8"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="375" height="667"/>
         <image name="create_flip" width="44" height="44"/>

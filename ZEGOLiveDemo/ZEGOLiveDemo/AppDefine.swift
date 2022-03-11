@@ -15,3 +15,5 @@ func KeyWindow() -> UIWindow {
     let window: UIWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).last!
     return window
 }
+
+let ProcyAgreeStatus = "procyAgreeStatus"

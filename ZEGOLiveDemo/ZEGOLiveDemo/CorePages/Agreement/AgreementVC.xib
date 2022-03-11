@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgreementVC" customModule="ZEGOLiveDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="agreeButton" destination="9zY-PZ-C48" id="d7t-1R-DHp"/>
+                <outlet property="disagreeButton" destination="arK-4e-K8J" id="AKc-um-ymY"/>
+                <outlet property="textView" destination="bwR-7h-VjM" id="BTN-Lz-nLm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="Rdp-Xe-h5d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bwR-7h-VjM">
+                    <rect key="frame" x="22.5" y="60" width="369" height="667"/>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arK-4e-K8J">
+                    <rect key="frame" x="22.5" y="770" width="156" height="44"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="156" id="qby-YP-BKY"/>
+                        <constraint firstAttribute="height" constant="44" id="wDh-UK-dbb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Disagree">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="disAgreement:" destination="-1" eventType="touchUpInside" id="hJj-GT-tLx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zY-PZ-C48">
+                    <rect key="frame" x="235.5" y="770" width="156" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="156" id="9Nw-4L-B87"/>
+                        <constraint firstAttribute="height" constant="44" id="TlL-Ev-k6u"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Agree"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="agreeClick:" destination="-1" eventType="touchUpInside" id="t9N-dc-d2W"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.10196078431372549" green="0.090196078431372548" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="bwR-7h-VjM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22.5" id="573-0l-vZU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9zY-PZ-C48" secondAttribute="bottom" constant="48" id="5P1-8z-Yad"/>
+                <constraint firstItem="arK-4e-K8J" firstAttribute="top" secondItem="bwR-7h-VjM" secondAttribute="bottom" constant="43" id="9Gp-FH-v2P"/>
+                <constraint firstItem="bwR-7h-VjM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="D0O-0T-iuG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="arK-4e-K8J" secondAttribute="bottom" constant="48" id="LNi-1E-2N1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9zY-PZ-C48" secondAttribute="trailing" constant="22.5" id="YCx-sV-3Sc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bwR-7h-VjM" secondAttribute="trailing" constant="22.5" id="aFB-RJ-G20"/>
+                <constraint firstItem="arK-4e-K8J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22.5" id="kZv-dv-nZF"/>
+            </constraints>
+            <point key="canvasLocation" x="-54" y="5"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

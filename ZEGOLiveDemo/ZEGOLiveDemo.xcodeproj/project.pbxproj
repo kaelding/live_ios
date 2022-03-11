@@ -100,6 +100,8 @@
 		86BD9ED027869CD600DBE379 /* SettingSecondLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ECE27869CD600DBE379 /* SettingSecondLevelCell.swift */; };
 		86BD9ED127869CD600DBE379 /* SettingSecondLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9ECF27869CD600DBE379 /* SettingSecondLevelCell.xib */; };
 		86BD9ED327869E4F00DBE379 /* LiveSettingSecondLevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */; };
+		86CAD95D27D8A92D00889C26 /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAD95B27D8A92C00889C26 /* AgreementVC.swift */; };
+		86CAD95E27D8A92D00889C26 /* AgreementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CAD95C27D8A92C00889C26 /* AgreementVC.xib */; };
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
@@ -313,6 +315,8 @@
 		86BD9ECE27869CD600DBE379 /* SettingSecondLevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSecondLevelCell.swift; sourceTree = "<group>"; };
 		86BD9ECF27869CD600DBE379 /* SettingSecondLevelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSecondLevelCell.xib; sourceTree = "<group>"; };
 		86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingSecondLevelModel.swift; sourceTree = "<group>"; };
+		86CAD95B27D8A92C00889C26 /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
+		86CAD95C27D8A92C00889C26 /* AgreementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementVC.xib; sourceTree = "<group>"; };
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
@@ -723,6 +727,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		86CAD95A27D8A8FA00889C26 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				86CAD95B27D8A92C00889C26 /* AgreementVC.swift */,
+				86CAD95C27D8A92C00889C26 /* AgreementVC.xib */,
+			);
+			path = Agreement;
+			sourceTree = "<group>";
+		};
 		8E0F63B3277B19620070E750 /* Room */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +901,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE13E9E277452A80038AFCF /* Main.storyboard */,
+				86CAD95A27D8A8FA00889C26 /* Agreement */,
 				869DA74C277D9D32003E6061 /* MusicEffects */,
 				8E0F63B3277B19620070E750 /* Room */,
 				8EE13F22277ABF8D0038AFCF /* Settings */,
@@ -1082,6 +1096,7 @@
 				8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */,
 				8624088F2789D2B60010A5EC /* TeethWhiteningResources.bundle in Resources */,
 				864B3EE6277EE8AF00699B69 /* BGMCollectionViewCell.xib in Resources */,
+				86CAD95E27D8A92D00889C26 /* AgreementVC.xib in Resources */,
 				862408B92789D6DE0010A5EC /* SegmentationModel.model in Resources */,
 				8677D6C3277C44BE00612058 /* Room.strings in Resources */,
 				8EE13EA2277452AA0038AFCF /* Assets.xcassets in Resources */,
@@ -1206,6 +1221,7 @@
 				8E22443D2789868900B86C52 /* UserService+Util.swift in Sources */,
 				86A8A2162779BE02002A7658 /* RoomListRequest.swift in Sources */,
 				86A8A2142779BCE6002A7658 /* RequestMananger.swift in Sources */,
+				86CAD95D27D8A92D00889C26 /* AgreementVC.swift in Sources */,
 				86938AE82784323A001DD575 /* MessageCell.swift in Sources */,
 				8EE13E9B277452A80038AFCF /* SceneDelegate.swift in Sources */,
 				86BD9EAF27841D2C00DBE379 /* MusicEffectsModel.swift in Sources */,

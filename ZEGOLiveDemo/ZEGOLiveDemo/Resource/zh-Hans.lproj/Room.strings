@@ -150,3 +150,14 @@ Copyright © 2020 Shenzhen Zego Technology Company Limited. All rights reserved.
 "setting_page_terms_of_service" = "服务条款";
 "setting_page_privacy_policy" = "隐私政策";
 "room_online_name" = "在线";
+
+"policy_notice_name" = "政策通知";
+"policy_notice_message" = "ZEGOLive APP(由即构科技开发)理解您个人隐私信息的重要性，将尽一切努力保护您的个人隐私信息。请仔细阅读政策隐私和服务条款，并确保您了解我们对个人隐私信息的处理规则。\n\n如果您同意，请点击“同意使用ZEGOLive APP”。";
+"policy_notice_Disagree" = "不同意";
+"policy_notice_Agree" = "同意";
+"policy_notice_alter_title" = "政策通知";
+"policy_notice_alter_message" = "为了继续使用ZEGO Live，您必须同意隐私政策和服务条款";
+"policy_notice_alter_agree" = "同意继续";
+"policy_notice_alter_quit" = "退出";
+"policy_privacy_name" = "政策隐私";
+"terms_of_service" = "服务条款";

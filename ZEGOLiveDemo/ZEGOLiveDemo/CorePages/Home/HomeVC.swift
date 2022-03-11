@@ -44,17 +44,33 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showPolicyNotice()
+    }
+    
+    func showPolicyNotice() {
+        let isAgree: Bool = UserDefaults.standard.bool(forKey: ProcyAgreeStatus)
+        if !isAgree {
+            let vc: AgreementVC = AgreementVC(nibName :"AgreementVC",bundle : nil)
+            let nav: UINavigationController = UINavigationController.init(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Action
     
     @IBAction func moreButtonClick(_ sender: UIButton) {
-        
+        guard let url = URL(string: "https://www.zegocloud.com/") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func signUpButtonClick(_ sender: UIButton) {
-        
+        guard let url = URL(string: "https://www.zegocloud.com/account/signup") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func contactButtonClick(_ sender: UIButton) {

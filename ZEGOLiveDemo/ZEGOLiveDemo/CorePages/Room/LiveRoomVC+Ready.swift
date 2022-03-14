@@ -76,8 +76,8 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     }
     
     func createRTCRoomWith(roomID: String, roomName: String) {
-        
-        let rtcToken = AppToken.getRtcToken(withRoomID: roomID) ?? ""
+        guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
+        let rtcToken = AppToken.getToken(withUserID: userID) ?? ""
         RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { [self] result in
             HUDHelper.hideNetworkLoading()
             self.addDelegates()

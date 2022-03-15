@@ -65,7 +65,6 @@ class RoomManager: NSObject {
     /// Call this method at: Before you log in. We recommend you call this method when the application starts.
     ///
     /// @param appID refers to the project ID. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com/
-    /// @param appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
     func initWithAppID(appID: UInt32, callback: RoomCallback?) {
         ZIMManager.shared.createZIM(appID: appID)
         let profile = ZegoEngineProfile()
@@ -73,7 +72,8 @@ class RoomManager: NSObject {
         profile.scenario = .general
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
         
-        EffectsLicense.shared.getLicense(appID, appSign: "cc96bc01d32549ec5f03218aa0a142056ce5206e715c3fdbf9e92dbf62e4d6c1")
+        //appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
+        EffectsLicense.shared.getLicense(appID, appSign: YOUR_APP_SIGN)
                 
         let processConfig = ZegoCustomVideoProcessConfig()
         processConfig.bufferType = .cvPixelBuffer

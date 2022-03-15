@@ -27,7 +27,8 @@ Before getting started with the ZEGO Live application, **contact us to activate 
 ### Modify the project configurations
 
 1. For macOs, open Terminal, navigate to the `live_audio_room_ios` folder where the `configure.sh` is located. 
-2. Run the configuration script with the `./configure.sh` command. And fill in the AppID ，AppSign (you need appSign, you can contact us)  and ServerSecret, which can be obtained in the [ZEGO Admin Console](https://console.zegocloud.com/).  
+
+2. Run the configuration script with the `./configure.sh` command. And fill in the AppID ，AppSign (Contact us to get the appSign)  and ServerSecret, which can be obtained in the [ZEGO Admin Console](https://console.zegocloud.com/). 
    <img width="700px" src="images/configure_ios.png"/>
 
 3. Open the `ZEGOLiveDemo.xcworkspace` in Xcode.
@@ -41,7 +42,9 @@ Before getting started with the ZEGO Live application, **contact us to activate 
    <img width="700px" src="images/team.png"/>
 
 6. Create a `live_ios/ZEGOLiveDemo/Lib` folder and `live_ios/ZEGOLiveDemo/EffectResources` folder if you have not done so.
+
 7. Copy the `ZegoEffects.xcframework` to the `live_ios/ZEGOLiveDemo/Lib` folder.
+
 8. Add the resources and models that the ZegoEffectsSDK required into the `live_ios/ZEGOLiveDemo/EffectResources` folder.
 
 ### Run the sample code

@@ -131,7 +131,8 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         guard let roomInfo = cell.roomInfo else { return }
         guard let roomID = roomInfo.roomID else { return }
         
-        let rtcToken = AppToken.getRtcToken(withRoomID: roomID) ?? ""
+        guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
+        let rtcToken = AppToken.getToken(withUserID: userID) ?? ""
         
         RoomManager.shared.roomService.joinRoom(roomID, rtcToken) { result in
             switch result {

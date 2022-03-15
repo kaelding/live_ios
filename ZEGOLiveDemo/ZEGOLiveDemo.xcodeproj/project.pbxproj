@@ -102,7 +102,6 @@
 		86BD9ED327869E4F00DBE379 /* LiveSettingSecondLevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */; };
 		86CAD95D27D8A92D00889C26 /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAD95B27D8A92C00889C26 /* AgreementVC.swift */; };
 		86CAD95E27D8A92D00889C26 /* AgreementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CAD95C27D8A92C00889C26 /* AgreementVC.xib */; };
-		86ECE30827E035FA00279711 /* AppSignKeyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECE30727E035FA00279711 /* AppSignKeyFile.swift */; };
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
@@ -318,7 +317,6 @@
 		86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingSecondLevelModel.swift; sourceTree = "<group>"; };
 		86CAD95B27D8A92C00889C26 /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
 		86CAD95C27D8A92C00889C26 /* AgreementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementVC.xib; sourceTree = "<group>"; };
-		86ECE30727E035FA00279711 /* AppSignKeyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSignKeyFile.swift; sourceTree = "<group>"; };
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
@@ -949,7 +947,6 @@
 			isa = PBXGroup;
 			children = (
 				8EE13EE027745B810038AFCF /* Define.swift */,
-				86ECE30727E035FA00279711 /* AppSignKeyFile.swift */,
 				8EE13F1B2779695A0038AFCF /* Extensions */,
 				8EE13EE127745B810038AFCF /* Model */,
 				8EE13F172777703B0038AFCF /* Manager */,
@@ -1213,7 +1210,6 @@
 				86A8A21C2779EA21002A7658 /* EndRoomRequest.swift in Sources */,
 				8EA9234D277C655300D0BC2C /* LiveRoomVC+Top.swift in Sources */,
 				8EE13EF827745B810038AFCF /* RoomManager.swift in Sources */,
-				86ECE30827E035FA00279711 /* AppSignKeyFile.swift in Sources */,
 				8EE13E99277452A80038AFCF /* AppDelegate.swift in Sources */,
 				8677D6C5277C499400612058 /* FaceBeautifyService.swift in Sources */,
 				86938B402784772C001DD575 /* Base64.cc in Sources */,

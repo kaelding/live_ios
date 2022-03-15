@@ -73,7 +73,7 @@ class RoomManager: NSObject {
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
         
         //appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
-        EffectsLicense.shared.getLicense(appID, appSign: YOUR_APP_SIGN)
+        EffectsLicense.shared.getLicense(appID, appSign: <#YOUR_APP_SIGN#>)
                 
         let processConfig = ZegoCustomVideoProcessConfig()
         processConfig.bufferType = .cvPixelBuffer

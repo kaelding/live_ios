@@ -19,6 +19,14 @@ struct AppCenter {
         return 0
     }
     
+    static func appSign() -> String {
+        if let dict = getJsonDictionary() {
+            let appSign = dict["appSign"] as! String
+            return appSign
+        }
+        return ""
+    }
+    
     static func serverSecret() -> String {
         if let dict = getJsonDictionary() {
             let appSecret = dict["serverSecret"] as! String

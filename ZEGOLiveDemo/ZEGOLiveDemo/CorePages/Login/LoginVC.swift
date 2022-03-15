@@ -134,7 +134,7 @@ class LoginVC: UIViewController {
             return
         }
                 
-        let token: String = AppToken.getZIMToken(withUserID: userInfo.userID) ?? ""
+        let token: String = AppToken.getToken(withUserID: userInfo.userID) ?? ""
         HUDHelper.showNetworkLoading()
         RoomManager.shared.userService.login(userInfo, token) { result in
             HUDHelper.hideNetworkLoading()

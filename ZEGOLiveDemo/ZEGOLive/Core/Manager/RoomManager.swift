@@ -226,6 +226,12 @@ extension RoomManager: ZegoEventHandler {
             delegate.onNetworkQuality?(userID, upstreamQuality: upstreamQuality, downstreamQuality: downstreamQuality)
         }
     }
+    
+    func onRoomTokenWillExpire(_ remainTimeInSecond: Int32, roomID: String) {
+        for delegate in rtcEventDelegates.allObjects {
+            delegate.onRoomTokenWillExpire?(remainTimeInSecond, roomID: roomID)
+        }
+    }
 }
 
 extension RoomManager: ZIMEventHandler {

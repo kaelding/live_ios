@@ -102,6 +102,7 @@
 		86BD9ED327869E4F00DBE379 /* LiveSettingSecondLevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */; };
 		86CAD95D27D8A92D00889C26 /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAD95B27D8A92C00889C26 /* AgreementVC.swift */; };
 		86CAD95E27D8A92D00889C26 /* AgreementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CAD95C27D8A92C00889C26 /* AgreementVC.xib */; };
+		86D4184A28016908002B0C8D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4184928016908002B0C8D /* TokenManager.swift */; };
 		8E0F63B5277B19770070E750 /* LiveRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B4277B19770070E750 /* LiveRoomVC.swift */; };
 		8E0F63B8277B3FEF0070E750 /* LiveBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */; };
 		8E0F63BA277B40100070E750 /* LiveBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F63B9277B40100070E750 /* LiveBottomView.swift */; };
@@ -317,6 +318,7 @@
 		86BD9ED227869E4F00DBE379 /* LiveSettingSecondLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettingSecondLevelModel.swift; sourceTree = "<group>"; };
 		86CAD95B27D8A92C00889C26 /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
 		86CAD95C27D8A92C00889C26 /* AgreementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementVC.xib; sourceTree = "<group>"; };
+		86D4184928016908002B0C8D /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		8E0F63B4277B19770070E750 /* LiveRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRoomVC.swift; sourceTree = "<group>"; };
 		8E0F63B7277B3FEF0070E750 /* LiveBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBottomView.xib; sourceTree = "<group>"; };
 		8E0F63B9277B40100070E750 /* LiveBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBottomView.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 		86938AED2784772C001DD575 /* Token */ = {
 			isa = PBXGroup;
 			children = (
+				86D4184928016908002B0C8D /* TokenManager.swift */,
 				86938AEA2784772C001DD575 /* AppToken.swift */,
 				86938AEE2784772C001DD575 /* ZegoToken.mm */,
 				86938AEF2784772C001DD575 /* ZegoToken.h */,
@@ -1192,6 +1195,7 @@
 				86BD9EBD27854C6100DBE379 /* SettingParamDisplayCell.swift in Sources */,
 				86BD9EB927854A9100DBE379 /* SettingSwitchCell.swift in Sources */,
 				864B3EE5277EE8AF00699B69 /* BGMCollectionViewCell.swift in Sources */,
+				86D4184A28016908002B0C8D /* TokenManager.swift in Sources */,
 				860E11772786CDB8008847C4 /* LiveRoomVC+Setting.swift in Sources */,
 				8EE13E9D277452A80038AFCF /* HomeVC.swift in Sources */,
 				8E2244312786A13500B86C52 /* CoHostCell.swift in Sources */,

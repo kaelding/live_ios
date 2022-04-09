@@ -132,16 +132,26 @@ extension RoomListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         guard let roomID = roomInfo.roomID else { return }
         
         guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
-        let rtcToken = AppToken.getToken(withUserID: userID) ?? ""
-        
-        RoomManager.shared.roomService.joinRoom(roomID, rtcToken) { result in
-            switch result {
-            case .success:
-                self.joinLiveRoom()
-                RoomManager.shared.roomListService.joinServerRoom(roomID, callback: nil)
-            case .failure(let error):
-                let message = String(format: ZGLocalizedString("toast_join_room_fail"), error.code)
-                TipView.showWarn(message)
+        TokenManager.shared.getToken(userID) { result in
+            if result.isSuccess {
+                let rtcToken: String? = result.success
+                guard let rtcToken = rtcToken else {
+                    print("token is nil")
+                    HUDHelper.hideNetworkLoading()
+                    return
+                }
+                RoomManager.shared.roomService.joinRoom(roomID, rtcToken) { result in
+                    switch result {
+                    case .success:
+                        self.joinLiveRoom()
+                        RoomManager.shared.roomListService.joinServerRoom(roomID, callback: nil)
+                    case .failure(let error):
+                        let message = String(format: ZGLocalizedString("toast_join_room_fail"), error.code)
+                        TipView.showWarn(message)
+                    }
+                }
+            } else {
+                HUDHelper.showMessage(message: "get token fail")
             }
         }
     }
@@ -176,6 +186,7 @@ extension RoomListVC : UserServiceDelegate {
             logout()
         }
     }
+    
     
     private func logout() {
         RoomManager.shared.userService.logout()

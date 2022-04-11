@@ -77,25 +77,36 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     
     func createRTCRoomWith(roomID: String, roomName: String) {
         guard let userID = RoomManager.shared.userService.localUserInfo?.userID else { return }
-        let rtcToken = AppToken.getToken(withUserID: userID) ?? ""
-        RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { [self] result in
-            HUDHelper.hideNetworkLoading()
-            self.addDelegates()
-            switch result {
-            case .success():
-                self.isLiving = true
-                self.joinServerRoom()
-                self.updateStartView()
-                self.updateTopView()
-                self.addLocalJoinMessage()
-                RoomManager.shared.userService.takeSeat { result in
-                    
+        TokenManager.shared.getToken(userID) { result in
+            if result.isSuccess {
+                let rtcToken: String? = result.success
+                guard let rtcToken = rtcToken else {
+                    print("token is nil")
+                    HUDHelper.hideNetworkLoading()
+                    return
                 }
-                break
-            case .failure(let error):
-                let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
-                TipView.showWarn(message)
-                break
+                RoomManager.shared.roomService.createRoom(roomID, roomName, rtcToken) { [self] result in
+                    HUDHelper.hideNetworkLoading()
+                    self.addDelegates()
+                    switch result {
+                    case .success():
+                        self.isLiving = true
+                        self.joinServerRoom()
+                        self.updateStartView()
+                        self.updateTopView()
+                        self.addLocalJoinMessage()
+                        RoomManager.shared.userService.takeSeat { result in
+                            
+                        }
+                        break
+                    case .failure(let error):
+                        let message = String(format: ZGLocalizedString("toast_create_room_fail"), error.code)
+                        TipView.showWarn(message)
+                        break
+                    }
+                }
+            } else {
+                HUDHelper.showMessage(message: "get token fail")
             }
         }
     }

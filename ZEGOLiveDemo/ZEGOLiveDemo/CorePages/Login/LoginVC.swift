@@ -134,8 +134,28 @@ class LoginVC: UIViewController {
             return
         }
                 
-        let token: String = AppToken.getToken(withUserID: userInfo.userID) ?? ""
         HUDHelper.showNetworkLoading()
+        TokenManager.shared.getToken(myUserID, isForceUpdate: true) { result in
+            if result.isSuccess {
+                let token: String? = result.success
+                guard let token = token else {
+                    HUDHelper.hideNetworkLoading()
+                    print("token is nil")
+                    return
+                }
+                self.startLogin(userInfo, token)
+            } else {
+                HUDHelper.showMessage(message: "get token fail")
+            }
+        }
+    }
+    
+    
+    @IBAction func popFromSettingsVC(_ segue: UIStoryboardSegue) {
+        print("pop from settings vc.")
+    }
+    
+    func startLogin(_ userInfo: UserInfo, _ token: String) {
         RoomManager.shared.userService.login(userInfo, token) { result in
             HUDHelper.hideNetworkLoading()
             switch result {
@@ -149,11 +169,6 @@ class LoginVC: UIViewController {
                 break
             }
         }
-    }
-    
-    
-    @IBAction func popFromSettingsVC(_ segue: UIStoryboardSegue) {
-        print("pop from settings vc.")
     }
     
     

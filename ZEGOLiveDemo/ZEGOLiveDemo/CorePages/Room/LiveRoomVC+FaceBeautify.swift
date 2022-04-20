@@ -9,7 +9,7 @@ import Foundation
 
 extension LiveRoomVC: FaceBeautifyViewDelegate {
     func configFaceBeautify() {
-        let beautifyArray: Array<FaceBeautifyType> = [.SkinToneEnhancement, .SkinSmoothing, .ImageSharpening, .CheekBlusher, .EyesEnlarging, .FaceSliming, .MouthShapeAdjustment, .EyesBrightening, .NoseSliming, .ChinLengthening, .TeethWhitening]
+        let beautifyArray: Array<FaceBeautifyType> = [.SkinToneEnhancement, .SkinSmoothing, .ImageSharpening, .CheekBlusher, .EyesEnlarging, .FaceSlimming, .MouthShapeAdjustment, .EyesBrightening, .NoseSlimming, .ChinLengthening, .TeethWhitening]
         for type in beautifyArray {
             RoomManager.shared.beautifyService.enableBeautify(true, type: type)
         }

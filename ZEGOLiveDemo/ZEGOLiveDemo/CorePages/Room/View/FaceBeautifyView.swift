@@ -88,9 +88,9 @@ class FaceBeautifyView: UIView {
                              "imageName": "face_beautify_eyes_enlarging",
                              "name": "room_beautify_page_eyes_enlarging"],
                             
-                            ["type": FaceBeautifyType.FaceSliming,
-                             "value": 50, "imageName": "face_beautify_face_sliming",
-                             "name": "room_beautify_page_face_sliming"],
+                            ["type": FaceBeautifyType.FaceSlimming,
+                             "value": 50, "imageName": "face_beautify_face_slimming",
+                             "name": "room_beautify_page_face_slimming"],
                             
                             ["type": FaceBeautifyType.MouthShapeAdjustment,
                              "value": 0, "imageName": "face_beautify_mouth_shape_adjustment",
@@ -100,9 +100,9 @@ class FaceBeautifyView: UIView {
                              "imageName": "face_beautify_eyes_brightening",
                              "name": "room_beautify_page_eyes_brightening"],
                             
-                            ["type": FaceBeautifyType.NoseSliming, "value": 50,
-                             "imageName": "face_beautify_nose_sliming",
-                             "name": "room_beautify_page_nose_sliming"],
+                            ["type": FaceBeautifyType.NoseSlimming, "value": 50,
+                             "imageName": "face_beautify_nose_slimming",
+                             "name": "room_beautify_page_nose_slimming"],
                             
                             ["type": FaceBeautifyType.TeethWhitening, "value": 50,
                              "imageName": "face_beautify_teeth_whitening",

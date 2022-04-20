@@ -116,7 +116,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
                                  
                                  ["title": ZGLocalizedString("room_settings_page_noise_suppression"),
                                   "subTitle": "", "selectionType": ZegoDevicesType.noiseSuppression,
-                                  "switchStatus": RoomManager.shared.deviceService.noiseSliming],
+                                  "switchStatus": RoomManager.shared.deviceService.noiseSlimming],
                                  
                                  ["title": ZGLocalizedString("room_settings_page_echo_cancellation"),
                                   "subTitle": "", "selectionType": ZegoDevicesType.echoCancellation,
@@ -161,7 +161,7 @@ class LiveSettingView: UIView, UITableViewDelegate, UITableViewDataSource, Setti
             case .hardwareDecoder:
                 model.switchStatus = RoomManager.shared.deviceService.hardwareDecoding
             case .noiseSuppression:
-                model.switchStatus = RoomManager.shared.deviceService.noiseSliming
+                model.switchStatus = RoomManager.shared.deviceService.noiseSlimming
             case .echoCancellation:
                 model.switchStatus = RoomManager.shared.deviceService.echoCancellation
             case .volumeAdjustment:

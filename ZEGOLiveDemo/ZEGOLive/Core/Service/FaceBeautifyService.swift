@@ -28,8 +28,8 @@ enum FaceBeautifyType {
     /// Eyes enlarging
     case EyesEnlarging
     
-    /// Face sliming
-    case FaceSliming
+    /// Face slimming
+    case FaceSlimming
     
     /// Mouth shape adjustment
     case MouthShapeAdjustment
@@ -37,8 +37,8 @@ enum FaceBeautifyType {
     /// Eyes brightening
     case EyesBrightening
     
-    /// Nose sliming
-    case NoseSliming
+    /// Nose slimming
+    case NoseSlimming
     
     /// Chin lengthening
     case ChinLengthening
@@ -62,10 +62,10 @@ class FaceBeautifyService: NSObject {
     let imageSharpeningParam = ZegoEffectsSharpenParam()
     let cheekBlusherParam = ZegoEffectsRosyParam()
     let eyesEnlargingParam = ZegoEffectsBigEyesParam()
-    let faceSlimingParam = ZegoEffectsFaceLiftingParam()
+    let faceSlimmingParam = ZegoEffectsFaceLiftingParam()
     let mouthShapeAdjustmentParam = ZegoEffectsSmallMouthParam()
     let eyesBrighteningParam = ZegoEffectsEyesBrighteningParam()
-    let noseSlimingParam = ZegoEffectsNoseNarrowingParam()
+    let noseSlimmingParam = ZegoEffectsNoseNarrowingParam()
     let chinLengtheningParam = ZegoEffectsLongChinParam()
     let teethWhiteningParam = ZegoEffectsTeethWhiteningParam()
     
@@ -96,13 +96,13 @@ class FaceBeautifyService: NSObject {
             effects.enableRosy(enable)
         case .EyesEnlarging:
             effects.enableBigEyes(enable)
-        case .FaceSliming:
+        case .FaceSlimming:
             effects.enableFaceLifting(enable)
         case .MouthShapeAdjustment:
             effects.enableSmallMouth(enable)
         case .EyesBrightening:
             effects.enableEyesBrightening(enable)
-        case .NoseSliming:
+        case .NoseSlimming:
             effects.enableNoseNarrowing(enable)
         case .ChinLengthening:
             effects.enableLongChin(enable)
@@ -137,18 +137,18 @@ class FaceBeautifyService: NSObject {
         case .EyesEnlarging:
             self.eyesEnlargingParam.intensity = value
             effects.setBigEyesParam(self.eyesEnlargingParam)
-        case .FaceSliming:
-            self.faceSlimingParam.intensity = value
-            effects.setFaceLiftingParam(self.faceSlimingParam)
+        case .FaceSlimming:
+            self.faceSlimmingParam.intensity = value
+            effects.setFaceLiftingParam(self.faceSlimmingParam)
         case .MouthShapeAdjustment:
             self.mouthShapeAdjustmentParam.intensity = value
             effects.setSmallMouthParam(self.mouthShapeAdjustmentParam)
         case .EyesBrightening:
             self.eyesBrighteningParam.intensity = value
             effects.setEyesBrighteningParam(self.eyesBrighteningParam)
-        case .NoseSliming:
-            self.noseSlimingParam.intensity = value
-            effects.setNoseNarrowingParam(self.noseSlimingParam)
+        case .NoseSlimming:
+            self.noseSlimmingParam.intensity = value
+            effects.setNoseNarrowingParam(self.noseSlimmingParam)
         case .ChinLengthening:
             self.chinLengtheningParam.intensity = value
             effects.setLongChinParam(self.chinLengtheningParam)

@@ -125,7 +125,7 @@ class DeviceService: NSObject {
     var hardwareDecoding: Bool = false
     
     /// Whether to enable or disable the noise suppression
-    var noiseSliming: Bool = false
+    var noiseSlimming: Bool = false
     
     /// Whether to enable or disable the echo cancellation
     var echoCancellation: Bool = false
@@ -242,7 +242,7 @@ class DeviceService: NSObject {
             ZegoExpressEngine.shared().enableHardwareDecoder(enable)
             hardwareDecoding = enable
         case .noiseSuppression:
-            noiseSliming = enable
+            noiseSlimming = enable
             ZegoExpressEngine.shared().enableANS(enable)
             ZegoExpressEngine.shared().enableTransientANS(enable)
         case .echoCancellation:
@@ -333,7 +333,7 @@ class DeviceService: NSObject {
         setDeviceStatus(.layeredCoding, enable: layeredCoding)
         setDeviceStatus(.hardwareEncoder, enable: hardwareCoding)
         setDeviceStatus(.hardwareDecoder, enable: hardwareDecoding)
-        setDeviceStatus(.noiseSuppression, enable: noiseSliming)
+        setDeviceStatus(.noiseSuppression, enable: noiseSlimming)
         setDeviceStatus(.echoCancellation, enable: echoCancellation)
         setDeviceStatus(.volumeAdjustment, enable: volumeAdjustment)
     }
@@ -345,7 +345,7 @@ class DeviceService: NSObject {
         layeredCoding = false
         hardwareCoding = true
         hardwareDecoding = false
-        noiseSliming = false
+        noiseSlimming = false
         echoCancellation = false
         volumeAdjustment = false
         setNomalConfigValue()

@@ -8,7 +8,6 @@
 import Foundation
 import ZIM
 import ZegoExpressEngine
-import ZegoEffects
 
 
 /// Class ZEGO Live business logic management
@@ -72,14 +71,7 @@ class RoomManager: NSObject {
         profile.appID = appID
         profile.scenario = .general
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
-        
-        //appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
-        EffectsLicense.shared.getLicense(appID, appSign: appSign)
-                
-        let processConfig = ZegoCustomVideoProcessConfig()
-        processConfig.bufferType = .cvPixelBuffer
-        ZegoExpressEngine.shared().enableCustomVideoProcessing(true, config: processConfig)
-        ZegoExpressEngine.shared().setCustomVideoProcessHandler(self)
+        ZegoExpressEngine.shared().startEffectsEnv()
         
         var result: ZegoResult = .success(())
         if ZIMManager.shared.zim == nil {
@@ -100,6 +92,7 @@ class RoomManager: NSObject {
     func uninit() {
         logoutRtcRoom(true)
         ZIMManager.shared.destoryZIM()
+        ZegoExpressEngine.shared().stopEffectsEnv()
         ZegoExpressEngine.destroy(nil)
     }
     
@@ -290,18 +283,5 @@ extension RoomManager: ZIMEventHandler {
         for delegate in zimEventDelegates.allObjects {
             delegate.zim?(zim, roomAttributesUpdated: updateInfo, roomID: roomID)
         }
-    }
-}
-
-extension RoomManager: ZegoCustomVideoProcessHandler {
-    
-    func onStart(_ channel: ZegoPublishChannel) {
-        self.beautifyService.effects.initEnv(CGSize(width: 720, height: 1280))
-    }
-    
-    
-    func onCapturedUnprocessedCVPixelBuffer(_ buffer: CVPixelBuffer, timestamp: CMTime, channel: ZegoPublishChannel) {
-        self.beautifyService.effects.processImageBuffer(buffer)
-        ZegoExpressEngine.shared().sendCustomVideoProcessedCVPixelBuffer(buffer, timestamp: timestamp, channel: channel)
     }
 }

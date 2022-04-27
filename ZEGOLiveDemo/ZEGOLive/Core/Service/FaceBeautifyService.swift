@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ZegoEffects
+import ZegoExpressEngine
 
 
 /// Class face beautify
@@ -24,27 +24,6 @@ enum FaceBeautifyType {
     
     /// Cheek blusher
     case CheekBlusher
-    
-    /// Eyes enlarging
-    case EyesEnlarging
-    
-    /// Face slimming
-    case FaceSlimming
-    
-    /// Mouth shape adjustment
-    case MouthShapeAdjustment
-    
-    /// Eyes brightening
-    case EyesBrightening
-    
-    /// Nose slimming
-    case NoseSlimming
-    
-    /// Chin lengthening
-    case ChinLengthening
-    
-    /// Teeth whitening
-    case TeethWhitening
 }
 
 /// Class face beautify management
@@ -52,29 +31,8 @@ enum FaceBeautifyType {
 /// Description: This class contains the enabling/disabling logic, and the parameter setting logic of the face beautify feature.
 class FaceBeautifyService: NSObject {
     
-    /// Class ZegoEffects SDK instances
-    lazy var effects: ZegoEffects = {
-        return ZegoEffects.create(EffectsLicense.shared.license)
-    }()
+    let beautyParam = ZegoEffectsBeautyParam()
     
-    let skinToneEnhancementParam = ZegoEffectsWhitenParam()
-    let skinSmoothingParam = ZegoEffectsSmoothParam()
-    let imageSharpeningParam = ZegoEffectsSharpenParam()
-    let cheekBlusherParam = ZegoEffectsRosyParam()
-    let eyesEnlargingParam = ZegoEffectsBigEyesParam()
-    let faceSlimmingParam = ZegoEffectsFaceLiftingParam()
-    let mouthShapeAdjustmentParam = ZegoEffectsSmallMouthParam()
-    let eyesBrighteningParam = ZegoEffectsEyesBrighteningParam()
-    let noseSlimmingParam = ZegoEffectsNoseNarrowingParam()
-    let chinLengtheningParam = ZegoEffectsLongChinParam()
-    let teethWhiteningParam = ZegoEffectsTeethWhiteningParam()
-    
-    /// Set  Effects resource path
-    /// Contact technical support to download the resources that ZegoEffects SDK required, and put the resources you get into your project.
-    /// Call this method at: After initializing the SDK
-    public func setResources(_ resourceInfoList: [String]) {
-        ZegoEffects.setResources(resourceInfoList)
-    }
     
     /// Enable the face beautify feature (include the face beautification and face shape retouch).
     ///
@@ -84,31 +42,8 @@ class FaceBeautifyService: NSObject {
     ///
     /// @param enable determines whether to enable or disable the the face beautify feature.  true: enable.  false: disable.
     /// @param type refers to the specific face beautify type that has been enabled
-    public func enableBeautify(_ enable: Bool, type: FaceBeautifyType) {
-        switch type {
-        case .SkinToneEnhancement:
-            effects.enableWhiten(enable)
-        case .SkinSmoothing:
-            effects.enableSmooth(enable)
-        case .ImageSharpening:
-            effects.enableSharpen(enable)
-        case .CheekBlusher:
-            effects.enableRosy(enable)
-        case .EyesEnlarging:
-            effects.enableBigEyes(enable)
-        case .FaceSlimming:
-            effects.enableFaceLifting(enable)
-        case .MouthShapeAdjustment:
-            effects.enableSmallMouth(enable)
-        case .EyesBrightening:
-            effects.enableEyesBrightening(enable)
-        case .NoseSlimming:
-            effects.enableNoseNarrowing(enable)
-        case .ChinLengthening:
-            effects.enableLongChin(enable)
-        case .TeethWhitening:
-            effects.enableTeethWhitening(enable)
-        }
+    public func enableBeautify(_ enable: Bool) {
+        ZegoExpressEngine.shared().enableEffectsBeauty(enable)
     }
     
     
@@ -123,38 +58,24 @@ class FaceBeautifyService: NSObject {
     public func setBeautifyValue(_ value: Int32, type: FaceBeautifyType) {
         switch type {
         case .SkinToneEnhancement:
-            self.skinToneEnhancementParam.intensity = value
-            effects.setWhitenParam(self.skinToneEnhancementParam)
+            self.beautyParam.whitenIntensity = value
         case .SkinSmoothing:
-            self.skinSmoothingParam.intensity = value
-            effects.setSmoothParam(self.skinSmoothingParam)
+            self.beautyParam.smoothIntensity = value
         case .ImageSharpening:
-            self.imageSharpeningParam.intensity = value
-            effects.setSharpenParam(self.imageSharpeningParam)
+            self.beautyParam.sharpenIntensity = value
         case .CheekBlusher:
-            self.cheekBlusherParam.intensity = value
-            effects.setRosyParam(self.cheekBlusherParam)
-        case .EyesEnlarging:
-            self.eyesEnlargingParam.intensity = value
-            effects.setBigEyesParam(self.eyesEnlargingParam)
-        case .FaceSlimming:
-            self.faceSlimmingParam.intensity = value
-            effects.setFaceLiftingParam(self.faceSlimmingParam)
-        case .MouthShapeAdjustment:
-            self.mouthShapeAdjustmentParam.intensity = value
-            effects.setSmallMouthParam(self.mouthShapeAdjustmentParam)
-        case .EyesBrightening:
-            self.eyesBrighteningParam.intensity = value
-            effects.setEyesBrighteningParam(self.eyesBrighteningParam)
-        case .NoseSlimming:
-            self.noseSlimmingParam.intensity = value
-            effects.setNoseNarrowingParam(self.noseSlimmingParam)
-        case .ChinLengthening:
-            self.chinLengtheningParam.intensity = value
-            effects.setLongChinParam(self.chinLengtheningParam)
-        case .TeethWhitening:
-            self.teethWhiteningParam.intensity = value
-            effects.setTeethWhiteningParam(self.teethWhiteningParam)
+            self.beautyParam.rosyIntensity = value
         }
+        ZegoExpressEngine.shared().setEffectsBeautyParam(self.beautyParam)
+    }
+    
+    
+    /// Reset basic beauty parameters
+    public func resetBeauty() {
+        self.beautyParam.whitenIntensity = 50
+        self.beautyParam.smoothIntensity = 50
+        self.beautyParam.sharpenIntensity = 50
+        self.beautyParam.rosyIntensity = 5
+        ZegoExpressEngine.shared().setEffectsBeautyParam(self.beautyParam)
     }
 }

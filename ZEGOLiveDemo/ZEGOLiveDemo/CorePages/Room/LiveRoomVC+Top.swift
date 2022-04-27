@@ -50,6 +50,7 @@ extension LiveRoomVC : LiveTopViewDelegate {
         RoomManager.shared.roomService.leaveRoom(callback: nil)
         RoomManager.shared.deviceService.reset()
         RoomManager.shared.soundService.reset()
+        RoomManager.shared.beautifyService.resetBeauty()
         if dismissViewController {
             self.navigationController?.popViewController(animated: true)
         }

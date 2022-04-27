@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,19 +39,6 @@
                                 <action selector="pressBeautyButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="b2W-aS-XdB"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-M6-11V">
-                            <rect key="frame" x="182" y="25.5" width="132" height="22.5"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22.5" id="PnN-Tc-Que"/>
-                                <constraint firstAttribute="width" constant="132" id="YGd-ut-EgK"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Face shape retouch"/>
-                            <connections>
-                                <action selector="pressReshapeButton:" destination="xto-cw-HJh" eventType="touchUpInside" id="Zon-4b-Y7i"/>
-                            </connections>
-                        </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gfU-t8-5L5">
                             <rect key="frame" x="0.0" y="80" width="846" height="67"/>
                             <constraints>
@@ -76,7 +63,6 @@
                     <color key="backgroundColor" name="111014_90"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gfU-t8-5L5" secondAttribute="trailing" id="A6c-9a-IRE"/>
-                        <constraint firstItem="nMS-M6-11V" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="AaG-fA-EDz"/>
                         <constraint firstItem="dXp-W9-pgs" firstAttribute="top" secondItem="qfx-J2-T7U" secondAttribute="top" constant="25.5" id="DKp-93-F1D"/>
                         <constraint firstAttribute="trailing" secondItem="vvg-qe-qVx" secondAttribute="trailing" constant="19" id="Ek4-gs-Gvi"/>
                         <constraint firstItem="gfU-t8-5L5" firstAttribute="top" secondItem="dXp-W9-pgs" secondAttribute="bottom" constant="32" id="FmI-jh-I4h"/>
@@ -85,7 +71,6 @@
                         <constraint firstItem="gfU-t8-5L5" firstAttribute="leading" secondItem="qfx-J2-T7U" secondAttribute="leading" id="ZrT-gb-Tw1"/>
                         <constraint firstItem="vVx-jd-CWf" firstAttribute="centerX" secondItem="qfx-J2-T7U" secondAttribute="centerX" id="bNx-fz-7ux"/>
                         <constraint firstAttribute="height" constant="183.5" id="nh6-lV-d5N"/>
-                        <constraint firstItem="nMS-M6-11V" firstAttribute="leading" secondItem="dXp-W9-pgs" secondAttribute="trailing" constant="16" id="rVy-gz-3PQ"/>
                         <constraint firstItem="dXp-W9-pgs" firstAttribute="leading" secondItem="qfx-J2-T7U" secondAttribute="leading" constant="16" id="xev-XM-yxb"/>
                     </constraints>
                 </view>
@@ -104,7 +89,6 @@
                 <outlet property="beautifyCollectionView" destination="gfU-t8-5L5" id="Qhy-aN-heh"/>
                 <outlet property="beautyButton" destination="dXp-W9-pgs" id="DSU-0s-3Q4"/>
                 <outlet property="lineView" destination="vVx-jd-CWf" id="Ugh-vB-bKJ"/>
-                <outlet property="reshapeButton" destination="nMS-M6-11V" id="kbT-n0-zSr"/>
             </connections>
             <point key="canvasLocation" x="230.43478260869566" y="256.13839285714283"/>
         </view>

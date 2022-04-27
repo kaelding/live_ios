@@ -183,7 +183,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bottom_beauty" width="36" height="36"/>
+        <image name="bottom_beauty" width="88" height="88"/>
         <image name="bottom_cam_off" width="36" height="36"/>
         <image name="bottom_cam_on" width="36" height="36"/>
         <image name="bottom_flip" width="36" height="36"/>

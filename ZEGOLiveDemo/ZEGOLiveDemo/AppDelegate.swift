@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         #endif
         
-        RoomManager.shared.initWithAppID(appID: AppCenter.appID(), appSign: AppCenter.appSign()) { result in
+        RoomManager.shared.initWithAppID(appID: AppCenter.appID()) { result in
             if result.isFailure {
                 let code = result.failure?.code ?? 1
                 print("init failed: \(String(code))")

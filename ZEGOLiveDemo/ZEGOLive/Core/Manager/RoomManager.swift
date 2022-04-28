@@ -65,7 +65,7 @@ class RoomManager: NSObject {
     ///
     /// @param appID refers to the project ID. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com/
     /// @param appSign refers to the secret key for authentication. To get this, please contact us
-    func initWithAppID(appID: UInt32, appSign: String, callback: RoomCallback?) {
+    func initWithAppID(appID: UInt32, callback: RoomCallback?) {
         ZIMManager.shared.createZIM(appID: appID)
         let profile = ZegoEngineProfile()
         profile.appID = appID

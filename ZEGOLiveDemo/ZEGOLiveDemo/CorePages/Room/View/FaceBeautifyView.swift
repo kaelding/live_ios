@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum FaceBeautifySelectedType {
-    case faceBeautification
-    case faceShapeRetouch
-}
-
 protocol FaceBeautifyViewDelegate : AnyObject {
     func beautifyValueChange(_ beautifyModel: FaceBeautifyModel)
 }
@@ -32,13 +27,6 @@ class FaceBeautifyView: UIView {
             self.beautyButton.setTitleColor(UIColor.white, for: .selected)
             self.beautyButton.setTitleColor(ZegoColor("FFFFFF_69"), for: .normal)
             self.beautyButton.setTitle(ZGLocalizedString("room_beautify_page_face_beautification"), for: .normal)
-        }
-    }
-    @IBOutlet weak var reshapeButton: UIButton!{
-        didSet {
-            self.reshapeButton.setTitleColor(UIColor.white, for: .selected)
-            self.reshapeButton.setTitleColor(ZegoColor("FFFFFF_69"), for: .normal)
-            self.reshapeButton.setTitle(ZGLocalizedString("room_beautify_page_face_shape_retouch"), for: .normal)
         }
     }
     
@@ -83,42 +71,7 @@ class FaceBeautifyView: UIView {
         return _faceBeatificationArray
     }()
     
-    private var _faceShapeRetouchArray: [FaceBeautifyModel] {
-        let beatifyArray = [["type": FaceBeautifyType.EyesEnlarging, "value": 50,
-                             "imageName": "face_beautify_eyes_enlarging",
-                             "name": "room_beautify_page_eyes_enlarging"],
-                            
-                            ["type": FaceBeautifyType.FaceSlimming,
-                             "value": 50, "imageName": "face_beautify_face_slimming",
-                             "name": "room_beautify_page_face_slimming"],
-                            
-                            ["type": FaceBeautifyType.MouthShapeAdjustment,
-                             "value": 0, "imageName": "face_beautify_mouth_shape_adjustment",
-                             "name": "room_beautify_page_mouth_shape_adjustment"],
-                            
-                            ["type": FaceBeautifyType.EyesBrightening, "value": 50,
-                             "imageName": "face_beautify_eyes_brightening",
-                             "name": "room_beautify_page_eyes_brightening"],
-                            
-                            ["type": FaceBeautifyType.NoseSlimming, "value": 50,
-                             "imageName": "face_beautify_nose_slimming",
-                             "name": "room_beautify_page_nose_slimming"],
-                            
-                            ["type": FaceBeautifyType.TeethWhitening, "value": 50,
-                             "imageName": "face_beautify_teeth_whitening",
-                             "name": "room_beautify_page_teeth_whitening"],
-                            
-                            ["type": FaceBeautifyType.ChinLengthening, "value": 0,
-                             "imageName": "face_beautify_chin_lengthening",
-                             "name": "room_beautify_page_chin_lengthening"]]
-        
-        return beatifyArray.map{ FaceBeautifyModel(json: $0) }
-    }
-    lazy var faceShapeRetouchArray: [FaceBeautifyModel] = {
-        return _faceShapeRetouchArray
-    }()
     
-    var selectedType = FaceBeautifySelectedType.faceBeautification
     var selectedFaceBeautifyModel : FaceBeautifyModel?
     
     override init(frame: CGRect) {
@@ -161,31 +114,14 @@ class FaceBeautifyView: UIView {
     @IBAction func pressBeautyButton(_ sender: UIButton) {
         self.slider.isHidden = true
         self.beautyButton.isSelected = true
-        self.reshapeButton.isSelected = false
         
         self.beautyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
-        self.reshapeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
-        self.selectedType = FaceBeautifySelectedType.faceBeautification
-        self.beautifyCollectionView.reloadData()
-    }
-    
-    @IBAction func pressReshapeButton(_ sender: UIButton) {
-        self.slider.isHidden = true
-        self.beautyButton.isSelected = false
-        self.reshapeButton.isSelected = true
-        self.selectedType = FaceBeautifySelectedType.faceShapeRetouch
-        self.beautyButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
-        self.reshapeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
         self.beautifyCollectionView.reloadData()
     }
     
     @IBAction func pressResetButton(_ sender: UIButton) {
         
-        if selectedType == .faceBeautification {
-            resetFaceBeatification()
-        } else {
-            resetFaceShapeRetouch()
-        }
+        resetFaceBeatification()
         
         self.slider.isHidden = true
         
@@ -198,17 +134,8 @@ class FaceBeautifyView: UIView {
 // MARK: private method
 extension FaceBeautifyView {
     func resetFaceBeatification() {
+        RoomManager.shared.beautifyService.resetBeauty()
         faceBeatificationArray = _faceBeatificationArray
-        for item in faceBeatificationArray {
-            delegate?.beautifyValueChange(item)
-        }
-    }
-    
-    func resetFaceShapeRetouch() {
-        faceShapeRetouchArray = _faceShapeRetouchArray
-        for item in faceShapeRetouchArray {
-            delegate?.beautifyValueChange(item)
-        }
     }
 }
 
@@ -223,39 +150,23 @@ extension FaceBeautifyView : ZegoSliderDelegate {
 extension FaceBeautifyView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if selectedType == FaceBeautifySelectedType.faceBeautification {
-            return self.faceBeatificationArray.count
-        } else {
-            return self.faceShapeRetouchArray.count
-        }
+        return self.faceBeatificationArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FaceBeautifyColletionViewCell", for: indexPath) as? FaceBeautifyColletionViewCell else {
             return FaceBeautifyColletionViewCell()
         }
-        var modelArray = self.faceBeatificationArray
-        if selectedType == FaceBeautifySelectedType.faceShapeRetouch {
-            modelArray = self.faceShapeRetouchArray
-        }
+        let modelArray = self.faceBeatificationArray
         let model = modelArray[indexPath.row]
         cell.updateCellWithModel(model)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if selectedType == FaceBeautifySelectedType.faceBeautification {
-            selectedFaceBeautifyModel = self.faceBeatificationArray[indexPath.row]
-        } else {
-            selectedFaceBeautifyModel = self.faceShapeRetouchArray[indexPath.row]
-        }
+        selectedFaceBeautifyModel = self.faceBeatificationArray[indexPath.row]
         self.slider.isHidden = false
-        if selectedFaceBeautifyModel?.type == .ChinLengthening ||
-            selectedFaceBeautifyModel?.type == .MouthShapeAdjustment {
-            self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: -100, max: 100)
-        } else {
-            self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: 0, max: 100)
-        }
+        self.slider.setSliderValue(selectedFaceBeautifyModel?.value ?? 0, min: 0, max: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

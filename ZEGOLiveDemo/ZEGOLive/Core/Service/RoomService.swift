@@ -76,13 +76,13 @@ class RoomService: NSObject {
         ZIMManager.shared.zim?.createRoom(parameters.0, config: parameters.1, callback: { fullRoomInfo, error in
             
             var result: ZegoResult = .success(())
-            if error.code == .ZIMErrorCodeSuccess {
+            if error.code == .success {
                 RoomManager.shared.roomService.roomInfo = parameters.2
                 RoomManager.shared.userService.localUserInfo?.role = .host
                 RoomManager.shared.loginRtcRoom(with: token)
             }
             else {
-                if error.code == .ZIMErrorCodeCreateExistRoom {
+                if error.code == .roomModuleTheRoomAlreadyExists {
                     result = .failure(.roomExisted)
                 } else {
                     result = .failure(.other(Int32(error.code.rawValue)))
@@ -107,9 +107,9 @@ class RoomService: NSObject {
     func joinRoom(_ roomID: String, _ token: String, callback: RoomCallback?) {
         RoomManager.shared.resetRoomData()
         ZIMManager.shared.zim?.joinRoom(roomID, callback: { fullRoomInfo, error in
-            if error.code != .ZIMErrorCodeSuccess {
+            if error.code != .success {
                 guard let callback = callback else { return }
-                if error.code == .ZIMErrorCodeRoomNotExist {
+                if error.code == .roomModuleTheRoomDoseNotExist {
                     callback(.failure(.roomNotFound))
                 } else {
                     callback(.failure(.other(Int32(error.code.rawValue))))
@@ -156,9 +156,10 @@ class RoomService: NSObject {
         } else {
             RoomManager.shared.roomListService.leaveServerRoom(roomID, callback: nil)
         }
-        ZIMManager.shared.zim?.leaveRoom(roomID, callback: { error in
+        
+        ZIMManager.shared.zim?.leaveRoom(roomID, callback: { _, error in
             var result: ZegoResult = .success(())
-            if error.code != .ZIMErrorCodeSuccess {
+            if error.code != .success {
                 result = .failure(.other(Int32(error.code.rawValue)))
             }
             guard let callback = callback else { return }
@@ -173,9 +174,10 @@ class RoomService: NSObject {
             callback(.failure(.failed))
             return
         }
-        ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { roomAttributes, error in
+        
+        ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { _, roomAttributes, error in
             var result: ZegoResult = .success(())
-            if error.code == .ZIMErrorCodeSuccess {
+            if error.code == .success {
                 self.roomAttributesUpdated(roomAttributes)
             } else {
                 result = .failure(.other(Int32(error.code.rawValue)))
@@ -238,16 +240,18 @@ extension RoomService: ZIMEventHandler {
             if newInRoom { return }
             // when reconnected must send a heart beat request.
             RoomManager.shared.roomListService.heartBeatRequest()
-            ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { dict, error in
-                let hostLeft = error.code == .ZIMErrorCodeSuccess && !dict.keys.contains("room_info")
-                let roomNotExisted = error.code == .ZIMErrorCodeRoomNotExist
+            
+            ZIMManager.shared.zim?.queryRoomAllAttributes(byRoomID: roomID, callback: { _, dict, error in
+                let hostLeft = error.code == .success && !dict.keys.contains("room_info")
+                let roomNotExisted = error.code == .roomModuleTheRoomDoseNotExist
                 if hostLeft || roomNotExisted {
                     self.delegate?.receiveRoomInfoUpdate(nil)
                 }
-                if error.code == .ZIMErrorCodeSuccess {
+                if error.code == .success {
                     self.roomAttributesUpdated(dict)
                 }
             })
+
         } else if state == .disconnected {
 //            delegate?.receiveRoomInfoUpdate(nil)
         }

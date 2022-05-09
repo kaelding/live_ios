@@ -8,12 +8,11 @@
 import UIKit
 import ZIM
 import ZegoExpressEngine
-import ZegoEffects
 
 class SettingsVC: UITableViewController {
     
     lazy var dataSource: [[SettingCellModel]] = {
-        return [[configModel(type: .express), configModel(type: .zim), configModel(type: .effect), configModel(type: .app)],
+        return [[configModel(type: .express), configModel(type: .zim), configModel(type: .app)],
                 [configModel(type: .terms), configModel(type: .privacy)],
                 [configModel(type: .shareLog)],
                 [configModel(type: .logout)]];
@@ -47,9 +46,6 @@ class SettingsVC: UITableViewController {
             model.title = ZGLocalizedString("setting_page_terms_of_service")
         case .privacy:
             model.title = ZGLocalizedString("setting_page_privacy_policy")
-        case .effect:
-            model.title = ZGLocalizedString("setting_page_effect_sdk_version")
-            model.subTitle = ZegoEffects.getVersion()
         }
         return model
     }

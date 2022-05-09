@@ -222,7 +222,7 @@ extension RoomService {
         config.isDeleteAfterOwnerLeft = false
         config.isForce = true
         config.isUpdateOwner = true
-        ZIMManager.shared.zim?.setRoomAttributes(newRoomAttributes, roomID: roomID, config: config, callback: { error in
+        ZIMManager.shared.zim?.setRoomAttributes(newRoomAttributes, roomID: roomID, config: config, callback: { _, _, error in
             
         })
     }

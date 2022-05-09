@@ -11,6 +11,7 @@ extension LiveRoomVC : LiveReadyViewDelegate {
     func liveReadyView(_ readyView: LiveReadyView, didClickButtonWith action: LiveReadyAction) {
         switch action {
         case .back:
+            RoomManager.shared.beautifyService.resetBeauty()
             self.navigationController?.popViewController(animated: true)
             break
         case .cameraFlip:

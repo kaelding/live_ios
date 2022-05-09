@@ -8,7 +8,6 @@
 import Foundation
 import ZIM
 import ZegoExpressEngine
-import ZegoEffects
 
 
 /// Class ZEGO Live business logic management
@@ -65,21 +64,13 @@ class RoomManager: NSObject {
     /// Call this method at: Before you log in. We recommend you call this method when the application starts.
     ///
     /// @param appID refers to the project ID. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com/
-    /// @param appSign refers to the secret key for authentication. To get this, please contact us
-    func initWithAppID(appID: UInt32, appSign: String, callback: RoomCallback?) {
+    func initWithAppID(appID: UInt32, callback: RoomCallback?) {
         ZIMManager.shared.createZIM(appID: appID)
         let profile = ZegoEngineProfile()
         profile.appID = appID
         profile.scenario = .general
         ZegoExpressEngine.createEngine(with: profile, eventHandler: self)
-        
-        //appSign refers to the secret key for authentication. To get this, go to ZEGOCLOUD Admin Console: https://console.zegocloud.com
-        EffectsLicense.shared.getLicense(appID, appSign: appSign)
-                
-        let processConfig = ZegoCustomVideoProcessConfig()
-        processConfig.bufferType = .cvPixelBuffer
-        ZegoExpressEngine.shared().enableCustomVideoProcessing(true, config: processConfig)
-        ZegoExpressEngine.shared().setCustomVideoProcessHandler(self)
+        ZegoExpressEngine.shared().startEffectsEnv()
         
         var result: ZegoResult = .success(())
         if ZIMManager.shared.zim == nil {
@@ -100,6 +91,7 @@ class RoomManager: NSObject {
     func uninit() {
         logoutRtcRoom(true)
         ZIMManager.shared.destoryZIM()
+        ZegoExpressEngine.shared().stopEffectsEnv()
         ZegoExpressEngine.destroy(nil)
     }
     
@@ -113,7 +105,7 @@ class RoomManager: NSObject {
     /// @param completion refers to the callback that be triggered when the logs are upload successfully or failed to upload logs.
     func uploadLog(callback: RoomCallback?) {
         ZIMManager.shared.zim?.uploadLog({ errorCode in
-            if errorCode.code == .ZIMErrorCodeSuccess {
+            if errorCode.code == .success {
                 guard let callback = callback else { return }
                 ZegoExpressEngine.shared().uploadLog { error in
                     if error == 0 {
@@ -290,18 +282,5 @@ extension RoomManager: ZIMEventHandler {
         for delegate in zimEventDelegates.allObjects {
             delegate.zim?(zim, roomAttributesUpdated: updateInfo, roomID: roomID)
         }
-    }
-}
-
-extension RoomManager: ZegoCustomVideoProcessHandler {
-    
-    func onStart(_ channel: ZegoPublishChannel) {
-        self.beautifyService.effects.initEnv(CGSize(width: 720, height: 1280))
-    }
-    
-    
-    func onCapturedUnprocessedCVPixelBuffer(_ buffer: CVPixelBuffer, timestamp: CMTime, channel: ZegoPublishChannel) {
-        self.beautifyService.effects.processImageBuffer(buffer)
-        ZegoExpressEngine.shared().sendCustomVideoProcessedCVPixelBuffer(buffer, timestamp: timestamp, channel: channel)
     }
 }

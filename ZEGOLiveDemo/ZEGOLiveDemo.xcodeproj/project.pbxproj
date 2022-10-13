@@ -315,7 +315,6 @@
 		8EE13E9C277452A80038AFCF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		8EE13EA1277452AA0038AFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EE13EA6277452AA0038AFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ZegoEffects.xcframework; path = Lib/ZegoEffects.xcframework; sourceTree = "<group>"; };
 		8EE13ED627745B1C0038AFCF /* AppCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppCenter.json; sourceTree = "<group>"; };
 		8EE13ED727745B1C0038AFCF /* AppCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCenter.swift; sourceTree = "<group>"; };
 		8EE13EDC27745B810038AFCF /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -957,7 +956,6 @@
 		C90C708D9318794277CA16FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8EE13ED0277455FC0038AFCF /* ZegoEffects.xcframework */,
 				1E617EA6568939F73DEFEFA8 /* Pods_ZEGOLiveDemo.framework */,
 			);
 			name = Frameworks;
@@ -1377,7 +1375,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B82BHJ5H89;
+				DEVELOPMENT_TEAM = PN83KX5U85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
@@ -1396,7 +1394,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = im.zego.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zegocloud.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";
@@ -1415,7 +1413,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B82BHJ5H89;
+				DEVELOPMENT_TEAM = PN83KX5U85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZEGOLiveDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZEGOLive;
@@ -1434,7 +1432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = im.zego.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zegocloud.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ZEGOLiveDemo/ZEGOLiveDemo-Bridging-Header.h";

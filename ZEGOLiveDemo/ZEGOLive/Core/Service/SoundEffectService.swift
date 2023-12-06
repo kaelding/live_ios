@@ -59,7 +59,7 @@ class SoundEffectService: NSObject {
         guard let path = path else {
             return
         }
-        if player?.currentState == .playing {
+        if player?.currentState() == .playing {
             if currentBgmPath != path {
                 stopBGM()
                 loadResoruce(path)
@@ -76,7 +76,7 @@ class SoundEffectService: NSObject {
     ///
     /// Call this method at: After joining a room and calling the loadBGM method
     func startBGM() {
-        if player?.currentState != .playing {
+        if player?.currentState() != .playing {
             player?.start()
         }
     }
@@ -87,7 +87,7 @@ class SoundEffectService: NSObject {
     ///
     /// Call this method at: After joining a room and calling the loadBGM method
     func stopBGM() -> Void {
-        if player?.currentState == .playing {
+        if player?.currentState() == .playing {
             player?.stop()
         }
     }

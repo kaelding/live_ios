@@ -6,7 +6,7 @@ target 'ZEGOLiveDemo' do
   use_frameworks!
 
   # Pods for ZEGOLiveDemo
-  pod 'ZIM', '>= 2.1.1'
+  pod 'ZIM', '2.4.0'
   pod 'ZegoExpressEngine'
   
 end
